@@ -471,6 +471,33 @@ ENDINST
     instructions += $help + "\n\n"
   end
 
+  def choose_text_editor
+    # Given list of text editors, return those available on this system.
+    available_editors = $text_editors.select do |nm,cmd|
+      `which #{cmd}`
+    end
+    available_editors = available_editors.keys.sort
+    width = 0
+    available_editors.each_with_index do |editor,i|
+      item = "(#{i+1}) #{editor} "
+      if item.length + width >= 75
+        puts('')
+        width = 0
+      end
+      width += item.length
+      print item
+    end
+    puts ''
+    # Let user select new editor.
+    # Reset text editor global ($texted).
+    # Save new default text editor to settings.json.
+    # NEXT: START HERE: Do the above three things.
+    # Also, load text editor default to global on startup.
+    # First, however, check that there is a settings file & that it has a
+    # text editor set; if no in either case, call choose_text_editor and
+    # don't let the user go on until he chooses one.
+  end
+
   def app_loop
     command = nil
     until command == 'q'
@@ -495,6 +522,8 @@ ENDINST
       $tasks.delete
     when 't'
       $tasks.tag_search
+    when 'e'
+      choose_text_editor
     when 'i'
       system 'clear'
       puts header

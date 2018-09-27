@@ -1,8 +1,9 @@
 module Helper
+
   $help =
     "\nCommands are:\n" +
     "  [n]ew task   [1] review/edit task #1   [l]ist all tasks   [d]elete task\n" +
-    "  sort list by [t]ag   [c]ommands   [i]ntroduction"
+    "  sort list by [t]ag   choose text [e]ditor   [i]ntroduction   [c]ommands"
 
   $introduction = <<ENDINTRO
 Welcome to Revuu!
@@ -91,6 +92,24 @@ ENDINTRO
     # new_lang = the lang's index in the array of available langs.
     return new_lang, available_langs
   end
+
+  $text_editors = {
+    'Sublime Text'        => 'subl',
+    'Atom'                => 'atom',
+    'Nano'                => 'nano',
+    'Pico'                => 'pico',
+    'Visual Studio Code'  => 'code',
+    'vi'                  => 'vi',
+    'vim'                 => 'vim',
+    'Eclipse'             => 'eclipse',
+    'IntelliJ'            => 'idea',
+    'Android Studio'      => 'studio',
+    'Xcode'               => 'xcode',
+    'Netbeans'            => 'netbeans',
+    'PhpStorm'            => 'phpstorm',
+    'PyCharm'             => 'pycharm',
+    'Emacs'               => 'emacs'
+  }
 
   # Language data hash.
   def get_available_langs
