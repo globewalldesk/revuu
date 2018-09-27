@@ -35,7 +35,7 @@ can delete these and make your own, if you like.
 Revuu has other features you'd expect such as editing of various fields.
 
 ## Install and requirements
-Clone the repo into a new directory. Make sure a recent version of Ruby (>4.2)
+Clone the repo into a new directory. Make sure a recent version of Ruby (>2.2)
 is installed. The app doesn't use a Gemfile yet (!), so you'll have to install
 two gems by hand: `gem install colorize` and `gem install chronic`.
 
