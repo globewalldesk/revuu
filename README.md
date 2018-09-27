@@ -46,4 +46,7 @@ anybody cares.
 Once Ruby, the app, and the gem dependencies are installed, you should be able
 to start the app on your \*nix system just by typing `ruby revuu.rb`.
 
+Note that for now, the only text editor that Revuu's [r]un command now supports
+is Sublime Text. I'll add many more text editors soon (that should be easy).
+
 Online help is available by pressing 'c' for 'commands'.
