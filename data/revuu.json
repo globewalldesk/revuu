@@ -1,0 +1,221 @@
+{
+  "tasks": [
+    {
+      "instructions": "(Java) Write \"Hello World!\"",
+      "tags": [
+        "java",
+        "hello world"
+      ],
+      "score": 5,
+      "saved": true,
+      "lang": "Java",
+      "id": 11,
+      "date_started": "2018-09-26T21:21:47-04:00",
+      "next_review_date": "2018-09-26T21:21:47-04:00",
+      "all_reviews": [
+
+      ]
+    },
+    {
+      "instructions": "(C) Write \"Hello world!\"",
+      "tags": [
+        "C",
+        "int",
+        "main",
+        "printf"
+      ],
+      "score": 2,
+      "saved": true,
+      "lang": "C",
+      "id": 1,
+      "date_started": "2018-09-23T00:00:00+00:00",
+      "next_review_date": "2018-09-28T12:00:00-04:00",
+      "all_reviews": [
+        {
+          "score": 5,
+          "review_date": "2018-09-26T22:06:40-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "(Node.js) Create an object literal with properties and function\n\nCreate a johnDoe object literal with firstName and lastName properties\nand greet function. Calling the function should output the message,\n\"Hi, I'm John Doe.\"",
+      "tags": [
+        "node",
+        "object literals",
+        "properties",
+        "functions"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Other",
+      "id": 10,
+      "date_started": "2018-09-26T07:56:54-04:00",
+      "next_review_date": "2018-09-29T08:01:25-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-09-26T08:01:25-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "(Ruby) Substitute all instances of this with that\nIn the following string, replace every instance of 'ae' with 'e'. Don't use\nregular expressions; use a simpler method. Print the result.\n\n\"Encyclopaedias make me feel so anaemic that I need anaesthesia.\"",
+      "tags": [
+        "ruby",
+        "gsub",
+        "gsub!"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 8,
+      "date_started": "2018-09-25T16:34:55-04:00",
+      "next_review_date": "2018-09-29T16:38:07-04:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-09-25T16:38:07-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "(Ruby) Calling class, instance, and global methods\n\n(1) From ::create_with_num, set num equal to ::class_number, then (within the\nsame method) return an instance of MyClass with (number: num) as an argument. \n(2) Use ::create_with_num to create an instance. (3) Let #my_sum = the \nsum of @number, ::class_number_deux, #instance_number, and global_number. \n(4) Print the result of calling #my_sum on the instance. Should be 27.\n\nclass MyClass\n  class << self\n    def class_number; 5; end\n\n    def class_number_deux; 2; end\n\n    def create_with_num\n      # Type here\n    end\n  end\n\n  attr_accessor :number\n\n  def initialize(args)\n    # Type here\n  end\n\n  def instance_number; 10; end\n\n  def my_sum\n    # Type here\n  end\n\nend\n\ndef global_number; 10; end\n# Type here",
+      "tags": [
+        "ruby",
+        "self",
+        "class",
+        "new"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 5,
+      "date_started": "2018-09-25T05:56:23-04:00",
+      "next_review_date": "2018-10-02T15:30:00-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-09-25T07:35:36-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "(Ruby) Shortcut for def self.my_class_method?\nGiven this little class, how can you abbreviate 'def self.my_class_method'\nand 'def self.my_other_class_method'?\n\nRewrite it, and then call the methods (one line per each) outside the \nclass definition.\n\nclass MyClass\n  def self.my_class_method\n    puts \"You successfully called my class method! Woo hoo!\"\n  end\n\n  def self.my_other_class_method\n    puts \"Oh my god you did it twice!\"\n  end\nend",
+      "tags": [
+        "ruby",
+        "class << self",
+        "self",
+        "class methods"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 4,
+      "date_started": "2018-09-25T03:29:33-04:00",
+      "next_review_date": "2018-10-09T03:42:08-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-09-25T03:42:08-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "(Ruby) Using defaults in instance initialization\n\nThe following defaults are problematic for reasons Sandi Metz explained.\nMove them into a method and use the method in #initialize. Ensure the \nanswers remain the same.\n\nclass Dog\n  attr_accessor :cute, :breed, :weight\n  def initialize(args)\n    @cute   = args[:cute]   || false\n    @breed  = args[:breed]  || 'mutt'\n    @weight = args[:weight] || 15\n  end\nend\nlassie = Dog.new(cute: true, breed: 'collie')\nputs lassie.cute   # true\nputs lassie.breed  # collie\nputs lassie.weight # 15\nrover = Dog.new\nputs rover.breed   # mutt",
+      "tags": [
+        "ruby",
+        "defaults",
+        "initialize",
+        "merge",
+        "optional arguments",
+        "default arguments"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 6,
+      "date_started": "2018-09-25T08:24:11-04:00",
+      "next_review_date": "2018-10-16T14:37:03-04:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-09-25T14:37:03-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "(Ruby) Create and use a \"cubed\" proc\n\nCreate a proc that cubes (raised to the third power) a number; then use it\nto find 3 cubed (27). Then create a lambda using more verbose syntax that \nraises a number to the fourth power and use it to find 7^4 (2401). Finally, \ncreate a lamdba using briefer syntax and user it to find 13^6 (4826809).",
+      "tags": [
+        "ruby",
+        "Proc",
+        "Proc#new",
+        "procs",
+        "lambda",
+        "lambda literal",
+        "exponents"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 7,
+      "date_started": "2018-09-25T15:19:06-04:00",
+      "next_review_date": "2018-10-21T00:23:33-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-09-25T15:48:43-04:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-09-26T00:23:33-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "(Bash) Download this URL\n\nOn the command line, download the HTML you'll find at precisely \nhttp://larrysanger.org/. Save it directly into temp.tmp. \nTo the end of that file, append \"This is another line.\" Then \nview the end of the file to confirm it's all there, then delete \ntemp.tmp.",
+      "tags": [
+        "bash",
+        "curl",
+        "pipe",
+        "redirect",
+        "append"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Bash",
+      "id": 9,
+      "date_started": "2018-09-25T16:57:25-04:00",
+      "next_review_date": "2018-12-18T16:09:35-05:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-09-25T17:08:51-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "(Ruby) Palindromes: given ['xanax', 'Hello', 'aya', 'FooBar'], write a brief \nprogram to show that there are two palindromes in the array; then print them. \nThen change all the items to Title Case (and print); then change them all to \nALL CAPS (and print); finally, change them all to all lowercase (and print).",
+      "tags": [
+        "ruby",
+        "reverse",
+        "count",
+        "select",
+        "upcase",
+        "downcase",
+        "capitalize"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 2,
+      "date_started": "2018-09-23T22:32:33-04:00",
+      "next_review_date": "2019-02-24T18:50:49-05:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-09-24T18:50:49-04:00"
+        }
+      ]
+    }
+  ]
+}
