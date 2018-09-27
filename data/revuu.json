@@ -1,17 +1,21 @@
 {
   "tasks": [
     {
-      "instructions": "(Java) Write \"Hello World!\"",
+      "instructions": "(C) How to print a formatted table \nwith while, for, and different data types\n\nIn the following C program, add a line that prints first fahrenheit, \nthen a tab, then celsius, then a newline. Then change fahr and celsius\nso that they are floats (and try printing then). Then print the values\nfrom -20 to 120 counting by 10s. Finally, rewrite the 'while' loop with\na 'for' loop and remove all variables except fahr. Ensure the field\ntype characters are correct throughout (so, no error messages!).\n\n#include <stdio.h>\nint main() {\n    int fahr, celsius;\n    int lower, upper, step;\n    lower = 0;    /* lower limit of temperature table */\n    upper = 300;  /* upper limit */\n    step = 20;    /* step size */\n\n    fahr = lower;\n    while (fahr <= upper) {\n        celsius = (5.0/9) * (fahr-32);\n\t/* fill in this line */\n        fahr = fahr + step;\n    }\n}",
       "tags": [
-        "java",
-        "hello world"
+        "C",
+        "printf",
+        "while",
+        "for",
+        "data types",
+        "type characters"
       ],
-      "score": 5,
+      "score": 4,
       "saved": true,
-      "lang": "Java",
-      "id": 11,
-      "date_started": "2018-09-26T21:21:47-04:00",
-      "next_review_date": "2018-09-26T21:21:47-04:00",
+      "lang": "C",
+      "id": 12,
+      "date_started": "2018-09-27T04:50:29-04:00",
+      "next_review_date": "2018-09-27T04:50:29-04:00",
       "all_reviews": [
 
       ]
@@ -24,16 +28,20 @@
         "main",
         "printf"
       ],
-      "score": 2,
+      "score": 3,
       "saved": true,
       "lang": "C",
       "id": 1,
       "date_started": "2018-09-23T00:00:00+00:00",
-      "next_review_date": "2018-09-28T12:00:00-04:00",
+      "next_review_date": "2018-10-07T05:34:30-04:00",
       "all_reviews": [
         {
           "score": 5,
           "review_date": "2018-09-26T22:06:40-04:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-09-27T05:34:03-04:00"
         }
       ]
     },
@@ -168,6 +176,25 @@
         {
           "score": 4,
           "review_date": "2018-09-26T00:23:33-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "(Java) Write \"Hello World!\"",
+      "tags": [
+        "java",
+        "hello world"
+      ],
+      "score": 5,
+      "saved": true,
+      "lang": "Java",
+      "id": 11,
+      "date_started": "2018-09-26T21:21:47-04:00",
+      "next_review_date": "2018-11-27T04:51:10-05:00",
+      "all_reviews": [
+        {
+          "score": 5,
+          "review_date": "2018-09-27T04:51:10-04:00"
         }
       ]
     },

@@ -55,3 +55,36 @@ Note that for now, the only text editor that Revuu's [r]un command now supports
 is Sublime Text. I'll add more text editors soon.
 
 Online help is available by pressing 'c' for 'commands'.
+
+## Planned/hoped-for features.
+
+* Add support for Atom, Eclipse, Pico, Nano, Vi, Vim, and other text editors.
+* Add starter code (for user to edit in his answer) rather than putting this
+directly in the instructions. Ensure that, as with Java now, unedited starter
+code is not interpreted as an answer (so it won't overwrite the archive).
+* Maybe change task and tag editing from Pico to the default text editor.
+* Maybe add an actual spaced repetition option.
+* As the test dataset grows well beyond 10, add pagination related features.
+* Add statistics (number of questions, averages, number overdue, number to do
+today, etc.).
+* Give user option to append language to the title automatically.
+* Add language to tag list.
+* Alternatively, maybe, allow users to have different accounts/sections sorted
+by languages.
+* Maybe eventually allow users to save archived items individually, and give
+them an easy way to browse and run them from within the app.
+
+## Version notes
+
+### 1.0 (September 27, 2018)
+
+First published version. Features include new tasks, list all tasks, delete
+task, sort by tags, and various user and programmer documentation. There are
+a great many features related to answering/reviewing tasks: saving a new
+review (including date and score), writing an answer using a (one supported)
+text editor, running the answer (using at the options of Ruby, Node.js, Java,
+C, Bash scripting, and text; including both compiled and interpreted
+languages), archiving old answers, and running old answers. From the same
+screen, the user can edit task instructions, tags, date of next review, and
+user's current score. Task, review, and settings data are all saved in JSON
+files.
