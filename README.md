@@ -46,7 +46,12 @@ anybody cares.
 Once Ruby, the app, and the gem dependencies are installed, you should be able
 to start the app on your \*nix system just by typing `ruby revuu.rb`.
 
+## Use
+The app ships with both tasks (mostly Ruby) and answers. The tasks are in
+data/revuu.json, and, if you didn't want to delete them all by hand, you could
+simply delete the data file and the app should still work.
+
 Note that for now, the only text editor that Revuu's [r]un command now supports
-is Sublime Text. I'll add many more text editors soon (that should be easy).
+is Sublime Text. I'll add more text editors soon.
 
 Online help is available by pressing 'c' for 'commands'.

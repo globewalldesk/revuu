@@ -86,7 +86,7 @@ ENDINTRO
       puts available_langs == 2 ?
         "Choose (1) or (2)." :
         "Input a number from (1) to (#{available_langs.length})."
-      return nil, nil
+      return 0, available_langs
     end
     # new_lang = the lang's index in the array of available langs.
     return new_lang, available_langs

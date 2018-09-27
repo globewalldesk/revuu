@@ -296,8 +296,12 @@ class Task
 
   private
     def calculate_id
-      max = $tasks.list.max_by { |t| t.id.to_i }
-      max.id.to_i + 1
+      if ! $tasks.list.empty?
+        max = $tasks.list.max_by { |t| t.id.to_i }
+        max.id.to_i + 1
+      else
+        1
+      end
     end
 
     def calculate_next_review_date
@@ -323,12 +327,16 @@ class TaskList
   end
 
   def load_all_tasks
-    file = File.read "./data/revuu.json"
-    data = JSON.parse(file)
-    task_array = data['tasks']
-    construct_tasks_array(task_array)
-    puts "Tasks loaded.\n\n"
-    display_tasks('first screen')
+    # Let it work without the datafile existing.
+    if (File.exist?("./data/revuu.json") &&
+      File.stat("./data/revuu.json").size > 0)
+      file = File.read "./data/revuu.json"
+      data = JSON.parse(file)
+      task_array = data['tasks']
+      construct_tasks_array(task_array)
+      puts "Tasks loaded.\n\n"
+      display_tasks('first screen')
+    end
   end
 
   def construct_tasks_array(task_array)
@@ -345,15 +353,19 @@ class TaskList
     colored = false
     printf("%5s| %-47s| %-20s\n", 'ID', 'Instructions (first line)', 'Due date')
     puts '=' * 75
-    dlist.sort!{|x,y| DateTime.parse(x.next_review_date) <=>
-      DateTime.parse(y.next_review_date)}
-    dlist[0..10].each do |task|
-      # Grab the first 45 characters of the first line of @instructions
-      instr = task.instructions[0..45].split("\n")[0]
-      line = sprintf("%5s| %-47s| %-20s", task.id, instr,
-        prettify_timestamp(task.next_review_date))
-      puts(colored ? line.colorize(:color => :green) : line)
-      colored = !colored
+    if ! dlist.empty?
+      dlist.sort!{|x,y| DateTime.parse(x.next_review_date) <=>
+        DateTime.parse(y.next_review_date)}
+      dlist[0..10].each do |task|
+        # Grab the first 45 characters of the first line of @instructions
+        instr = task.instructions[0..45].split("\n")[0]
+        line = sprintf("%5s| %-47s| %-20s", task.id, instr,
+          prettify_timestamp(task.next_review_date))
+        puts(colored ? line.colorize(:color => :green) : line)
+        colored = !colored
+      end
+    else
+      puts "\nThere are no tasks yet. Press 'n' to add one.\n\n"
     end
   end
 
