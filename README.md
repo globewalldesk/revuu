@@ -24,8 +24,7 @@ to run it with supported interpreters and compilers (also right from the task
 display view).
 
 Currently, we support Ruby, Node.js (JavaScript), Java, C, and Bash scripting.
-The only supported text editor for now is Sublime Text but more will be added
-soon.
+We also support many commonly-used text editors and IDEs.
 
 Add copious, well-chosen tags in order to be able to sort tasks.
 
@@ -58,7 +57,6 @@ Online help is available by pressing 'c' for 'commands'.
 
 ## Planned/hoped-for features.
 
-* Add support for Atom, Eclipse, Pico, Nano, Vi, Vim, and other text editors.
 * Add starter code (for user to edit in his answer) rather than putting this
 directly in the instructions. Ensure that, as with Java now, unedited starter
 code is not interpreted as an answer (so it won't overwrite the archive).
@@ -88,3 +86,10 @@ languages), archiving old answers, and running old answers. From the same
 screen, the user can edit task instructions, tags, date of next review, and
 user's current score. Task, review, and settings data are all saved in JSON
 files.
+
+### 1.1 (September 28, 2018)
+Added support for Atom, Eclipse, Pico, Nano, Vi, Vim, and other text editors.
+This checks the user's system to see which are available and shows only those.
+The app now checks that the settings file exists, pre-populates it with
+defaults if not, and makes some other improvements to settings. Also added a
+simple 'refresh' function for the task review and edit screen.
