@@ -108,7 +108,8 @@ ENDINTRO
     'Netbeans'            => 'netbeans',
     'PhpStorm'            => 'phpstorm',
     'PyCharm'             => 'pycharm',
-    'Emacs'               => 'emacs'
+    'Emacs'               => 'emacs',
+    'gedit'               => 'gedit'
   }
 
   # Language data hash.
@@ -189,32 +190,43 @@ JAVASTARTER
     `touch ./data/settings.json` unless File.exists? ("./data/settings.json")
   end
 
-  def update_language_default(new_lang_name)
-    ensure_there_is_a_default_settings_file
-    # Load existing settings into hash.
+  # Loads JSON from settings.json into hash, or else returns {}.
+  def load_settings_into_hash
     raw_settings = File.read("./data/settings.json")
     raw_settings = {} if raw_settings == ""
     settings_hash = ( raw_settings == {} ? {} : JSON.parse(raw_settings) )
+  end
+
+  # Assumes there is no data/settings.json file. Creates one and populates it
+  # with some defaults.
+  def initialize_settings_if_necessary
+    settings_file = "./data/settings.json"
+    if File.exist?(settings_file) && File.stat(settings_file).size > 0
+      return
+    else
+      system("touch #{settings_file}")
+      ur_settings = {'lang' => 'Ruby', 'texted' => 'Pico'}
+      File.write(settings_file, ur_settings.to_json)
+    end
+  end
+
+  # Accepts a hash (e.g., {'lang' => 'C'}) & overwrites settings file with it.
+  def update_settings_file(args)
+    # START HERE: arguments are now in a hash! Make this work for
+    # update_editor_in_settings_file as well as language!
+    ensure_there_is_a_default_settings_file
+    settings_hash = load_settings_into_hash
     # Merge new language info into hash.
-    hash_to_write = settings_hash.merge({'lang' => new_lang_name})
+    hash_to_write = settings_hash.merge(args)
     # Write new hash.
     File.write("./data/settings.json", hash_to_write.to_json)
   end
 
-  def load_language_defaults_from_settings
-    # Determine default language.
-    raw_settings = File.read("./data/settings.json")
-    settings = JSON.parse(raw_settings)
-    lang = lookup_lang_data_from_name(settings['lang'])
-    # Assign associated language globals (such as $lang and $ext).
-    assign_language_globals(lang)
-  end
-
   # Given a language name (as in Task#lang or as stored in settings.json)
   # return a language data hash.
-  def lookup_lang_data_from_name(lang_name)
+  def lookup_lang_data_from_name_cmd(lang_cmd)
     langs = get_available_langs
-    langs.find {|l| l[:name] == lang_name }
+    langs.find {|l| l[:name] == lang_cmd }
   end
 
 

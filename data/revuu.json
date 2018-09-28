@@ -1,48 +1,22 @@
 {
   "tasks": [
     {
-      "instructions": "(C) How to print a formatted table \nwith while, for, and different data types\n\nIn the following C program, add a line that prints first fahrenheit, \nthen a tab, then celsius, then a newline. Then change fahr and celsius\nso that they are floats (and try printing then). Then print the values\nfrom -20 to 120 counting by 10s. Finally, rewrite the 'while' loop with\na 'for' loop and remove all variables except fahr. Ensure the field\ntype characters are correct throughout (so, no error messages!).\n\n#include <stdio.h>\nint main() {\n    int fahr, celsius;\n    int lower, upper, step;\n    lower = 0;    /* lower limit of temperature table */\n    upper = 300;  /* upper limit */\n    step = 20;    /* step size */\n\n    fahr = lower;\n    while (fahr <= upper) {\n        celsius = (5.0/9) * (fahr-32);\n\t/* fill in this line */\n        fahr = fahr + step;\n    }\n}",
+      "instructions": "(Node.js) Validate strings are numeric without converting to integer\n\nPass the values in the array ['99', '23a', 'xyz'] to a ternary \noperator to output 'x is numeric' or 'x is not numeric' in each case \nas appropriate. (Only the first item is numeric.) Do *not* convert \nthe strings into integers; use a simple handy method.",
       "tags": [
-        "C",
-        "printf",
-        "while",
-        "for",
-        "data types",
-        "type characters"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "C",
-      "id": 12,
-      "date_started": "2018-09-27T04:50:29-04:00",
-      "next_review_date": "2018-09-27T04:50:29-04:00",
-      "all_reviews": [
-
-      ]
-    },
-    {
-      "instructions": "(C) Write \"Hello world!\"",
-      "tags": [
-        "C",
-        "int",
-        "main",
-        "printf"
+        "Node.js",
+        "JavaScript",
+        "node",
+        "isNaN",
+        "ternary"
       ],
       "score": 3,
       "saved": true,
-      "lang": "C",
-      "id": 1,
-      "date_started": "2018-09-23T00:00:00+00:00",
-      "next_review_date": "2018-10-07T05:34:30-04:00",
+      "lang": "Node.js",
+      "id": 15,
+      "date_started": "2018-09-28T10:29:35-04:00",
+      "next_review_date": "2018-10-03T11:04:13-04:00",
       "all_reviews": [
-        {
-          "score": 5,
-          "review_date": "2018-09-26T22:06:40-04:00"
-        },
-        {
-          "score": 3,
-          "review_date": "2018-09-27T05:34:03-04:00"
-        }
+
       ]
     },
     {
@@ -55,7 +29,7 @@
       ],
       "score": 3,
       "saved": true,
-      "lang": "Other",
+      "lang": "Node.js",
       "id": 10,
       "date_started": "2018-09-26T07:56:54-04:00",
       "next_review_date": "2018-09-29T08:01:25-04:00",
@@ -67,6 +41,48 @@
       ]
     },
     {
+      "instructions": "(Node.js) Use ASCII escape sequences correctly\n\nRewrite the strings 'Band-Aid(r)' and '98.6 degrees F' to include the (r)\nand degree symbols, using Unicode and hexadecimal escape sequences (both\n--which you can, of course, look up). Then print 'hi' using the same sort \nof sequences. (No using String.fromCharCode(); that will be a separate \nquestion.)",
+      "tags": [
+        "JavaScript",
+        "Node.js",
+        "node",
+        "escape sequences",
+        "ASCII"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Node.js",
+      "id": 14,
+      "date_started": "2018-09-28T09:22:08-04:00",
+      "next_review_date": "2018-09-29T12:00:00-04:00",
+      "all_reviews": [
+
+      ]
+    },
+    {
+      "instructions": "(Node.js) Show how prefix and postfix incrementing works\n\nBegin a short script with this:\n\n  var num = 10;\n\nOn the next line, increment num and, *in the same expression*, subtract \n10 from it, showing the result in the console. Then reset num to 10 and \nperform the same difference, but increment num in a different way.\n(There are two ways to increment, which will show the two different \nanswers.) Print the two different answers to the console. Be able to \npredict, in advance, which answer will be 0 and what the other answer \nwill be.\n\nThen, beginning at 1, *de*crement num and add 10 to it, ensuring that \nthe sum is 10. Make sure you are able to tell, in advance, which \ndecrement operator to use.\n\nFinally, say in advance and then demonstrate what num2 will be:\n\n  num = 1\n  num2 = (num++ * 10 + 1);\n  console.log(num2);",
+      "tags": [
+        "Node.js",
+        "node",
+        "javascript",
+        "operators",
+        "prefix",
+        "postfix",
+        "increment",
+        "decrement",
+        "order of operations"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Node.js",
+      "id": 13,
+      "date_started": "2018-09-28T08:35:51-04:00",
+      "next_review_date": "2018-09-29T12:00:00-04:00",
+      "all_reviews": [
+
+      ]
+    },
+    {
       "instructions": "(Ruby) Substitute all instances of this with that\nIn the following string, replace every instance of 'ae' with 'e'. Don't use\nregular expressions; use a simpler method. Print the result.\n\n\"Encyclopaedias make me feel so anaemic that I need anaesthesia.\"",
       "tags": [
         "ruby",
@@ -75,7 +91,7 @@
       ],
       "score": 4,
       "saved": true,
-      "lang": "Ruby",
+      "lang": "Other",
       "id": 8,
       "date_started": "2018-09-25T16:34:55-04:00",
       "next_review_date": "2018-09-29T16:38:07-04:00",
@@ -104,6 +120,31 @@
         {
           "score": 3,
           "review_date": "2018-09-25T07:35:36-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "(C) Write \"Hello world!\"",
+      "tags": [
+        "C",
+        "int",
+        "main",
+        "printf"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "C",
+      "id": 1,
+      "date_started": "2018-09-23T00:00:00+00:00",
+      "next_review_date": "2018-10-07T05:34:30-04:00",
+      "all_reviews": [
+        {
+          "score": 5,
+          "review_date": "2018-09-26T22:06:40-04:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-09-27T05:34:03-04:00"
         }
       ]
     },
@@ -195,6 +236,29 @@
         {
           "score": 5,
           "review_date": "2018-09-27T04:51:10-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "(C) How to print a formatted table \nwith while, for, and different data types\n\nIn the following C program, add a line that prints first fahrenheit, \nthen a tab, then celsius, then a newline. Then change fahr and celsius\nso that they are floats (and try printing then). Then print the values\nfrom -20 to 120 counting by 10s. Finally, rewrite the 'while' loop with\na 'for' loop and remove all variables except fahr. Ensure the field\ntype characters are correct throughout (so, no error messages!).\n\n#include <stdio.h>\nint main() {\n    int fahr, celsius;\n    int lower, upper, step;\n    lower = 0;    /* lower limit of temperature table */\n    upper = 300;  /* upper limit */\n    step = 20;    /* step size */\n\n    fahr = lower;\n    while (fahr <= upper) {\n        celsius = (5.0/9) * (fahr-32);\n\t/* fill in this line */\n        fahr = fahr + step;\n    }\n}",
+      "tags": [
+        "C",
+        "printf",
+        "while",
+        "for",
+        "data types",
+        "type characters"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "C",
+      "id": 12,
+      "date_started": "2018-09-27T04:50:29-04:00",
+      "next_review_date": "2018-11-28T04:14:12-05:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-09-28T04:14:12-04:00"
         }
       ]
     },

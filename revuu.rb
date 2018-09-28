@@ -137,7 +137,7 @@ class Task
   def edit # I.e., edit a particular, ID-numbered task.
     display_info
     # Prepare globals for use in Answer module.
-    lang_data_hash = lookup_lang_data_from_name(@lang)
+    lang_data_hash = lookup_lang_data_from_name_cmd(@lang)
     assign_language_globals(lang_data_hash)
     get_locations(@id)
     command = ''
@@ -168,7 +168,7 @@ class Task
     puts "\nCOMMANDS  Review: [s]ave review  [a]nswer  [r]un answer  answers [h]elp"
     puts   "                  [c]onfigure language  [o]ld answers  [rr]un old answers"
     puts   "            Edit: [i]nstructions  [t]ags  [d]ate of next review  [sc]ore"
-    puts   "            Also: [q]uit review and editing\n\n"
+    puts   "            Also: re[f]resh view  [q]uit review and editing\n\n"
   end
 
   def process_edit_input(command)
@@ -197,6 +197,8 @@ class Task
       save_review_date(date) if date
     when 'sc' # Edit score.
       edit_score
+    when 'f'
+      display_info
     else
       puts 'Huh?'
     end
@@ -444,7 +446,7 @@ class App
   def initialize
     system("clear")
     start_text
-    load_language_defaults_from_settings
+    load_defaults_from_settings
     $tasks = TaskList.new
     app_loop
   end
@@ -471,13 +473,56 @@ ENDINST
     instructions += $help + "\n\n"
   end
 
-  def choose_text_editor
-    # Given list of text editors, return those available on this system.
-    available_editors = $text_editors.select do |nm,cmd|
-      `which #{cmd}`
+  # Load the default language and text editor ($lang, $texted).
+  def load_defaults_from_settings
+    initialize_settings_if_necessary
+    settings_hash = load_settings_into_hash
+    if settings_hash['lang']
+      lang_hash = lookup_lang_data_from_name_cmd(settings_hash['lang'])
+      # Assign associated language globals (such as $lang and $ext).
+      assign_language_globals(lang_hash)
     end
-    available_editors = available_editors.keys.sort
+    # NOTE: WHEN REFACTORING, expand the following in case this setting is lost.
+    if settings_hash['texted']
+      $texted = settings_hash['texted']
+    end
+  end
+
+  def choose_text_editor(choice_required = false)
+    # Display text editors available on the user's system.
+    available_editors = display_list_of_editors_to_user
+    editor_num = nil
+    # Select new editor; two circumstances of doing so:
+    # user is required to choose an editor if none is saved in settings...
+    if choice_required
+      until editor_num.between?(0,available_editors.length)
+        # Let user select new editor.
+        puts "Please select which one you'll use to write answers."
+        editor_num = get_user_command('e') - 1
+        puts "Choose a number between 1 and #{available_editors.length}." unless
+          editor_num.between?(0,available_editors.length)
+      end
+    else # ...or user is simply switching editors. (Can return nil.)
+        puts "Please select which one you'll use to write answers."
+        editor_num = get_user_command('e').to_i - 1
+        unless editor_num.between?(0,available_editors.length)
+          puts "Sticking with #{$texted}."
+          return nil
+        end
+    end
+    # Reset text editor global ($texted).
+    edname = available_editors[editor_num]
+    puts "OK, you'll use #{edname}."
+    $texted = $text_editors[edname]
+    update_settings_file({'texted' => edname})
+    # Double-check that editor is still available.
+  end
+
+  # Both compiles a list of available editors and displays them to the user.
+  def display_list_of_editors_to_user
+    puts "Text editors on your system:"
     width = 0
+    # Actually do the displaying. Note, available_editors is a method.
     available_editors.each_with_index do |editor,i|
       item = "(#{i+1}) #{editor} "
       if item.length + width >= 75
@@ -488,14 +533,15 @@ ENDINST
       print item
     end
     puts ''
-    # Let user select new editor.
-    # Reset text editor global ($texted).
-    # Save new default text editor to settings.json.
-    # NEXT: START HERE: Do the above three things.
-    # Also, load text editor default to global on startup.
-    # First, however, check that there is a settings file & that it has a
-    # text editor set; if no in either case, call choose_text_editor and
-    # don't let the user go on until he chooses one.
+    return available_editors
+  end
+
+  def available_editors
+    # Given list of text editors, return those available on this system.
+    eds = $text_editors.select do |nm,cmd|
+      `which #{cmd}`.length > 0
+    end
+    eds.keys.sort # Alpha order names and return as array.
   end
 
   def app_loop

@@ -1,9 +1,6 @@
 # These are closely-related features associated with writing and viewing
 # answers to tasks.
 module Answer
-  $texted     = 'subl'  # Text editor command. Change with configure_answers.
-  $texteditor = 'Sublime Text'
-
   def write_answer(task)
     # If answer file has content, ask user if he wants it archived first.
     if (File.exist?($location) && File.stat($location).size > 0 &&
@@ -84,7 +81,7 @@ module Answer
       # Set language globals.
       assign_language_globals(available_langs[new_lang])
       # Save as default settings by saving to file.
-      update_language_default(available_langs[new_lang][:name])
+      update_settings_file('lang' => available_langs[new_lang][:name])
     else
       puts "OK, #{$lang} it is."
     end
@@ -99,7 +96,7 @@ module Answer
       # Save language!
       assign_language_globals(available_langs[new_lang])
       # Remember default across sessions by saving to file.
-      update_language_default(available_langs[new_lang][:name])
+      update_settings_file('lang' => available_langs[new_lang][:name])
       # Save new language to task.
       task.lang = available_langs[new_lang][:name]
       # And save to revuu.json too.
