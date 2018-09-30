@@ -322,9 +322,12 @@ end # of class Tasks
 
 ###############################################################################
 class TaskList
-  attr_accessor :list
+  attr_accessor :list, :default_tag, :tag_filtered_list, :pagination_num,
+    :old_tag
   def initialize
     @list = []
+    @tasklist_filter = 'all'
+    @pagination_num = 0
     load_all_tasks
   end
 
@@ -336,7 +339,6 @@ class TaskList
       data = JSON.parse(file)
       task_array = data['tasks']
       construct_tasks_array(task_array)
-      puts "Tasks loaded.\n\n"
       display_tasks('first screen')
     end
   end
@@ -349,16 +351,19 @@ class TaskList
     end
   end
 
-  def display_tasks(first_screen=nil, dlist=@list)
+  def display_tasks(first_screen=nil)
     system("clear") unless first_screen
     header unless first_screen
     colored = false
     printf("%5s| %-47s| %-20s\n", 'ID', 'Instructions (first line)', 'Due date')
     puts '=' * 75
-    if ! dlist.empty?
-      dlist.sort!{|x,y| DateTime.parse(x.next_review_date) <=>
+    # If the TaskList knows that the user has successfully searched for a tag,
+    # then display the search results here.
+    list = @default_tag ? @tag_filtered_list : @list
+    if ! list.empty?
+      list.sort!{|x,y| DateTime.parse(x.next_review_date) <=>
         DateTime.parse(y.next_review_date)}
-      dlist[0..10].each do |task|
+      list[0..10].each do |task|
         # Grab the first 45 characters of the first line of @instructions
         instr = task.instructions[0..45].split("\n")[0]
         line = sprintf("%5s| %-47s| %-20s", task.id, instr,
@@ -397,6 +402,7 @@ class TaskList
     @list.find {|t| t.id == num }
   end
 
+  # Get user input for searching tasks by tag; return just matching tasks.
   def tag_search
     # Prepare tag-based arrays.
     prepare_hash_of_tag_arrays  # Stored in $tag_hash.
@@ -406,26 +412,30 @@ class TaskList
       return nil
     end
     # Get search term (tag) from user.
-    default_text = $default_tag.nil? ? '' :
-    " (<enter> for '#{$default_tag}')"
+    default_text = @old_tag.nil? ? '' :
+    " (<enter> for '#{@old_tag}')"
     puts "Enter tag#{default_text}."
     tag = get_user_command('t')
-    # If default tag exists and user hit <enter> alone, use default tag.
-    if (!$default_tag.nil? && tag == '')
-      tag = $default_tag
+    # If old tag exists and user hit <enter> alone, use old tag.
+    if (!@old_tag.nil? && tag == '')
+      tag = @old_tag
     end
     tag_match = $tag_hash.keys.find { |k| tag.downcase == k.downcase }
     # Display results. If not found, say so.
     if tag_match
       # Assign default tag to input.
-      $default_tag = tag_match
+      @default_tag = tag_match
+      @old_tag = @default_tag.dup
+      # Save sorted array of tasks filtered by this tag.
+      @tag_filtered_list = $tag_hash[tag_match]
       # Display list.
-      display_tasks(nil, $tag_hash[tag_match])
+      display_tasks
     else
       puts "'#{tag}' not found."
     end
   end
 
+  # WHEN REFACTORING, probably un-global $tag_hash.
   def prepare_hash_of_tag_arrays
     $tag_hash = {}
     $tasks.list.each do |task|
@@ -437,11 +447,16 @@ class TaskList
     end
   end
 
+  def clear_tag_search
+    @default_tag = nil
+    @tag_filtered_list = []
+  end
+
 end # of class TaskList
 
 
 ###############################################################################
-# Instantiate program wrapper object
+# Program wrapper object
 class App
   def initialize
     system("clear")
@@ -485,6 +500,7 @@ ENDINST
     # NOTE: WHEN REFACTORING, expand the following in case this setting is lost.
     if settings_hash['texted']
       $texted = settings_hash['texted']
+      $textedcmd = $text_editors[$texted]
     end
   end
 
@@ -563,6 +579,7 @@ ENDINST
     when 'c', 'h', 'help', '?'
       puts $help
     when 'l'
+      $tasks.clear_tag_search
       $tasks.display_tasks
     when 'd'
       $tasks.delete

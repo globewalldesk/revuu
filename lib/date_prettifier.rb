@@ -16,12 +16,12 @@ module DatePrettifier
       s = pl(diff)
       ago_from_now(ts, now, 'year', diff, s)
     # One month to a year: '2 months ago', '5 months from now'
-    elsif ! ts.between?(now - 28, now + 28)
+    elsif ! ts.between?(now - 56, now + 56)
       diff = ((sec_diff * 12)/(60*60*24*365.0)).round
       s = pl(diff)
       ago_from_now(ts, now, 'month', diff, s)
     # If 7-27 days ahead or behind, e.g.: '1 week ago', '3 weeks from now'
-    elsif ! ts.between?(now - 7, now + 7)
+    elsif ! ts.between?(now - 10, now + 10)
       diff = ((sec_diff/7)/(60*60*24)).round
       s = pl(diff)
       ago_from_now(ts, now, 'week', diff, s)

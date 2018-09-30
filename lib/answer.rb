@@ -16,7 +16,7 @@ module Answer
       create_answer_file(task)
     end
     # Open with default editor. (Set default in #configure_answers. Helper.)
-    system("#{$texted} #{$location}")
+    system("#{$textedcmd} #{$location}")
     # Remind user to press 'r' to run.
     puts "When you're done, don't forget to press 'r' to run."
   end
@@ -24,7 +24,7 @@ module Answer
   def view_old_answers(task)
     # If it exists and is nonzero, display archive with default text editor.
     if ( File.exist?($old_location) && File.stat($old_location).size > 0 )
-      system("#{$texted} #{$old_location}")
+      system("#{$textedcmd} #{$old_location}")
       # Remind user to press 'rr' to run.
       puts "If you want, you can run the old answer archive with 'rr'."
     else # ...or else say it doesn't exist.

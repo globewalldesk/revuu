@@ -1,26 +1,7 @@
 {
   "tasks": [
     {
-      "instructions": "(Node.js) Validate strings are numeric without converting to integer\n\nPass the values in the array ['99', '23a', 'xyz'] to a ternary \noperator to output 'x is numeric' or 'x is not numeric' in each case \nas appropriate. (Only the first item is numeric.) Do *not* convert \nthe strings into integers; use a simple handy method.",
-      "tags": [
-        "Node.js",
-        "JavaScript",
-        "node",
-        "isNaN",
-        "ternary"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "Node.js",
-      "id": 15,
-      "date_started": "2018-09-28T10:29:35-04:00",
-      "next_review_date": "2018-10-03T11:04:13-04:00",
-      "all_reviews": [
-
-      ]
-    },
-    {
-      "instructions": "(Node.js) Create an object literal with properties and function\n\nCreate a johnDoe object literal with firstName and lastName properties\nand greet function. Calling the function should output the message,\n\"Hi, I'm John Doe.\"",
+      "instructions": "(Node.js) Create an object literal with properties and function\n\nCreate a johnDoe object literal with firstName and lastName properties\nand greet function. Calling the function should output to the console\nthe message, \"Hi, I'm John Doe.\"",
       "tags": [
         "node",
         "object literals",
@@ -32,73 +13,15 @@
       "lang": "Node.js",
       "id": 10,
       "date_started": "2018-09-26T07:56:54-04:00",
-      "next_review_date": "2018-09-29T08:01:25-04:00",
+      "next_review_date": "2018-10-02T13:20:15-04:00",
       "all_reviews": [
         {
           "score": 3,
           "review_date": "2018-09-26T08:01:25-04:00"
-        }
-      ]
-    },
-    {
-      "instructions": "(Node.js) Use ASCII escape sequences correctly\n\nRewrite the strings 'Band-Aid(r)' and '98.6 degrees F' to include the (r)\nand degree symbols, using Unicode and hexadecimal escape sequences (both\n--which you can, of course, look up). Then print 'hi' using the same sort \nof sequences. (No using String.fromCharCode(); that will be a separate \nquestion.)",
-      "tags": [
-        "JavaScript",
-        "Node.js",
-        "node",
-        "escape sequences",
-        "ASCII"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "Node.js",
-      "id": 14,
-      "date_started": "2018-09-28T09:22:08-04:00",
-      "next_review_date": "2018-09-29T12:00:00-04:00",
-      "all_reviews": [
-
-      ]
-    },
-    {
-      "instructions": "(Node.js) Show how prefix and postfix incrementing works\n\nBegin a short script with this:\n\n  var num = 10;\n\nOn the next line, increment num and, *in the same expression*, subtract \n10 from it, showing the result in the console. Then reset num to 10 and \nperform the same difference, but increment num in a different way.\n(There are two ways to increment, which will show the two different \nanswers.) Print the two different answers to the console. Be able to \npredict, in advance, which answer will be 0 and what the other answer \nwill be.\n\nThen, beginning at 1, *de*crement num and add 10 to it, ensuring that \nthe sum is 10. Make sure you are able to tell, in advance, which \ndecrement operator to use.\n\nFinally, say in advance and then demonstrate what num2 will be:\n\n  num = 1\n  num2 = (num++ * 10 + 1);\n  console.log(num2);",
-      "tags": [
-        "Node.js",
-        "node",
-        "javascript",
-        "operators",
-        "prefix",
-        "postfix",
-        "increment",
-        "decrement",
-        "order of operations"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "Node.js",
-      "id": 13,
-      "date_started": "2018-09-28T08:35:51-04:00",
-      "next_review_date": "2018-09-29T12:00:00-04:00",
-      "all_reviews": [
-
-      ]
-    },
-    {
-      "instructions": "(Ruby) Substitute all instances of this with that\nIn the following string, replace every instance of 'ae' with 'e'. Don't use\nregular expressions; use a simpler method. Print the result.\n\n\"Encyclopaedias make me feel so anaemic that I need anaesthesia.\"",
-      "tags": [
-        "ruby",
-        "gsub",
-        "gsub!"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "Other",
-      "id": 8,
-      "date_started": "2018-09-25T16:34:55-04:00",
-      "next_review_date": "2018-09-29T16:38:07-04:00",
-      "all_reviews": [
+        },
         {
-          "score": 4,
-          "review_date": "2018-09-25T16:38:07-04:00"
+          "score": 3,
+          "review_date": "2018-09-29T01:43:22-04:00"
         }
       ]
     },
@@ -120,6 +43,49 @@
         {
           "score": 3,
           "review_date": "2018-09-25T07:35:36-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "(Node.js) Validate strings are numeric without converting to integer\n\nPass the values in the array ['99', '23a', 'xyz'] to a ternary \noperator to output 'x is numeric' or 'x is not numeric' in each case \nas appropriate. (Only the first item is numeric.) Do *not* convert \nthe strings into integers; use a simple handy method.",
+      "tags": [
+        "Node.js",
+        "JavaScript",
+        "node",
+        "isNaN",
+        "ternary"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Node.js",
+      "id": 15,
+      "date_started": "2018-09-28T10:29:35-04:00",
+      "next_review_date": "2018-10-03T11:04:13-04:00",
+      "all_reviews": [
+
+      ]
+    },
+    {
+      "instructions": "(Ruby) 'For...in' inclusive vs. exclusive\n\nFirst, construct the array of numbers 1 through 5 very concisely,\nusing a range operator. Then use a form of Ruby's for...in loop \nsyntactic sugar to multiply these numbers by 3 (printing the result \nafter each). Then construct a duplicate array using another form of\nthe range operator. Demonstrate which range operator is *inclusive* \nand which is *exclusive*; be able to say in advance which operator\ndoes what.",
+      "tags": [
+        "ruby",
+        "for",
+        "inclusive",
+        "exclusive",
+        "range",
+        "range operator",
+        "to_a"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 16,
+      "date_started": "2018-09-29T21:36:49-04:00",
+      "next_review_date": "2018-10-03T21:55:41-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-09-29T21:55:41-04:00"
         }
       ]
     },
@@ -170,6 +136,27 @@
       ]
     },
     {
+      "instructions": "(Ruby) Iteration control\n\nIn the following loop, use three different keywords that offer control\nof an interating loop in order so that the 'numbers' array prints out\nas [1, 1, 1, 3, 5, 7, 9]. (I.e., all odd; stop at 9; and repeat the\nfirst three numbers.) You will need to add just two lines to the loop,\nas well as adding one word in place of <fill in>.\n\nnumbers = []\nthree_ones = [1, 1, 1]\n10.times do |i|\n  next if i%2 == 0\n  numbers << i\n  redo unless numbers == three_ones or i > 1\n  i += 1\n  break if i == 10\nend\nprint numbers\nputs ''",
+      "tags": [
+        "ruby",
+        "break",
+        "next",
+        "redo"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 17,
+      "date_started": "2018-09-29T22:20:38-04:00",
+      "next_review_date": "2018-10-01T12:00:00-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-09-29T22:47:04-04:00"
+        }
+      ]
+    },
+    {
       "instructions": "(Ruby) Using defaults in instance initialization\n\nThe following defaults are problematic for reasons Sandi Metz explained.\nMove them into a method and use the method in #initialize. Ensure the \nanswers remain the same.\n\nclass Dog\n  attr_accessor :cute, :breed, :weight\n  def initialize(args)\n    @cute   = args[:cute]   || false\n    @breed  = args[:breed]  || 'mutt'\n    @weight = args[:weight] || 15\n  end\nend\nlassie = Dog.new(cute: true, breed: 'collie')\nputs lassie.cute   # true\nputs lassie.breed  # collie\nputs lassie.weight # 15\nrover = Dog.new\nputs rover.breed   # mutt",
       "tags": [
         "ruby",
@@ -189,6 +176,28 @@
         {
           "score": 4,
           "review_date": "2018-09-25T14:37:03-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "(Node.js) Use ASCII escape sequences correctly\n\nRewrite the strings 'Band-Aid(r)' and '98.6 degrees F' to include the (r)\nand degree symbols, using Unicode and hexadecimal escape sequences (both\n--which you can, of course, look up). Then print 'hi' using the same sort \nof sequences. (No using String.fromCharCode(); that will be a separate \nquestion.)",
+      "tags": [
+        "JavaScript",
+        "Node.js",
+        "node",
+        "escape sequences",
+        "ASCII"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Node.js",
+      "id": 14,
+      "date_started": "2018-09-28T09:22:08-04:00",
+      "next_review_date": "2018-10-20T19:46:41-04:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-09-29T19:46:41-04:00"
         }
       ]
     },
@@ -217,6 +226,56 @@
         {
           "score": 4,
           "review_date": "2018-09-26T00:23:33-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "(Ruby) Substitute all instances of this with that\n\nIn the following string, replace every instance of 'ae' with 'e'. Don't use\nregular expressions; use a simple method. Print the result.\n\n\"Encyclopaedias make me feel so anaemic that I need anaesthesia.\"",
+      "tags": [
+        "ruby",
+        "gsub",
+        "gsub!"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 8,
+      "date_started": "2018-09-25T16:34:55-04:00",
+      "next_review_date": "2018-11-03T20:31:42-04:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-09-25T16:38:07-04:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-09-29T20:31:42-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "(Node.js) Show how prefix and postfix incrementing works\n\nBegin a short script with this:\n\n  var num = 10;\n\nOn the next line, increment num and, *in the same expression*, subtract \n10 from it, showing the result in the console. Then reset num to 10 and \nperform the same difference, but increment num in a different way.\n(There are two ways to increment, which will show the two different \nanswers.) Print the two different answers to the console. Be able to \npredict, in advance, which answer will be 0 and what the other answer \nwill be.\n\nThen, beginning at 1, *de*crement num and add 10 to it, ensuring that \nthe sum is 10. Make sure you are able to tell, in advance, which \ndecrement operator to use.\n\nFinally, say in advance and then demonstrate what num2 will be:\n\n  num = 1;\n  num2 = (num++ * 10 + 1);\n  console.log(num2);",
+      "tags": [
+        "Node.js",
+        "node",
+        "javascript",
+        "operators",
+        "prefix",
+        "postfix",
+        "increment",
+        "decrement",
+        "order of operations"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Node.js",
+      "id": 13,
+      "date_started": "2018-09-28T08:35:51-04:00",
+      "next_review_date": "2018-11-10T19:26:54-05:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-09-29T20:26:54-04:00"
         }
       ]
     },
@@ -305,6 +364,22 @@
         {
           "score": 4,
           "review_date": "2018-09-24T18:50:49-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "(Ruby) Multidimensional array\n\nBy referring to positions of the numbers in this array,\n\na = [[5, 4], [3, 6, 2, [1, 7]], [[8]], [[[9], 10]] ]\n\nconstruct this array:\n\n[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
+      "tags": null,
+      "score": 5,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 18,
+      "date_started": "2018-09-29T23:08:24-04:00",
+      "next_review_date": "2019-06-29T23:15:43-04:00",
+      "all_reviews": [
+        {
+          "score": 5,
+          "review_date": "2018-09-29T23:15:21-04:00"
         }
       ]
     }
