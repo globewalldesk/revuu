@@ -1,23 +1,27 @@
 {
   "tasks": [
     {
-      "instructions": "(Ruby) Iteration control\n\nIn the following loop, use three different keywords that offer control\nof an interating loop in order so that the 'numbers' array prints out\nas [1, 1, 1, 3, 5, 7, 9]. (I.e., all odd; stop at 9; and repeat the\nfirst three numbers.) You will need to add just two lines to the loop,\nas well as adding one word in place of <fill in>.\n\nnumbers = []\nthree_ones = [1, 1, 1]\n10.times do |i|\n  next if i%2 == 0\n  numbers << i\n  redo unless numbers == three_ones or i > 1\n  i += 1\n  break if i == 10\nend\nprint numbers\nputs ''",
+      "instructions": "(Ruby) Iteration control\n\nIn the following loop, use three different keywords that offer control\nof an interating loop in order so that the 'numbers' array prints out\nas [1, 1, 1, 3, 5, 7, 9]. (I.e., all odd; stop at 9; and repeat the\nfirst three numbers.) You will need to add just two lines to the loop,\nas well as adding one word in place of <fill in>.\n\nnumbers = []\nthree_ones = [1, 1, 1]\n10.times do |i|\n  numbers << i\n  i += 1\nend\nprint numbers\nputs ''",
       "tags": [
         "ruby",
         "break",
         "next",
         "redo"
       ],
-      "score": 3,
+      "score": 4,
       "saved": true,
       "lang": "Ruby",
       "id": 17,
       "date_started": "2018-09-29T22:20:38-04:00",
-      "next_review_date": "2018-10-01T12:00:00-04:00",
+      "next_review_date": "2018-10-13T11:39:48-04:00",
       "all_reviews": [
         {
           "score": 3,
           "review_date": "2018-09-29T22:47:04-04:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-01T11:39:48-04:00"
         }
       ]
     },
@@ -132,6 +136,25 @@
         {
           "score": 3,
           "review_date": "2018-09-27T05:34:03-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "(Ruby) Using the colorize gem\n\nIn the following printed strings, use the Colorize gem to print the first one\ngreen, the second with a red background, and the third one with black-on-white\nprint.\n\nputs \"I am the first line.\"\nputs \"I am the second line.\"\nputs \"I am the third line.\"",
+      "tags": [
+        "ruby",
+        "colorize"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 24,
+      "date_started": "2018-10-01T09:28:51-04:00",
+      "next_review_date": "2018-10-08T11:26:01-04:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-01T11:26:01-04:00"
         }
       ]
     },
@@ -381,6 +404,60 @@
           "score": 5,
           "review_date": "2018-09-29T23:15:21-04:00"
         }
+      ]
+    },
+    {
+      "instructions": "asdf",
+      "tags": null,
+      "score": 3,
+      "saved": true,
+      "lang": "Java",
+      "id": 19,
+      "date_started": "2018-10-01T09:16:01-04:00",
+      "next_review_date": "2019-10-01T11:23:03-04:00",
+      "all_reviews": [
+
+      ]
+    },
+    {
+      "instructions": "asdf",
+      "tags": [
+        "asdf"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Java",
+      "id": 20,
+      "date_started": "2018-10-01T09:16:23-04:00",
+      "next_review_date": "2019-10-01T11:24:39-04:00",
+      "all_reviews": [
+
+      ]
+    },
+    {
+      "instructions": "asdf",
+      "tags": null,
+      "score": 3,
+      "saved": true,
+      "lang": "Java",
+      "id": 21,
+      "date_started": "2018-10-01T09:16:39-04:00",
+      "next_review_date": "2019-10-01T11:24:49-04:00",
+      "all_reviews": [
+
+      ]
+    },
+    {
+      "instructions": "asdf",
+      "tags": null,
+      "score": 3,
+      "saved": true,
+      "lang": "Java",
+      "id": 22,
+      "date_started": "2018-10-01T09:17:29-04:00",
+      "next_review_date": "2019-10-01T11:24:54-04:00",
+      "all_reviews": [
+
       ]
     }
   ]

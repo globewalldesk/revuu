@@ -313,7 +313,7 @@ class Task
     def save_new_task
       @saved = true
       # Add object to $tasks.list.
-      $tasks.list << self
+      $tasks.list.unshift(self)
       # Save the tasklist.
       $tasks.save_tasklist
     end
@@ -362,6 +362,8 @@ class TaskList
     # If the TaskList knows that the user has successfully searched for a tag,
     # then display the search results here.
     list = (@default_tag ? @tag_filtered_list : @list)
+    list.sort!{|x,y| DateTime.parse(x.next_review_date) <=>
+        DateTime.parse(y.next_review_date)}
     if ! list.empty?
       pindex = (@pagination_num - 1) * 10 # The array index to copy from.
       list = list[pindex, 10]

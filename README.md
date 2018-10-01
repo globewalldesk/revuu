@@ -62,7 +62,6 @@ directly in the instructions. Ensure that, as with Java now, unedited starter
 code is not interpreted as an answer (so it won't overwrite the archive).
 * Maybe change task and tag editing from Pico to the default text editor.
 * Maybe add an actual spaced repetition option.
-* As the test dataset grows well beyond 10, add pagination related features.
 * Add statistics (number of questions, averages, number overdue, number to do
 today, etc.).
 * Give user option to append language to the title automatically.
@@ -71,6 +70,7 @@ today, etc.).
 by languages.
 * Maybe eventually allow users to save archived items individually, and give
 them an easy way to browse and run them from within the app.
+* Allow the user to abandon task creation.
 
 ## Version notes
 
