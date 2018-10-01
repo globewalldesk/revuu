@@ -78,14 +78,13 @@ them an easy way to browse and run them from within the app.
 
 First published version. Features include new tasks, list all tasks, delete
 task, sort by tags, and various user and programmer documentation. There are
-a great many features related to answering/reviewing tasks: saving a new
-review (including date and score), writing an answer using a (one supported)
-text editor, running the answer (using at the options of Ruby, Node.js, Java,
-C, Bash scripting, and text; including both compiled and interpreted
-languages), archiving old answers, and running old answers. From the same
-screen, the user can edit task instructions, tags, date of next review, and
-user's current score. Task, review, and settings data are all saved in JSON
-files.
+several features related to answering/reviewing tasks: saving a new review
+(including date and score), writing an answer using a (one supported) text
+editor, running the answer (using at the options of Ruby, Node.js, Java, C,
+Bash scripting, and text; including both compiled and interpreted languages),
+archiving old answers, and running old answers. From the same screen, the user
+can edit task instructions, tags, date of next review, and user's current
+score. Task, review, and settings data are all saved in JSON files.
 
 ### 1.1 (September 28, 2018)
 Added support for Atom, Eclipse, Pico, Nano, Vi, Vim, and other text editors.
