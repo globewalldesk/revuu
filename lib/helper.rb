@@ -229,49 +229,4 @@ JAVASTARTER
     langs.find {|l| l[:name] == lang_cmd }
   end
 
-=begin
-  Pagination might end up being more complicated than expected. The basic
-  functionality is that you'd see a list of page numbers (with, as needed,
-  some ellipsis). By pressing [f]orward and [b]ack, or /j\d+/ for jump-to page,
-  you'd see the ten (or some multiple) tasks starting at some given number.
-
-  It's rather confusing to figure out how to do this, even if I don't allow for
-  pagination of tag search results (which threatens to be very confusing
-  indeed). Right now, the list isn't even prepared until the script hits the
-  display_tasks method. But it seems likely I'd need to pass a set list to the
-  pagination method. Moreover, it seems like this list would have to be a
-  global so that the user can come back to it.
-
-  OK, so how would *that* work? Presumably, whenever the user searched on a
-  tag, it would reset the list...no, surely, not because then I'd have to
-  update *that* list as well as the main list whenever the user fiddled with
-  tasks. No, the list wouldn't be the thing that changes; it would have to be
-  the 'default display term' that changes. It would begin as 'all', but then
-  might change to, say, 'Ruby'. In addition, there would be a 'current index'
-  variable that would hold the current pagination page for that display term.
-
-  Doesn't seem that undoable.
-
-  Thing is, it's getting so complex, and there are so many different
-  attributes that need to be passed to or processed by display_tasks, that I
-  wonder if there should be a new TasksDisplay task. (But if that's the case,
-  why didn't I have an Answer object? Maybe I should...) Ugh, just calling
-  display_tasks would seem to be extremely complicated. Would it be less
-  complicated to call if it were in a TasksDisplay object? Someone would press
-  'l' and that would call $tasklist.display_tasks...which, frankly, would end
-  up being just as complex.
-
-  Nah, I'm just going to stick with the TaskList object. So then the steps are:
-
-  # When a user searches for a tag (and successfully returns at least one),
-  # then $default_display = <search term> and $page_index = 0.
-
-  # Pressing [f]orward and [b]ack adjusts $page_index, repaints the pagination
-  # string, and redisplays the tasklist.
-
-  Yep, seems straighforward, actually
-
-=end
-
-
 end

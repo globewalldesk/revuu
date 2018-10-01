@@ -327,7 +327,7 @@ class TaskList
   def initialize
     @list = []
     @tasklist_filter = 'all'
-    @pagination_num = 0
+    @pagination_num = 1
     load_all_tasks
   end
 
@@ -356,11 +356,13 @@ class TaskList
     header unless first_screen
     colored = false
     printf("%5s| %-47s| %-20s\n", 'ID', 'Instructions (first line)', 'Due date')
-    puts '=' * 75
+    puts separator = '=' * 75
     # If the TaskList knows that the user has successfully searched for a tag,
     # then display the search results here.
-    list = @default_tag ? @tag_filtered_list : @list
+    list = (@default_tag ? @tag_filtered_list : @list)
     if ! list.empty?
+      pindex = (@pagination_num - 1) * 10 # The array index to copy from.
+      list = list[pindex, 10]
       list.sort!{|x,y| DateTime.parse(x.next_review_date) <=>
         DateTime.parse(y.next_review_date)}
       list[0..10].each do |task|
@@ -374,6 +376,8 @@ class TaskList
     else
       puts "\nThere are no tasks yet. Press 'n' to add one.\n\n"
     end
+    puts separator
+    show_pagination_string
   end
 
   def save_tasklist
@@ -450,6 +454,61 @@ class TaskList
   def clear_tag_search
     @default_tag = nil
     @tag_filtered_list = []
+  end
+
+  # Given @list (or @tag_filtered_list) and @pagination_num, show a string of
+  # numbers such as 1 2 3... or [<<]top [<]back ...5 *6* 7... next[>] end[>>]
+  def show_pagination_string
+    # Set 'list' equal to the tag-filtered list if a tag search is in use.
+    list = @default_tag ? @tag_filtered_list : @list
+    # No pagination at all if list.length < 10.
+    return '' if list.length < 10
+    pnum = @pagination_num.dup         # The page number the user is on.
+    last_pg = (list.length/10.0).floor + 1
+    on_first = (pnum == 1 ? true : false)
+    on_last = (pnum == last_pg ? true : false)
+    # Print page number plus surrounding pages; remove stuff from this as nec.
+    str = "[<<]top [<]back #{pnum - 1} *#{pnum}* #{pnum + 1} next[>] end[>>]"
+    # Remove top/end if list.length < 30.
+    if list.length < 30
+      str.slice!('[<<]top ')
+      str.slice!(' end[>>]')
+    end
+    # Remove top and back if on first page (pnum < 10).
+    if on_first
+      str.slice!('[<<]top ')
+      str.slice!('[<]back ')
+      str.gsub!('*1* 2 ', '*1* 2 3 ') unless list.length < 20
+      str.slice!('0 ')
+    end
+    # Remove next and end if on last page.
+    if on_last
+      str.slice!(' next[>]')
+      str.slice!(' end[>>]')
+      str.gsub!('[<]back ', "[<]back #{pnum - 2}") unless pnum < 3
+      str.gsub!("* #{pnum + 1}", '*')
+    end
+    puts("  " + "Nav: " + str)
+  end
+
+  def nav(where)
+    list = @default_tag ? @tag_filtered_list : @list
+    return '' if list.length < 10
+    pnum = @pagination_num.dup
+    last_pg = (list.length/10.0).floor + 1
+    on_first = (pnum == 1 ? true : false)
+    on_last = (pnum == last_pg ? true : false)
+    case where
+    when 'top'
+      @pagination_num = 1
+    when 'back'
+      @pagination_num = (on_first ? 1 : pnum - 1 )
+    when 'next'
+      @pagination_num = (on_last ? last_pg : pnum + 1)
+    when 'end'
+      @pagination_num = last_pg
+    end
+    display_tasks
   end
 
 end # of class TaskList
@@ -595,6 +654,14 @@ ENDINST
     when /\A(\d+)\Z/
       task = $tasks.validate_edit_request($1.to_i)
       task ? task.edit : (puts "Task not found.")
+    when '>', '.'
+      $tasks.nav('next')
+    when '<', ','
+      $tasks.nav('back')
+    when '>>', '..'
+      $tasks.nav('end')
+    when '<<', ',,'
+      $tasks.nav('top')
     when 'q'
       return
     else
@@ -606,6 +673,4 @@ end
 
 App.new
 
-# "Create account" command (tags maybe handle this OK; but accounts might
-# be better)
 # Statistics
