@@ -142,7 +142,7 @@ class Task
     get_locations(@id)
     command = ''
     until command == 'q'
-      command = get_user_command('e')
+      command = get_user_command('+')
       process_edit_input(command)
     end
     $tasks.display_tasks
@@ -348,6 +348,8 @@ class TaskList
       task_with_symbols = {}
       task.each {|k,v| task_with_symbols[k.to_sym] = v }
       @list << Task.new(task_with_symbols)
+      @list = @list.sort!{|x,y| DateTime.parse(x.next_review_date) <=>
+        DateTime.parse(y.next_review_date)}
     end
   end
 
@@ -363,8 +365,6 @@ class TaskList
     if ! list.empty?
       pindex = (@pagination_num - 1) * 10 # The array index to copy from.
       list = list[pindex, 10]
-      list.sort!{|x,y| DateTime.parse(x.next_review_date) <=>
-        DateTime.parse(y.next_review_date)}
       list[0..10].each do |task|
         # Grab the first 45 characters of the first line of @instructions
         instr = task.instructions[0..45].split("\n")[0]
@@ -430,6 +430,7 @@ class TaskList
       # Assign default tag to input.
       @default_tag = tag_match
       @old_tag = @default_tag.dup
+      @pagination_num = 1
       # Save sorted array of tasks filtered by this tag.
       @tag_filtered_list = $tag_hash[tag_match]
       # Display list.
@@ -470,7 +471,7 @@ class TaskList
     # Print page number plus surrounding pages; remove stuff from this as nec.
     str = "[<<]top [<]back #{pnum - 1} *#{pnum}* #{pnum + 1} next[>] end[>>]"
     # Remove top/end if list.length < 30.
-    if list.length < 30
+    if list.length < 21
       str.slice!('[<<]top ')
       str.slice!(' end[>>]')
     end
@@ -478,14 +479,15 @@ class TaskList
     if on_first
       str.slice!('[<<]top ')
       str.slice!('[<]back ')
-      str.gsub!('*1* 2 ', '*1* 2 3 ') unless list.length < 20
+      # Show third page in list if it exists
+      str.gsub!('*1* 2 ', '*1* 2 3 ') if last_pg > 2
       str.slice!('0 ')
     end
     # Remove next and end if on last page.
     if on_last
       str.slice!(' next[>]')
       str.slice!(' end[>>]')
-      str.gsub!('[<]back ', "[<]back #{pnum - 2}") unless pnum < 3
+      str.gsub!('[<]back ', "[<]back #{pnum - 2} ") unless pnum < 3
       str.gsub!("* #{pnum + 1}", '*')
     end
     puts("  " + "Nav: " + str)
@@ -557,6 +559,8 @@ ENDINST
       assign_language_globals(lang_hash)
     end
     # NOTE: WHEN REFACTORING, expand the following in case this setting is lost.
+    # ALSO, ENSURE THAT THE USER STILL HAS THIS TEXT ED AVAILABLE! Require an
+    # alternate if it has come unavailable.
     if settings_hash['texted']
       $texted = settings_hash['texted']
       $textedcmd = $text_editors[$texted]

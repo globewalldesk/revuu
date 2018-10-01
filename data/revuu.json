@@ -1,6 +1,27 @@
 {
   "tasks": [
     {
+      "instructions": "(Ruby) Iteration control\n\nIn the following loop, use three different keywords that offer control\nof an interating loop in order so that the 'numbers' array prints out\nas [1, 1, 1, 3, 5, 7, 9]. (I.e., all odd; stop at 9; and repeat the\nfirst three numbers.) You will need to add just two lines to the loop,\nas well as adding one word in place of <fill in>.\n\nnumbers = []\nthree_ones = [1, 1, 1]\n10.times do |i|\n  next if i%2 == 0\n  numbers << i\n  redo unless numbers == three_ones or i > 1\n  i += 1\n  break if i == 10\nend\nprint numbers\nputs ''",
+      "tags": [
+        "ruby",
+        "break",
+        "next",
+        "redo"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 17,
+      "date_started": "2018-09-29T22:20:38-04:00",
+      "next_review_date": "2018-10-01T12:00:00-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-09-29T22:47:04-04:00"
+        }
+      ]
+    },
+    {
       "instructions": "(Node.js) Create an object literal with properties and function\n\nCreate a johnDoe object literal with firstName and lastName properties\nand greet function. Calling the function should output to the console\nthe message, \"Hi, I'm John Doe.\"",
       "tags": [
         "node",
@@ -132,27 +153,6 @@
         {
           "score": 3,
           "review_date": "2018-09-25T03:42:08-04:00"
-        }
-      ]
-    },
-    {
-      "instructions": "(Ruby) Iteration control\n\nIn the following loop, use three different keywords that offer control\nof an interating loop in order so that the 'numbers' array prints out\nas [1, 1, 1, 3, 5, 7, 9]. (I.e., all odd; stop at 9; and repeat the\nfirst three numbers.) You will need to add just two lines to the loop,\nas well as adding one word in place of <fill in>.\n\nnumbers = []\nthree_ones = [1, 1, 1]\n10.times do |i|\n  next if i%2 == 0\n  numbers << i\n  redo unless numbers == three_ones or i > 1\n  i += 1\n  break if i == 10\nend\nprint numbers\nputs ''",
-      "tags": [
-        "ruby",
-        "break",
-        "next",
-        "redo"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "Ruby",
-      "id": 17,
-      "date_started": "2018-09-29T22:20:38-04:00",
-      "next_review_date": "2018-10-01T12:00:00-04:00",
-      "all_reviews": [
-        {
-          "score": 3,
-          "review_date": "2018-09-29T22:47:04-04:00"
         }
       ]
     },

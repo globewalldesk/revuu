@@ -40,12 +40,13 @@ Revuu has other features you'd expect such as editing of various fields.
 ENDINTRO
 
   def get_user_command(leader)
-    print "#{leader}> "
+    extra_space = ( ("=+".include? (leader)) ? "" : "  ")
+    print "#{extra_space}#{leader}> "
     gets.chomp
   end
 
   def header
-    puts sprintf("%-69s%s", " * R * E * V * U * U *",  "v. 1.1").
+    puts sprintf("%-69s%s", " * R * E * V * U * U *",  "v. 1.2").
       colorize(:color => :black, :background => :white)
     puts "\n"
   end

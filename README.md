@@ -93,3 +93,12 @@ This checks the user's system to see which are available and shows only those.
 The app now checks that the settings file exists, pre-populates it with
 defaults if not, and makes some other improvements to settings. Also added a
 simple 'refresh' function for the task review and edit screen.
+
+### 1.2 (September 29, 2017)
+Added pagination and page navigation. Data about any persisted tag searches
+and navigation page was added as attributes to the global TaskList object. So
+the user can navigate to the second page of tasks, view one, quit that view,
+and then be placed back on the second page of tasks. If the user starts from
+tag search results (even the second page of them), he is return to that page.
+That means users can search for one particular language (or method) without
+having to redo the search in between tasks.
