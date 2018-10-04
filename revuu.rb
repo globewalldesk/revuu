@@ -200,7 +200,7 @@ class Task
     when 'f'
       display_info
     else
-      puts 'Huh?'
+      puts 'Huh?' unless command == 'q'
     end
   end
 
@@ -354,9 +354,15 @@ class TaskList
   end
 
   def display_tasks(first_screen=nil)
-    system("clear") unless first_screen
-    header unless first_screen
+    unless first_screen
+      system("clear")
+      header
+    end
     colored = false
+    if @default_tag
+      print "   "
+      puts "Filtered by '#{@default_tag}'".colorize(background: :green)
+    end
     printf("%5s| %-47s| %-20s\n", 'ID', 'Instructions (first line)', 'Due date')
     puts separator = '=' * 75
     # If the TaskList knows that the user has successfully searched for a tag,
@@ -467,11 +473,11 @@ class TaskList
     # No pagination at all if list.length < 10.
     return '' if list.length < 10
     pnum = @pagination_num.dup         # The page number the user is on.
-    last_pg = (list.length/10.0).floor + 1
+    last_pg = get_last_page(list)
     on_first = (pnum == 1 ? true : false)
     on_last = (pnum == last_pg ? true : false)
     # Print page number plus surrounding pages; remove stuff from this as nec.
-    str = "[<<]top [<]back #{pnum - 1} *#{pnum}* #{pnum + 1} next[>] end[>>]"
+    str = "[<<]top [<]back #{pnum - 1} (#{pnum}) #{pnum + 1} next[>] end[>>]"
     # Remove top/end if list.length < 30.
     if list.length < 21
       str.slice!('[<<]top ')
@@ -499,7 +505,7 @@ class TaskList
     list = @default_tag ? @tag_filtered_list : @list
     return '' if list.length < 10
     pnum = @pagination_num.dup
-    last_pg = (list.length/10.0).floor + 1
+    last_pg = get_last_page(list)
     on_first = (pnum == 1 ? true : false)
     on_last = (pnum == last_pg ? true : false)
     case where
@@ -513,6 +519,19 @@ class TaskList
       @pagination_num = last_pg
     end
     display_tasks
+  end
+
+  def get_last_page(list)
+    last_pg = (list.length/10.0).floor + 1
+    # This gets rid of an empty page when user has multiples of 10.
+    last_pg -= 1 if (list.length/10.0) == (list.length/10)
+    last_pg
+  end
+
+  # Simply loads the next item (i.e., with the earliest review date).
+  def show_next_item
+    list = @default_tag ? @tag_filtered_list : @list
+    list[0].edit
   end
 
 end # of class TaskList
@@ -555,6 +574,7 @@ ENDINST
   def load_defaults_from_settings
     initialize_settings_if_necessary
     settings_hash = load_settings_into_hash
+    # Checks if 'lang' key exists. NOTE: REFACTORING SHOULD CREATE ONE.
     if settings_hash['lang']
       lang_hash = lookup_lang_data_from_name_cmd(settings_hash['lang'])
       # Assign associated language globals (such as $lang and $ext).
@@ -668,10 +688,12 @@ ENDINST
       $tasks.nav('end')
     when '<<', ',,'
       $tasks.nav('top')
+    when 'x'
+      $tasks.show_next_item
     when 'q'
       return
     else
-      puts 'Huh?'
+      puts 'Huh?' unless command == 'q'
     end
   end
 

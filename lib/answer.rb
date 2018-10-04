@@ -76,16 +76,17 @@ module Answer
     puts "\nSET LANGUAGE:"
     new_lang, available_langs = solicit_languages_from_user
     # Assign correct globals. Tell user language he's using now.
-    if $lang != available_langs[new_lang][:name]
+    if (new_lang && $lang != available_langs[new_lang][:name])
       puts "OK, using #{available_langs[new_lang][:name]}."
       # Set language globals.
       assign_language_globals(available_langs[new_lang])
       # Save as default settings by saving to file.
       update_settings_file('lang' => available_langs[new_lang][:name])
+      return available_langs[new_lang][:name]
     else
-      puts "OK, #{$lang} it is."
+      puts "OK, we'll go with #{$lang}."
+      return $lang
     end
-    return available_langs[new_lang][:name]
   end
 
   def configure_language(task)

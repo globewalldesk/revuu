@@ -2,8 +2,9 @@ module Helper
 
   $help =
     "\nCommands are:\n" +
-    "  [n]ew task   [1] review/edit task #1   [l]ist all tasks   [d]elete task\n" +
-    "  sort list by [t]ag   choose text [e]ditor   [i]ntroduction   [c]ommands"
+    "  [n]ew task  [1] review/edit task #1  show ne[x]t  [l]ist all tasks\n" +   
+    "  [d]elete task  sort list by [t]ag  choose text [e]ditor  [i]ntroduction\n" +
+    "  [c]ommands"
 
   $introduction = <<ENDINTRO
 Welcome to Revuu!
@@ -113,32 +114,6 @@ ENDINTRO
     'gedit'               => 'gedit'
   }
 
-  # Language data hash.
-  def get_available_langs
-    [
-      {name: 'Ruby', ext: 'rb', cmd: 'ruby', cmnt: '#'},
-      {name: 'Node.js', ext: 'js', cmd: 'node', cmnt: '//'},
-      {name: 'Java', ext: 'java', cmd: 'javac', cmd2: 'java <name-no-ext>',
-        cmnt: '//', one_main_per_file: true},
-      {name: 'C', ext: 'c', cmd: 'gcc', cmd2: './a.out', cmnt: '/*',
-        cmnt2: '*/', one_main_per_file: true},
-      {name: 'Bash', ext: 'sh', cmd: '/bin/bash', cmnt: '#'},
-      {name: 'Other', ext: 'txt', cmd: 'more', cmnt: '#'}
-    ]
-  end
-
-  # Given a language data hash, assign language globals.
-  def assign_language_globals(l)
-    # User changes these with configure_language.
-    $lang  = l[:name] # Programming language. Get from/set to settings.json.
-    $ext   = l[:ext]                # Filename extension.
-    $cmd   = l[:cmd]                # Command to execute (or compile).
-    $cmnt  = l[:cmnt]               # Comment char in language.
-    $cmd2  = l[:cmd2]  ? l[:cmd2]  : false  # Run after compiling in, e.g., C.
-    $cmnt2 = l[:cmnt2] ? l[:cmnt2] : false  # Comment-ender in, e.g., C.
-    $one_main_per_file = l[:one_main_per_file] ? l[:one_main_per_file] : false
-  end
-
   def archive_old_answer(task)
     old_archive = File.exist?($old_location) ? File.read($old_location) : ''
     # Load current answer file contents.
@@ -191,14 +166,7 @@ JAVASTARTER
     `touch ./data/settings.json` unless File.exists? ("./data/settings.json")
   end
 
-  # Loads JSON from settings.json into hash, or else returns {}.
-  def load_settings_into_hash
-    raw_settings = File.read("./data/settings.json")
-    raw_settings = {} if raw_settings == ""
-    settings_hash = ( raw_settings == {} ? {} : JSON.parse(raw_settings) )
-  end
-
-  # Assumes there is no data/settings.json file. Creates one and populates it
+  # Checks if there is no data/settings.json file. Creates one and populates it
   # with some defaults.
   def initialize_settings_if_necessary
     settings_file = "./data/settings.json"
@@ -211,6 +179,50 @@ JAVASTARTER
     end
   end
 
+  # Loads JSON from settings.json into hash, or else returns {}.
+  def load_settings_into_hash
+    raw_settings = File.read("./data/settings.json")
+    raw_settings = {} if raw_settings == ""
+    settings_hash = ( raw_settings == {} ? {} : JSON.parse(raw_settings) )
+  end
+
+  # Given a language name (as in Task#lang or as stored in settings.json)
+  # return a language data hash.
+  def lookup_lang_data_from_name_cmd(lang_cmd)
+    langs = get_available_langs
+    langs.find {|l| l[:name] == lang_cmd }
+  end
+
+  # Language data hash.
+  def get_available_langs
+    [
+      {name: 'Ruby', ext: 'rb', cmd: 'ruby', cmnt: '#'},
+      {name: 'Node.js', ext: 'js', cmd: 'node', cmnt: '//'},
+      {name: 'Java', ext: 'java', cmd: 'javac', cmd2: 'java <name-no-ext>',
+        cmnt: '//', one_main_per_file: true},
+      {name: 'C', ext: 'c', cmd: 'gcc', cmd2: './a.out', cmnt: '/*',
+        cmnt2: '*/', one_main_per_file: true},
+      {name: 'Bash', ext: 'sh', cmd: '/bin/bash', cmnt: '#'},
+      {name: 'Other', ext: 'txt', cmd: 'more', cmnt: '#'}
+    ]
+  end
+
+  # Given a language data hash, assign language globals.
+  # REFACTOR NOTE: probably, this three-method system can be simplified;
+  # should probably be a new class.
+  def assign_language_globals(l)
+    # User changes these with configure_language.
+    $lang  = l[:name] # Programming language. Get from/set to settings.json.
+                      # lookup_lang_data_from_name_cmd gets hash values from
+                      # get_available_langs.
+    $ext   = l[:ext]                # Filename extension.
+    $cmd   = l[:cmd]                # Command to execute (or compile).
+    $cmnt  = l[:cmnt]               # Comment char in language.
+    $cmd2  = l[:cmd2]  ? l[:cmd2]  : false  # Run after compiling in, e.g., C.
+    $cmnt2 = l[:cmnt2] ? l[:cmnt2] : false  # Comment-ender in, e.g., C.
+    $one_main_per_file = l[:one_main_per_file] ? l[:one_main_per_file] : false
+  end
+
   # Accepts a hash (e.g., {'lang' => 'C'}) & overwrites settings file with it.
   def update_settings_file(args)
     # START HERE: arguments are now in a hash! Make this work for
@@ -221,13 +233,6 @@ JAVASTARTER
     hash_to_write = settings_hash.merge(args)
     # Write new hash.
     File.write("./data/settings.json", hash_to_write.to_json)
-  end
-
-  # Given a language name (as in Task#lang or as stored in settings.json)
-  # return a language data hash.
-  def lookup_lang_data_from_name_cmd(lang_cmd)
-    langs = get_available_langs
-    langs.find {|l| l[:name] == lang_cmd }
   end
 
 end
