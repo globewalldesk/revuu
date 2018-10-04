@@ -1,7 +1,30 @@
 {
   "tasks": [
     {
-      "instructions": "Hash default values\n\nCreate a dog_breeds hash with dog names as keys and breeds as values.\nSet a hash default value of 'mutt'. Then iterate a five-item array,\nfor each item printing a line reading (e.g.) \"Fido: poodle\". Two of\nthe five items should be names not defined by the dog_breed hash.",
+      "instructions": "(JavaScript) Stop that mutation!\n\nCreate an object (using const) that has components (elements or attributes)\nand then apply a certain method that will prevent those components from\nbeing changed. Print out a component; then attempt to change it; then print\nit out again. Did you know what would happen? Make your prediction in a \ncomment beforehand.",
+      "tags": [
+        "JavaScript",
+        "Node.js",
+        "node",
+        "Object#freeze",
+        "freeze",
+        "const"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Node.js",
+      "id": 39,
+      "date_started": "2018-10-04T21:32:35+02:00",
+      "next_review_date": "2018-10-09T22:00:52+02:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-04T22:00:52+02:00"
+        }
+      ]
+    },
+    {
+      "instructions": "(Ruby) Hash default values\n\nCreate a dog_breeds hash with dog names as keys and breeds as values.\nSet a hash default value of 'mutt'. Then iterate a five-item array,\nfor each item printing a line reading (e.g.) \"Fido: poodle\". Two of\nthe five items should be names not defined by the dog_breed hash.",
       "tags": [
         "ruby",
         "hash",
@@ -22,7 +45,7 @@
       ]
     },
     {
-      "instructions": "Demonstrate the splat operator\n\nSuppose you have \n\nfriends = ['Jack', 'Jill', 'Sam']\n\nand you want to pass the array's elements not as an array, but \nindividually, to a method, preceded by a greeting type (\"yo\"). \nHow do you do that quite simply?\n\ndef yo(???)\n  ???.each { |friend| puts \"???, #{friend}!\" }\nend\n\nSuppose you want to use 'first' and 'the_rest' for 'a' and\n['b', 'c', 'd'], respectively. You already have \n\narr = ['a', 'b', 'c', 'd']\n\nso how do you assign the variables in *one simple* line? Do so\nand then print them in a string: \"I really like a, but as\nto b, c, d...they're OK.\"",
+      "instructions": "(Ruby) Demonstrate the splat operator\n\nSuppose you have \n\nfriends = ['Jack', 'Jill', 'Sam']\n\nand you want to pass the array's elements not as an array, but \nindividually, to a method, preceded by a greeting type (\"yo\"). \nHow do you do that quite simply?\n\ndef yo(???)\n  ???.each { |friend| puts \"???, #{friend}!\" }\nend\n\nSuppose you want to use 'first' and 'the_rest' for 'a' and\n['b', 'c', 'd'], respectively. You already have \n\narr = ['a', 'b', 'c', 'd']\n\nso how do you assign the variables in *one simple* line? Do so\nand then print them in a string: \"I really like a, but as\nto b, c, d...they're OK.\"",
       "tags": [
         "ruby",
         "splat",
@@ -42,7 +65,7 @@
       ]
     },
     {
-      "instructions": "So many ways to write an em dash\n\nUse Integer#chr, a string containing \\u, and Array#pack to write three em \ndashes. No need to have these perfectly memorized (and the hex code, \ndefinitely not). The question is, how confident are you in using these things?",
+      "instructions": "(Ruby) So many ways to write an em dash\n\nUse Integer#chr, a string containing \\u, and Array#pack to write three em \ndashes. No need to have these perfectly memorized (and the hex code, \ndefinitely not). The question is, how confident are you in using these things?",
       "tags": [
         "ruby",
         "chr",
@@ -69,7 +92,7 @@
       ]
     },
     {
-      "instructions": "Validate strings are numeric without converting to integer\n\nPass the values in the array ['99', '23a', 'xyz'] to a ternary \noperator to output 'x is numeric' or 'x is not numeric' in each case \nas appropriate. (Only the first item is numeric.) Do *not* convert \nthe strings into integers; use a simple handy method.",
+      "instructions": "(Node.js) Validate strings are numeric without converting to integer\n\nPass the values in the array ['99', '23a', 'xyz'] to a ternary \noperator to output 'x is numeric' or 'x is not numeric' in each case \nas appropriate. (Only the first item is numeric.) Do *not* convert \nthe strings into integers; use a simple handy method.",
       "tags": [
         "Node.js",
         "JavaScript",
@@ -79,7 +102,7 @@
       ],
       "score": 3,
       "saved": true,
-      "lang": "JavaScript",
+      "lang": "Node.js",
       "id": 15,
       "date_started": "2018-09-28T10:29:35-04:00",
       "next_review_date": "2018-10-07T00:37:42-04:00",
@@ -91,7 +114,7 @@
       ]
     },
     {
-      "instructions": "Write \"Hello world!\"",
+      "instructions": "(C) Write \"Hello world!\"",
       "tags": [
         "C",
         "int",
@@ -116,7 +139,7 @@
       ]
     },
     {
-      "instructions": "Demonstrate let vs. var\n\nAssign i in two different places; in one place, assign it \"function\nscope\", and in the other, \"block scope\". The result should print out\ntwo true statements. Assign a js with 'var' and before the function,\nthen try checking its value inside the function.\n\nfunction checkScope() {\n\"use strict\";\n  if (true) {\n    console.log(\"i is: \", i);\n  }\n  console.log(\"i is: \", i);\n  return i;\n}\ncheckScope();",
+      "instructions": "(JavaScript) Demonstrate let vs. var\n\nAssign i in two different places; in one place, assign it \"function\nscope\", and in the other, \"block scope\". The result should print out\ntwo true statements. Assign a js with 'var' and before the function,\nthen try checking its value inside the function.\n\nfunction checkScope() {\n\"use strict\";\n  if (true) {\n    console.log(\"i is: \", i);\n  }\n  console.log(\"i is: \", i);\n  return i;\n}\ncheckScope();",
       "tags": [
         "JavaScript",
         "Node.js",
@@ -127,7 +150,7 @@
       ],
       "score": 3,
       "saved": true,
-      "lang": "JavaScript",
+      "lang": "Node.js",
       "id": 35,
       "date_started": "2018-10-03T20:02:51+02:00",
       "next_review_date": "2018-10-07T20:16:09+02:00",
@@ -139,7 +162,7 @@
       ]
     },
     {
-      "instructions": "Using the colorize gem\n\nIn the following printed strings, use the Colorize gem to print the first one\ngreen, the second with a red background, and the third one with black-on-white\nprint.\n\nputs \"I am the first line.\"\nputs \"I am the second line.\"\nputs \"I am the third line.\"",
+      "instructions": "(Ruby) Using the colorize gem\n\nIn the following printed strings, use the Colorize gem to print the first one\ngreen, the second with a red background, and the third one with black-on-white\nprint.\n\nputs \"I am the first line.\"\nputs \"I am the second line.\"\nputs \"I am the third line.\"",
       "tags": [
         "ruby",
         "colorize"
@@ -158,7 +181,7 @@
       ]
     },
     {
-      "instructions": "Shortcut for def self.my_class_method?\nGiven this little class, how can you abbreviate 'def self.my_class_method'\nand 'def self.my_other_class_method'?\n\nRewrite it, and then call the methods (one line per each) outside the \nclass definition.\n\nclass MyClass\n  def self.my_class_method\n    puts \"You successfully called my class method! Woo hoo!\"\n  end\n\n  def self.my_other_class_method\n    puts \"Oh my god you did it twice!\"\n  end\nend",
+      "instructions": "(Ruby) Shortcut for def self.my_class_method?\nGiven this little class, how can you abbreviate 'def self.my_class_method'\nand 'def self.my_other_class_method'?\n\nRewrite it, and then call the methods (one line per each) outside the \nclass definition.\n\nclass MyClass\n  def self.my_class_method\n    puts \"You successfully called my class method! Woo hoo!\"\n  end\n\n  def self.my_other_class_method\n    puts \"Oh my god you did it twice!\"\n  end\nend",
       "tags": [
         "ruby",
         "class << self",
@@ -179,7 +202,7 @@
       ]
     },
     {
-      "instructions": "Arrays of const values\n\nIf an array arr is made up of the values of variables declared with 'const',\nand arr itself is declared with 'const', is it possible to change one of \nvalues of the array using, e.g., arr[0] = 'foo'? Demonstrate (and know the\nanswer in advance).",
+      "instructions": "(JavaScript) Arrays of const values\n\nIf an array arr is made up of the values of variables declared with 'const',\nand arr itself is declared with 'const', is it possible to change one of \nvalues of the array using, e.g., arr[0] = 'foo'? Demonstrate (and know the\nanswer in advance).",
       "tags": [
         "JavaScript",
         "Node.js",
@@ -188,7 +211,7 @@
       ],
       "score": 4,
       "saved": true,
-      "lang": "JavaScript",
+      "lang": "Node.js",
       "id": 38,
       "date_started": "2018-10-04T21:18:50+02:00",
       "next_review_date": "2018-10-09T21:20:54+02:00",
@@ -200,30 +223,7 @@
       ]
     },
     {
-      "instructions": "Stop that mutation!\n\nCreate an object (using const) that has components (elements or attributes)\nand then apply a certain method that will prevent those components from\nbeing changed. Print out a component; then attempt to change it; then print\nit out again. Did you know what would happen? Make your prediction in a \ncomment beforehand.",
-      "tags": [
-        "JavaScript",
-        "Node.js",
-        "node",
-        "Object#freeze",
-        "freeze",
-        "const"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "JavaScript",
-      "id": 39,
-      "date_started": "2018-10-04T21:32:35+02:00",
-      "next_review_date": "2018-10-09T22:00:52+02:00",
-      "all_reviews": [
-        {
-          "score": 3,
-          "review_date": "2018-10-04T22:00:52+02:00"
-        }
-      ]
-    },
-    {
-      "instructions": "Determine if a file has nonzero size\n\nUsing a File class method, simply print out the size of \"../revuu.rb\".",
+      "instructions": "(Ruby) Determine if a file has nonzero size\n\nUsing a File class method, simply print out the size of \"../revuu.rb\".",
       "tags": [
         "ruby",
         "File#stat"
@@ -242,7 +242,7 @@
       ]
     },
     {
-      "instructions": "Encoding and decoding JSON in Ruby\n\nSuppose you have a Ruby hash: \n\nsettings = {'lang' => 'Ruby', 'text_editor' => 'Pico'}\n\nFirst, write this to \"./settings.json\" in JSON format. Then add a line or two \nto read the file and decode it from JSON back to a Ruby hash. Prove that you have \ndecoded the file by reading the value of settings['lang']. Finally, delete the\nfile you created.",
+      "instructions": "(Ruby) Encoding and decoding JSON in Ruby\n\nSuppose you have a Ruby hash: \n\nsettings = {'lang' => 'Ruby', 'text_editor' => 'Pico'}\n\nFirst, write this to \"./settings.json\" in JSON format. Then add a line or two \nto read the file and decode it from JSON back to a Ruby hash. Prove that you have \ndecoded the file by reading the value of settings['lang']. Finally, delete the\nfile you created.",
       "tags": [
         "ruby",
         "to_json",
@@ -262,7 +262,7 @@
       ]
     },
     {
-      "instructions": "Iteration control\n\nIn the following loop, use three different keywords that offer control\nof an interating loop in order so that the 'numbers' array prints out\nas [1, 1, 1, 3, 5, 7, 9]. (I.e., all odd; stop at 9; and repeat the\nfirst three numbers.) You will need to add just two lines to the loop,\nas well as adding one word in place of <fill in>.\n\nnumbers = []\nthree_ones = [1, 1, 1]\n10.times do |i|\n  numbers << i\n  i += 1\nend\nprint numbers\nputs ''",
+      "instructions": "(Ruby) Iteration control\n\nIn the following loop, use three different keywords that offer control\nof an interating loop in order so that the 'numbers' array prints out\nas [1, 1, 1, 3, 5, 7, 9]. (I.e., all odd; stop at 9; and repeat the\nfirst three numbers.) You will need to add just two lines to the loop,\nas well as adding one word in place of <fill in>.\n\nnumbers = []\nthree_ones = [1, 1, 1]\n10.times do |i|\n  numbers << i\n  i += 1\nend\nprint numbers\nputs ''",
       "tags": [
         "ruby",
         "break",
@@ -287,7 +287,7 @@
       ]
     },
     {
-      "instructions": "Fun with let and const\n\nMake a little function that makes use of at least two variables, one of\nwhich is 'let', the other 'const'. Try reassigning the one of these that\nyou can't reassign. Then surround it with try/catch.",
+      "instructions": "(JavaScript) Fun with let and const\n\nMake a little function that makes use of at least two variables, one of\nwhich is 'let', the other 'const'. Try reassigning the one of these that\nyou can't reassign. Then surround it with try/catch.",
       "tags": [
         "JavaScript",
         "Node.js",
@@ -300,7 +300,7 @@
       ],
       "score": 3,
       "saved": true,
-      "lang": "JavaScript",
+      "lang": "Node.js",
       "id": 36,
       "date_started": "2018-10-03T20:28:59+02:00",
       "next_review_date": "2018-10-14T08:33:06+02:00",
@@ -316,7 +316,7 @@
       ]
     },
     {
-      "instructions": "Using defaults in instance initialization\n\nThe following defaults are problematic for reasons Sandi Metz explained.\nMove them into a method and use the method in #initialize. Ensure the \nanswers remain the same.\n\nclass Dog\n  attr_accessor :cute, :breed, :weight\n  def initialize(args)\n    @cute   = args[:cute]   || false\n    @breed  = args[:breed]  || 'mutt'\n    @weight = args[:weight] || 15\n  end\nend\nlassie = Dog.new(cute: true, breed: 'collie')\nputs lassie.cute   # true\nputs lassie.breed  # collie\nputs lassie.weight # 15\nrover = Dog.new\nputs rover.breed   # mutt",
+      "instructions": "(Ruby) Using defaults in instance initialization\n\nThe following defaults are problematic for reasons Sandi Metz explained.\nMove them into a method and use the method in #initialize. Ensure the \nanswers remain the same.\n\nclass Dog\n  attr_accessor :cute, :breed, :weight\n  def initialize(args)\n    @cute   = args[:cute]   || false\n    @breed  = args[:breed]  || 'mutt'\n    @weight = args[:weight] || 15\n  end\nend\nlassie = Dog.new(cute: true, breed: 'collie')\nputs lassie.cute   # true\nputs lassie.breed  # collie\nputs lassie.weight # 15\nrover = Dog.new\nputs rover.breed   # mutt",
       "tags": [
         "ruby",
         "defaults",
@@ -339,7 +339,7 @@
       ]
     },
     {
-      "instructions": "Center this in a whitespace-padded string\n\nSuppose you want to put \"Acme Products\" centered on one line and \n\"The top products for you!\" on the next line. The lines should be 75\ncharacters wide. The first should be padded with empty space, while\nthe second shoudl be padded with '=+'. Print the two lines.",
+      "instructions": "(Ruby) Center this in a whitespace-padded string\n\nSuppose you want to put \"Acme Products\" centered on one line and \n\"The top products for you!\" on the next line. The lines should be 75\ncharacters wide. The first should be padded with empty space, while\nthe second shoudl be padded with '=+'. Print the two lines.",
       "tags": [
         "ruby",
         "center"
@@ -358,7 +358,7 @@
       ]
     },
     {
-      "instructions": "Use ASCII escape sequences correctly\n\nRewrite the strings 'Band-Aid(r)' and '98.6 degrees F' to include the (r)\nand degree symbols, using Unicode and hexadecimal escape sequences (both\n--which you can, of course, look up). Then print 'hi' using the same sort \nof sequences. (No using String.fromCharCode(); that will be a separate \nquestion.)",
+      "instructions": "(Node.js) Use ASCII escape sequences correctly\n\nRewrite the strings 'Band-Aid(r)' and '98.6 degrees F' to include the (r)\nand degree symbols, using Unicode and hexadecimal escape sequences (both\n--which you can, of course, look up). Then print 'hi' using the same sort \nof sequences. (No using String.fromCharCode(); that will be a separate \nquestion.)",
       "tags": [
         "JavaScript",
         "Node.js",
@@ -368,7 +368,7 @@
       ],
       "score": 4,
       "saved": true,
-      "lang": "JavaScript",
+      "lang": "Node.js",
       "id": 14,
       "date_started": "2018-09-28T09:22:08-04:00",
       "next_review_date": "2018-10-20T19:46:41-04:00",
@@ -380,7 +380,7 @@
       ]
     },
     {
-      "instructions": "Create and use a \"cubed\" proc\n\nCreate a proc that cubes (raised to the third power) a number; then use it\nto find 3 cubed (27). Then create a lambda using more verbose syntax that \nraises a number to the fourth power and use it to find 7^4 (2401). Finally, \ncreate a lamdba using briefer syntax and user it to find 13^6 (4826809).",
+      "instructions": "(Ruby) Create and use a \"cubed\" proc\n\nCreate a proc that cubes (raised to the third power) a number; then use it\nto find 3 cubed (27). Then create a lambda using more verbose syntax that \nraises a number to the fourth power and use it to find 7^4 (2401). Finally, \ncreate a lamdba using briefer syntax and user it to find 13^6 (4826809).",
       "tags": [
         "ruby",
         "Proc",
@@ -408,7 +408,7 @@
       ]
     },
     {
-      "instructions": "Extract letters from string\n\nGiven the string 'hxexlxlxox xwxoxrxlxdx', extract the familiar phrase \nand print it. Use string indexes--in an abbreviated version of \nString#slice-- in your answer. Do not simply delete all the x's (yes,\nstr.delete!('x') has the same effect).",
+      "instructions": "(Ruby) Extract letters from string\n\nGiven the string 'hxexlxlxox xwxoxrxlxdx', extract the familiar phrase \nand print it. Use string indexes--in an abbreviated version of \nString#slice-- in your answer. Do not simply delete all the x's (yes,\nstr.delete!('x') has the same effect).",
       "tags": [
         "ruby",
         "strings"
@@ -427,7 +427,7 @@
       ]
     },
     {
-      "instructions": "Calling class, instance, and global methods\n\nFrom ::create_with_num, set num equal to ::class_number, then (within the\nsame method) return an instance of MyClass with (number: num) as an argument. \nUse ::create_with_num to create an instance. (3) Let #my_sum = the \nsum of @number, ::class_number_deux, #instance_number, and global_number. \nPrint the result of calling #my_sum on the instance. Should be 27.\n\nclass MyClass\n  class << self\n    def class_number; 5; end\n\n    def class_number_deux; 2; end\n\n    def create_with_num\n      # Type here\n    end\n  end\n\n  attr_accessor :number\n\n  def initialize(args)\n    # Type here\n  end\n\n  def instance_number; 10; end\n\n  def my_sum\n    # Type here\n  end\n\nend\n\ndef global_number; 10; end\n# Type here",
+      "instructions": "(Ruby) Calling class, instance, and global methods\n\n(1) From ::create_with_num, set num equal to ::class_number, then (within the\nsame method) return an instance of MyClass with (number: num) as an argument. \n(2) Use ::create_with_num to create an instance. (3) Let #my_sum = the \nsum of @number, ::class_number_deux, #instance_number, and global_number. \n(4) Print the result of calling #my_sum on the instance. Should be 27.\n\nclass MyClass\n  class << self\n    def class_number; 5; end\n\n    def class_number_deux; 2; end\n\n    def create_with_num\n      # Type here\n    end\n  end\n\n  attr_accessor :number\n\n  def initialize(args)\n    # Type here\n  end\n\n  def instance_number; 10; end\n\n  def my_sum\n    # Type here\n  end\n\nend\n\ndef global_number; 10; end\n# Type here",
       "tags": [
         "ruby",
         "self",
@@ -452,7 +452,7 @@
       ]
     },
     {
-      "instructions": "Changing a CONST?!\n\nChange this\n\nconst UNTOUCHABLE = ['a', 'b', 'c'];\n\nso that its total value is [1, 2, 3]. First, use a try-catch block to show the\nerror message that you get when you simply try to reassign the variable\nidentifier UNTOUCHABLE. After changing the array, print it.",
+      "instructions": "(JavaScript) Changing a CONST?!\n\nChange this\n\nconst UNTOUCHABLE = ['a', 'b', 'c'];\n\nso that its total value is [1, 2, 3]. First, use a try-catch block to show the\nerror message that you get when you simply try to reassign the variable\nidentifier UNTOUCHABLE. After changing the array, print it.",
       "tags": [
         "JavaScript",
         "Node.js",
@@ -463,7 +463,7 @@
       ],
       "score": 4,
       "saved": true,
-      "lang": "JavaScript",
+      "lang": "Node.js",
       "id": 37,
       "date_started": "2018-10-04T18:30:57+02:00",
       "next_review_date": "2018-10-25T18:53:35+02:00",
@@ -475,7 +475,7 @@
       ]
     },
     {
-      "instructions": "Create an object literal with properties and function\n\nCreate a johnDoe object literal with firstName and lastName properties\nand greet function. Calling the function should output to the console\nthe message, \"Hi, I'm John Doe.\"",
+      "instructions": "(Node.js) Create an object literal with properties and function\n\nCreate a johnDoe object literal with firstName and lastName properties\nand greet function. Calling the function should output to the console\nthe message, \"Hi, I'm John Doe.\"",
       "tags": [
         "node",
         "object literals",
@@ -484,7 +484,7 @@
       ],
       "score": 4,
       "saved": true,
-      "lang": "JavaScript",
+      "lang": "Node.js",
       "id": 10,
       "date_started": "2018-09-26T07:56:54-04:00",
       "next_review_date": "2018-11-02T14:48:14-04:00",
@@ -504,7 +504,7 @@
       ]
     },
     {
-      "instructions": "Substitute all instances of this with that\n\nIn the following string, replace every instance of 'ae' with 'e'. Don't use\nregular expressions; use a simple method. Print the result.\n\n\"Encyclopaedias make me feel so anaemic that I need anaesthesia.\"",
+      "instructions": "(Ruby) Substitute all instances of this with that\n\nIn the following string, replace every instance of 'ae' with 'e'. Don't use\nregular expressions; use a simple method. Print the result.\n\n\"Encyclopaedias make me feel so anaemic that I need anaesthesia.\"",
       "tags": [
         "ruby",
         "gsub",
@@ -528,7 +528,7 @@
       ]
     },
     {
-      "instructions": "'For...in' inclusive vs. exclusive\n\nFirst, construct the array of numbers 1 through 5 very concisely,\nusing a range operator. Then use a form of Ruby's for...in loop \nsyntactic sugar to multiply these numbers by 3 (printing the result \nafter each). Then construct a duplicate array using another form of\nthe range operator. Demonstrate which range operator is *inclusive* \nand which is *exclusive*; be able to say in advance which operator\ndoes what.",
+      "instructions": "(Ruby) 'For...in' inclusive vs. exclusive\n\nFirst, construct the array of numbers 1 through 5 very concisely,\nusing a range operator. Then use a form of Ruby's for...in loop \nsyntactic sugar to multiply these numbers by 3 (printing the result \nafter each). Then construct a duplicate array using another form of\nthe range operator. Demonstrate which range operator is *inclusive* \nand which is *exclusive*; be able to say in advance which operator\ndoes what.",
       "tags": [
         "ruby",
         "for",
@@ -556,7 +556,7 @@
       ]
     },
     {
-      "instructions": "Show how prefix and postfix incrementing works\n\nBegin a short script with this:\n\n  var num = 10;\n\nOn the next line, increment num and, *in the same expression*, subtract \n10 from it, showing the result in the console. Then reset num to 10 and \nperform the same difference, but increment num in a different way.\n(There are two ways to increment, which will show the two different \nanswers.) Print the two different answers to the console. Be able to \npredict, in advance, which answer will be 0 and what the other answer \nwill be.\n\nThen, beginning at 1, *de*crement num and add 10 to it, ensuring that \nthe sum is 10. Make sure you are able to tell, in advance, which \ndecrement operator to use.\n\nFinally, say in advance and then demonstrate what num2 will be:\n\n  num = 1;\n  num2 = (num++ * 10 + 1);\n  console.log(num2);",
+      "instructions": "(Node.js) Show how prefix and postfix incrementing works\n\nBegin a short script with this:\n\n  var num = 10;\n\nOn the next line, increment num and, *in the same expression*, subtract \n10 from it, showing the result in the console. Then reset num to 10 and \nperform the same difference, but increment num in a different way.\n(There are two ways to increment, which will show the two different \nanswers.) Print the two different answers to the console. Be able to \npredict, in advance, which answer will be 0 and what the other answer \nwill be.\n\nThen, beginning at 1, *de*crement num and add 10 to it, ensuring that \nthe sum is 10. Make sure you are able to tell, in advance, which \ndecrement operator to use.\n\nFinally, say in advance and then demonstrate what num2 will be:\n\n  num = 1;\n  num2 = (num++ * 10 + 1);\n  console.log(num2);",
       "tags": [
         "Node.js",
         "node",
@@ -570,7 +570,7 @@
       ],
       "score": 4,
       "saved": true,
-      "lang": "JavaScript",
+      "lang": "Node.js",
       "id": 13,
       "date_started": "2018-09-28T08:35:51-04:00",
       "next_review_date": "2018-11-10T19:26:54-05:00",
@@ -582,7 +582,7 @@
       ]
     },
     {
-      "instructions": "Write \"Hello World!\"",
+      "instructions": "(Java) Write \"Hello World!\"",
       "tags": [
         "java",
         "hello world"
@@ -601,7 +601,7 @@
       ]
     },
     {
-      "instructions": "How to print a formatted table \nwith while, for, and different data types\n\nIn the following C program, add a line that prints first fahrenheit, \nthen a tab, then celsius, then a newline. Then change fahr and celsius\nso that they are floats (and try printing then). Then print the values\nfrom -20 to 120 counting by 10s. Finally, rewrite the 'while' loop with\na 'for' loop and remove all variables except fahr. Ensure the field\ntype characters are correct throughout (so, no error messages!).\n\n#include <stdio.h>\nint main() {\n    int fahr, celsius;\n    int lower, upper, step;\n    lower = 0;    /* lower limit of temperature table */\n    upper = 300;  /* upper limit */\n    step = 20;    /* step size */\n\n    fahr = lower;\n    while (fahr <= upper) {\n        celsius = (5.0/9) * (fahr-32);\n\t/* fill in this line */\n        fahr = fahr + step;\n    }\n}",
+      "instructions": "(C) How to print a formatted table \nwith while, for, and different data types\n\nIn the following C program, add a line that prints first fahrenheit, \nthen a tab, then celsius, then a newline. Then change fahr and celsius\nso that they are floats (and try printing then). Then print the values\nfrom -20 to 120 counting by 10s. Finally, rewrite the 'while' loop with\na 'for' loop and remove all variables except fahr. Ensure the field\ntype characters are correct throughout (so, no error messages!).\n\n#include <stdio.h>\nint main() {\n    int fahr, celsius;\n    int lower, upper, step;\n    lower = 0;    /* lower limit of temperature table */\n    upper = 300;  /* upper limit */\n    step = 20;    /* step size */\n\n    fahr = lower;\n    while (fahr <= upper) {\n        celsius = (5.0/9) * (fahr-32);\n\t/* fill in this line */\n        fahr = fahr + step;\n    }\n}",
       "tags": [
         "C",
         "printf",
@@ -624,7 +624,7 @@
       ]
     },
     {
-      "instructions": "Sorting by keys and values\n\nGiven the 'mountains' hash, sort and print (in simple table form) by name\nand then by height (NB, must be *decending*). Then do the same thing, \nusing a different method. You'll have to output an array in each case, \nand make a method to print different arrays (four times).\n\nmountains = {\n  'Mount Everest' => 29029,\n  'K2' => 28251,\n  'Kangchenjunga' => 28169,\n  'Lhotse' => 27940,\n  'Makalu' => 27838,\n  'Cho Oyo' => 26864,\n  'Dhaulagiri I' => 26795\n}",
+      "instructions": "(Ruby) Sorting by keys and values\n\nGiven the 'mountains' hash, sort and print (in simple table form) by name\nand then by height (NB, must be *decending*). Then do the same thing, \nusing a different method. You'll have to output an array in each case, \nand make a method to print different arrays (four times).\n\nmountains = {\n  'Mount Everest' => 29029,\n  'K2' => 28251,\n  'Kangchenjunga' => 28169,\n  'Lhotse' => 27940,\n  'Makalu' => 27838,\n  'Cho Oyo' => 26864,\n  'Dhaulagiri I' => 26795\n}",
       "tags": [
         "ruby",
         "sort",
@@ -644,7 +644,7 @@
       ]
     },
     {
-      "instructions": "Sorting by different values\n\nSort the 'names' array below by firstname and then by lastname. Then use\na different method to achieve the same result. Print the name list after\neach sorting.\n\nnames = [\n  { firstname: 'John', lastname: 'Doe' },\n  { firstname: 'Jane', lastname: 'Roe' },\n  { firstname: 'Jack', lastname: 'Sprat' },\n  { firstname: 'Holly', lastname: 'Golightly' },\n  { firstname: 'Santa', lastname: 'Claus' }\n]",
+      "instructions": "(Ruby) Sorting by different values\n\nSort the 'names' array below by firstname and then by lastname. Then use\na different method to achieve the same result. Print the name list after\neach sorting.\n\nnames = [\n  { firstname: 'John', lastname: 'Doe' },\n  { firstname: 'Jane', lastname: 'Roe' },\n  { firstname: 'Jack', lastname: 'Sprat' },\n  { firstname: 'Holly', lastname: 'Golightly' },\n  { firstname: 'Santa', lastname: 'Claus' }\n]",
       "tags": [
         "ruby",
         "sort",
@@ -664,7 +664,7 @@
       ]
     },
     {
-      "instructions": "Download this URL\n\nOn the command line, download the HTML you'll find at precisely \nhttp://larrysanger.org/. Save it directly into temp.tmp. \nTo the end of that file, append \"This is another line.\" Then \nview the end of the file to confirm it's all there, then delete \ntemp.tmp.",
+      "instructions": "(Bash) Download this URL\n\nOn the command line, download the HTML you'll find at precisely \nhttp://larrysanger.org/. Save it directly into temp.tmp. \nTo the end of that file, append \"This is another line.\" Then \nview the end of the file to confirm it's all there, then delete \ntemp.tmp.",
       "tags": [
         "bash",
         "curl",
@@ -686,7 +686,7 @@
       ]
     },
     {
-      "instructions": "Palindromes: given ['xanax', 'Hello', 'aya', 'FooBar'], write a brief \nprogram to show that there are two palindromes in the array; then print them. \nThen change all the items to Title Case (and print); then change them all to \nALL CAPS (and print); finally, change them all to all lowercase (and print).",
+      "instructions": "(Ruby) Palindromes: given ['xanax', 'Hello', 'aya', 'FooBar'], write a brief \nprogram to show that there are two palindromes in the array; then print them. \nThen change all the items to Title Case (and print); then change them all to \nALL CAPS (and print); finally, change them all to all lowercase (and print).",
       "tags": [
         "ruby",
         "reverse",
@@ -710,7 +710,7 @@
       ]
     },
     {
-      "instructions": "activities = Hash.new('fun')\n\nSuppose you assign 'activities' as above, and on the next line, you have\nsimply\n\nputs activities[:fred]\n\nWhat is the output? Predict this in advance correctly and explain briefly\nthe reason for the answer.",
+      "instructions": "(Ruby) activities = Hash.new('fun')\n\nSuppose you assign 'activities' as above, and on the next line, you have\nsimply\n\nputs activities[:fred]\n\nWhat is the output? Predict this in advance correctly and explain briefly\nthe reason for the answer.",
       "tags": [
         "ruby",
         "hash",
@@ -732,7 +732,7 @@
       ]
     },
     {
-      "instructions": "Multidimensional array\n\nBy referring to positions of the numbers in this array,\n\na = [[5, 4], [3, 6, 2, [1, 7]], [[8]], [[[9], 10]] ]\n\nconstruct this array:\n\n[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
+      "instructions": "(Ruby) Multidimensional array\n\nBy referring to positions of the numbers in this array,\n\na = [[5, 4], [3, 6, 2, [1, 7]], [[8]], [[[9], 10]] ]\n\nconstruct this array:\n\n[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
       "tags": null,
       "score": 5,
       "saved": true,

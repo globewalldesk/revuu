@@ -62,6 +62,8 @@ directly in the instructions. Ensure that, as with Java now, unedited starter
 code is not interpreted as an answer (so it won't overwrite the archive).
 * Maybe change task and tag editing from Pico to the default text editor.
 * Maybe add an actual spaced repetition option.
+* Create features to export and import some (tagged) or all items.
+* Create features to mass-delete items.
 * Add statistics (number of questions, averages, number overdue, number to do
 today, etc.).
 * Give user option to append language to the title automatically.
@@ -98,6 +100,6 @@ Added pagination and page navigation. Data about any persisted tag searches
 and navigation page was added as attributes to the global TaskList object. So
 the user can navigate to the second page of tasks, view one, quit that view,
 and then be placed back on the second page of tasks. If the user starts from
-tag search results (even the second page of them), he is return to that page.
+tag search results (even the second page of them), he is returned to that page.
 That means users can search for one particular language (or method) without
 having to redo the search in between tasks.

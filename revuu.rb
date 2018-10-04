@@ -374,8 +374,11 @@ class TaskList
       pindex = (@pagination_num - 1) * 10 # The array index to copy from.
       list = list[pindex, 10]
       list[0..10].each do |task|
-        # Grab the first 45 characters of the first line of @instructions
-        instr = task.instructions[0..45].split("\n")[0]
+        # Grab the first 45 characters of the first line of @instructions.
+        # First, add the language in parens and calculate how much space this takes up.
+        instr = '(' + task.lang + ') '
+        limit = 45 - instr.length # Subtract length of the parenthetical addition from title
+        instr = instr + task.instructions[0..limit].split("\n")[0]
         line = sprintf("%5s| %-47s| %-20s", task.id, instr,
           prettify_timestamp(task.next_review_date))
         puts(colored ? line.colorize(:color => :green) : line)

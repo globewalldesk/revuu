@@ -197,7 +197,7 @@ JAVASTARTER
   def get_available_langs
     [
       {name: 'Ruby', ext: 'rb', cmd: 'ruby', cmnt: '#'},
-      {name: 'Node.js', ext: 'js', cmd: 'node', cmnt: '//'},
+      {name: 'JavaScript', ext: 'js', cmd: 'node', cmnt: '//'},
       {name: 'Java', ext: 'java', cmd: 'javac', cmd2: 'java <name-no-ext>',
         cmnt: '//', one_main_per_file: true},
       {name: 'C', ext: 'c', cmd: 'gcc', cmd2: './a.out', cmnt: '/*',
