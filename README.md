@@ -1,6 +1,6 @@
 # revuu
 Spaced repetition-like command line app for learning and reviewing programming
-tasks--improving procedural more than declarative knowledge.
+tasks--improving procedural (as opposed to declarative) knowledge.
 
 ## User introduction
 
