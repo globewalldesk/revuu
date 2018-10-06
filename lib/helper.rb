@@ -9,35 +9,29 @@ module Helper
   $introduction = <<ENDINTRO
 Welcome to Revuu!
 
-This app will help you review complex tasks. It was written with the notion
-that programmers (and others) need repetition of not declarative but procedural
-knowledge.
+This app will help you review programming tasks, improving understanding and
+keeping your skills fresh. It was written with the notion that programmers (and 
+others) need repetition of not declarative but procedural knowledge.
 
 So when you perform a review, you don't try to answer a question in words.
 Instead, you try to perform a task. Essentially, to use Revuu, you'd add
 complex, not simple, tasks. Probably the ideal Revuu task would require
 2-10 minutes to complete.
 
-To record the fact that you've reviewed a task on a certain date, and given
-yourself a certain score, enter the task ID number and then press 's'.
-
-If you use Revuu to study programming, you can use the 'answer' feature for
-supported languages. (Non-programmers should choose the "Other" option for the
-language). This will enable you to use your code editor of choice to input an
-answer (with the answer easily accessible right from the task display view) and
-to run it with supported interpreters and compilers (also right from the task
-display view).
+The basic functions of the program are adding tasks, using the handy answer
+filing and editing system (which probably works with your favorite text editor),
+running the script and seeing the results, and recording that you've done a
+review and that the next review should be done on a certain date. The two basic
+views of the app are a paginated list of tasks and an individual task view.
 
 Currently, we support Ruby, Node.js (JavaScript), Java, C, and Bash scripting.
-The only supported text editor for now is Sublime Text but more will be added
-soon.
+We also support many commonly-used text editors and IDEs.
 
 Add copious, well-chosen tags in order to be able to sort tasks.
 
-Revuu ships with a bunch of pre-made questions by way of demonstration. You
-can delete these and make your own, if you like.
-
-Revuu has other features you'd expect such as editing of various fields.
+Revuu ships with a bunch of pre-made questions and answers by way of 
+demonstration. You can delete these and make your own, if you like. The 
+questions are mostly Ruby and JavaScript right now.
 ENDINTRO
 
   def get_user_command(leader)
