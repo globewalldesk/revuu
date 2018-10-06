@@ -34,9 +34,9 @@ can delete these and make your own, if you like.
 Revuu has other features you'd expect such as editing of various fields.
 
 ## Install and requirements
-Clone the repo into a new directory. Make sure a recent version of Ruby (>2.2)
-is installed. The app doesn't use a Gemfile yet (!), so you'll have to install
-two gems by hand: `gem install colorize` and `gem install chronic`.
+Clone the repo into a new directory (instructions should be clear enough from
+Github). Should probably make sure a recent version of Ruby (>2.2) is installed. 
+Execute `bundle install` to install the gem requirements.
 
 Only works on \*nix systems. I might be able to get it to work on Windows if
 anybody cares.
@@ -57,22 +57,20 @@ Online help is available by pressing 'c' for 'commands'.
 
 ## Planned/hoped-for features.
 
+* Allow the user to abandon task creation.
+* Refactor task creation (method much too long).
 * Add starter code (for user to edit in his answer) rather than putting this
 directly in the instructions. Ensure that, as with Java now, unedited starter
-code is not interpreted as an answer (so it won't overwrite the archive).
-* Maybe change task and tag editing from Pico to the default text editor.
+code is not interpreted as an answer (so it won't overwrite the archive). No
+reason this bit can't be 
 * Maybe add an actual spaced repetition option.
 * Create features to export and import some (tagged) or all items.
 * Create features to mass-delete items.
 * Add statistics (number of questions, averages, number overdue, number to do
 today, etc.).
-* Give user option to append language to the title automatically.
-* Add language to tag list.
-* Alternatively, maybe, allow users to have different accounts/sections sorted
-by languages.
+* Add language to tag list and delete needless variants.
 * Maybe eventually allow users to save archived items individually, and give
 them an easy way to browse and run them from within the app.
-* Allow the user to abandon task creation.
 
 ## Version notes
 
