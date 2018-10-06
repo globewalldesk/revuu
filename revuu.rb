@@ -560,19 +560,20 @@ class App
     line = ('=' * logo.length).center(wd)
     start = line + "\n" + start + "\n" + line
     start = "\n\n\n" + start + "\n\n\n"
-    start += instructions
+    start += intro
     puts start
   end
 
-  def instructions
-    instructions = <<ENDINST
+  def intro
+    intro = <<ENDINST
 Revuu is a Ruby command line app to help you organize practical reviews of
-tasks (such as programming tasks) that you want to memorize. Revuu uses
-"spaced repetition"#{8212.chr("UTF-8")}practice sessions that get less frequent with each
-successful review.
+programming tasks that you want to learn. You can add problems, solve them
+with your favorite text editor, run the resulting script in Revuu, record 
+that you've done a review, and schedule more for the future. The developer
+finds it to be a handy way to learn and solidify easy-to-forget skills.
 
 ENDINST
-    instructions += $help + "\n\n"
+    intro += $help + "\n\n"
   end
 
   # Load the default language and text editor ($lang, $texted).

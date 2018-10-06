@@ -41,9 +41,6 @@ module Answer
       puts ("=" * 75)
       puts ''
       system("cd answers && #{$cmd} #{file}")
-      # Java Example
-      # Compile: javac ./answers/Example.java
-      # Run: java Example
       # If the language is compiled, the $cmd line runs the compiler.
       # The following then runs the compiled executable.
       if $cmd2

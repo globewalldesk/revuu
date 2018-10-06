@@ -1,25 +1,6 @@
 {
   "tasks": [
     {
-      "instructions": "The rest operator\n\nRewrite this Ruby method as a JavaScript function. It should as near to \nidentical as possible.\n\ndef count_args(*args)\n  puts \"You passed #{args.length} to this function.\"\nend\n\nThen call the function and ensure it gives the correct output.",
-      "tags": [
-        "JavaScript",
-        "rest operator"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "JavaScript",
-      "id": 45,
-      "date_started": "2018-10-06T14:21:45+01:00",
-      "next_review_date": "2018-11-17T13:27:17+00:00",
-      "all_reviews": [
-        {
-          "score": 4,
-          "review_date": "2018-10-06T14:27:17+01:00"
-        }
-      ]
-    },
-    {
       "instructions": "Write \"Hello world!\"",
       "tags": [
         "C",
@@ -697,6 +678,25 @@
       ]
     },
     {
+      "instructions": "The rest operator\n\nRewrite this Ruby method as a JavaScript function. It should as near to \nidentical as possible.\n\ndef count_args(*args)\n  puts \"You passed #{args.length} to this function.\"\nend\n\nThen call the function and ensure it gives the correct output.",
+      "tags": [
+        "JavaScript",
+        "rest operator"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "JavaScript",
+      "id": 45,
+      "date_started": "2018-10-06T14:21:45+01:00",
+      "next_review_date": "2018-11-17T13:27:17+00:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-06T14:27:17+01:00"
+        }
+      ]
+    },
+    {
       "instructions": "Write \"Hello World!\"",
       "tags": [
         "java",
@@ -821,7 +821,7 @@
       ]
     },
     {
-      "instructions": "Palindromes: given ['xanax', 'Hello', 'aya', 'FooBar'], write a brief \nprogram to show that there are two palindromes in the array; then print them. \nThen change all the items to Title Case (and print); then change them all to \nALL CAPS (and print); finally, change them all to all lowercase (and print).",
+      "instructions": "Fun with strings (palindromes and cases) \n\nGiven ['xanax', 'Hello', 'aya', 'FooBar'], write a brief program to show that \nthere are two palindromes in the array; then print them.  Then change all the \nitems to Title Case (and print); then change them all to ALL CAPS (and \nprint); finally, change them all to all lowercase (and print).",
       "tags": [
         "ruby",
         "reverse",
