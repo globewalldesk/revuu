@@ -1,6 +1,9 @@
-dog_breeds = {Lassie:  'collie', Rex: 'German shepherd', Fido: 'cocker spaniel'}
+dog_breeds = {
+  'Fido' => 'poodle',
+  'Rover' => 'golden retriever',
+  'Lucky' => 'black lab'
+}
 dog_breeds.default = 'mutt'
-names = [:Lassie, :Peaches, :Rex, :Old_Yeller, :Fido]
-names.each do |name|
-  puts "#{name.to_s}: #{dog_breeds[name]}"
+%w[Fido Funny Rover Lucky Bozo].each do |name|
+  puts "#{name}: #{dog_breeds[name]}"
 end

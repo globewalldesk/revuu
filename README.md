@@ -95,7 +95,7 @@ The app now checks that the settings file exists, pre-populates it with
 defaults if not, and makes some other improvements to settings. Also added a
 simple 'refresh' function for the task review and edit screen.
 
-### 1.2 (September 29, 2017)
+### 1.2 (October 1, 2018)
 Added pagination and page navigation. Data about any persisted tag searches
 and navigation page was added as attributes to the global TaskList object. So
 the user can navigate to the second page of tasks, view one, quit that view,
@@ -103,3 +103,10 @@ and then be placed back on the second page of tasks. If the user starts from
 tag search results (even the second page of them), he is returned to that page.
 That means users can search for one particular language (or method) without
 having to redo the search in between tasks.
+
+### 1.3 NEW VERSION # NOT DECLARED YET
+Moved gems to Gemfile and required them via `Bundler.require(:default)`. Now
+inserts language name in parentheses before the page title, not in the data,
+but when the task is rendered to the user. 'x' command shows the "next due" 
+task to the user. Changed 'Node.js' to 'JavaScript'. Fixed several bugs; now 
+pretty stable.

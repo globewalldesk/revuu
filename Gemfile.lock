@@ -1,0 +1,18 @@
+GEM
+  specs:
+    chronic (0.10.2)
+    colorize (0.8.1)
+    date (1.0.0)
+    json (2.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  chronic (~> 0.10.2)
+  colorize (~> 0.8.1)
+  date (~> 1.0)
+  json (~> 2.1)
+
+BUNDLED WITH
+   1.16.1

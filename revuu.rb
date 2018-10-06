@@ -1,9 +1,9 @@
-require 'json'
-require 'date'
+require 'rubygems'
+require 'bundler/setup'
+Bundler.require(:default)
+
 require_relative 'lib/date_prettifier.rb'
 include DatePrettifier
-require 'colorize'
-require 'chronic'
 require_relative 'lib/answer.rb'
 include Answer
 require_relative 'lib/helper.rb'
@@ -152,8 +152,8 @@ class Task
     system("clear")
     header
     puts '=' * 75
-    puts "TASK INSTRUCTIONS:"
-    puts @instructions
+    puts 'TASK INSTRUCTIONS:'
+    puts '(' + @lang + ') ' + @instructions
     puts '=' * 75
     date = DateTime.parse(@date_started).strftime("%-m/%-d/%Y")
     printf("  ID: %d   Started: %-10s   Reviews: %d   Score: %s\n",
@@ -469,7 +469,7 @@ class TaskList
   end
 
   # Given @list (or @tag_filtered_list) and @pagination_num, show a string of
-  # numbers such as 1 2 3... or [<<]top [<]back ...5 *6* 7... next[>] end[>>]
+  # numbers such as [<<]top [<]back ...5 (6) 7... next[>] end[>>]
   def show_pagination_string
     # Set 'list' equal to the tag-filtered list if a tag search is in use.
     list = @default_tag ? @tag_filtered_list : @list
@@ -481,7 +481,7 @@ class TaskList
     on_last = (pnum == last_pg ? true : false)
     # Print page number plus surrounding pages; remove stuff from this as nec.
     str = "[<<]top [<]back #{pnum - 1} (#{pnum}) #{pnum + 1} next[>] end[>>]"
-    # Remove top/end if list.length < 30.
+    # Remove top/end if list.length < 21.
     if list.length < 21
       str.slice!('[<<]top ')
       str.slice!(' end[>>]')
@@ -491,15 +491,17 @@ class TaskList
       str.slice!('[<<]top ')
       str.slice!('[<]back ')
       # Show third page in list if it exists
-      str.gsub!('*1* 2 ', '*1* 2 3 ') if last_pg > 2
+      str.gsub!('(1) 2 ', '(1) 2 3 ') if last_pg > 2
       str.slice!('0 ')
     end
     # Remove next and end if on last page.
     if on_last
       str.slice!(' next[>]')
       str.slice!(' end[>>]')
+      # If you're on p. 3 or up, you'll need to add a page before the penultimate page.
       str.gsub!('[<]back ', "[<]back #{pnum - 2} ") unless pnum < 3
-      str.gsub!("* #{pnum + 1}", '*')
+      # Delete the "page" above the last page that doesn't exist.
+      str.gsub!(") #{pnum + 1}", ')')
     end
     puts("  " + "Nav: " + str)
   end

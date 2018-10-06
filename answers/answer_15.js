@@ -1,4 +1,2 @@
-var arr = ['99', '23a', 'xyz'];
-
-arr.forEach(x => 
-  console.log(x + (isNaN(x) ? " is not " : " is ") + "numeric.") );
+const arr = ['99', '23a', 'xyz'];
+arr.forEach(s => console.log(s + (isNaN(s) ? " is not" : " is") + " numeric." ));
