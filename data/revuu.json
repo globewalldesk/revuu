@@ -1,92 +1,21 @@
 {
   "tasks": [
     {
-      "instructions": "Hash default values\n\nCreate a dog_breeds hash with dog names as keys and breeds as values.\nSet a hash default value of 'mutt'. Then iterate a five-item array,\nfor each item printing a line reading (e.g.) \"Fido: poodle\". Two of\nthe five items should be names not defined by the dog_breed hash.",
+      "instructions": "The rest operator\n\nRewrite this Ruby method as a JavaScript function. It should as near to \nidentical as possible.\n\ndef count_args(*args)\n  puts \"You passed #{args.length} to this function.\"\nend\n\nThen call the function and ensure it gives the correct output.",
       "tags": [
-        "ruby",
-        "hash",
-        "hash default",
-        "default value"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "Ruby",
-      "id": 25,
-      "date_started": "2018-10-01T11:50:09-04:00",
-      "next_review_date": "2018-10-05T12:01:41-04:00",
-      "all_reviews": [
-        {
-          "score": 3,
-          "review_date": "2018-10-01T12:01:41-04:00"
-        }
-      ]
-    },
-    {
-      "instructions": "Demonstrate the splat operator\n\nSuppose you have \n\nfriends = ['Jack', 'Jill', 'Sam']\n\nand you want to pass the array's elements not as an array, but \nindividually, to a method, preceded by a greeting type (\"yo\"). \nHow do you do that quite simply?\n\ndef yo(???)\n  ???.each { |friend| puts \"???, #{friend}!\" }\nend\n\nSuppose you want to use 'first' and 'the_rest' for 'a' and\n['b', 'c', 'd'], respectively. You already have \n\narr = ['a', 'b', 'c', 'd']\n\nso how do you assign the variables in *one simple* line? Do so\nand then print them in a string: \"I really like a, but as\nto b, c, d...they're OK.\"",
-      "tags": [
-        "ruby",
-        "splat",
-        "splat operator"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "Ruby",
-      "id": 28,
-      "date_started": "2018-10-01T17:42:06-04:00",
-      "next_review_date": "2018-10-05T18:01:38-04:00",
-      "all_reviews": [
-        {
-          "score": 3,
-          "review_date": "2018-10-01T18:01:38-04:00"
-        }
-      ]
-    },
-    {
-      "instructions": "So many ways to write an em dash\n\nUse Integer#chr, a string containing \\u, and Array#pack to write three em \ndashes. No need to have these perfectly memorized (and the hex code, \ndefinitely not). The question is, how confident are you in using these things?",
-      "tags": [
-        "ruby",
-        "chr",
-        "pack",
-        "\\u",
-        "\\x",
-        "character encoding"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "Ruby",
-      "id": 32,
-      "date_started": "2018-10-03T09:10:43+01:00",
-      "next_review_date": "2018-10-06T08:46:01+02:00",
-      "all_reviews": [
-        {
-          "score": 2,
-          "review_date": "2018-10-03T10:09:50+01:00"
-        },
-        {
-          "score": 3,
-          "review_date": "2018-10-04T08:46:01+02:00"
-        }
-      ]
-    },
-    {
-      "instructions": "Validate strings are numeric without converting to integer\n\nPass the values in the array ['99', '23a', 'xyz'] to a ternary \noperator to output 'x is numeric' or 'x is not numeric' in each case \nas appropriate. (Only the first item is numeric.) Do *not* convert \nthe strings into integers; use a simple handy method.",
-      "tags": [
-        "Node.js",
         "JavaScript",
-        "node",
-        "isNaN",
-        "ternary"
+        "rest operator"
       ],
-      "score": 3,
+      "score": 4,
       "saved": true,
       "lang": "JavaScript",
-      "id": 15,
-      "date_started": "2018-09-28T10:29:35-04:00",
-      "next_review_date": "2018-10-07T00:37:42-04:00",
+      "id": 45,
+      "date_started": "2018-10-06T14:21:45+01:00",
+      "next_review_date": "2018-11-17T13:27:17+00:00",
       "all_reviews": [
         {
-          "score": 3,
-          "review_date": "2018-10-03T00:37:42-04:00"
+          "score": 4,
+          "review_date": "2018-10-06T14:27:17+01:00"
         }
       ]
     },
@@ -158,6 +87,37 @@
       ]
     },
     {
+      "instructions": "So many ways to write an em dash\n\nUse Integer#chr, a string containing \\u, and Array#pack to write three em \ndashes. No need to have these perfectly memorized (and the hex code, \ndefinitely not). The question is, how confident are you in using these things?\n\nNOTE: You definitely need to add questions about each of these methods because\neach is fairly involved and you're having to brute-force memorize this, which\nis really contrary to what Revuu questions are all about.",
+      "tags": [
+        "ruby",
+        "chr",
+        "pack",
+        "\\u",
+        "\\x",
+        "character encoding"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 32,
+      "date_started": "2018-10-03T09:10:43+01:00",
+      "next_review_date": "2018-10-09T08:34:18+02:00",
+      "all_reviews": [
+        {
+          "score": 2,
+          "review_date": "2018-10-03T10:09:50+01:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-04T08:46:01+02:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-06T08:34:18+02:00"
+        }
+      ]
+    },
+    {
       "instructions": "Shortcut for def self.my_class_method?\nGiven this little class, how can you abbreviate 'def self.my_class_method'\nand 'def self.my_other_class_method'?\n\nRewrite it, and then call the methods (one line per each) outside the \nclass definition.\n\nclass MyClass\n  def self.my_class_method\n    puts \"You successfully called my class method! Woo hoo!\"\n  end\n\n  def self.my_other_class_method\n    puts \"Oh my god you did it twice!\"\n  end\nend",
       "tags": [
         "ruby",
@@ -175,6 +135,46 @@
         {
           "score": 3,
           "review_date": "2018-09-25T03:42:08-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "Return an array of squared positive integers\n\nGiven \n\nlet nums = [3, -25, 0.67, 7, -12.25, 12.25, 12];\n\nwrite and then print the result of using chained arrow functions that \nreturn the squares of only elements that are (a) positive and \n(b) integers. Response should be [9, 49, 144].",
+      "tags": [
+        "JavaScript",
+        "filter",
+        "map",
+        "pow"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "JavaScript",
+      "id": 43,
+      "date_started": "2018-10-06T13:12:15+01:00",
+      "next_review_date": "2018-10-09T14:13:27+01:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-06T14:13:27+01:00"
+        }
+      ]
+    },
+    {
+      "instructions": "Arrow function syntax\n\nRewrite this simple function without the word 'function()', and then prove\nthat it works by printing the result of calling it:\n\nconst LoveMyFunction = function() {\n  return \"This is really nice function, isn't it?\"\n}",
+      "tags": [
+        "JavaScript",
+        "arrow functions"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "JavaScript",
+      "id": 40,
+      "date_started": "2018-10-05T19:17:48+02:00",
+      "next_review_date": "2018-10-09T19:30:10+02:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-05T19:30:01+02:00"
         }
       ]
     },
@@ -242,6 +242,27 @@
       ]
     },
     {
+      "instructions": "Advanced arrow functions\n\nRewrite this as a nested arrow function in the most concise way possible:\n\nconst factorial = function(arr) {\n  return arr.reduce(function(x,y) {\n    return x * y\n  });\n}\n\nUse the result of your rewriting to prove that factorial(arr) = 120,\nwhere arr = [5, 4, 3, 2, 1] (print out the answer).",
+      "tags": [
+        "JavaScript",
+        "arrow functions",
+        "reduce",
+        "nested functions"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "JavaScript",
+      "id": 42,
+      "date_started": "2018-10-06T12:36:05+01:00",
+      "next_review_date": "2018-10-10T13:05:42+01:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-06T13:05:42+01:00"
+        }
+      ]
+    },
+    {
       "instructions": "Encoding and decoding JSON in Ruby\n\nSuppose you have a Ruby hash: \n\nsettings = {'lang' => 'Ruby', 'text_editor' => 'Pico'}\n\nFirst, write this to \"./settings.json\" in JSON format. Then add a line or two \nto read the file and decode it from JSON back to a Ruby hash. Prove that you have \ndecoded the file by reading the value of settings['lang']. Finally, delete the\nfile you created.",
       "tags": [
         "ruby",
@@ -258,6 +279,25 @@
         {
           "score": 4,
           "review_date": "2018-10-03T11:45:26+01:00"
+        }
+      ]
+    },
+    {
+      "instructions": "Create a default parameter\n\nCreate a 'hello' function with a default parameter of 'John Doe'. Call the\nfunction supplying a value, then not supplying a value; the latter should\nprint out as 'Hello, John Doe.'",
+      "tags": [
+        "JavaScript",
+        "default parameters"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "JavaScript",
+      "id": 44,
+      "date_started": "2018-10-06T14:07:15+01:00",
+      "next_review_date": "2018-10-13T14:14:15+01:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-06T14:14:15+01:00"
         }
       ]
     },
@@ -312,6 +352,30 @@
         {
           "score": 3,
           "review_date": "2018-10-04T08:33:06+02:00"
+        }
+      ]
+    },
+    {
+      "instructions": "Demonstrate the splat operator\n\nSuppose you have \n\nfriends = ['Jack', 'Jill', 'Sam']\n\nand you want to pass the array's elements not as an array, but \nindividually, to a method, preceded by a greeting type (\"yo\"). \nHow do you do that quite simply?\n\ndef yo(???)\n  ???.each { |friend| puts \"???, #{friend}!\" }\nend\n\nRelated problem: suppose you want to use 'first' and 'the_rest' \nfor 'a' and ['b', 'c', 'd'], respectively. You already have \n\narr = ['a', 'b', 'c', 'd']\n\nso how do you assign the variables in *one simple* line? Do so\nand then print them in a string: \"I really like a, but as\nto b, c, d...they're OK.\"",
+      "tags": [
+        "ruby",
+        "splat",
+        "splat operator"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 28,
+      "date_started": "2018-10-01T17:42:06-04:00",
+      "next_review_date": "2018-10-15T06:58:44+02:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-01T18:01:38-04:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-05T06:58:44+02:00"
         }
       ]
     },
@@ -528,6 +592,31 @@
       ]
     },
     {
+      "instructions": "Hash default values\n\nCreate a dog_breeds hash with 3 dog names as keys and breeds as values.\nSet a hash default value of 'mutt'. Then iterate a five-item array of\ndog names, for each item printing a line reading (e.g.) \"Fido: poodle\". \nThree of the five items should be the three names in dog_breeds. Two \nshould be names not defined by the dog_breed hash.",
+      "tags": [
+        "ruby",
+        "hash",
+        "hash default",
+        "default value"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 25,
+      "date_started": "2018-10-01T11:50:09-04:00",
+      "next_review_date": "2018-11-05T06:46:14+01:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-01T12:01:41-04:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-05T06:46:14+02:00"
+        }
+      ]
+    },
+    {
       "instructions": "'For...in' inclusive vs. exclusive\n\nFirst, construct the array of numbers 1 through 5 very concisely,\nusing a range operator. Then use a form of Ruby's for...in loop \nsyntactic sugar to multiply these numbers by 3 (printing the result \nafter each). Then construct a duplicate array using another form of\nthe range operator. Demonstrate which range operator is *inclusive* \nand which is *exclusive*; be able to say in advance which operator\ndoes what.",
       "tags": [
         "ruby",
@@ -552,6 +641,32 @@
         {
           "score": 4,
           "review_date": "2018-10-03T08:30:39+01:00"
+        }
+      ]
+    },
+    {
+      "instructions": "Validate strings are numeric without converting to integer\n\nPass the values in the array ['99', '23a', 'xyz'] to a ternary \noperator to output 'x is numeric' or 'x is not numeric' in each case \nas appropriate. (Only the first item is numeric.) Do *not* convert \nthe strings into integers; use a simple handy method.",
+      "tags": [
+        "Node.js",
+        "JavaScript",
+        "node",
+        "isNaN",
+        "ternary"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "JavaScript",
+      "id": 15,
+      "date_started": "2018-09-28T10:29:35-04:00",
+      "next_review_date": "2018-11-10T07:42:15+01:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-03T00:37:42-04:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-06T08:42:15+02:00"
         }
       ]
     },
@@ -682,6 +797,26 @@
         {
           "score": 4,
           "review_date": "2018-09-25T17:08:51-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "Sort array of hashes by hash attribute\n\nGiven this array of hashes:\n\nsightings = [ {bird: 'pigeon', date: '2007/04/16'}, {bird: 'bald eagle', \n  date: '1999/07/23'}, {bird: 'dodo', date: '2001/12/25'}, {bird: \n  'blue heron', date: '2012/3/1'} ]\n\nsort the hash items by date from oldest sighting date to newest, then\nprint the result in a simple table.",
+      "tags": [
+        "ruby",
+        "sort",
+        "comparison operator"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 41,
+      "date_started": "2018-10-06T08:54:17+02:00",
+      "next_review_date": "2019-02-06T09:06:39+01:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-06T09:06:39+02:00"
         }
       ]
     },
