@@ -41,7 +41,7 @@ ENDINTRO
   end
 
   def header
-    puts sprintf("%-69s%s", " * R * E * V * U * U *",  "v. 1.2").
+    puts sprintf("%-69s%s", " * R * E * V * U * U *",  "v. 1.3").
       colorize(:color => :black, :background => :white)
     puts "\n"
   end
