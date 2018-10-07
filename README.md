@@ -29,12 +29,12 @@ demonstration. You can delete these and make your own, if you like. The
 questions are mostly Ruby and JavaScript right now.
 
 ## Install and requirements
-Clone the repo into a new directory (instructions should be clear enough from
-Github). Should probably make sure a recent version of Ruby (>2.2) is installed. 
-Execute `bundle install` to install the gem requirements.
+Clone the repo (instructions should be clear enough from Github). Should 
+probably make sure a recent version of Ruby (>2.2) is installed. Execute 
+`bundle install` to install the gem requirements.
 
-Only works on \*nix systems. I might be able to get it to work on Windows if
-anybody cares.
+Only works on \*nix systems (including modern Macs). I might be able to 
+get it to work on Windows if anybody cares.
 
 ## Run
 Once Ruby, the app, and the gem dependencies are installed, you should be able
@@ -46,30 +46,29 @@ data/revuu.json and the answers are in answers/, and, if you didn't want to
 delete them all by hand, you could simply delete the data file and the app 
 should still work. (If you try and it doesn't, let me know and I'll fix it.)
 
-Online help is available by pressing 'c' for 'commands'.
+Online help is available from the task list by pressing 'c' for 'commands'.
 
 ## Development to do list.
 
-* Allow the user to abandon task creation.
-* Refactor task creation (method much too long).
+* Badly needs a total refactoring.
 * Add starter code (for user to edit in his answer) rather than putting this
 directly in the instructions. Ensure that, as with Java now, unedited starter
 code is not interpreted as an answer (so it won't overwrite the archive). No
-reason this bit can't be 
+reason this bit can't be opened with the default text editor instead of Pico.
 * Maybe add an actual spaced repetition option.
 * Create features to export and import some (tagged) or all items.
-* Create features to mass-delete items.
+* Create features to mass-delete items (such as the pre-loaded questions, or 
+all of a language you're not studying, or just a tag you're putting aside for
+a while).
 * Add statistics (number of questions, averages, number overdue, number to do
 today, etc.).
-* Add language to tag list and delete needless variants.
 * Maybe eventually allow users to save archived items individually, and give
 them an easy way to browse and run them from within the app.
 
 ## Version notes
 
 ### 1.0 (September 27, 2018)
-
-First published version. Features include new tasks, list all tasks, delete
+First published version: Features include new tasks, list all tasks, delete
 task, sort by tags, and various user and programmer documentation. There are
 several features related to answering/reviewing tasks: saving a new review
 (including date and score), writing an answer using a (one supported) text
@@ -80,6 +79,7 @@ can edit task instructions, tags, date of next review, and user's current
 score. Task, review, and settings data are all saved in JSON files.
 
 ### 1.1 (September 28, 2018)
+Text editor support:
 Added support for Atom, Eclipse, Pico, Nano, Vi, Vim, and other text editors.
 This checks the user's system to see which are available and shows only those.
 The app now checks that the settings file exists, pre-populates it with
@@ -87,6 +87,7 @@ defaults if not, and makes some other improvements to settings. Also added a
 simple 'refresh' function for the task review and edit screen.
 
 ### 1.2 (October 1, 2018)
+Navigation:
 Added pagination and page navigation. Data about any persisted tag searches
 and navigation page was added as attributes to the global TaskList object. So
 the user can navigate to the second page of tasks, view one, quit that view,
@@ -95,9 +96,14 @@ tag search results (even the second page of them), he is returned to that page.
 That means users can search for one particular language (or method) without
 having to redo the search in between tasks.
 
-### 1.3 NEW VERSION # NOT DECLARED YET
-Moved gems to Gemfile and required them via `Bundler.require(:default)`. Now
+### 1.3 (October 6, 2018)
+Lots of little improvements: 
+Automatically inserts language name and variants into tag list. Similarly,
 inserts language name in parentheses before the page title, not in the data,
 but when the task is rendered to the user. 'x' command shows the "next due" 
-task to the user. Changed 'Node.js' to 'JavaScript'. Fixed several bugs; now 
-pretty stable.
+task to the user. Let user abandon task instead of inputting instructions or
+tags. Changed 'Node.js' to 'JavaScript'. Fixed several bugs; now pretty 
+stable, but badly needs refactoring; started adding notes for doing that.
+Now, when a task list is the result of filtering, there is a green message
+at the top of the list saying "Filtered by {language name}". Moved gems to 
+Gemfile and required them via `Bundler.require(:default)`.

@@ -20,51 +20,39 @@ class Task
     def generate_new_task
       system("clear")
       header
-
       # Get task instructions from user.
       instructions = self.get_input(type: 'Instructions', prompt:
-        "INPUT INSTRUCTIONS:\nOn the next screen, you'll type in the instructions for your new task.",
-        required: true)
+        "INPUT INSTRUCTIONS:\nOn the next screen, you'll type in the instructions for your new task. ",
+        required: true)         # <-- needs a lot of work/refactoring
       return nil unless instructions # Instructions required.
-
-      # NOTE: you probably need a whole new optional field: starter_code.
-      # This would be automatically inserted into the 'answer' file for
-      # the user's convenience, and it wouldn't necessarily need to be
-      # included in the Task view screen (especially if it's very long).
-
-      # Get tags from user.
-      tags = self.get_input(type: 'Tags', prompt:
-        "\nINPUT TAGS:\nOn the next screen, you'll input tags, separated by commas (optional).",
-        required: false)
-      tags = self.validate_tags(tags) if tags
-      # Note: tags are not required.
-
       # Get language from user.
       lang = configure_initial_language
-
+      # Get tags from user.
+      tags = get_tags_from_user # <-- needs a lot of work/refactoring
+      return nil if tags == 'q'  # TEMPORARY kluge
       # Get initial score from user.
-      puts "\nINITIAL SCORE:"
-      puts "Input initial score (5: mastered, 4: confident, 3: shaky, 2: barely recall, 1: blank)"
-      score = get_user_command('n').to_i
-      score = 1 unless [1, 2, 3, 4, 5].include? score
+      score = get_initial_score_from_user
+      # Construct new task!
       self.new(instructions: instructions, tags: tags, score: score, lang: lang)
     end # of ::generate_new_task
 
     # Given a prompt and a test, wring an acceptable answer from the user or let
     # him abandon adding the new task.
+    # REFACTOR: UGH, fix this or split it in two!
     def get_input(args)
       while true
         args[:prompt] += "\nThen press Ctrl-W to save and Ctrl-X to submit. "
-        args[:prompt] +=
-          args[:required] ? "\nPress <Enter> now to continue... " :
-            "\nPress <Enter> now to continue, or space-<Enter> to skip... "
+        args[:prompt] += "\nPress <Enter> now to continue (or [q]uit)... "
         print args[:prompt]
-        if gets.chomp == " " && ! args[:required]
-          return nil
+        choice = gets.chomp
+        # Ways to abandon input have two possible effects...
+        if (choice == "q")
+          return 'q'
         end
-        system("rm tmp/instructions.tmp") if File.file?("./tmp/instructions.tmp")
-        system("pico tmp/instructions.tmp")
-        input = File.read("./tmp/instructions.tmp").strip if File.file?("./tmp/instructions.tmp")
+        system("rm tmp/temp.tmp") if File.file?("./tmp/temp.tmp")
+        system("pico tmp/temp.tmp")
+        input = File.read("./tmp/temp.tmp").strip if File.file?("./tmp/temp.tmp")
+        system("rm tmp/temp.tmp") if File.file?("./tmp/temp.tmp")
         if args[:required]
           if input
             if input.length < 3
@@ -74,7 +62,10 @@ class Task
               return input
             end
           else
-            args[:prompt] = "\n\nERROR: Some input is required here."
+            if args[:type] == 'Instructions'
+              puts "Abandoning task (no input)."
+              return nil
+            end
           end
         else
           input ? (puts "#{args[:type]} saved."; return input) : (return nil)
@@ -82,12 +73,31 @@ class Task
       end
     end # of ::get_input
 
+    def get_tags_from_user
+      tags = self.get_input(type: 'Tags', prompt:
+          "\nINPUT TAGS:\nOn the next screen, you'll input tags, separated by commas (optional).",
+          required: false)
+      tags = self.validate_tags(tags)
+      # Note: tags are not required.
+    end
+
     def validate_tags(tags)
+      # Convert newlines to commas.
+      tags.gsub!("\n", ',') if tags
       # Convert user input string, which should be comma-separted, into array.
-      tags = tags.split(',').map!(&:strip)
-      # No tag should be over 20 characters long.
-      return nil if tags.find { |tag| tag.length > 20 }
-      tags # Otherwise, return the tag array.
+      tags = (tags ? tags.split(',').map!(&:strip) : [])
+      # Strip out language tags so you can put 'em in correctly; also, strip empty tags.
+      tags.reject! {|tag| ['JavaScript', 'JS', 'Node', 'Node.js', 'Bash', 'command line', 'bash scripting', 'shell', 'shell scripting', 'linux', 'Unix', 'Java', 'Ruby', 'C', 'C programming language', 'C language'].include? tag }.reject! {|tag| tag == ''}
+      # Put in canonical language tags; splat operators ensure that subarrays aren't created.
+      tags = tags.unshift(*[$lang, *$lang_alts])
+    end
+
+    def get_initial_score_from_user
+      puts "\nINITIAL SCORE:"
+      puts "Input initial score (5: mastered, 4: confident, 3: shaky, 2: barely recall, 1: blank)"
+      score = get_user_command('n').to_i
+      score = 1 unless [1, 2, 3, 4, 5].include? score
+      return score
     end
 
   end # of class methods
@@ -254,10 +264,6 @@ class Task
     # Use validation method if field type is tags.
     if field == 'tags'
       attrib = self.class.validate_tags(attrib)
-      unless attrib
-        puts "ERROR: tags must be comma-separated and at most 20 characters long."
-        return nil
-      end
     end
     # Set instance variable to contents of edited temp file.
     self.instance_variable_set("@#{field}", attrib)

@@ -190,14 +190,17 @@ JAVASTARTER
   # Language data hash.
   def get_available_langs
     [
-      {name: 'Ruby', ext: 'rb', cmd: 'ruby', cmnt: '#'},
-      {name: 'JavaScript', ext: 'js', cmd: 'node', cmnt: '//'},
+      {name: 'Ruby', ext: 'rb', cmd: 'ruby', cmnt: '#', alts: []},
+      {name: 'JavaScript', ext: 'js', cmd: 'node', cmnt: '//', alts: 
+        ['JS', 'Node', 'Node.js']},
       {name: 'Java', ext: 'java', cmd: 'javac', cmd2: 'java <name-no-ext>',
-        cmnt: '//', one_main_per_file: true},
+        cmnt: '//', one_main_per_file: true, alts: []},
       {name: 'C', ext: 'c', cmd: 'gcc', cmd2: './a.out', cmnt: '/*',
-        cmnt2: '*/', one_main_per_file: true},
-      {name: 'Bash', ext: 'sh', cmd: '/bin/bash', cmnt: '#'},
-      {name: 'Other', ext: 'txt', cmd: 'more', cmnt: '#'}
+        cmnt2: '*/', one_main_per_file: true, alts: ['C language',
+        'C programming language']},
+      {name: 'Bash', ext: 'sh', cmd: '/bin/bash', cmnt: '#', alts: ['command line', 'shell',
+        'shell scripting', 'Bash scripting', 'Linux', 'Unix']},
+      {name: 'Other', ext: 'txt', cmd: 'more', cmnt: '#', alts: []}
     ]
   end
 
@@ -215,6 +218,7 @@ JAVASTARTER
     $cmd2  = l[:cmd2]  ? l[:cmd2]  : false  # Run after compiling in, e.g., C.
     $cmnt2 = l[:cmnt2] ? l[:cmnt2] : false  # Comment-ender in, e.g., C.
     $one_main_per_file = l[:one_main_per_file] ? l[:one_main_per_file] : false
+    $lang_alts = l[:alts]
   end
 
   # Accepts a hash (e.g., {'lang' => 'C'}) & overwrites settings file with it.
