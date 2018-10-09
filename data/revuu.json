@@ -1,217 +1,36 @@
 {
   "tasks": [
     {
-      "instructions": "Write \"Hello world!\"",
+      "instructions": "asdf",
       "tags": [
-        "C",
-        "C language",
-        "C programming language",
-        "int",
-        "main",
-        "printf"
+        "Ruby"
       ],
-      "score": 3,
-      "saved": true,
-      "lang": "C",
-      "id": 1,
-      "date_started": "2018-09-23T00:00:00+00:00",
-      "next_review_date": "2018-10-07T05:34:30-04:00",
-      "all_reviews": [
-        {
-          "score": 5,
-          "review_date": "2018-09-26T22:06:40-04:00"
-        },
-        {
-          "score": 3,
-          "review_date": "2018-09-27T05:34:03-04:00"
-        }
-      ]
-    },
-    {
-      "instructions": "Demonstrate let vs. var\n\nAssign i in two different places; in one place, assign it \"function\nscope\", and in the other, \"block scope\". The result should print out\ntwo true statements. Assign a js with 'var' and before the function,\nthen try checking its value inside the function.\n\nfunction checkScope() {\n\"use strict\";\n  if (true) {\n    console.log(\"i is: \", i);\n  }\n  console.log(\"i is: \", i);\n  return i;\n}\ncheckScope();",
-      "tags": [
-        "JavaScript",
-        "JS",
-        "Node",
-        "Node.js",
-        "var",
-        "let",
-        "scope"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "JavaScript",
-      "id": 35,
-      "date_started": "2018-10-03T20:02:51+02:00",
-      "next_review_date": "2018-10-07T20:16:09+02:00",
-      "all_reviews": [
-        {
-          "score": 3,
-          "review_date": "2018-10-03T20:16:09+02:00"
-        }
-      ]
-    },
-    {
-      "instructions": "Using the colorize gem\n\nIn the following printed strings, use the Colorize gem to print the first one\ngreen, the second with a red background, and the third one with black-on-white\nprint.\n\nputs \"I am the first line.\"\nputs \"I am the second line.\"\nputs \"I am the third line.\"",
-      "tags": [
-        "Ruby",
-        "colorize"
-      ],
-      "score": 4,
+      "score": 5,
       "saved": true,
       "lang": "Ruby",
-      "id": 24,
-      "date_started": "2018-10-01T09:28:51-04:00",
-      "next_review_date": "2018-10-08T11:26:01-04:00",
+      "id": 47,
+      "date_started": "2018-10-09T15:32:17-05:00",
+      "next_review_date": "2018-10-02T16:26:07-05:00",
       "all_reviews": [
-        {
-          "score": 4,
-          "review_date": "2018-10-01T11:26:01-04:00"
-        }
+
       ]
     },
     {
-      "instructions": "So many ways to write an em dash\n\nUse Integer#chr, a string containing \\u, and Array#pack to write three em \ndashes. No need to have these perfectly memorized (and the hex code, \ndefinitely not). The question is, how confident are you in using these things?\n\nNOTE: You definitely need to add questions about each of these methods because\neach is fairly involved and you're having to brute-force memorize this, which\nis really contrary to what Revuu questions are all about.",
-      "tags": [
-        "Ruby",
-        "chr",
-        "pack",
-        "\\u",
-        "\\x",
-        "character encoding"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "Ruby",
-      "id": 32,
-      "date_started": "2018-10-03T09:10:43+01:00",
-      "next_review_date": "2018-10-09T08:34:18+02:00",
-      "all_reviews": [
-        {
-          "score": 2,
-          "review_date": "2018-10-03T10:09:50+01:00"
-        },
-        {
-          "score": 3,
-          "review_date": "2018-10-04T08:46:01+02:00"
-        },
-        {
-          "score": 3,
-          "review_date": "2018-10-06T08:34:18+02:00"
-        }
-      ]
-    },
-    {
-      "instructions": "Shortcut for def self.my_class_method?\nGiven this little class, how can you abbreviate 'def self.my_class_method'\nand 'def self.my_other_class_method'?\n\nRewrite it, and then call the methods (one line per each) outside the \nclass definition.\n\nclass MyClass\n  def self.my_class_method\n    puts \"You successfully called my class method! Woo hoo!\"\n  end\n\n  def self.my_other_class_method\n    puts \"Oh my god you did it twice!\"\n  end\nend",
-      "tags": [
-        "Ruby",
-        "class << self",
-        "self",
-        "class methods"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "Ruby",
-      "id": 4,
-      "date_started": "2018-09-25T03:29:33-04:00",
-      "next_review_date": "2018-10-09T03:42:08-04:00",
-      "all_reviews": [
-        {
-          "score": 3,
-          "review_date": "2018-09-25T03:42:08-04:00"
-        }
-      ]
-    },
-    {
-      "instructions": "Return an array of squared positive integers\n\nGiven \n\nlet nums = [3, -25, 0.67, 7, -12.25, 12.25, 12];\n\nwrite and then print the result of using chained arrow functions that \nreturn the squares of only elements that are (a) positive and \n(b) integers. Response should be [9, 49, 144].",
+      "instructions": "asdf",
       "tags": [
         "JavaScript",
         "JS",
         "Node",
-        "Node.js",
-        "filter",
-        "map",
-        "pow"
+        "Node.js"
       ],
-      "score": 3,
+      "score": 1,
       "saved": true,
       "lang": "JavaScript",
-      "id": 43,
-      "date_started": "2018-10-06T13:12:15+01:00",
-      "next_review_date": "2018-10-09T14:13:27+01:00",
+      "id": 49,
+      "date_started": "2018-10-09T16:19:41-05:00",
+      "next_review_date": "2018-10-09T16:19:41-05:00",
       "all_reviews": [
-        {
-          "score": 3,
-          "review_date": "2018-10-06T14:13:27+01:00"
-        }
-      ]
-    },
-    {
-      "instructions": "Arrow function syntax\n\nRewrite this simple function without the word 'function()', and then prove\nthat it works by printing the result of calling it:\n\nconst LoveMyFunction = function() {\n  return \"This is really nice function, isn't it?\"\n}",
-      "tags": [
-        "JavaScript",
-        "JS",
-        "Node",
-        "Node.js",
-        "arrow functions"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "JavaScript",
-      "id": 40,
-      "date_started": "2018-10-05T19:17:48+02:00",
-      "next_review_date": "2018-10-09T19:30:10+02:00",
-      "all_reviews": [
-        {
-          "score": 3,
-          "review_date": "2018-10-05T19:30:01+02:00"
-        }
-      ]
-    },
-    {
-      "instructions": "Arrays of const values\n\nIf an array arr is made up of the values of variables declared with 'const',\nand arr itself is declared with 'const', is it possible to change one of \nvalues of the array using, e.g., arr[0] = 'foo'? Demonstrate (and know the\nanswer in advance).",
-      "tags": [
-        "JavaScript",
-        "JS",
-        "Node",
-        "Node.js",
-        "const"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "JavaScript",
-      "id": 38,
-      "date_started": "2018-10-04T21:18:50+02:00",
-      "next_review_date": "2018-10-09T21:20:54+02:00",
-      "all_reviews": [
-        {
-          "score": 4,
-          "review_date": "2018-10-04T21:20:54+02:00"
-        }
-      ]
-    },
-    {
-      "instructions": "Stop that mutation!\n\nCreate an object (using const) that has components (elements or attributes)\nand then apply a certain method that will prevent those components from\nbeing changed. Print out a component; then attempt to change it; then print\nit out again. Did you know what would happen? Make your prediction in a \ncomment beforehand.",
-      "tags": [
-        "JavaScript",
-        "JS",
-        "Node",
-        "Node.js",
-        "Object#freeze",
-        "freeze",
-        "const"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "JavaScript",
-      "id": 39,
-      "date_started": "2018-10-04T21:32:35+02:00",
-      "next_review_date": "2018-10-09T22:00:52+02:00",
-      "all_reviews": [
-        {
-          "score": 3,
-          "review_date": "2018-10-04T22:00:52+02:00"
-        }
+
       ]
     },
     {
@@ -355,6 +174,37 @@
       ]
     },
     {
+      "instructions": "Write \"Hello world!\"",
+      "tags": [
+        "C",
+        "C language",
+        "C programming language",
+        "int",
+        "main",
+        "printf"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "C",
+      "id": 1,
+      "date_started": "2018-09-23T00:00:00+00:00",
+      "next_review_date": "2018-10-14T06:57:41-05:00",
+      "all_reviews": [
+        {
+          "score": 5,
+          "review_date": "2018-09-26T22:06:40-04:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-09-27T05:34:03-04:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-07T06:57:41-05:00"
+        }
+      ]
+    },
+    {
       "instructions": "Demonstrate the splat operator\n\nSuppose you have \n\nfriends = ['Jack', 'Jill', 'Sam']\n\nand you want to pass the array's elements not as an array, but \nindividually, to a method, preceded by a greeting type (\"yo\"). \nHow do you do that quite simply?\n\ndef yo(???)\n  ???.each { |friend| puts \"???, #{friend}!\" }\nend\n\nRelated problem: suppose you want to use 'first' and 'the_rest' \nfor 'a' and ['b', 'c', 'd'], respectively. You already have \n\narr = ['a', 'b', 'c', 'd']\n\nso how do you assign the variables in *one simple* line? Do so\nand then print them in a string: \"I really like a, but as\nto b, c, d...they're OK.\"",
       "tags": [
         "Ruby",
@@ -375,6 +225,60 @@
         {
           "score": 4,
           "review_date": "2018-10-05T06:58:44+02:00"
+        }
+      ]
+    },
+    {
+      "instructions": "Data types galore\n\nWrite a string or a few strings that use the following data types:\nchar, int, float, double. Use 'short' and 'long' to taste; but use\nthem. For the numbers, use something close to the smallest number \nthat the next \"smaller\" number data type couldn't handle. Perform \nsome arithmetic operations with the number data types.\n\nFor reference, maybe see: https://en.wikipedia.org/wiki/C_data_types",
+      "tags": [
+        "C",
+        "C language",
+        "C programming language",
+        "char",
+        "short",
+        "long",
+        "double",
+        "float",
+        "printf"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "C",
+      "id": 46,
+      "date_started": "2018-10-08T04:02:08-04:00",
+      "next_review_date": "2018-10-15T07:55:47-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-08T07:55:47-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "Demonstrate let vs. var\n\nIn the following, assign i in two different places; in one place, assign \nit \"function scope\", and in the other, \"block scope\". The result should \nprint out two different statements. Assign another variable with 'var' \nbefore the function, then try checking its value inside the function.\n\nfunction checkScope() {\n\"use strict\";\n  if (true) {\n    console.log(\"i is: \", i);\n  }\n  console.log(\"i is: \", i);\n  return i;\n}\ncheckScope();",
+      "tags": [
+        "JavaScript",
+        "JS",
+        "Node",
+        "Node.js",
+        "var",
+        "let",
+        "scope"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "JavaScript",
+      "id": 35,
+      "date_started": "2018-10-03T20:02:51+02:00",
+      "next_review_date": "2018-10-16T08:10:19-05:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-03T20:16:09+02:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-07T08:10:19-05:00"
         }
       ]
     },
@@ -417,6 +321,60 @@
         {
           "score": 4,
           "review_date": "2018-10-03T08:42:04+01:00"
+        }
+      ]
+    },
+    {
+      "instructions": "Return an array of squared positive integers\n\nGiven \n\nlet nums = [3, -25, 0.67, 7, -12.25, 12.25, 12];\n\nwrite and then print the result of using chained arrow functions that \nreturn the squares of only elements that are (a) positive and \n(b) integers. Response should be [9, 49, 144].",
+      "tags": [
+        "JavaScript",
+        "JS",
+        "Node",
+        "Node.js",
+        "filter",
+        "map",
+        "pow"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "JavaScript",
+      "id": 43,
+      "date_started": "2018-10-06T13:12:15+01:00",
+      "next_review_date": "2018-10-19T10:50:06-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-06T14:13:27+01:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-09T10:50:06-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "Arrays of const values\n\nIf an array arr is made up of the values of variables declared with 'const',\nand arr itself is declared with 'const', is it possible to change one of \nvalues of the array using, e.g., arr[0] = 'foo'? Demonstrate (and know the\nanswer in advance).",
+      "tags": [
+        "JavaScript",
+        "JS",
+        "Node",
+        "Node.js",
+        "const"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "JavaScript",
+      "id": 38,
+      "date_started": "2018-10-04T21:18:50+02:00",
+      "next_review_date": "2018-10-19T10:56:37-04:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-04T21:20:54+02:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-09T10:56:37-04:00"
         }
       ]
     },
@@ -491,6 +449,94 @@
       ]
     },
     {
+      "instructions": "So many ways to write an em dash\n\nUse Integer#chr, a string containing \\u, and Array#pack to write three em \ndashes. No need to have these perfectly memorized (and the hex code, \ndefinitely not). The question is, how confident are you in using these things?\n\nNOTE: You definitely need to add questions about each of these methods because\neach is fairly involved and you're having to brute-force memorize this, which\nis really contrary to what Revuu questions are all about.",
+      "tags": [
+        "Ruby",
+        "chr",
+        "pack",
+        "\\u",
+        "\\x",
+        "character encoding"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 32,
+      "date_started": "2018-10-03T09:10:43+01:00",
+      "next_review_date": "2018-10-23T09:49:54-04:00",
+      "all_reviews": [
+        {
+          "score": 2,
+          "review_date": "2018-10-03T10:09:50+01:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-04T08:46:01+02:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-06T08:34:18+02:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-09T09:49:54-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "Shortcut for def self.my_class_method?\nGiven this little class, how can you abbreviate 'def self.my_class_method'\nand 'def self.my_other_class_method'?\n\nRewrite it, and then call the methods (one line per each) outside the \nclass definition.\n\nclass MyClass\n  def self.my_class_method\n    puts \"You successfully called my class method! Woo hoo!\"\n  end\n\n  def self.my_other_class_method\n    puts \"Oh my god you did it twice!\"\n  end\nend",
+      "tags": [
+        "Ruby",
+        "class << self",
+        "self",
+        "class methods"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 4,
+      "date_started": "2018-09-25T03:29:33-04:00",
+      "next_review_date": "2018-10-23T10:39:05-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-09-25T03:42:08-04:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-09T10:39:05-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "Stop that mutation!\n\nCreate an object (using const) that has components (elements or attributes)\nand then apply a certain method that will prevent those components from\nbeing changed. Print out a component; then attempt to change it; then print\nit out again. Did you know what would happen? Make your prediction in a \ncomment beforehand.",
+      "tags": [
+        "JavaScript",
+        "JS",
+        "Node",
+        "Node.js",
+        "Object#freeze",
+        "freeze",
+        "const"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "JavaScript",
+      "id": 39,
+      "date_started": "2018-10-04T21:32:35+02:00",
+      "next_review_date": "2018-10-23T11:05:36-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-04T22:00:52+02:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-09T11:05:36-04:00"
+        }
+      ]
+    },
+    {
       "instructions": "Calling class, instance, and global methods\n\nFrom ::create_with_num, set num equal to ::class_number, then (within the\nsame method) return an instance of MyClass with (number: num) as an argument. \nUse ::create_with_num to create an instance. (3) Let #my_sum = the \nsum of @number, ::class_number_deux, #instance_number, and global_number. \nPrint the result of calling #my_sum on the instance. Should be 27.\n\nclass MyClass\n  class << self\n    def class_number; 5; end\n\n    def class_number_deux; 2; end\n\n    def create_with_num\n      # Type here\n    end\n  end\n\n  attr_accessor :number\n\n  def initialize(args)\n    # Type here\n  end\n\n  def instance_number; 10; end\n\n  def my_sum\n    # Type here\n  end\n\nend\n\ndef global_number; 10; end\n# Type here",
       "tags": [
         "Ruby",
@@ -536,6 +582,29 @@
         {
           "score": 4,
           "review_date": "2018-10-04T18:53:35+02:00"
+        }
+      ]
+    },
+    {
+      "instructions": "Using the colorize gem\n\nIn the following printed strings, use the Colorize gem to print the first one\ngreen, the second with a red background, and the third one with black-on-white\nprint.\n\nputs \"I am the first line.\"\nputs \"I am the second line.\"\nputs \"I am the third line.\"",
+      "tags": [
+        "Ruby",
+        "colorize"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 24,
+      "date_started": "2018-10-01T09:28:51-04:00",
+      "next_review_date": "2018-10-29T01:43:33-04:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-01T11:26:01-04:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-08T01:43:33-04:00"
         }
       ]
     },
@@ -645,6 +714,32 @@
         {
           "score": 4,
           "review_date": "2018-10-03T08:30:39+01:00"
+        }
+      ]
+    },
+    {
+      "instructions": "Arrow function syntax\n\nRewrite this simple function without the word 'function()', and then prove\nthat it works by printing the result of calling it:\n\nconst LoveMyFunction = function() {\n  return \"This is really nice function, isn't it?\"\n}",
+      "tags": [
+        "JavaScript",
+        "JS",
+        "Node",
+        "Node.js",
+        "arrow functions"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "JavaScript",
+      "id": 40,
+      "date_started": "2018-10-05T19:17:48+02:00",
+      "next_review_date": "2018-11-09T10:53:14-05:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-05T19:30:01+02:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-09T10:53:14-04:00"
         }
       ]
     },

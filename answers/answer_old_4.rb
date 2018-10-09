@@ -9,5 +9,12 @@ class MyClass
     end
   end
 end
+
 MyClass.my_class_method
 MyClass.my_other_class_method
+
+
+
+#####################################
+
+
