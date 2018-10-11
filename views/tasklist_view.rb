@@ -33,6 +33,8 @@ module TasklistView
     end
     puts separator
     show_pagination_string
+    puts $help
+    puts ''
   end
 
   # Get search term (tag) from user.
@@ -78,7 +80,7 @@ module TasklistView
       # Delete the "page" above the last page that doesn't exist.
       str.gsub!(") #{pnum + 1}", ')')
     end
-    puts("  " + "Nav: " + str)
+    puts("   " + "Nav: " + str)
   end
 
 

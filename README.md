@@ -64,6 +64,9 @@ a while).
 today, etc.).
 * Maybe eventually allow users to save archived items individually, and give
 them an easy way to browse and run them from within the app.
+* Create an "installation" or "first run" script, allowing the user to select
+default language and default text editor.
+* Write a proper help/FAQ file. Maybe show it to the user on first run.
 
 ## MVC refactoring notes
 
@@ -120,3 +123,13 @@ stable, but badly needs refactoring; started adding notes for doing that.
 Now, when a task list is the result of filtering, there is a green message
 at the top of the list saying "Filtered by {language name}". Moved gems to
 Gemfile and required them via `Bundler.require(:default)`.
+
+### 2.0 (October 10, 2018)
+Refactoring and instructions:
+The biggest change that justifies the major version number change is that
+the code has been completely rearranged into /models, /controllers, and 
+/views folders, on analogy with web-based MVC development. There is still
+quite a bit of refactoring to do, but this is a big enough change to warrant
+the new number. In addition, there is now a large, detailed help system
+accessible from both task list and task views. There are also a number of
+smaller improvements.

@@ -67,8 +67,8 @@ module TaskView
     next_precise_date = DateTime.parse(@next_review_date).
       strftime("%-m/%-d/%Y")
     puts "  Review dates >>  Last: #{last_precise_date}  Next: #{next_precise_date} (#{prettify_timestamp(@next_review_date)})"
-    puts "\nCOMMANDS  Review: [s]ave review  [a]nswer  [r]un answer  answers [h]elp"
-    puts   "                  [c]onfigure language  [o]ld answers  [rr]un old answers"
+    puts "\nCOMMANDS  Review: [s]ave review  [a]nswer  [r]un answer  [h]elp"
+    puts   "                  [o]ld answers  [rr]un old answers  [c]onfigure language"
     puts   "            Edit: [i]nstructions  [t]ags  [d]ate of next review  [sc]ore"
     puts   "            Also: re[f]resh view  [q]uit review and editing\n\n"
   end
@@ -95,6 +95,76 @@ module TaskView
     pretty = DateTime.parse(date).
       strftime("%-m/%-d/%Y (#{prettify_timestamp(date)})")
     date
+  end
+
+  # Given a task, opens its answer file with the default text editor.
+  def write_answer(task)
+    # If answer file has content, ask user if he wants it archived first.
+    if (File.exist?($location) && File.stat($location).size > 0 &&
+      File.read($location) != java_starter(task))
+      puts "An answer exists. Want to archive it before opening? ([y]/n)"
+      ans = get_user_command('a')
+      if (ans == 'y' || ans == '')
+        archive_old_answer(task)
+        # If file doesn't exist, create it. If Java, add template.
+        create_answer_file(task)
+      end
+    else
+      create_answer_file(task)
+    end
+    # Open with default editor. (Set default in #configure_answers. Helper.)
+    system("#{$textedcmd} #{$location}")
+    # Remind user to press 'r' to run.
+    puts "When you're done, don't forget to press 'r' to run."
+  end
+
+  def view_old_answers(task)
+    # If it exists and is nonzero, display archive with default text editor.
+    if ( File.exist?($old_location) && File.stat($old_location).size > 0 )
+      system("#{$textedcmd} #{$old_location}")
+      # Remind user to press 'rr' to run.
+      puts "If you want, you can run the old answer archive with 'rr'."
+    else # ...or else say it doesn't exist.
+      puts "There is no old answer archive for this task yet."
+    end
+  end
+
+  # Given a task (answer), run it (optionally, an archived task answer).
+  def run_answer(task, old = false)
+    old ? (file = $old_file and location = $old_location) :
+      (file = $file and location = $location)
+    if ( File.exist?(location) && File.stat(location).size > 0 )
+      puts ''
+      puts "Running #{file}:"
+      puts ("=" * 75)
+      puts ''
+      system("cd answers && #{$cmd} #{file}")
+      # If the language is compiled, the $cmd line runs the compiler.
+      # The following then runs the compiled executable.
+      if $cmd2
+        # Java, e.g., needs to remove the extension. Other rules can be
+        # added here for new languages as needed.
+        subbed_cmd = $cmd2.gsub('<name-no-ext>', file.gsub(".#{$ext}", ''))
+        system("cd answers && #{subbed_cmd}")
+      end
+      puts ''
+      puts ("=" * 75)
+      # Find the last review performed.
+      review_info_last_review = task.all_reviews.max_by {|r| r['review_date']}
+      # Decide whether to prompt user to press 's'. Skip if no reviews.
+      if review_info_last_review
+        date_of_last_review = review_info_last_review['review_date']
+        last_was_today =
+          ( DateTime.parse(date_of_last_review).yday == DateTime.now.yday ?
+            true : false )
+      else
+        last_was_today = false
+      end
+      puts (old || last_was_today) ? "\n" :
+        "\nIf it's correct, press 's' to save a review."
+    else
+      puts "The #{old ? 'old answer archive' : 'answer'} file doesn't exist."
+    end
   end
 
 

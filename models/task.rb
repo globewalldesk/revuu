@@ -36,6 +36,7 @@ class Task
       # First review is due immediately.
       @next_review_date = DateTime.now.to_s # Saved as string.
       save_new_task
+      edit
     end
   end
 
@@ -46,6 +47,16 @@ class Task
       hash[var.to_s[1..-1]] = self.instance_variable_get var
     end
     hash
+  end
+
+  # Given a task ID, set the globals for the task's answer files & location. 
+  def get_locations(id)
+    # Determine filename for answer for this task.
+    $file = "answer_#{id}.#{$ext}"
+    $location = "./answers/#{$file}"
+    # Determine filename for old answers for this task. (Helper.)
+    $old_file = "answer_old_#{id}.#{$ext}"
+    $old_location = "./answers/#{$old_file}"
   end
 
   private

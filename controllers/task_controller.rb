@@ -49,8 +49,7 @@ module TaskController
     when 'a' # See Answer module for this and many of the next features.
       write_answer(self)
     when 'h'
-      help_with_answers
-      puts "Answer feature coming soon."
+      App.launch_instructions_system
     when 'r'
       run_answer(self)
     when 'rr'
@@ -137,6 +136,44 @@ module TaskController
     score ? @score = score : (return nil)
     $tasks.save_tasklist
     display_info
+  end
+
+
+  def configure_initial_language
+    puts "\nSET LANGUAGE:"
+    new_lang, available_langs = solicit_languages_from_user
+    # Assign correct globals. Tell user language he's using now.
+    if (new_lang && $lang != available_langs[new_lang][:name])
+      puts "OK, using #{available_langs[new_lang][:name]}."
+      # Set language globals.
+      assign_language_globals(available_langs[new_lang])
+      # Save as default settings by saving to file.
+      update_settings_file('lang' => available_langs[new_lang][:name])
+      return available_langs[new_lang][:name]
+    else
+      puts "OK, we'll go with #{$lang}."
+      return $lang
+    end
+  end
+
+  def configure_language(task)
+    new_lang, available_langs = solicit_languages_from_user
+    # Assign correct globals. Tell user if he is now switching languages.
+    if (! new_lang.nil? && $lang != available_langs[new_lang][:name])
+      puts "OK, switching from #{$lang} to #{available_langs[new_lang][:name]}."
+      # Save language!
+      assign_language_globals(available_langs[new_lang])
+      # Remember default across sessions by saving to file.
+      update_settings_file('lang' => available_langs[new_lang][:name])
+      # Save new language to task.
+      task.lang = available_langs[new_lang][:name]
+      # And save to revuu.json too.
+      $tasks.save_tasklist
+      # Re-run #get_locations (they include $ext, which has changed)
+      get_locations(task.id)
+    else
+      puts "Sticking with #{$lang}."
+    end
   end
 
 end

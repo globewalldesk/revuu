@@ -1,59 +1,4 @@
-module Helper
-
-  $help =
-    "\nCommands are:\n" +
-    "  [n]ew task  [1] review/edit task #1  show ne[x]t  [l]ist all tasks\n" +   
-    "  [d]elete task  sort list by [t]ag  choose text [e]ditor  [i]ntroduction\n" +
-    "  [c]ommands"
-
-  $introduction = <<ENDINTRO
-Welcome to Revuu!
-
-This app will help you review programming tasks, improving understanding and
-keeping your skills fresh. It was written with the notion that programmers (and 
-others) need repetition of not declarative but procedural knowledge.
-
-So when you perform a review, you don't try to answer a question in words.
-Instead, you try to perform a task. Essentially, to use Revuu, you'd add
-complex, not simple, tasks. Probably the ideal Revuu task would require
-2-10 minutes to complete.
-
-The basic functions of the program are adding tasks, using the handy answer
-filing and editing system (which probably works with your favorite text editor),
-running the script and seeing the results, and recording that you've done a
-review and that the next review should be done on a certain date. The two basic
-views of the app are a paginated list of tasks and an individual task view.
-
-Currently, we support Ruby, Node.js (JavaScript), Java, C, and Bash scripting.
-We also support many commonly-used text editors and IDEs.
-
-Add copious, well-chosen tags in order to be able to sort tasks.
-
-Revuu ships with a bunch of pre-made questions and answers by way of 
-demonstration. You can delete these and make your own, if you like. The 
-questions are mostly Ruby and JavaScript right now.
-ENDINTRO
-
-  def get_user_command(leader)
-    extra_space = ( ("=+".include? (leader)) ? "" : "  ")
-    print "#{extra_space}#{leader}> "
-    gets.chomp
-  end
-
-  def header
-    puts sprintf("%-69s%s", " * R * E * V * U * U *",  "v. 1.3").
-      colorize(:color => :black, :background => :white)
-    puts "\n"
-  end
-
-  def get_locations(id)
-    # Determine filename for answer for this task.
-    $file = "answer_#{id}.#{$ext}"
-    $location = "./answers/#{$file}"
-    # Determine filename for old answers for this task. (Helper.)
-    $old_file = "answer_old_#{id}.#{$ext}"
-    $old_location = "./answers/#{$old_file}"
-  end
+module LanguageHelper
 
   def solicit_languages_from_user
     # Show user language.
@@ -156,30 +101,6 @@ public class answer_#{task.id} {
 JAVASTARTER
   end
 
-  def ensure_there_is_a_default_settings_file
-    `touch ./data/settings.json` unless File.exists? ("./data/settings.json")
-  end
-
-  # Checks if there is no data/settings.json file. Creates one and populates it
-  # with some defaults.
-  def initialize_settings_if_necessary
-    settings_file = "./data/settings.json"
-    if File.exist?(settings_file) && File.stat(settings_file).size > 0
-      return
-    else
-      system("touch #{settings_file}")
-      ur_settings = {'lang' => 'Ruby', 'texted' => 'Pico'}
-      File.write(settings_file, ur_settings.to_json)
-    end
-  end
-
-  # Loads JSON from settings.json into hash, or else returns {}.
-  def load_settings_into_hash
-    raw_settings = File.read("./data/settings.json")
-    raw_settings = {} if raw_settings == ""
-    settings_hash = ( raw_settings == {} ? {} : JSON.parse(raw_settings) )
-  end
-
   # Given a language name (as in Task#lang or as stored in settings.json)
   # return a language data hash.
   def lookup_lang_data_from_name_cmd(lang_cmd)
@@ -187,7 +108,7 @@ JAVASTARTER
     langs.find {|l| l[:name] == lang_cmd }
   end
 
-  # Language data hash.
+  # Language data hashes.
   def get_available_langs
     [
       {name: 'Ruby', ext: 'rb', cmd: 'ruby', cmnt: '#', alts: []},
@@ -221,16 +142,5 @@ JAVASTARTER
     $lang_alts = l[:alts]
   end
 
-  # Accepts a hash (e.g., {'lang' => 'C'}) & overwrites settings file with it.
-  def update_settings_file(args)
-    # START HERE: arguments are now in a hash! Make this work for
-    # update_editor_in_settings_file as well as language!
-    ensure_there_is_a_default_settings_file
-    settings_hash = load_settings_into_hash
-    # Merge new language info into hash.
-    hash_to_write = settings_hash.merge(args)
-    # Write new hash.
-    File.write("./data/settings.json", hash_to_write.to_json)
-  end
 
 end

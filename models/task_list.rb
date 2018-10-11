@@ -73,4 +73,10 @@ class TaskList
     last_pg
   end
 
+  # Simply loads the next item (i.e., with the earliest review date).
+  def show_next_item
+    list = @default_tag ? @tag_filtered_list : @list
+    list[0].edit
+  end
+
 end # of class TaskList

@@ -4,12 +4,9 @@ Bundler.require(:default)
 
 # HELPERS
 Dir["./helpers/*.rb"].each {|file| require file }
-include Helpers
 include DatePrettifier
-# LIB (to move balance to HELPERS later)
-Dir["./lib/*.rb"].each {|file| require file }
-include Answer
-include Helper
+include Helpers
+include LanguageHelper
 # CONTROLLERS
 Dir["./controllers/*.rb"].each {|file| require file }
 include TaskController
@@ -52,7 +49,29 @@ that you've done a review, and schedule more for the future. The developer
 finds it to be a handy way to learn and solidify easy-to-forget skills.
 
 ENDINST
-    intro += $help + "\n\n"
+  end
+
+  def self.launch_instructions_system
+    clear_screen
+    puts "Welcome to Revuu!"
+    instr_choice = ''
+    skip_list = false
+    until instr_choice == 'q'
+      unless skip_list
+        display_instruction_choices
+        puts 'Type a number above to learn how to use the system, or [q]uit: '
+      end
+      instr_choice = get_user_command('i')
+      next if instr_choice == 'q'
+      instr_choice = instr_choice.to_i
+      if validate_instr_choice(instr_choice)
+        display_instruction(instr_choice)
+        skip_list = false
+      else
+        puts "Not a valid option.\n\n"
+        skip_list = true
+      end
+    end
   end
 
   # Load the default language and text editor ($lang, $texted).
@@ -145,8 +164,6 @@ ENDINST
       task = Task.generate_new_task
       puts task ? "New task saved." :
         "Task input abandoned or failed."
-    when 'c', 'h', 'help', '?'
-      puts $help
     when 'l'
       $tasks.clear_tag_search
       $tasks.display_tasks
@@ -156,11 +173,8 @@ ENDINST
       $tasks.tag_search
     when 'e'
       choose_text_editor
-    when 'i'
-      system 'clear'
-      puts header
-      puts $introduction
-      puts $help
+    when 'h'
+      self.class.launch_instructions_system
     when /\A(\d+)\Z/
       task = $tasks.validate_edit_request($1.to_i)
       task ? task.edit : (puts "Task not found.")
@@ -184,5 +198,3 @@ ENDINST
 end
 
 App.new
-
-# Statistics

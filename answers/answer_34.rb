@@ -1,1 +1,1 @@
-puts File.stat("../revuu.rb").size
+puts(File.stat('../revuu.rb').size)

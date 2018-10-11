@@ -1,79 +1,24 @@
 {
   "tasks": [
     {
-      "instructions": "asdf",
-      "tags": [
-        "Ruby"
-      ],
-      "score": 5,
-      "saved": true,
-      "lang": "Ruby",
-      "id": 47,
-      "date_started": "2018-10-09T15:32:17-05:00",
-      "next_review_date": "2018-10-02T16:26:07-05:00",
-      "all_reviews": [
-
-      ]
-    },
-    {
-      "instructions": "asdf",
-      "tags": [
-        "JavaScript",
-        "JS",
-        "Node",
-        "Node.js"
-      ],
-      "score": 1,
-      "saved": true,
-      "lang": "JavaScript",
-      "id": 49,
-      "date_started": "2018-10-09T16:19:41-05:00",
-      "next_review_date": "2018-10-09T16:19:41-05:00",
-      "all_reviews": [
-
-      ]
-    },
-    {
-      "instructions": "Determine if a file has nonzero size\n\nUsing a File class method, simply print out the size of \"../revuu.rb\".",
-      "tags": [
-        "Ruby",
-        "File#stat"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "Ruby",
-      "id": 34,
-      "date_started": "2018-10-03T12:12:37+01:00",
-      "next_review_date": "2018-10-10T12:39:34+01:00",
-      "all_reviews": [
-        {
-          "score": 3,
-          "review_date": "2018-10-03T12:39:34+01:00"
-        }
-      ]
-    },
-    {
-      "instructions": "Advanced arrow functions\n\nRewrite this as a nested arrow function in the most concise way possible:\n\nconst factorial = function(arr) {\n  return arr.reduce(function(x,y) {\n    return x * y\n  });\n}\n\nUse the result of your rewriting to prove that factorial(arr) = 120,\nwhere arr = [5, 4, 3, 2, 1] (print out the answer).",
+      "instructions": "Generate [0, 1, 2, 3, 4] fast\n\nIn a single expression broken over a few lines for readability, generate and \nprint the array [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]. You'll need to use a spread \noperator, a constructor (not a literal), and a method, all in order to output \nan array.\n\nIf you need the review, comment each line, to say what it does.",
       "tags": [
         "JavaScript",
         "JS",
         "Node",
         "Node.js",
-        "arrow functions",
-        "reduce",
-        "nested functions"
+        "spread operator",
+        "array constructor",
+        "keys"
       ],
-      "score": 4,
+      "score": 2,
       "saved": true,
       "lang": "JavaScript",
-      "id": 42,
-      "date_started": "2018-10-06T12:36:05+01:00",
-      "next_review_date": "2018-10-10T13:05:42+01:00",
+      "id": 47,
+      "date_started": "2018-10-10T13:12:35-07:00",
+      "next_review_date": "2018-10-10T21:00:00-07:00",
       "all_reviews": [
-        {
-          "score": 4,
-          "review_date": "2018-10-06T13:05:42+01:00"
-        }
+
       ]
     },
     {
@@ -379,6 +324,29 @@
       ]
     },
     {
+      "instructions": "Determine if a file has nonzero size\n\nUsing a File class method, simply print out the size of \"../revuu.rb\".",
+      "tags": [
+        "Ruby",
+        "File#stat"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Ruby",
+      "id": 34,
+      "date_started": "2018-10-03T12:12:37+01:00",
+      "next_review_date": "2018-10-20T10:47:07-07:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-03T12:39:34+01:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-10T10:47:07-07:00"
+        }
+      ]
+    },
+    {
       "instructions": "Use ASCII escape sequences correctly\n\nRewrite the strings 'Band-Aid(r)' and '98.6 degrees F' to include the (r)\nand degree symbols, using Unicode and hexadecimal escape sequences (both\n--which you can, of course, look up). Then print 'hi' using the same sort \nof sequences. (No using String.fromCharCode(); that will be a separate \nquestion.)",
       "tags": [
         "JavaScript",
@@ -558,6 +526,34 @@
         {
           "score": 4,
           "review_date": "2018-10-02T16:04:18-04:00"
+        }
+      ]
+    },
+    {
+      "instructions": "Advanced arrow functions\n\nRewrite this as a nested arrow function in the most concise way possible:\n\nconst factorial = function(arr) {\n  return arr.reduce(function(x,y) {\n    return x * y\n  });\n}\n\nUse the result of your rewriting to prove that factorial(arr) = 120,\nwhere arr = [5, 4, 3, 2, 1] (print out the answer).",
+      "tags": [
+        "JavaScript",
+        "JS",
+        "Node",
+        "Node.js",
+        "arrow functions",
+        "reduce",
+        "nested functions"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "JavaScript",
+      "id": 42,
+      "date_started": "2018-10-06T12:36:05+01:00",
+      "next_review_date": "2018-10-24T13:03:16-07:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-06T13:05:42+01:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-10T13:03:16-07:00"
         }
       ]
     },
