@@ -50,7 +50,7 @@ Online help is available from the task list by pressing 'c' for 'commands'.
 
 ## Development to do list
 
-* Badly needs a total refactoring.
+* Refactoring started, but needs to be finished.
 * Add starter code (for user to edit in his answer) rather than putting this
 directly in the instructions. Ensure that, as with Java now, unedited starter
 code is not interpreted as an answer (so it won't overwrite the archive). No
@@ -66,7 +66,6 @@ today, etc.).
 them an easy way to browse and run them from within the app.
 * Create an "installation" or "first run" script, allowing the user to select
 default language and default text editor.
-* Write a proper help/FAQ file. Maybe show it to the user on first run.
 
 ## MVC refactoring notes
 
