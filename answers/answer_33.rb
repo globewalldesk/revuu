@@ -1,7 +1,7 @@
 require 'json'
-settings = {'lang' => 'Ruby', 'text_editor' => 'Pico'}
-File.write("./settings.json", settings.to_json)
-again_raw = File.read("./settings.json")
-again = JSON.parse(again_raw)
-puts "The 'lang' is #{again['lang']}."
-system 'rm ./settings.json'
+
+config = {'lang' => 'Ruby', 'text_editor' => 'Pico'}
+File.write("./config.json", config.to_json)
+myf = File.read("./config.json")
+puts "The lang is #{JSON.parse(myf)['lang']}"
+system "rm ./config.json"

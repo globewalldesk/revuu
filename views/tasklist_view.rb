@@ -33,8 +33,17 @@ module TasklistView
     end
     puts separator
     show_pagination_string
-    puts $help
+    puts help
     puts ''
+  end
+
+  def help 
+    <<-HELP
+
+Commands are:
+[n]ew task  [1] review/edit task #1  show ne[x]t  [l]ist all tasks
+[d]elete task  search by [t]ag  choose text [e]ditor  [h]elp
+HELP
   end
 
   # Get search term (tag) from user.

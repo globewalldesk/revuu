@@ -1,28 +1,7 @@
 {
   "tasks": [
     {
-      "instructions": "Generate [0, 1, 2, 3, 4] fast\n\nIn a single expression broken over a few lines for readability, generate and \nprint the array [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]. You'll need to use a spread \noperator, a constructor (not a literal), and a method, all in order to output \nan array.\n\nIf you need the review, comment each line, to say what it does.",
-      "tags": [
-        "JavaScript",
-        "JS",
-        "Node",
-        "Node.js",
-        "spread operator",
-        "array constructor",
-        "keys"
-      ],
-      "score": 2,
-      "saved": true,
-      "lang": "JavaScript",
-      "id": 47,
-      "date_started": "2018-10-10T13:12:35-07:00",
-      "next_review_date": "2018-10-10T21:00:00-07:00",
-      "all_reviews": [
-
-      ]
-    },
-    {
-      "instructions": "Encoding and decoding JSON in Ruby\n\nSuppose you have a Ruby hash: \n\nsettings = {'lang' => 'Ruby', 'text_editor' => 'Pico'}\n\nFirst, write this to \"./settings.json\" in JSON format. Then add a line or two \nto read the file and decode it from JSON back to a Ruby hash. Prove that you have \ndecoded the file by reading the value of settings['lang']. Finally, delete the\nfile you created.",
+      "instructions": "Encoding and decoding JSON in Ruby\n\nSuppose you have a Ruby hash: \n\nconfig = {'lang' => 'Ruby', 'text_editor' => 'Pico'}\n\nFirst, write this to \"./config.json\" in JSON format. Then add a line or two \nto read the file and decode it from JSON back to a Ruby hash. Prove that you have \ndecoded the file by reading the value of settings['lang']. Finally, delete the\nfile you created.",
       "tags": [
         "Ruby",
         "to_json",
@@ -33,11 +12,15 @@
       "lang": "Ruby",
       "id": 33,
       "date_started": "2018-10-03T11:37:09+01:00",
-      "next_review_date": "2018-10-12T11:45:26+01:00",
+      "next_review_date": "2018-10-26T08:22:35-07:00",
       "all_reviews": [
         {
           "score": 4,
           "review_date": "2018-10-03T11:45:26+01:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-12T08:22:35-07:00"
         }
       ]
     },
@@ -224,6 +207,30 @@
         {
           "score": 4,
           "review_date": "2018-10-07T08:10:19-05:00"
+        }
+      ]
+    },
+    {
+      "instructions": "Generate [0, 1, 2, 3, 4] fast\n\nIn a single expression broken over a few lines for readability, generate and \nprint the array [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]. You'll need to use a spread \noperator, a constructor (not a literal), and a method, all in order to output \nan array.\n\nIf you need the review, comment each line, to say what it does.",
+      "tags": [
+        "JavaScript",
+        "JS",
+        "Node",
+        "Node.js",
+        "spread operator",
+        "array constructor",
+        "keys"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "JavaScript",
+      "id": 47,
+      "date_started": "2018-10-10T13:12:35-07:00",
+      "next_review_date": "2018-10-16T06:28:30-07:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-11T06:28:30-07:00"
         }
       ]
     },

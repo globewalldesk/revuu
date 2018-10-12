@@ -4,9 +4,10 @@ Bundler.require(:default)
 
 # HELPERS
 Dir["./helpers/*.rb"].each {|file| require file }
-include DatePrettifier
 include Helpers
+include DatePrettifier
 include LanguageHelper
+include HelpHelper
 # CONTROLLERS
 Dir["./controllers/*.rb"].each {|file| require file }
 include TaskController
@@ -49,29 +50,6 @@ that you've done a review, and schedule more for the future. The developer
 finds it to be a handy way to learn and solidify easy-to-forget skills.
 
 ENDINST
-  end
-
-  def self.launch_instructions_system
-    clear_screen
-    puts "Welcome to Revuu!"
-    instr_choice = ''
-    skip_list = false
-    until instr_choice == 'q'
-      unless skip_list
-        display_instruction_choices
-        puts 'Type a number above to learn how to use the system, or [q]uit: '
-      end
-      instr_choice = get_user_command('i')
-      next if instr_choice == 'q'
-      instr_choice = instr_choice.to_i
-      if validate_instr_choice(instr_choice)
-        display_instruction(instr_choice)
-        skip_list = false
-      else
-        puts "Not a valid option.\n\n"
-        skip_list = true
-      end
-    end
   end
 
   # Load the default language and text editor ($lang, $texted).
@@ -174,7 +152,8 @@ ENDINST
     when 'e'
       choose_text_editor
     when 'h'
-      self.class.launch_instructions_system
+      launch_instructions_system
+      $tasks.display_tasks  # Redisplay tasklist after returning from help.
     when /\A(\d+)\Z/
       task = $tasks.validate_edit_request($1.to_i)
       task ? task.edit : (puts "Task not found.")

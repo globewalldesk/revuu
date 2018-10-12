@@ -1,3 +1,9 @@
+console.log([...Array(10).keys()]);
+
+
+//////////////////////////////////////////////////////////////////////////
+
+
 console.log(
   arr = [         // The spread operator works within an array, etc.
     ...Array(10). // Simply generates a blank array 10 elements long.
