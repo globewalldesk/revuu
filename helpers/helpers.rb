@@ -21,8 +21,6 @@ module Helpers
 
   # Accepts a hash (e.g., {'lang' => 'C'}) & overwrites settings file with it.
   def update_settings_file(args)
-    # START HERE: arguments are now in a hash! Make this work for
-    # update_editor_in_settings_file as well as language!
     ensure_there_is_a_default_settings_file
     settings_hash = load_settings_into_hash
     # Merge new language info into hash.
@@ -73,7 +71,5 @@ module Helpers
     'Emacs'               => 'emacs',
     'gedit'               => 'gedit'
   }
-
-
 
 end 

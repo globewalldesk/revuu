@@ -33,8 +33,8 @@ Clone the repo (instructions should be clear enough from Github). Should
 probably make sure a recent version of Ruby (>2.2) is installed. Execute
 `bundle install` to install the gem requirements.
 
-Only works on \*nix systems (including modern Macs). I might be able to
-get it to work on Windows if anybody cares.
+Only works on \*nix systems (including modern Macs). I could make some changes
+so that it works on Windows, if anybody cares.
 
 ## Run
 Once Ruby, the app, and the gem dependencies are installed, you should be able
@@ -50,21 +50,22 @@ Online help is available from the task list by pressing 'c' for 'commands'.
 
 ## Development to do list
 
-* Refactoring started, but needs to be finished.
+* Major refactoring almost done, but much detailed cleanup still needed.
+* Definitely, soon, make it possible for users to change the default language. 
+* Maybe make a text editor class?
 * Add starter code (for user to edit in his answer) rather than putting this
 directly in the instructions. Ensure that, as with Java now, unedited starter
 code is not interpreted as an answer (so it won't overwrite the archive). No
 reason this bit can't be opened with the default text editor instead of Pico.
 * Maybe add an actual spaced repetition option.
+* Add wrapper code for C? Think about this.
 * Create features to export and import some (tagged) or all items.
 * Create features to mass-delete items (such as the pre-loaded questions, or
 all of a language you're not studying, or just a tag you're putting aside for
 a while).
 * Add statistics (number of questions, averages, number overdue, number to do
 today, etc.).
-* Maybe eventually allow users to save archived items individually, and give
-them an easy way to browse and run them from within the app.
-* Create an "installation" or "first run" script, allowing the user to select
+* Improve an "installation" or "first run" script, allowing the user to select
 default language and default text editor.
 
 ## MVC refactoring notes
@@ -132,3 +133,10 @@ quite a bit of refactoring to do, but this is a big enough change to warrant
 the new number. In addition, there is now a large, detailed help system
 accessible from both task list and task views. There are also a number of
 smaller improvements.
+
+### 2.1 ()
+More refactoring, adding Lang class:
+Along with other refactoring and minor debugging, surgically extracted the
+language-related methods and structures and placed them carefully within a
+brand new Lang class. Changed passed object parameters to instance variables
+after confirming that controllers and views are adequately self-contained.

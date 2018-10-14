@@ -288,14 +288,14 @@ CHANGEEDITOR
       title: 'change programming language',
       content: <<-CHANGELANGUAGE
 Each task has its own associated programming language, so you can use
-several different languages at the same time on Revuu. You choose a
-language when you create a task. But this can be changed at any time 
-from the view page for a particular task (if you're not there, just type 
-its ID number from the task list). The command is 'c' for configure
-language.
+several different languages at the same time on Revuu. To set the default
+language (which you accept by hitting "Enter" when you're creating a new task),
+go to the task list (top level) and type 'p' for programming language.
 
-(Just bear in mind that if you do change a language, your answer files
-will no longer be accessible by typing 'a' and 'o'.)
+As to the language of an individual task, you set it when you create the
+task. But this can be changed at any time from the view page for a particular 
+task (if you're not there, just type its ID number from the task list). The 
+command is 'c' for configure language.
 CHANGELANGUAGE
     },
     {

@@ -1,4 +1,3 @@
-const hello = (name = 'John Doe') => console.log("Hello, " + name + ".")
-
+const hello = (x='John Doe') => console.log("Hello, " + x + ".");
 hello("George Washington");
 hello();

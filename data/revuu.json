@@ -1,107 +1,6 @@
 {
   "tasks": [
     {
-      "instructions": "Encoding and decoding JSON in Ruby\n\nSuppose you have a Ruby hash: \n\nconfig = {'lang' => 'Ruby', 'text_editor' => 'Pico'}\n\nFirst, write this to \"./config.json\" in JSON format. Then add a line or two \nto read the file and decode it from JSON back to a Ruby hash. Prove that you have \ndecoded the file by reading the value of settings['lang']. Finally, delete the\nfile you created.",
-      "tags": [
-        "Ruby",
-        "to_json",
-        "JSON#parse"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "Ruby",
-      "id": 33,
-      "date_started": "2018-10-03T11:37:09+01:00",
-      "next_review_date": "2018-10-26T08:22:35-07:00",
-      "all_reviews": [
-        {
-          "score": 4,
-          "review_date": "2018-10-03T11:45:26+01:00"
-        },
-        {
-          "score": 4,
-          "review_date": "2018-10-12T08:22:35-07:00"
-        }
-      ]
-    },
-    {
-      "instructions": "Create a default parameter\n\nCreate a 'hello' function with a default parameter of 'John Doe'. Call the\nfunction supplying a value, then not supplying a value; the latter should\nprint out as 'Hello, John Doe.'",
-      "tags": [
-        "JavaScript",
-        "JS",
-        "Node",
-        "Node.js",
-        "default parameters"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "JavaScript",
-      "id": 44,
-      "date_started": "2018-10-06T14:07:15+01:00",
-      "next_review_date": "2018-10-13T14:14:15+01:00",
-      "all_reviews": [
-        {
-          "score": 4,
-          "review_date": "2018-10-06T14:14:15+01:00"
-        }
-      ]
-    },
-    {
-      "instructions": "Iteration control\n\nIn the following loop, use three different keywords that offer control\nof an interating loop in order so that the 'numbers' array prints out\nas [1, 1, 1, 3, 5, 7, 9]. (I.e., all odd; stop at 9; and repeat the\nfirst three numbers.) You will need to add just two lines to the loop,\nas well as adding one word in place of <fill in>.\n\nnumbers = []\nthree_ones = [1, 1, 1]\n10.times do |i|\n  numbers << i\n  i += 1\nend\nprint numbers\nputs ''",
-      "tags": [
-        "Ruby",
-        "break",
-        "next",
-        "redo"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "Ruby",
-      "id": 17,
-      "date_started": "2018-09-29T22:20:38-04:00",
-      "next_review_date": "2018-10-13T11:39:48-04:00",
-      "all_reviews": [
-        {
-          "score": 3,
-          "review_date": "2018-09-29T22:47:04-04:00"
-        },
-        {
-          "score": 4,
-          "review_date": "2018-10-01T11:39:48-04:00"
-        }
-      ]
-    },
-    {
-      "instructions": "Fun with let and const\n\nMake a little function that makes use of at least two variables, one of\nwhich is 'let', the other 'const'. Try reassigning the one of these that\nyou can't reassign. Then surround it with try/catch.",
-      "tags": [
-        "JavaScript",
-        "JS",
-        "Node",
-        "Node.js",
-        "let",
-        "const",
-        "constant",
-        "try",
-        "catch"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "JavaScript",
-      "id": 36,
-      "date_started": "2018-10-03T20:28:59+02:00",
-      "next_review_date": "2018-10-14T08:33:06+02:00",
-      "all_reviews": [
-        {
-          "score": 3,
-          "review_date": "2018-10-03T21:18:03+02:00"
-        },
-        {
-          "score": 3,
-          "review_date": "2018-10-04T08:33:06+02:00"
-        }
-      ]
-    },
-    {
       "instructions": "Write \"Hello world!\"",
       "tags": [
         "C",
@@ -111,12 +10,13 @@
         "main",
         "printf"
       ],
-      "score": 3,
+      "score": 4,
       "saved": true,
       "lang": "C",
+      "langhash": "#<Lang:0x00007fb038900318>",
       "id": 1,
       "date_started": "2018-09-23T00:00:00+00:00",
-      "next_review_date": "2018-10-14T06:57:41-05:00",
+      "next_review_date": "2018-11-04T13:47:56-05:00",
       "all_reviews": [
         {
           "score": 5,
@@ -129,8 +29,16 @@
         {
           "score": 3,
           "review_date": "2018-10-07T06:57:41-05:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-14T14:47:56-04:00"
         }
-      ]
+      ],
+      "file": "answer_1.c",
+      "location": "./answers/answer_1.c",
+      "old_file": "answer_old_1.c",
+      "old_location": "./answers/answer_old_1.c"
     },
     {
       "instructions": "Demonstrate the splat operator\n\nSuppose you have \n\nfriends = ['Jack', 'Jill', 'Sam']\n\nand you want to pass the array's elements not as an array, but \nindividually, to a method, preceded by a greeting type (\"yo\"). \nHow do you do that quite simply?\n\ndef yo(???)\n  ???.each { |friend| puts \"???, #{friend}!\" }\nend\n\nRelated problem: suppose you want to use 'first' and 'the_rest' \nfor 'a' and ['b', 'c', 'd'], respectively. You already have \n\narr = ['a', 'b', 'c', 'd']\n\nso how do you assign the variables in *one simple* line? Do so\nand then print them in a string: \"I really like a, but as\nto b, c, d...they're OK.\"",
@@ -142,6 +50,7 @@
       "score": 4,
       "saved": true,
       "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb0388f1778>",
       "id": 28,
       "date_started": "2018-10-01T17:42:06-04:00",
       "next_review_date": "2018-10-15T06:58:44+02:00",
@@ -154,7 +63,11 @@
           "score": 4,
           "review_date": "2018-10-05T06:58:44+02:00"
         }
-      ]
+      ],
+      "file": "answer_28.rb",
+      "location": "./answers/answer_28.rb",
+      "old_file": "answer_old_28.rb",
+      "old_location": "./answers/answer_old_28.rb"
     },
     {
       "instructions": "Data types galore\n\nWrite a string or a few strings that use the following data types:\nchar, int, float, double. Use 'short' and 'long' to taste; but use\nthem. For the numbers, use something close to the smallest number \nthat the next \"smaller\" number data type couldn't handle. Perform \nsome arithmetic operations with the number data types.\n\nFor reference, maybe see: https://en.wikipedia.org/wiki/C_data_types",
@@ -172,6 +85,7 @@
       "score": 3,
       "saved": true,
       "lang": "C",
+      "langhash": "#<Lang:0x00007fb0388deb78>",
       "id": 46,
       "date_started": "2018-10-08T04:02:08-04:00",
       "next_review_date": "2018-10-15T07:55:47-04:00",
@@ -180,7 +94,11 @@
           "score": 3,
           "review_date": "2018-10-08T07:55:47-04:00"
         }
-      ]
+      ],
+      "file": "answer_46.c",
+      "location": "./answers/answer_46.c",
+      "old_file": "answer_old_46.c",
+      "old_location": "./answers/answer_old_46.c"
     },
     {
       "instructions": "Demonstrate let vs. var\n\nIn the following, assign i in two different places; in one place, assign \nit \"function scope\", and in the other, \"block scope\". The result should \nprint out two different statements. Assign another variable with 'var' \nbefore the function, then try checking its value inside the function.\n\nfunction checkScope() {\n\"use strict\";\n  if (true) {\n    console.log(\"i is: \", i);\n  }\n  console.log(\"i is: \", i);\n  return i;\n}\ncheckScope();",
@@ -196,6 +114,7 @@
       "score": 4,
       "saved": true,
       "lang": "JavaScript",
+      "langhash": "#<Lang:0x00007fb0388a5b48>",
       "id": 35,
       "date_started": "2018-10-03T20:02:51+02:00",
       "next_review_date": "2018-10-16T08:10:19-05:00",
@@ -208,7 +127,11 @@
           "score": 4,
           "review_date": "2018-10-07T08:10:19-05:00"
         }
-      ]
+      ],
+      "file": "answer_35.js",
+      "location": "./answers/answer_35.js",
+      "old_file": "answer_old_35.js",
+      "old_location": "./answers/answer_old_35.js"
     },
     {
       "instructions": "Generate [0, 1, 2, 3, 4] fast\n\nIn a single expression broken over a few lines for readability, generate and \nprint the array [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]. You'll need to use a spread \noperator, a constructor (not a literal), and a method, all in order to output \nan array.\n\nIf you need the review, comment each line, to say what it does.",
@@ -224,6 +147,7 @@
       "score": 4,
       "saved": true,
       "lang": "JavaScript",
+      "langhash": "#<Lang:0x00007fb038894af0>",
       "id": 47,
       "date_started": "2018-10-10T13:12:35-07:00",
       "next_review_date": "2018-10-16T06:28:30-07:00",
@@ -232,7 +156,11 @@
           "score": 4,
           "review_date": "2018-10-11T06:28:30-07:00"
         }
-      ]
+      ],
+      "file": "answer_47.js",
+      "location": "./answers/answer_47.js",
+      "old_file": "answer_old_47.js",
+      "old_location": "./answers/answer_old_47.js"
     },
     {
       "instructions": "Using defaults in instance initialization\n\nThe following defaults are problematic for reasons Sandi Metz explained.\nMove them into a method and use the method in #initialize. Ensure the \nanswers remain the same.\n\nclass Dog\n  attr_accessor :cute, :breed, :weight\n  def initialize(args)\n    @cute   = args[:cute]   || false\n    @breed  = args[:breed]  || 'mutt'\n    @weight = args[:weight] || 15\n  end\nend\nlassie = Dog.new(cute: true, breed: 'collie')\nputs lassie.cute   # true\nputs lassie.breed  # collie\nputs lassie.weight # 15\nrover = Dog.new\nputs rover.breed   # mutt",
@@ -247,6 +175,7 @@
       "score": 4,
       "saved": true,
       "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb03816b210>",
       "id": 6,
       "date_started": "2018-09-25T08:24:11-04:00",
       "next_review_date": "2018-10-16T14:37:03-04:00",
@@ -255,7 +184,11 @@
           "score": 4,
           "review_date": "2018-09-25T14:37:03-04:00"
         }
-      ]
+      ],
+      "file": "answer_6.rb",
+      "location": "./answers/answer_6.rb",
+      "old_file": "answer_old_6.rb",
+      "old_location": "./answers/answer_old_6.rb"
     },
     {
       "instructions": "Center this in a whitespace-padded string\n\nSuppose you want to put \"Acme Products\" centered on one line and \n\"The top products for you!\" on the next line. The lines should be 75\ncharacters wide. The first should be padded with empty space, while\nthe second shoudl be padded with '=+'. Print the two lines.",
@@ -266,6 +199,7 @@
       "score": 4,
       "saved": true,
       "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb037838698>",
       "id": 31,
       "date_started": "2018-10-03T08:38:44+01:00",
       "next_review_date": "2018-10-17T08:42:40+01:00",
@@ -274,7 +208,11 @@
           "score": 4,
           "review_date": "2018-10-03T08:42:04+01:00"
         }
-      ]
+      ],
+      "file": "answer_31.rb",
+      "location": "./answers/answer_31.rb",
+      "old_file": "answer_old_31.rb",
+      "old_location": "./answers/answer_old_31.rb"
     },
     {
       "instructions": "Return an array of squared positive integers\n\nGiven \n\nlet nums = [3, -25, 0.67, 7, -12.25, 12.25, 12];\n\nwrite and then print the result of using chained arrow functions that \nreturn the squares of only elements that are (a) positive and \n(b) integers. Response should be [9, 49, 144].",
@@ -290,6 +228,7 @@
       "score": 3,
       "saved": true,
       "lang": "JavaScript",
+      "langhash": "#<Lang:0x00007fb03906d1c8>",
       "id": 43,
       "date_started": "2018-10-06T13:12:15+01:00",
       "next_review_date": "2018-10-19T10:50:06-04:00",
@@ -302,7 +241,11 @@
           "score": 3,
           "review_date": "2018-10-09T10:50:06-04:00"
         }
-      ]
+      ],
+      "file": "answer_43.js",
+      "location": "./answers/answer_43.js",
+      "old_file": "answer_old_43.js",
+      "old_location": "./answers/answer_old_43.js"
     },
     {
       "instructions": "Arrays of const values\n\nIf an array arr is made up of the values of variables declared with 'const',\nand arr itself is declared with 'const', is it possible to change one of \nvalues of the array using, e.g., arr[0] = 'foo'? Demonstrate (and know the\nanswer in advance).",
@@ -316,6 +259,7 @@
       "score": 3,
       "saved": true,
       "lang": "JavaScript",
+      "langhash": "#<Lang:0x00007fb0378a4398>",
       "id": 38,
       "date_started": "2018-10-04T21:18:50+02:00",
       "next_review_date": "2018-10-19T10:56:37-04:00",
@@ -328,7 +272,11 @@
           "score": 3,
           "review_date": "2018-10-09T10:56:37-04:00"
         }
-      ]
+      ],
+      "file": "answer_38.js",
+      "location": "./answers/answer_38.js",
+      "old_file": "answer_old_38.js",
+      "old_location": "./answers/answer_old_38.js"
     },
     {
       "instructions": "Determine if a file has nonzero size\n\nUsing a File class method, simply print out the size of \"../revuu.rb\".",
@@ -339,6 +287,7 @@
       "score": 3,
       "saved": true,
       "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb038184800>",
       "id": 34,
       "date_started": "2018-10-03T12:12:37+01:00",
       "next_review_date": "2018-10-20T10:47:07-07:00",
@@ -351,7 +300,11 @@
           "score": 3,
           "review_date": "2018-10-10T10:47:07-07:00"
         }
-      ]
+      ],
+      "file": "answer_34.rb",
+      "location": "./answers/answer_34.rb",
+      "old_file": "answer_old_34.rb",
+      "old_location": "./answers/answer_old_34.rb"
     },
     {
       "instructions": "Use ASCII escape sequences correctly\n\nRewrite the strings 'Band-Aid(r)' and '98.6 degrees F' to include the (r)\nand degree symbols, using Unicode and hexadecimal escape sequences (both\n--which you can, of course, look up). Then print 'hi' using the same sort \nof sequences. (No using String.fromCharCode(); that will be a separate \nquestion.)",
@@ -366,6 +319,7 @@
       "score": 4,
       "saved": true,
       "lang": "JavaScript",
+      "langhash": "#<Lang:0x00007fb03817c560>",
       "id": 14,
       "date_started": "2018-09-28T09:22:08-04:00",
       "next_review_date": "2018-10-20T19:46:41-04:00",
@@ -374,7 +328,11 @@
           "score": 4,
           "review_date": "2018-09-29T19:46:41-04:00"
         }
-      ]
+      ],
+      "file": "answer_14.js",
+      "location": "./answers/answer_14.js",
+      "old_file": "answer_old_14.js",
+      "old_location": "./answers/answer_old_14.js"
     },
     {
       "instructions": "Create and use a \"cubed\" proc\n\nCreate a proc that cubes (raised to the third power) a number; then use it\nto find 3 cubed (27). Then create a lambda using more verbose syntax that \nraises a number to the fourth power and use it to find 7^4 (2401). Finally, \ncreate a lamdba using briefer syntax and user it to find 13^6 (4826809).",
@@ -390,6 +348,7 @@
       "score": 4,
       "saved": true,
       "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb0381dcd70>",
       "id": 7,
       "date_started": "2018-09-25T15:19:06-04:00",
       "next_review_date": "2018-10-21T00:23:33-04:00",
@@ -402,7 +361,11 @@
           "score": 4,
           "review_date": "2018-09-26T00:23:33-04:00"
         }
-      ]
+      ],
+      "file": "answer_7.rb",
+      "location": "./answers/answer_7.rb",
+      "old_file": "answer_old_7.rb",
+      "old_location": "./answers/answer_old_7.rb"
     },
     {
       "instructions": "Extract letters from string\n\nGiven the string 'hxexlxlxox xwxoxrxlxdx', extract the familiar phrase \nand print it. Use string indexes--in an abbreviated version of \nString#slice-- in your answer. Do not simply delete all the x's (yes,\nstr.delete!('x') has the same effect).",
@@ -413,6 +376,7 @@
       "score": 4,
       "saved": true,
       "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb039086858>",
       "id": 29,
       "date_started": "2018-10-01T18:08:14-04:00",
       "next_review_date": "2018-10-22T18:20:10-04:00",
@@ -421,7 +385,11 @@
           "score": 4,
           "review_date": "2018-10-01T18:20:10-04:00"
         }
-      ]
+      ],
+      "file": "answer_29.rb",
+      "location": "./answers/answer_29.rb",
+      "old_file": "answer_old_29.rb",
+      "old_location": "./answers/answer_old_29.rb"
     },
     {
       "instructions": "So many ways to write an em dash\n\nUse Integer#chr, a string containing \\u, and Array#pack to write three em \ndashes. No need to have these perfectly memorized (and the hex code, \ndefinitely not). The question is, how confident are you in using these things?\n\nNOTE: You definitely need to add questions about each of these methods because\neach is fairly involved and you're having to brute-force memorize this, which\nis really contrary to what Revuu questions are all about.",
@@ -436,6 +404,7 @@
       "score": 4,
       "saved": true,
       "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb0378e1ef0>",
       "id": 32,
       "date_started": "2018-10-03T09:10:43+01:00",
       "next_review_date": "2018-10-23T09:49:54-04:00",
@@ -456,7 +425,11 @@
           "score": 4,
           "review_date": "2018-10-09T09:49:54-04:00"
         }
-      ]
+      ],
+      "file": "answer_32.rb",
+      "location": "./answers/answer_32.rb",
+      "old_file": "answer_old_32.rb",
+      "old_location": "./answers/answer_old_32.rb"
     },
     {
       "instructions": "Shortcut for def self.my_class_method?\nGiven this little class, how can you abbreviate 'def self.my_class_method'\nand 'def self.my_other_class_method'?\n\nRewrite it, and then call the methods (one line per each) outside the \nclass definition.\n\nclass MyClass\n  def self.my_class_method\n    puts \"You successfully called my class method! Woo hoo!\"\n  end\n\n  def self.my_other_class_method\n    puts \"Oh my god you did it twice!\"\n  end\nend",
@@ -469,6 +442,7 @@
       "score": 3,
       "saved": true,
       "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb037903aa0>",
       "id": 4,
       "date_started": "2018-09-25T03:29:33-04:00",
       "next_review_date": "2018-10-23T10:39:05-04:00",
@@ -481,7 +455,11 @@
           "score": 3,
           "review_date": "2018-10-09T10:39:05-04:00"
         }
-      ]
+      ],
+      "file": "answer_4.rb",
+      "location": "./answers/answer_4.rb",
+      "old_file": "answer_old_4.rb",
+      "old_location": "./answers/answer_old_4.rb"
     },
     {
       "instructions": "Stop that mutation!\n\nCreate an object (using const) that has components (elements or attributes)\nand then apply a certain method that will prevent those components from\nbeing changed. Print out a component; then attempt to change it; then print\nit out again. Did you know what would happen? Make your prediction in a \ncomment beforehand.",
@@ -497,6 +475,7 @@
       "score": 3,
       "saved": true,
       "lang": "JavaScript",
+      "langhash": "#<Lang:0x00007fb03791b7e0>",
       "id": 39,
       "date_started": "2018-10-04T21:32:35+02:00",
       "next_review_date": "2018-10-23T11:05:36-04:00",
@@ -509,7 +488,11 @@
           "score": 3,
           "review_date": "2018-10-09T11:05:36-04:00"
         }
-      ]
+      ],
+      "file": "answer_39.js",
+      "location": "./answers/answer_39.js",
+      "old_file": "answer_old_39.js",
+      "old_location": "./answers/answer_old_39.js"
     },
     {
       "instructions": "Calling class, instance, and global methods\n\nFrom ::create_with_num, set num equal to ::class_number, then (within the\nsame method) return an instance of MyClass with (number: num) as an argument. \nUse ::create_with_num to create an instance. (3) Let #my_sum = the \nsum of @number, ::class_number_deux, #instance_number, and global_number. \nPrint the result of calling #my_sum on the instance. Should be 27.\n\nclass MyClass\n  class << self\n    def class_number; 5; end\n\n    def class_number_deux; 2; end\n\n    def create_with_num\n      # Type here\n    end\n  end\n\n  attr_accessor :number\n\n  def initialize(args)\n    # Type here\n  end\n\n  def instance_number; 10; end\n\n  def my_sum\n    # Type here\n  end\n\nend\n\ndef global_number; 10; end\n# Type here",
@@ -522,6 +505,7 @@
       "score": 4,
       "saved": true,
       "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb037932f08>",
       "id": 5,
       "date_started": "2018-09-25T05:56:23-04:00",
       "next_review_date": "2018-10-23T16:04:18-04:00",
@@ -534,7 +518,11 @@
           "score": 4,
           "review_date": "2018-10-02T16:04:18-04:00"
         }
-      ]
+      ],
+      "file": "answer_5.rb",
+      "location": "./answers/answer_5.rb",
+      "old_file": "answer_old_5.rb",
+      "old_location": "./answers/answer_old_5.rb"
     },
     {
       "instructions": "Advanced arrow functions\n\nRewrite this as a nested arrow function in the most concise way possible:\n\nconst factorial = function(arr) {\n  return arr.reduce(function(x,y) {\n    return x * y\n  });\n}\n\nUse the result of your rewriting to prove that factorial(arr) = 120,\nwhere arr = [5, 4, 3, 2, 1] (print out the answer).",
@@ -550,6 +538,7 @@
       "score": 4,
       "saved": true,
       "lang": "JavaScript",
+      "langhash": "#<Lang:0x00007fb0378ca340>",
       "id": 42,
       "date_started": "2018-10-06T12:36:05+01:00",
       "next_review_date": "2018-10-24T13:03:16-07:00",
@@ -562,7 +551,11 @@
           "score": 4,
           "review_date": "2018-10-10T13:03:16-07:00"
         }
-      ]
+      ],
+      "file": "answer_42.js",
+      "location": "./answers/answer_42.js",
+      "old_file": "answer_old_42.js",
+      "old_location": "./answers/answer_old_42.js"
     },
     {
       "instructions": "Changing a CONST?!\n\nChange this\n\nconst UNTOUCHABLE = ['a', 'b', 'c'];\n\nso that its total value is [1, 2, 3]. First, use a try-catch block to show the\nerror message that you get when you simply try to reassign the variable\nidentifier UNTOUCHABLE. After changing the array, print it.",
@@ -578,6 +571,7 @@
       "score": 4,
       "saved": true,
       "lang": "JavaScript",
+      "langhash": "#<Lang:0x00007fb037968a68>",
       "id": 37,
       "date_started": "2018-10-04T18:30:57+02:00",
       "next_review_date": "2018-10-25T18:53:35+02:00",
@@ -586,7 +580,40 @@
           "score": 4,
           "review_date": "2018-10-04T18:53:35+02:00"
         }
-      ]
+      ],
+      "file": "answer_37.js",
+      "location": "./answers/answer_37.js",
+      "old_file": "answer_old_37.js",
+      "old_location": "./answers/answer_old_37.js"
+    },
+    {
+      "instructions": "Encoding and decoding JSON in Ruby\n\nSuppose you have a Ruby hash: \n\nconfig = {'lang' => 'Ruby', 'text_editor' => 'Pico'}\n\nFirst, write this to \"./config.json\" in JSON format. Then add a line or two \nto read the file and decode it from JSON back to a Ruby hash. Prove that you have \ndecoded the file by reading the value of settings['lang']. Finally, delete the\nfile you created.",
+      "tags": [
+        "Ruby",
+        "to_json",
+        "JSON#parse"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb0379886b0>",
+      "id": 33,
+      "date_started": "2018-10-03T11:37:09+01:00",
+      "next_review_date": "2018-10-26T08:22:35-07:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-03T11:45:26+01:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-12T08:22:35-07:00"
+        }
+      ],
+      "file": "answer_33.rb",
+      "location": "./answers/answer_33.rb",
+      "old_file": "answer_old_33.rb",
+      "old_location": "./answers/answer_old_33.rb"
     },
     {
       "instructions": "Using the colorize gem\n\nIn the following printed strings, use the Colorize gem to print the first one\ngreen, the second with a red background, and the third one with black-on-white\nprint.\n\nputs \"I am the first line.\"\nputs \"I am the second line.\"\nputs \"I am the third line.\"",
@@ -597,6 +624,7 @@
       "score": 4,
       "saved": true,
       "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb0379b1718>",
       "id": 24,
       "date_started": "2018-10-01T09:28:51-04:00",
       "next_review_date": "2018-10-29T01:43:33-04:00",
@@ -609,7 +637,11 @@
           "score": 4,
           "review_date": "2018-10-08T01:43:33-04:00"
         }
-      ]
+      ],
+      "file": "answer_24.rb",
+      "location": "./answers/answer_24.rb",
+      "old_file": "answer_old_24.rb",
+      "old_location": "./answers/answer_old_24.rb"
     },
     {
       "instructions": "Create an object literal with properties and function\n\nCreate a johnDoe object literal with firstName and lastName properties\nand greet function. Calling the function should output to the console\nthe message, \"Hi, I'm John Doe.\"",
@@ -625,6 +657,7 @@
       "score": 4,
       "saved": true,
       "lang": "JavaScript",
+      "langhash": "#<Lang:0x00007fb0379dab18>",
       "id": 10,
       "date_started": "2018-09-26T07:56:54-04:00",
       "next_review_date": "2018-11-02T14:48:14-04:00",
@@ -641,7 +674,11 @@
           "score": 4,
           "review_date": "2018-10-02T14:48:14-04:00"
         }
-      ]
+      ],
+      "file": "answer_10.js",
+      "location": "./answers/answer_10.js",
+      "old_file": "answer_old_10.js",
+      "old_location": "./answers/answer_old_10.js"
     },
     {
       "instructions": "Substitute all instances of this with that\n\nIn the following string, replace every instance of 'ae' with 'e'. Don't use\nregular expressions; use a simple method. Print the result.\n\n\"Encyclopaedias make me feel so anaemic that I need anaesthesia.\"",
@@ -653,6 +690,7 @@
       "score": 4,
       "saved": true,
       "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb0379fa620>",
       "id": 8,
       "date_started": "2018-09-25T16:34:55-04:00",
       "next_review_date": "2018-11-03T20:31:42-04:00",
@@ -665,7 +703,11 @@
           "score": 4,
           "review_date": "2018-09-29T20:31:42-04:00"
         }
-      ]
+      ],
+      "file": "answer_8.rb",
+      "location": "./answers/answer_8.rb",
+      "old_file": "answer_old_8.rb",
+      "old_location": "./answers/answer_old_8.rb"
     },
     {
       "instructions": "Hash default values\n\nCreate a dog_breeds hash with 3 dog names as keys and breeds as values.\nSet a hash default value of 'mutt'. Then iterate a five-item array of\ndog names, for each item printing a line reading (e.g.) \"Fido: poodle\". \nThree of the five items should be the three names in dog_breeds. Two \nshould be names not defined by the dog_breed hash.",
@@ -678,6 +720,7 @@
       "score": 4,
       "saved": true,
       "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb037a20c80>",
       "id": 25,
       "date_started": "2018-10-01T11:50:09-04:00",
       "next_review_date": "2018-11-05T06:46:14+01:00",
@@ -690,7 +733,11 @@
           "score": 4,
           "review_date": "2018-10-05T06:46:14+02:00"
         }
-      ]
+      ],
+      "file": "answer_25.rb",
+      "location": "./answers/answer_25.rb",
+      "old_file": "answer_old_25.rb",
+      "old_location": "./answers/answer_old_25.rb"
     },
     {
       "instructions": "'For...in' inclusive vs. exclusive\n\nFirst, construct the array of numbers 1 through 5 very concisely,\nusing a range operator. Then use a form of Ruby's for...in loop \nsyntactic sugar to multiply these numbers by 3 (printing the result \nafter each). Then construct a duplicate array using another form of\nthe range operator. Demonstrate which range operator is *inclusive* \nand which is *exclusive*; be able to say in advance which operator\ndoes what.",
@@ -706,6 +753,7 @@
       "score": 4,
       "saved": true,
       "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb03888e100>",
       "id": 16,
       "date_started": "2018-09-29T21:36:49-04:00",
       "next_review_date": "2018-11-07T07:30:57+00:00",
@@ -718,7 +766,11 @@
           "score": 4,
           "review_date": "2018-10-03T08:30:39+01:00"
         }
-      ]
+      ],
+      "file": "answer_16.rb",
+      "location": "./answers/answer_16.rb",
+      "old_file": "answer_old_16.rb",
+      "old_location": "./answers/answer_old_16.rb"
     },
     {
       "instructions": "Arrow function syntax\n\nRewrite this simple function without the word 'function()', and then prove\nthat it works by printing the result of calling it:\n\nconst LoveMyFunction = function() {\n  return \"This is really nice function, isn't it?\"\n}",
@@ -732,6 +784,7 @@
       "score": 4,
       "saved": true,
       "lang": "JavaScript",
+      "langhash": "#<Lang:0x00007fb037a1afb0>",
       "id": 40,
       "date_started": "2018-10-05T19:17:48+02:00",
       "next_review_date": "2018-11-09T10:53:14-05:00",
@@ -744,7 +797,11 @@
           "score": 4,
           "review_date": "2018-10-09T10:53:14-04:00"
         }
-      ]
+      ],
+      "file": "answer_40.js",
+      "location": "./answers/answer_40.js",
+      "old_file": "answer_old_40.js",
+      "old_location": "./answers/answer_old_40.js"
     },
     {
       "instructions": "Validate strings are numeric without converting to integer\n\nPass the values in the array ['99', '23a', 'xyz'] to a ternary \noperator to output 'x is numeric' or 'x is not numeric' in each case \nas appropriate. (Only the first item is numeric.) Do *not* convert \nthe strings into integers; use a simple handy method.",
@@ -759,6 +816,7 @@
       "score": 4,
       "saved": true,
       "lang": "JavaScript",
+      "langhash": "#<Lang:0x00007fb0379e2ef8>",
       "id": 15,
       "date_started": "2018-09-28T10:29:35-04:00",
       "next_review_date": "2018-11-10T07:42:15+01:00",
@@ -771,7 +829,11 @@
           "score": 4,
           "review_date": "2018-10-06T08:42:15+02:00"
         }
-      ]
+      ],
+      "file": "answer_15.js",
+      "location": "./answers/answer_15.js",
+      "old_file": "answer_old_15.js",
+      "old_location": "./answers/answer_old_15.js"
     },
     {
       "instructions": "Show how prefix and postfix incrementing works\n\nBegin a short script with this:\n\n  var num = 10;\n\nOn the next line, increment num and, *in the same expression*, subtract \n10 from it, showing the result in the console. Then reset num to 10 and \nperform the same difference, but increment num in a different way.\n(There are two ways to increment, which will show the two different \nanswers.) Print the two different answers to the console. Be able to \npredict, in advance, which answer will be 0 and what the other answer \nwill be.\n\nThen, beginning at 1, *de*crement num and add 10 to it, ensuring that \nthe sum is 10. Make sure you are able to tell, in advance, which \ndecrement operator to use.\n\nFinally, say in advance and then demonstrate what num2 will be:\n\n  num = 1;\n  num2 = (num++ * 10 + 1);\n  console.log(num2);",
@@ -791,6 +853,7 @@
       "score": 4,
       "saved": true,
       "lang": "JavaScript",
+      "langhash": "#<Lang:0x00007fb0379a9dd8>",
       "id": 13,
       "date_started": "2018-09-28T08:35:51-04:00",
       "next_review_date": "2018-11-10T19:26:54-05:00",
@@ -799,7 +862,42 @@
           "score": 4,
           "review_date": "2018-09-29T20:26:54-04:00"
         }
-      ]
+      ],
+      "file": "answer_13.js",
+      "location": "./answers/answer_13.js",
+      "old_file": "answer_old_13.js",
+      "old_location": "./answers/answer_old_13.js"
+    },
+    {
+      "instructions": "Create a default parameter\n\nCreate a 'hello' function with a default parameter of 'John Doe'. Call the\nfunction supplying a value, then not supplying a value; the latter should\nprint out as 'Hello, John Doe.'",
+      "tags": [
+        "JavaScript",
+        "JS",
+        "Node",
+        "Node.js",
+        "default parameters"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "JavaScript",
+      "langhash": "#<Lang:0x00007fb03796bec0>",
+      "id": 44,
+      "date_started": "2018-10-06T14:07:15+01:00",
+      "next_review_date": "2018-11-13T12:18:13-08:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-06T14:14:15+01:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-13T12:18:13-07:00"
+        }
+      ],
+      "file": "answer_44.js",
+      "location": "./answers/answer_44.js",
+      "old_file": "answer_old_44.js",
+      "old_location": "./answers/answer_old_44.js"
     },
     {
       "instructions": "The rest operator\n\nRewrite this Ruby method as a JavaScript function. It should as near to \nidentical as possible.\n\ndef count_args(*args)\n  puts \"You passed #{args.length} to this function.\"\nend\n\nThen call the function and ensure it gives the correct output.",
@@ -813,6 +911,7 @@
       "score": 4,
       "saved": true,
       "lang": "JavaScript",
+      "langhash": "#<Lang:0x00007fb037930fa0>",
       "id": 45,
       "date_started": "2018-10-06T14:21:45+01:00",
       "next_review_date": "2018-11-17T13:27:17+00:00",
@@ -821,7 +920,45 @@
           "score": 4,
           "review_date": "2018-10-06T14:27:17+01:00"
         }
-      ]
+      ],
+      "file": "answer_45.js",
+      "location": "./answers/answer_45.js",
+      "old_file": "answer_old_45.js",
+      "old_location": "./answers/answer_old_45.js"
+    },
+    {
+      "instructions": "Iteration control\n\nIn the following loop, use three different keywords that offer control\nof an interating loop in order so that the 'numbers' array prints out\nas [1, 1, 1, 3, 5, 7, 9]. (I.e., all odd; stop at 9; and repeat the\nfirst three numbers.) You will need to add just two lines to the loop,\nas well as adding one word in place of <fill in>.\n\nnumbers = []\nthree_ones = [1, 1, 1]\n10.times do |i|\n  numbers << i\n  i += 1\nend\nprint numbers\nputs ''",
+      "tags": [
+        "Ruby",
+        "break",
+        "next",
+        "redo"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb0378f1170>",
+      "id": 17,
+      "date_started": "2018-09-29T22:20:38-04:00",
+      "next_review_date": "2018-11-17T11:24:56-08:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-09-29T22:47:04-04:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-01T11:39:48-04:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-13T12:24:56-07:00"
+        }
+      ],
+      "file": "answer_17.rb",
+      "location": "./answers/answer_17.rb",
+      "old_file": "answer_old_17.rb",
+      "old_location": "./answers/answer_old_17.rb"
     },
     {
       "instructions": "Write \"Hello World!\"",
@@ -832,6 +969,7 @@
       "score": 5,
       "saved": true,
       "lang": "Java",
+      "langhash": "#<Lang:0x00007fb0378d7540>",
       "id": 11,
       "date_started": "2018-09-26T21:21:47-04:00",
       "next_review_date": "2018-11-27T04:51:10-05:00",
@@ -840,7 +978,11 @@
           "score": 5,
           "review_date": "2018-09-27T04:51:10-04:00"
         }
-      ]
+      ],
+      "file": "answer_11.java",
+      "location": "./answers/answer_11.java",
+      "old_file": "answer_old_11.java",
+      "old_location": "./answers/answer_old_11.java"
     },
     {
       "instructions": "How to print a formatted table \nwith while, for, and different data types\n\nIn the following C program, add a line that prints first fahrenheit, \nthen a tab, then celsius, then a newline. Then change fahr and celsius\nso that they are floats (and try printing then). Then print the values\nfrom -20 to 120 counting by 10s. Finally, rewrite the 'while' loop with\na 'for' loop and remove all variables except fahr. Ensure the field\ntype characters are correct throughout (so, no error messages!).\n\n#include <stdio.h>\nint main() {\n    int fahr, celsius;\n    int lower, upper, step;\n    lower = 0;    /* lower limit of temperature table */\n    upper = 300;  /* upper limit */\n    step = 20;    /* step size */\n\n    fahr = lower;\n    while (fahr <= upper) {\n        celsius = (5.0/9) * (fahr-32);\n\t/* fill in this line */\n        fahr = fahr + step;\n    }\n}",
@@ -857,6 +999,7 @@
       "score": 4,
       "saved": true,
       "lang": "C",
+      "langhash": "#<Lang:0x00007fb0381b4140>",
       "id": 12,
       "date_started": "2018-09-27T04:50:29-04:00",
       "next_review_date": "2018-11-28T04:14:12-05:00",
@@ -865,7 +1008,11 @@
           "score": 4,
           "review_date": "2018-09-28T04:14:12-04:00"
         }
-      ]
+      ],
+      "file": "answer_12.c",
+      "location": "./answers/answer_12.c",
+      "old_file": "answer_old_12.c",
+      "old_location": "./answers/answer_old_12.c"
     },
     {
       "instructions": "Sorting by keys and values\n\nGiven the 'mountains' hash, sort and print (in simple table form) by name\nand then by height (NB, must be *decending*). Then do the same thing, \nusing a different method. You'll have to output an array in each case, \nand make a method to print different arrays (four times).\n\nmountains = {\n  'Mount Everest' => 29029,\n  'K2' => 28251,\n  'Kangchenjunga' => 28169,\n  'Lhotse' => 27940,\n  'Makalu' => 27838,\n  'Cho Oyo' => 26864,\n  'Dhaulagiri I' => 26795\n}",
@@ -877,6 +1024,7 @@
       "score": 4,
       "saved": true,
       "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb037a21b08>",
       "id": 27,
       "date_started": "2018-10-01T12:42:44-04:00",
       "next_review_date": "2018-12-01T13:20:54-05:00",
@@ -885,7 +1033,11 @@
           "score": 4,
           "review_date": "2018-10-01T13:20:54-04:00"
         }
-      ]
+      ],
+      "file": "answer_27.rb",
+      "location": "./answers/answer_27.rb",
+      "old_file": "answer_old_27.rb",
+      "old_location": "./answers/answer_old_27.rb"
     },
     {
       "instructions": "Sorting by different values\n\nSort the 'names' array below by firstname and then by lastname. Then use\na different method to achieve the same result. Print the name list after\neach sorting.\n\nnames = [\n  { firstname: 'John', lastname: 'Doe' },\n  { firstname: 'Jane', lastname: 'Roe' },\n  { firstname: 'Jack', lastname: 'Sprat' },\n  { firstname: 'Holly', lastname: 'Golightly' },\n  { firstname: 'Santa', lastname: 'Claus' }\n]",
@@ -897,6 +1049,7 @@
       "score": 3,
       "saved": true,
       "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb0379d9d58>",
       "id": 26,
       "date_started": "2018-10-01T12:23:09-04:00",
       "next_review_date": "2018-12-01T13:22:16-05:00",
@@ -905,7 +1058,50 @@
           "score": 3,
           "review_date": "2018-10-01T12:35:54-04:00"
         }
-      ]
+      ],
+      "file": "answer_26.rb",
+      "location": "./answers/answer_26.rb",
+      "old_file": "answer_old_26.rb",
+      "old_location": "./answers/answer_old_26.rb"
+    },
+    {
+      "instructions": "Fun with let and const\n\nMake a little function that makes use of at least two variables, one of\nwhich is 'let', the other 'const'. Try printing the values of the \nvariables both inside and outside the function. Try reassigning the one \nof these that you can't reassign. Then surround it with try/catch.",
+      "tags": [
+        "JavaScript",
+        "JS",
+        "Node",
+        "Node.js",
+        "let",
+        "const",
+        "constant",
+        "try",
+        "catch"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "JavaScript",
+      "langhash": "#<Lang:0x00007fb038902000>",
+      "id": 36,
+      "date_started": "2018-10-03T20:28:59+02:00",
+      "next_review_date": "2018-12-14T14:46:38-05:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-03T21:18:03+02:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-04T08:33:06+02:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-14T14:46:38-04:00"
+        }
+      ],
+      "file": "answer_36.js",
+      "location": "./answers/answer_36.js",
+      "old_file": "answer_old_36.js",
+      "old_location": "./answers/answer_old_36.js"
     },
     {
       "instructions": "Download this URL\n\nOn the command line, download the HTML you'll find at precisely \nhttp://larrysanger.org/. Save it directly into temp.tmp. \nTo the end of that file, append \"This is another line.\" Then \nview the end of the file to confirm it's all there, then delete \ntemp.tmp.",
@@ -927,6 +1123,7 @@
       "score": 4,
       "saved": true,
       "lang": "Bash",
+      "langhash": "#<Lang:0x00007fb0379913a0>",
       "id": 9,
       "date_started": "2018-09-25T16:57:25-04:00",
       "next_review_date": "2018-12-18T16:09:35-05:00",
@@ -935,7 +1132,11 @@
           "score": 4,
           "review_date": "2018-09-25T17:08:51-04:00"
         }
-      ]
+      ],
+      "file": "answer_9.sh",
+      "location": "./answers/answer_9.sh",
+      "old_file": "answer_old_9.sh",
+      "old_location": "./answers/answer_old_9.sh"
     },
     {
       "instructions": "Sort array of hashes by hash attribute\n\nGiven this array of hashes:\n\nsightings = [ {bird: 'pigeon', date: '2007/04/16'}, {bird: 'bald eagle', \n  date: '1999/07/23'}, {bird: 'dodo', date: '2001/12/25'}, {bird: \n  'blue heron', date: '2012/3/1'} ]\n\nsort the hash items by date from oldest sighting date to newest, then\nprint the result in a simple table.",
@@ -947,6 +1148,7 @@
       "score": 4,
       "saved": true,
       "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb0379439c0>",
       "id": 41,
       "date_started": "2018-10-06T08:54:17+02:00",
       "next_review_date": "2019-02-06T09:06:39+01:00",
@@ -955,7 +1157,11 @@
           "score": 4,
           "review_date": "2018-10-06T09:06:39+02:00"
         }
-      ]
+      ],
+      "file": "answer_41.rb",
+      "location": "./answers/answer_41.rb",
+      "old_file": "answer_old_41.rb",
+      "old_location": "./answers/answer_old_41.rb"
     },
     {
       "instructions": "Fun with strings (palindromes and cases) \n\nGiven ['xanax', 'Hello', 'aya', 'FooBar'], write a brief program to show that \nthere are two palindromes in the array; then print them.  Then change all the \nitems to Title Case (and print); then change them all to ALL CAPS (and \nprint); finally, change them all to all lowercase (and print).",
@@ -971,6 +1177,7 @@
       "score": 4,
       "saved": true,
       "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb0378f8fd8>",
       "id": 2,
       "date_started": "2018-09-23T22:32:33-04:00",
       "next_review_date": "2019-02-24T18:50:49-05:00",
@@ -979,7 +1186,11 @@
           "score": 4,
           "review_date": "2018-09-24T18:50:49-04:00"
         }
-      ]
+      ],
+      "file": "answer_2.rb",
+      "location": "./answers/answer_2.rb",
+      "old_file": "answer_old_2.rb",
+      "old_location": "./answers/answer_old_2.rb"
     },
     {
       "instructions": "activities = Hash.new('fun')\n\nSuppose you assign 'activities' as above, and on the next line, you have\nsimply\n\nputs activities[:fred]\n\nWhat is the output? Predict this in advance correctly and explain briefly\nthe reason for the answer.",
@@ -993,6 +1204,7 @@
       "score": 5,
       "saved": true,
       "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb0381c0c10>",
       "id": 30,
       "date_started": "2018-10-01T18:25:22-04:00",
       "next_review_date": "2019-04-01T18:27:37-04:00",
@@ -1001,7 +1213,11 @@
           "score": 5,
           "review_date": "2018-10-01T18:27:37-04:00"
         }
-      ]
+      ],
+      "file": "answer_30.rb",
+      "location": "./answers/answer_30.rb",
+      "old_file": "answer_old_30.rb",
+      "old_location": "./answers/answer_old_30.rb"
     },
     {
       "instructions": "Multidimensional array\n\nBy referring to positions of the numbers in this array,\n\na = [[5, 4], [3, 6, 2, [1, 7]], [[8]], [[[9], 10]] ]\n\nconstruct this array:\n\n[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
@@ -1013,6 +1229,7 @@
       "score": 5,
       "saved": true,
       "lang": "Ruby",
+      "langhash": "#<Lang:0x00007fb037851058>",
       "id": 18,
       "date_started": "2018-09-29T23:08:24-04:00",
       "next_review_date": "2019-06-29T23:15:43-04:00",
@@ -1021,7 +1238,11 @@
           "score": 5,
           "review_date": "2018-09-29T23:15:21-04:00"
         }
-      ]
+      ],
+      "file": "answer_18.rb",
+      "location": "./answers/answer_18.rb",
+      "old_file": "answer_old_18.rb",
+      "old_location": "./answers/answer_old_18.rb"
     }
   ]
 }

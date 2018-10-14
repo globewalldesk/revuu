@@ -41,8 +41,8 @@ module TasklistView
     <<-HELP
 
 Commands are:
-[n]ew task  [1] review/edit task #1  show ne[x]t  [l]ist all tasks
-[d]elete task  search by [t]ag  choose text [e]ditor  [h]elp
+[n]ew task  [1] review/edit task #1  show ne[x]t  [l]ist all tasks  [h]elp
+[d]elete task  [t]ag search  set text [e]ditor  set [p]rogramming language 
 HELP
   end
 

@@ -58,9 +58,8 @@ ENDINST
     settings_hash = load_settings_into_hash
     # Checks if 'lang' key exists. NOTE: REFACTORING SHOULD CREATE ONE.
     if settings_hash['lang']
-      lang_hash = lookup_lang_data_from_name_cmd(settings_hash['lang'])
-      # Assign associated language globals (such as $lang and $ext).
-      assign_language_globals(lang_hash)
+      # Given a programming language name, return a Lang object, stored in a global.
+      $lang_defaults = Lang.new(settings_hash['lang'])
     end
     # NOTE: WHEN REFACTORING, expand the following in case this setting is lost.
     # ALSO, ENSURE THAT THE USER STILL HAS THIS TEXT ED AVAILABLE! Require an
@@ -97,8 +96,23 @@ ENDINST
     edname = available_editors[editor_num]
     puts "OK, you'll use #{edname}."
     $texted = $text_editors[edname]
+    $textedcmd = $text_editors[edname]
     update_settings_file({'texted' => edname})
     # Double-check that editor is still available.
+  end
+
+  # After getting a language from Lang::choose_default, saves to defaults.
+  def choose_default_language
+    puts "OK, let's choose a default language."
+    default = $lang_defaults.name ? $lang_defaults.name : 'Other'
+    new_default = Lang.solicit_languages_from_user(default)
+    if new_default != default
+      update_settings_file({'lang' => new_default})
+      $lang_defaults = Lang.new(new_default)
+      puts "Saved #{$lang_defaults.name} as the default language."
+    else
+      puts "Sticking with #{default}."
+    end
   end
 
   # Both compiles a list of available editors and displays them to the user.
@@ -151,6 +165,8 @@ ENDINST
       $tasks.tag_search
     when 'e'
       choose_text_editor
+    when 'p'
+      choose_default_language
     when 'h'
       launch_instructions_system
       $tasks.display_tasks  # Redisplay tasklist after returning from help.
