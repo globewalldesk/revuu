@@ -5,9 +5,17 @@ module TasklistController
     delete_num = gets.chomp.to_i
     delete_task = @list.find {|t| t.id == delete_num}
     @list.delete(delete_task) ? message = true : message = false
+    delete_answer_files(delete_task)
     save_tasklist
     display_tasks
     puts (message ? "#{delete_num} deleted." : "#{delete_num} not found; nothing deleted.") 
+  end
+
+  def delete_answer_files(task)
+    # Delete current answer.
+    system("rm ./answers/answer_#{task.id}.#{task.langhash.ext}")
+    # Delete archive.
+    system("rm ./answers/answer_old_#{task.id}.#{task.langhash.ext}")
   end
 
   # Get user input for searching tasks by tag; return just matching tasks.

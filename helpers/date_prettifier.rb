@@ -21,8 +21,8 @@ module DatePrettifier
       s = pl(diff)
       ago_from_now(ts, now, 'month', diff, s)
     # If 7-27 days ahead or behind, e.g.: '1 week ago', '3 weeks from now'
-    elsif ! ts.between?(now - 10, now + 10)
-      diff = ((sec_diff/7)/(60*60*24)).round
+    elsif ! ts.between?(now - 6, now + 6)
+      diff = ((sec_diff/7)/(60*60*24.0)).round
       s = pl(diff)
       ago_from_now(ts, now, 'week', diff, s)
     # If yesterday or tomorrow: 'yesterday', 'tomorrow'. NOTE: "out of order".
@@ -33,7 +33,7 @@ module DatePrettifier
       'today'
     # If 2-6 days ahead or behind, e.g.: '3 days ago', '4 days from now'
     elsif ! ts.between?(now - 1, now + 1)
-      diff = (sec_diff/(60*60*24)).round
+      diff = (sec_diff/(60*60*24.0)).round
       s = pl(diff)
       ago_from_now(ts, now, 'day', diff, s)
     else

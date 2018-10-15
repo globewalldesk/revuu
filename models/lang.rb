@@ -54,28 +54,35 @@ class Lang
   # Language data hashes--now a new and improved class variable!
   @@defined_langs =
     [
-      {name: 'Ruby', ext: 'rb', cmd: 'ruby', cmnt: '#', alts: []},
+      {name: 'Ruby', ext: 'rb', cmd: 'ruby', cmnt: '#', alts: [], spacer:
+        "puts ''" },
+
       {name: 'JavaScript', ext: 'js', cmd: 'node', cmnt: '//', alts:
-        ['JS', 'Node', 'Node.js']},
+        ['JS', 'Node', 'Node.js'], spacer: "console.log(' ')"},
+
       {name: 'Java', ext: 'java', cmd: 'javac', cmd2: 'java <name-no-ext>',
         cmnt: '//', one_main_per_file: true, alts: []},
+
       {name: 'C', ext: 'c', cmd: 'gcc', cmd2: './a.out', cmnt: '/*',
         cmnt2: '*/', one_main_per_file: true, alts: ['C language',
         'C programming language']},
-      {name: 'Bash', ext: 'sh', cmd: '/bin/bash', cmnt: '#', alts: ['command line', 'shell',
-        'shell scripting', 'Bash scripting', 'Linux', 'Unix']},
-      {name: 'Other', ext: 'txt', cmd: 'more', cmnt: '#', alts: []}
+
+      {name: 'Bash', ext: 'sh', cmd: '/bin/bash', cmnt: '#', alts: 
+        ['command line', 'shell', 'shell scripting', 'Bash scripting', 'Linux', 
+          'Unix'], spacer: "echo '<--spacer-->'"},
+
+      {name: 'Other', ext: 'txt', cmd: 'more', cmnt: '#', alts: [], spacer: 
+        "\n<--spacer-->\n"}
     ]
 
   # Lang objects expose language data as in a hash.
-  attr_accessor :name, :ext, :cmd, :cmnt, :cmd2, :cmnt2, :one_main_per_file, :alts
+  attr_accessor :name, :ext, :cmd, :cmnt, :cmd2, :cmnt2, :one_main_per_file, 
+    :alts, :spacer
 
   def initialize(lang_name)
     l = fetch_lang_hash_from_name_cmd(lang_name)
     # User changes these starting with change_language.
     @name  = l[:name] # Programming language. Get from/set to settings.json.
-                      # lookup_lang_data_from_name_cmd gets hash values from
-                      # get_available_langs.
     @ext   = l[:ext]                # Filename extension.
     @cmd   = l[:cmd]                # Command to execute (or compile).
     @cmnt  = l[:cmnt]               # Comment char in language.
@@ -83,6 +90,7 @@ class Lang
     @cmnt2 = l[:cmnt2] ? l[:cmnt2] : false  # Comment-ender in, e.g., C.
     @one_main_per_file = l[:one_main_per_file] ? l[:one_main_per_file] : false
     @lang_alts = l[:alts]
+    @spacer = l[:spacer] ? l[:spacer] : ''  # String to append to archived file.
     return self
   end
 

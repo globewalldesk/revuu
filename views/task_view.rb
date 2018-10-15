@@ -83,10 +83,14 @@ module TaskView
     score
   end
 
-  def get_next_review_date(prompt)
-    puts "Do next review when? (Use regular English.)"
+  # Prompt user to either accept spaced repetition-calculated date or else enter own.
+  def get_next_review_date(prompt, score=@score)
+    calculated = calculate_spaced_repetition_date(score)
+    puts "Spaced repetition date: #{calculated.strftime("%-m/%-d/%Y")} (#{prettify_timestamp(calculated)})"
+    puts "Do next review when? Use regular English, or just press 'Enter' to accept date above."
     date = get_user_command(prompt)
-    date = Chronic.parse(date) # Gem parses ordinary English input to Time obj.
+    # Gem parses ordinary English input to Time obj.
+    date = ( date == '' ? calculated.to_time : Chronic.parse(date)  )
     unless date.class == Time
       puts "ERROR: couldn't parse date."
       return nil

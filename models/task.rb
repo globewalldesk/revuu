@@ -51,17 +51,20 @@ class Task
     @tags = args[:tags]
     @score = args[:score]
     @saved = args[:saved]
-    @lang = args[:lang]       
-    @langhash = Lang.new(@lang)
-    @id = args[:id]
+    @lang = args[:lang]
     @date_started = args[:date_started]
     @next_review_date = args[:next_review_date]
     @all_reviews = args[:all_reviews]
-    get_locations # This assigns @file, @location, @old_file, and @old_location
-    if @saved == false
+    if @saved # For use when loading old/existing tasks.
+      @id = args[:id]
+      @langhash = Lang.new(@lang)
+      get_locations # This assigns @file, @location, @old_file, and @old_location
+    else      # For use when creating new tasks.
       @id = calculate_id
+      @langhash = Lang.new(@lang)
       # First review is due immediately.
       @next_review_date = DateTime.now.to_s # Saved as string.
+      get_locations # This assigns @file, @location, @old_file, and @old_location
       save_new_task
       edit
     end
@@ -132,6 +135,45 @@ class Task
       $tasks.list.unshift(self)
       # Save the tasklist.
       $tasks.save_tasklist
+    end
+
+    # Input score; return timestamp.
+    def calculate_spaced_repetition_date(score)
+      # If first review, it's an easy return.
+      if @all_reviews.length == 0
+        adjust_by = case score
+        when 1
+          1
+        when 2
+          2
+        when 3
+          4
+        when 4
+          7
+        when 5
+          10
+        end
+        return DateTime.now + adjust_by
+  
+      else
+        # Otherwise, it is the second or later review, and so we make some calculations.  
+        # Set interval (time between present and most recent review):
+        interval = ( DateTime.now - DateTime.parse(@all_reviews[0]['review_date']) ).round
+        interval = 1 if interval < 1 # Minimum interval time = 1 day.
+        adjust_by = case score
+        when 1
+          1
+        when 2
+          [(interval * 0.25), 4].max.round
+        when 3
+          [(interval * 0.8), 7].max.round
+        when 4
+          interval * 2
+        when 5
+          interval * 3
+        end
+        return DateTime.now + adjust_by
+      end
     end
 
 end # of class Tasks

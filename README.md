@@ -50,14 +50,13 @@ Online help is available from the task list by pressing 'c' for 'commands'.
 
 ## Development to do list
 
-* Major refactoring almost done, but much detailed cleanup still needed.
-* Definitely, soon, make it possible for users to change the default language. 
-* Maybe make a text editor class?
+* Refactoring of the detailed cleanup/editing still needed.
+* Improve an "installation" or "first run" script, allowing the user to select
+default language and default text editor. Think through the flow.
 * Add starter code (for user to edit in his answer) rather than putting this
 directly in the instructions. Ensure that, as with Java now, unedited starter
 code is not interpreted as an answer (so it won't overwrite the archive). No
 reason this bit can't be opened with the default text editor instead of Pico.
-* Maybe add an actual spaced repetition option.
 * Add wrapper code for C? Think about this.
 * Create features to export and import some (tagged) or all items.
 * Create features to mass-delete items (such as the pre-loaded questions, or
@@ -65,8 +64,8 @@ all of a language you're not studying, or just a tag you're putting aside for
 a while).
 * Add statistics (number of questions, averages, number overdue, number to do
 today, etc.).
-* Improve an "installation" or "first run" script, allowing the user to select
-default language and default text editor.
+* Major improvement would be a feature to let user write and run Rails thangs
+and play with CSS, HTML, and web-based JavaScript. 
 
 ## MVC refactoring notes
 
@@ -134,9 +133,15 @@ the new number. In addition, there is now a large, detailed help system
 accessible from both task list and task views. There are also a number of
 smaller improvements.
 
-### 2.1 ()
-More refactoring, adding Lang class:
-Along with other refactoring and minor debugging, surgically extracted the
-language-related methods and structures and placed them carefully within a
-brand new Lang class. Changed passed object parameters to instance variables
-after confirming that controllers and views are adequately self-contained.
+### 2.1 (October 15, 2018)
+Added spaced repetition and refactored with Lang class:
+Added spaced repetition method (which semi-intelligently suggests a next date 
+for review). Along with other refactoring, surgically extracted the 
+language-related methods and structures and placed them carefully within a 
+brand new Lang class. Consequently, user can now change default language, and 
+it is now a real default. Stopped calling many accessor methods on named 
+objects in favor of just using instance variables, after confirming that 
+controllers and views are adequately self-contained; hence the analogy to MVC
+code structure is almost complete. Fixed bugs including a problem with the 
+"date prettifier."
+

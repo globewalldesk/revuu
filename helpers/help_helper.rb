@@ -178,15 +178,64 @@ To run your script, whether it is in progress or finished, simply save
 and press 'r'. If the language is compiled, the command to compile will 
 be run first automatically before executing the file.
 
-If you have already written an answer before, the script prompts you to 
-save/archive your old answer; this is done automatically for you just by 
-pressing 'y'. It can be a great resource for your later review to see 
-your earlier solutions. Note that programs that have a single main 
-function (e.g., C and Java) overwrite rather than append the answer. 
-Ruby and JavaScript, by contrast, simply append answers to the top of 
-the list. You can actually read your old answers with 'o' and re-run 
-your old scripts with 'rr'.
+Be sure to press 's' for save a review after you're done. See the
+separate help items about this and also about how spaced repetition
+works.
+
+Note, if you have already written an answer before, the script prompts 
+you to save/archive your old answer; this is done automatically for you 
+just by pressing 'y'. It can be a great resource for your later review 
+to see your earlier solutions. Note that programs that have a single 
+main function (e.g., C and Java) overwrite rather than append the 
+answer. Ruby and JavaScript, by contrast, simply append answers to the 
+top of the list. You can actually read your old answers with 'o' and 
+re-run your old scripts with 'rr'.
 REVIEWATASK
+    },
+    {
+      title: 'save (record) a review',
+      content: <<-SAVEAREVIEW
+After you have successfully finished a task, you should press 's' for
+save (or record) the information that a review was performed. This 
+prompts you to do two things: first, to judge your level of mastery of
+the material. Mastery doesn't necessarily mean your total memorization
+of every little thing; sometimes, we have mastered something that we
+still have to look up information to finish.
+
+Second, Revuu asks you to either (1) accept the date that the spaced
+repetition algorithm recommends for your next review, simply by pressing
+"Enter", or (2) enter the date yourself (or, rather, a plain English 
+string such as "two weeks from now" or "next Tuesday").
+
+Bear in mind that your judgment about when you should review the 
+material is probably more reliable than the algorithm. Please look at 
+the help item titled "how the spaced repetition algorithm works."
+SAVEAREVIEW
+    },
+    {
+      title: 'how the spaced repetition algorithm works',
+      content: <<-SPACEDREPETITION
+In general, spaced repetition is the learning technique of spacing out
+reviews of learned information in ever-increasing increments, unless
+more frequent repetitions prove to be necessary.
+
+Here are the rules that Revuu's simple version of this algorithm follows
+(note, "interval" means the interval between today and the most recent 
+review):
+
+Score  First review         All later reviews
+    1  tomorrow             tomorrow
+    2  day after tomorrow   greater of 0.25 the interval or in 4 days
+    3  in 4 days            greater of 0.8 of the interval or in 1 week
+    4  in 1 weeks           in 2 times the interval
+    5  in 10 days           in 3 times the interval
+
+Please DO NOT rely religiously on this algorithm. Your judgment is
+probably considerably more reliable than the algorithm. Sometimes you
+might benefit from frequent repetition of material that you are
+confident of; sometimes you might not want to see some material that is
+shaky for months to come, may because it isn't important.
+SPACEDREPETITION
     },
     {
       title: 'run an answer/script',

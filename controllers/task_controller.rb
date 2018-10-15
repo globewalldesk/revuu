@@ -37,7 +37,7 @@ module TaskController
       edit_field('instructions')
     when 't' # Edit tags.
       edit_field('tags')
-    when 'd' # Edit date of next review.
+    when 'd' # Edit date of next review (might be based on spaced repetition algorithm).
       date = get_next_review_date('d')
       save_review_date(date) if date
     when 'sc' # Edit score.
@@ -54,8 +54,8 @@ module TaskController
     # Get @score from user.
     score = get_score('r')
     return unless score
-    # Get @next_review_date from user.
-    date = get_next_review_date('r')
+    # Get @next_review_date from user (might be based on spaced repetition algorithm).
+    date = get_next_review_date('r', score)
     return unless date
     # Update current @score.
     @score = score
@@ -124,15 +124,16 @@ module TaskController
       if @lang == 'Java'
         new_archive.gsub!('public class answer', 'public class answer_old')
       end
-    # Else the usual case: append newer answer to top of old_archive.
     else
+    # Else the usual case: append newer answer to top of old_archive.
       # Separate different archived answers with a line of comments.
       # Use $cmnt2 for /* ... */ style comments.
       comment_separator = (@langhash.cmnt2 ? ((@langhash.cmnt*37) + 
         @langhash.cmnt2) : (@langhash.cmnt*37) )
       # Concatenate current contents with archive file contents.
       new_archive =
-        contents + ("\n\n\n" + comment_separator + "\n\n\n") + old_archive
+        contents + ("\n\n\n" + @langhash.spacer + "\n" + comment_separator + 
+            + "\n\n\n") + old_archive
     end
     # Write concatenated contents to the location of the archive.
     File.write(@old_location, new_archive)

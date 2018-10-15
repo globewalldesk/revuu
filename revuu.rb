@@ -16,7 +16,7 @@ include TasklistController
 Dir["./views/*.rb"].each {|file| require file }
 include TaskView
 include TasklistView
-# MODELS (all are classes)
+# MODELS (all are classes so don't need to be 'include'-ed)
 Dir["./models/*.rb"].each {|file| require file}
 
 ###############################################################################
@@ -101,20 +101,6 @@ ENDINST
     # Double-check that editor is still available.
   end
 
-  # After getting a language from Lang::choose_default, saves to defaults.
-  def choose_default_language
-    puts "OK, let's choose a default language."
-    default = $lang_defaults.name ? $lang_defaults.name : 'Other'
-    new_default = Lang.solicit_languages_from_user(default)
-    if new_default != default
-      update_settings_file({'lang' => new_default})
-      $lang_defaults = Lang.new(new_default)
-      puts "Saved #{$lang_defaults.name} as the default language."
-    else
-      puts "Sticking with #{default}."
-    end
-  end
-
   # Both compiles a list of available editors and displays them to the user.
   def display_list_of_editors_to_user
     puts "Text editors on your system:"
@@ -139,6 +125,20 @@ ENDINST
       `which #{cmd}`.length > 0
     end
     eds.keys.sort # Alpha order names and return as array.
+  end
+
+  # After getting a language from Lang::choose_default, saves to defaults.
+  def choose_default_language
+    puts "OK, let's choose a default language."
+    default = $lang_defaults.name ? $lang_defaults.name : 'Other'
+    new_default = Lang.solicit_languages_from_user(default)
+    if new_default != default
+      update_settings_file({'lang' => new_default})
+      $lang_defaults = Lang.new(new_default)
+      puts "Saved #{$lang_defaults.name} as the default language."
+    else
+      puts "Sticking with #{default}."
+    end
   end
 
   def app_loop
