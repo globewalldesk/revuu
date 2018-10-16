@@ -1,39 +1,7 @@
 {
   "tasks": [
     {
-      "instructions": "Demonstrate let vs. var\n\nIn the following, assign i in two different places; in one place, assign \nit \"function scope\", and in the other, \"block scope\". The result should \nprint out two different statements. Assign another variable with 'var' \nbefore the function, then try checking its value inside the function.\n\nfunction checkScope() {\n\"use strict\";\n  if (true) {\n    console.log(\"i is: \", i);\n  }\n  console.log(\"i is: \", i);\n  return i;\n}\ncheckScope();",
-      "tags": [
-        "JavaScript",
-        "JS",
-        "Node",
-        "Node.js",
-        "var",
-        "let",
-        "scope"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "JavaScript",
-      "date_started": "2018-10-03T20:02:51+02:00",
-      "next_review_date": "2018-10-16T08:10:19-05:00",
-      "all_reviews": [
-        {
-          "score": 3,
-          "review_date": "2018-10-03T20:16:09+02:00"
-        },
-        {
-          "score": 4,
-          "review_date": "2018-10-07T08:10:19-05:00"
-        }
-      ],
-      "id": 35,
-      "file": "answer_35.js",
-      "location": "./answers/answer_35.js",
-      "old_file": "answer_old_35.js",
-      "old_location": "./answers/answer_old_35.js"
-    },
-    {
-      "instructions": "Generate [0, 1, 2, 3, 4] fast\n\nIn a single expression broken over a few lines for readability, generate and \nprint the array [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]. You'll need to use a spread \noperator, a constructor (not a literal), and a method, all in order to output \nan array.\n\nIf you need the review, comment each line, to say what it does.",
+      "instructions": "Generate array fast\n\nIn a single expression broken over a few lines for readability, generate and \nprint the array [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].",
       "tags": [
         "JavaScript",
         "JS",
@@ -43,15 +11,19 @@
         "array constructor",
         "keys"
       ],
-      "score": 4,
+      "score": 3,
       "saved": true,
       "lang": "JavaScript",
       "date_started": "2018-10-10T13:12:35-07:00",
-      "next_review_date": "2018-10-16T06:28:30-07:00",
+      "next_review_date": "2018-10-23T09:59:54-04:00",
       "all_reviews": [
         {
           "score": 4,
           "review_date": "2018-10-11T06:28:30-07:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-16T10:00:07-04:00"
         }
       ],
       "id": 47,
@@ -280,6 +252,32 @@
       "location": "./answers/answer_29.rb",
       "old_file": "answer_old_29.rb",
       "old_location": "./answers/answer_old_29.rb"
+    },
+    {
+      "instructions": "Printing the date and time using DateTime\n\nCreate a DateTime object representing the current time, and print it \nout as a string (not with #inspect). Then add seven days to the date\nand print a string of the format, \"In a week it will be MM/DD/YYYY.\"\nFinally, take the current time, add two hours to it and print a \nstring of the format, \"In two hours it will be HH:MM AM/PM.\"",
+      "tags": [
+        null,
+        "DateTime",
+        "DateTime#now",
+        "strftime",
+        "format directives"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-15T23:16:13-04:00",
+      "next_review_date": "2018-10-22T23:24:55-04:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-15T23:25:15-04:00"
+        }
+      ],
+      "id": 48,
+      "file": "answer_48.rb",
+      "location": "./answers/answer_48.rb",
+      "old_file": "answer_old_48.rb",
+      "old_location": "./answers/answer_old_48.rb"
     },
     {
       "instructions": "So many ways to write an em dash\n\nUse Integer#chr, a string containing \\u, and Array#pack to write three em \ndashes. No need to have these perfectly memorized (and the hex code, \ndefinitely not). The question is, how confident are you in using these things?\n\nNOTE: You definitely need to add questions about each of these methods because\neach is fairly involved and you're having to brute-force memorize this, which\nis really contrary to what Revuu questions are all about.",
@@ -847,6 +845,42 @@
       "location": "./answers/answer_13.js",
       "old_file": "answer_old_13.js",
       "old_location": "./answers/answer_old_13.js"
+    },
+    {
+      "instructions": "Demonstrate let vs. var\n\nIn the following, assign i in two different places; in one place, assign \nit \"function scope\", and in the other, \"block scope\". The result should \nprint out two different statements. Assign another variable with 'var' \nbefore the function, then try checking its value inside the function.\n\nfunction checkScope() {\n\"use strict\";\n  if (true) {\n    console.log(\"i is: \", i);\n  }\n  console.log(\"i is: \", i);\n  return i;\n}\ncheckScope();",
+      "tags": [
+        "JavaScript",
+        "JS",
+        "Node",
+        "Node.js",
+        "var",
+        "let",
+        "scope"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "JavaScript",
+      "date_started": "2018-10-03T20:02:51+02:00",
+      "next_review_date": "2018-11-11T09:56:03-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-03T20:16:09+02:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-07T08:10:19-05:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-16T09:56:33-04:00"
+        }
+      ],
+      "id": 35,
+      "file": "answer_35.js",
+      "location": "./answers/answer_35.js",
+      "old_file": "answer_old_35.js",
+      "old_location": "./answers/answer_old_35.js"
     },
     {
       "instructions": "Create a default parameter\n\nCreate a 'hello' function with a default parameter of 'John Doe'. Call the\nfunction supplying a value, then not supplying a value; the latter should\nprint out as 'Hello, John Doe.'",

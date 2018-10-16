@@ -1,9 +1,9 @@
 class Dog
   attr_accessor :cute, :breed, :weight
-  def initialize(args={})
+  def initialize(args = {})
     args = defaults.merge(args)
-    @cute   = args[:cute]
-    @breed  = args[:breed]
+    @cute =   args[:cute]
+    @breed =  args[:breed]
     @weight = args[:weight]
   end
 
@@ -14,12 +14,19 @@ class Dog
       weight: 15
     }
   end
+
 end
 lassie = Dog.new(cute: true, breed: 'collie')
 puts lassie.cute   # true
 puts lassie.breed  # collie
 puts lassie.weight # 15
-rover = Dog.new(weight: 80)
-puts rover.breed   # mutt
-puts rover.cute
-puts rover.weight
+rover = Dog.new
+puts rover.breed
+
+
+
+
+puts ''
+#####################################
+
+

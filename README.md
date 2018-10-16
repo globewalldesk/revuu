@@ -84,7 +84,9 @@ calls can become class method calls.
 ## Version notes
 
 ### 1.0 (September 27, 2018)
-First published version: Features include new tasks, list all tasks, delete
+First published version:
+
+Features include new tasks, list all tasks, delete
 task, sort by tags, and various user and programmer documentation. There are
 several features related to answering/reviewing tasks: saving a new review
 (including date and score), writing an answer using a (one supported) text
@@ -96,6 +98,7 @@ score. Task, review, and settings data are all saved in JSON files.
 
 ### 1.1 (September 28, 2018)
 Text editor support:
+
 Added support for Atom, Eclipse, Pico, Nano, Vi, Vim, and other text editors.
 This checks the user's system to see which are available and shows only those.
 The app now checks that the settings file exists, pre-populates it with
@@ -104,6 +107,7 @@ simple 'refresh' function for the task review and edit screen.
 
 ### 1.2 (October 1, 2018)
 Navigation:
+
 Added pagination and page navigation. Data about any persisted tag searches
 and navigation page was added as attributes to the global TaskList object. So
 the user can navigate to the second page of tasks, view one, quit that view,
@@ -114,6 +118,7 @@ having to redo the search in between tasks.
 
 ### 1.3 (October 6, 2018)
 Lots of little improvements:
+
 Automatically inserts language name and variants into tag list. Similarly,
 inserts language name in parentheses before the page title, not in the data,
 but when the task is rendered to the user. 'x' command shows the "next due"
@@ -126,6 +131,7 @@ Gemfile and required them via `Bundler.require(:default)`.
 
 ### 2.0 (October 10, 2018)
 Refactoring and instructions:
+
 The biggest change that justifies the major version number change is that
 the code has been completely rearranged into /models, /controllers, and
 /views folders, on analogy with web-based MVC development. There is still
@@ -136,6 +142,7 @@ smaller improvements.
 
 ### 2.1 (October 15, 2018)
 Added spaced repetition and refactored with Lang class:
+
 Added spaced repetition method (which semi-intelligently suggests a next date
 for review). Along with other refactoring, surgically extracted the
 language-related methods and structures and placed them carefully within a
