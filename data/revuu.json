@@ -27,7 +27,6 @@
         }
       ],
       "id": 35,
-      "langhash": "#<Lang:0x00007fbaed0c28d0>",
       "file": "answer_35.js",
       "location": "./answers/answer_35.js",
       "old_file": "answer_old_35.js",
@@ -56,7 +55,6 @@
         }
       ],
       "id": 47,
-      "langhash": "#<Lang:0x00007fbaed0c1250>",
       "file": "answer_47.js",
       "location": "./answers/answer_47.js",
       "old_file": "answer_old_47.js",
@@ -84,7 +82,6 @@
         }
       ],
       "id": 6,
-      "langhash": "#<Lang:0x00007fbaec8ff030>",
       "file": "answer_6.rb",
       "location": "./answers/answer_6.rb",
       "old_file": "answer_old_6.rb",
@@ -108,7 +105,6 @@
         }
       ],
       "id": 31,
-      "langhash": "#<Lang:0x00007fbaec8fc470>",
       "file": "answer_31.rb",
       "location": "./answers/answer_31.rb",
       "old_file": "answer_old_31.rb",
@@ -141,7 +137,6 @@
         }
       ],
       "id": 43,
-      "langhash": "#<Lang:0x00007fbaec8f1d90>",
       "file": "answer_43.js",
       "location": "./answers/answer_43.js",
       "old_file": "answer_old_43.js",
@@ -172,7 +167,6 @@
         }
       ],
       "id": 38,
-      "langhash": "#<Lang:0x00007fbaec8d2c60>",
       "file": "answer_38.js",
       "location": "./answers/answer_38.js",
       "old_file": "answer_old_38.js",
@@ -200,7 +194,6 @@
         }
       ],
       "id": 34,
-      "langhash": "#<Lang:0x00007fbaec8b9508>",
       "file": "answer_34.rb",
       "location": "./answers/answer_34.rb",
       "old_file": "answer_old_34.rb",
@@ -228,7 +221,6 @@
         }
       ],
       "id": 14,
-      "langhash": "#<Lang:0x00007fbaed0aac58>",
       "file": "answer_14.js",
       "location": "./answers/answer_14.js",
       "old_file": "answer_old_14.js",
@@ -261,7 +253,6 @@
         }
       ],
       "id": 7,
-      "langhash": "#<Lang:0x00007fbaed8176a8>",
       "file": "answer_7.rb",
       "location": "./answers/answer_7.rb",
       "old_file": "answer_old_7.rb",
@@ -285,7 +276,6 @@
         }
       ],
       "id": 29,
-      "langhash": "#<Lang:0x00007fbaec917ea0>",
       "file": "answer_29.rb",
       "location": "./answers/answer_29.rb",
       "old_file": "answer_old_29.rb",
@@ -325,7 +315,6 @@
         }
       ],
       "id": 32,
-      "langhash": "#<Lang:0x00007fbaed104410>",
       "file": "answer_32.rb",
       "location": "./answers/answer_32.rb",
       "old_file": "answer_old_32.rb",
@@ -355,7 +344,6 @@
         }
       ],
       "id": 4,
-      "langhash": "#<Lang:0x00007fbaed0ab7c0>",
       "file": "answer_4.rb",
       "location": "./answers/answer_4.rb",
       "old_file": "answer_old_4.rb",
@@ -388,7 +376,6 @@
         }
       ],
       "id": 39,
-      "langhash": "#<Lang:0x00007fbaed871b30>",
       "file": "answer_39.js",
       "location": "./answers/answer_39.js",
       "old_file": "answer_old_39.js",
@@ -418,7 +405,6 @@
         }
       ],
       "id": 5,
-      "langhash": "#<Lang:0x00007fbaec901a88>",
       "file": "answer_5.rb",
       "location": "./answers/answer_5.rb",
       "old_file": "answer_old_5.rb",
@@ -451,7 +437,6 @@
         }
       ],
       "id": 42,
-      "langhash": "#<Lang:0x00007fbaed15f6f8>",
       "file": "answer_42.js",
       "location": "./answers/answer_42.js",
       "old_file": "answer_old_42.js",
@@ -480,7 +465,6 @@
         }
       ],
       "id": 37,
-      "langhash": "#<Lang:0x00007fbaed0e48b8>",
       "file": "answer_37.js",
       "location": "./answers/answer_37.js",
       "old_file": "answer_old_37.js",
@@ -513,7 +497,6 @@
         }
       ],
       "id": 28,
-      "langhash": "#<Lang:0x00007fbaed17eb20>",
       "file": "answer_28.rb",
       "location": "./answers/answer_28.rb",
       "old_file": "answer_old_28.rb",
@@ -542,7 +525,6 @@
         }
       ],
       "id": 33,
-      "langhash": "#<Lang:0x00007fbaed196130>",
       "file": "answer_33.rb",
       "location": "./answers/answer_33.rb",
       "old_file": "answer_old_33.rb",
@@ -570,7 +552,6 @@
         }
       ],
       "id": 24,
-      "langhash": "#<Lang:0x00007fbaed1a5630>",
       "file": "answer_24.rb",
       "location": "./answers/answer_24.rb",
       "old_file": "answer_old_24.rb",
@@ -605,7 +586,6 @@
         }
       ],
       "id": 46,
-      "langhash": "#<Lang:0x00007fbaed1c7578>",
       "file": "answer_46.c",
       "location": "./answers/answer_46.c",
       "old_file": "answer_old_46.c",
@@ -642,7 +622,6 @@
         }
       ],
       "id": 10,
-      "langhash": "#<Lang:0x00007fbaed8310a8>",
       "file": "answer_10.js",
       "location": "./answers/answer_10.js",
       "old_file": "answer_old_10.js",
@@ -671,7 +650,6 @@
         }
       ],
       "id": 8,
-      "langhash": "#<Lang:0x00007fbaec92d610>",
       "file": "answer_8.rb",
       "location": "./answers/answer_8.rb",
       "old_file": "answer_old_8.rb",
@@ -711,7 +689,6 @@
         }
       ],
       "id": 1,
-      "langhash": "#<Lang:0x00007fbaed89d258>",
       "file": "answer_1.c",
       "location": "./answers/answer_1.c",
       "old_file": "answer_old_1.c",
@@ -741,7 +718,6 @@
         }
       ],
       "id": 25,
-      "langhash": "#<Lang:0x00007fbaec139eb8>",
       "file": "answer_25.rb",
       "location": "./answers/answer_25.rb",
       "old_file": "answer_old_25.rb",
@@ -774,7 +750,6 @@
         }
       ],
       "id": 16,
-      "langhash": "#<Lang:0x00007fbaec14ce78>",
       "file": "answer_16.rb",
       "location": "./answers/answer_16.rb",
       "old_file": "answer_old_16.rb",
@@ -805,7 +780,6 @@
         }
       ],
       "id": 40,
-      "langhash": "#<Lang:0x00007fbaec8b8540>",
       "file": "answer_40.js",
       "location": "./answers/answer_40.js",
       "old_file": "answer_old_40.js",
@@ -837,7 +811,6 @@
         }
       ],
       "id": 15,
-      "langhash": "#<Lang:0x00007fbaed872788>",
       "file": "answer_15.js",
       "location": "./answers/answer_15.js",
       "old_file": "answer_old_15.js",
@@ -870,7 +843,6 @@
         }
       ],
       "id": 13,
-      "langhash": "#<Lang:0x00007fbaec1855e8>",
       "file": "answer_13.js",
       "location": "./answers/answer_13.js",
       "old_file": "answer_old_13.js",
@@ -901,7 +873,6 @@
         }
       ],
       "id": 44,
-      "langhash": "#<Lang:0x00007fbaec155528>",
       "file": "answer_44.js",
       "location": "./answers/answer_44.js",
       "old_file": "answer_old_44.js",
@@ -928,7 +899,6 @@
         }
       ],
       "id": 45,
-      "langhash": "#<Lang:0x00007fbaed890558>",
       "file": "answer_45.js",
       "location": "./answers/answer_45.js",
       "old_file": "answer_old_45.js",
@@ -962,7 +932,6 @@
         }
       ],
       "id": 17,
-      "langhash": "#<Lang:0x00007fbaed1ee538>",
       "file": "answer_17.rb",
       "location": "./answers/answer_17.rb",
       "old_file": "answer_old_17.rb",
@@ -986,7 +955,6 @@
         }
       ],
       "id": 11,
-      "langhash": "#<Lang:0x00007fbaed1af6d0>",
       "file": "answer_11.java",
       "location": "./answers/answer_11.java",
       "old_file": "answer_old_11.java",
@@ -1016,7 +984,6 @@
         }
       ],
       "id": 12,
-      "langhash": "#<Lang:0x00007fbaed177708>",
       "file": "answer_12.c",
       "location": "./answers/answer_12.c",
       "old_file": "answer_old_12.c",
@@ -1041,7 +1008,6 @@
         }
       ],
       "id": 27,
-      "langhash": "#<Lang:0x00007fbaec911348>",
       "file": "answer_27.rb",
       "location": "./answers/answer_27.rb",
       "old_file": "answer_old_27.rb",
@@ -1066,7 +1032,6 @@
         }
       ],
       "id": 26,
-      "langhash": "#<Lang:0x00007fbaec8e07e8>",
       "file": "answer_26.rb",
       "location": "./answers/answer_26.rb",
       "old_file": "answer_old_26.rb",
@@ -1105,7 +1070,6 @@
         }
       ],
       "id": 36,
-      "langhash": "#<Lang:0x00007fbaec18fc28>",
       "file": "answer_36.js",
       "location": "./answers/answer_36.js",
       "old_file": "answer_old_36.js",
@@ -1140,7 +1104,6 @@
         }
       ],
       "id": 9,
-      "langhash": "#<Lang:0x00007fbaec154060>",
       "file": "answer_9.sh",
       "location": "./answers/answer_9.sh",
       "old_file": "answer_old_9.sh",
@@ -1165,7 +1128,6 @@
         }
       ],
       "id": 41,
-      "langhash": "#<Lang:0x00007fbaed217550>",
       "file": "answer_41.rb",
       "location": "./answers/answer_41.rb",
       "old_file": "answer_old_41.rb",
@@ -1194,7 +1156,6 @@
         }
       ],
       "id": 2,
-      "langhash": "#<Lang:0x00007fbaed1cdce8>",
       "file": "answer_2.rb",
       "location": "./answers/answer_2.rb",
       "old_file": "answer_old_2.rb",
@@ -1221,7 +1182,6 @@
         }
       ],
       "id": 30,
-      "langhash": "#<Lang:0x00007fbaed187270>",
       "file": "answer_30.rb",
       "location": "./answers/answer_30.rb",
       "old_file": "answer_old_30.rb",
@@ -1246,7 +1206,6 @@
         }
       ],
       "id": 18,
-      "langhash": "#<Lang:0x00007fbaed139fe8>",
       "file": "answer_18.rb",
       "location": "./answers/answer_18.rb",
       "old_file": "answer_old_18.rb",

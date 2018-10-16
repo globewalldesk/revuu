@@ -2,9 +2,6 @@ require 'date'
 
 module DatePrettifier
 
-  # FIX THIS: all the diffs need to be redone in terms of days. This will
-  # fix some bugs.
-
   # From timestamp, output a human-friendly date
   def prettify_timestamp(ts)
     now = DateTime.now
@@ -33,7 +30,7 @@ module DatePrettifier
       'today'
     # If 2-6 days ahead or behind, e.g.: '3 days ago', '4 days from now'
     elsif ! ts.between?(now - 1, now + 1)
-      diff = (sec_diff/(60*60*24.0)).round
+      diff = (sec_diff/(60*60*24.0)).ceil
       s = pl(diff)
       ago_from_now(ts, now, 'day', diff, s)
     else

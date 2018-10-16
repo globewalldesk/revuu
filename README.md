@@ -1,6 +1,7 @@
 # revuu
-Spaced repetition-like command line app for learning and reviewing programming
-tasks--improving procedural (as opposed to declarative) knowledge.
+Handy command line app for learning and reviewing programming tasks--improving
+procedural (as opposed to declarative) knowledge--using spaced repetition
+methods.
 
 ## User introduction
 
@@ -65,7 +66,7 @@ a while).
 * Add statistics (number of questions, averages, number overdue, number to do
 today, etc.).
 * Major improvement would be a feature to let user write and run Rails thangs
-and play with CSS, HTML, and web-based JavaScript. 
+and play with CSS, HTML, and web-based JavaScript.
 
 ## MVC refactoring notes
 
@@ -126,7 +127,7 @@ Gemfile and required them via `Bundler.require(:default)`.
 ### 2.0 (October 10, 2018)
 Refactoring and instructions:
 The biggest change that justifies the major version number change is that
-the code has been completely rearranged into /models, /controllers, and 
+the code has been completely rearranged into /models, /controllers, and
 /views folders, on analogy with web-based MVC development. There is still
 quite a bit of refactoring to do, but this is a big enough change to warrant
 the new number. In addition, there is now a large, detailed help system
@@ -135,13 +136,13 @@ smaller improvements.
 
 ### 2.1 (October 15, 2018)
 Added spaced repetition and refactored with Lang class:
-Added spaced repetition method (which semi-intelligently suggests a next date 
-for review). Along with other refactoring, surgically extracted the 
-language-related methods and structures and placed them carefully within a 
-brand new Lang class. Consequently, user can now change default language, and 
-it is now a real default. Stopped calling many accessor methods on named 
-objects in favor of just using instance variables, after confirming that 
+Added spaced repetition method (which semi-intelligently suggests a next date
+for review). Along with other refactoring, surgically extracted the
+language-related methods and structures and placed them carefully within a
+brand new Lang class. Consequently, user can now change default language, and
+it is now a real default. Stopped calling many accessor methods on named
+objects in favor of just using instance variables, after confirming that
 controllers and views are adequately self-contained; hence the analogy to MVC
-code structure is almost complete. Fixed bugs including a problem with the 
+code structure is almost complete. Fixed bugs including a problem with the
 "date prettifier."
 

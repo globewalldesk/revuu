@@ -12,7 +12,7 @@ class Task
         required: true)         # <-- needs a lot of work/refactoring
       return nil if instructions == nil or instructions == 'q' # Instructions required.
       # Get language from user; returns a canonical, approved name for saving.
-      lang = Lang.pick_language_name($lang_defaults.name) 
+      lang = Lang.pick_language_name($lang_defaults.name)
       # Get tags from user. Arrives as string.
       tags = get_tags_from_user # <-- needs a lot of work/refactoring
       return nil if tags == 'q'  # TEMPORARY kluge
@@ -74,12 +74,13 @@ class Task
   def to_hash
     hash = {}
     self.instance_variables.each do |var|
+      next if var.to_s[1..-1] == 'langhash' # No need to save this object.
       hash[var.to_s[1..-1]] = self.instance_variable_get var
     end
     hash
   end
 
-  # Given a task ID, set the globals for the task's answer files & location. 
+  # Given a task ID, set the globals for the task's answer files & location.
   def get_locations
     # Determine filename for answer for this task.
     ext = @langhash.ext
@@ -154,9 +155,9 @@ class Task
           10
         end
         return DateTime.now + adjust_by
-  
+
       else
-        # Otherwise, it is the second or later review, and so we make some calculations.  
+        # Otherwise, it is the second or later review, and so we make some calculations.
         # Set interval (time between present and most recent review):
         interval = ( DateTime.now - DateTime.parse(@all_reviews[0]['review_date']) ).round
         interval = 1 if interval < 1 # Minimum interval time = 1 day.
