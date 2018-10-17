@@ -1,5 +1,5 @@
 module HelpHelper
-  
+
   # Note, passes along a copy of the launching object in order to return there.
   def launch_instructions_system
     clear_screen
@@ -71,124 +71,125 @@ module HelpHelper
       content: <<-ENDINTRO
 Welcome to Revuu!
 
-This app will help you review programming tasks, improving understanding 
-and keeping your skills fresh. It was written with the notion that 
-programmers (and others) need repetition of not declarative but 
+This app will help you review programming tasks, improving understanding
+and keeping your skills fresh. It was written with the notion that
+programmers (and others) need repetition of not declarative but
 procedural knowledge.
 
-So when you perform a review, you don't try to answer a question in 
-words. Instead, you try to perform a task. Essentially, to use Revuu, 
-you'd add complex, not simple, tasks. Probably the ideal Revuu task 
+So when you perform a review, you don't try to answer a question in
+words. Instead, you try to perform a task. Essentially, to use Revuu,
+you'd add complex, not simple, tasks. Probably the ideal Revuu task
 would require 2-10 minutes to complete.
 
-The basic functions of the program are adding tasks, using the handy 
-answer filing and editing system (which probably works with your 
-favorite text editor), running the script and seeing the results, and 
-recording that you've done a review and that the next review should be 
-done on a certain date. The two basic views of the app are a paginated 
+The basic functions of the program are adding tasks, using the handy
+answer filing and editing system (which probably works with your
+favorite text editor), running the script and seeing the results, and
+recording that you've done a review and that the next review should be
+done on a certain date. The two basic views of the app are a paginated
 list of tasks and an individual task view.
 
-Currently, we support Ruby, Node.js (JavaScript), Java, C, and Bash 
-scripting. We also support many commonly-used text editors and IDEs.
+Currently, we support Ruby, JavaScript (Node.js), Python, Java, C, and
+Bash scripting. We also support many commonly-used text editors and
+IDEs.
 
 Add copious, well-chosen tags in order to be able to sort tasks.
 
-Revuu ships with a bunch of pre-made questions and answers by way of 
-demonstration. You can delete these and make your own, if you like. The 
+Revuu ships with a bunch of pre-made questions and answers by way of
+demonstration. You can delete these and make your own, if you like. The
 questions are mostly Ruby and JavaScript right now.
 ENDINTRO
     },
     {
       title: "getting started",
       content: <<-GETTINGSTARTED
-Basically, Revuu is all about (1) giving yourself programming tasks that 
-drill skills you want to learn, (2) making it super-easy to write (with 
-your text editor of choice) and run scripts from within Revuu, and 
-(3) keeping track of how confident you feel and, consequently, when your 
+Basically, Revuu is all about (1) giving yourself programming tasks that
+drill skills you want to learn, (2) making it super-easy to write (with
+your text editor of choice) and run scripts from within Revuu, and
+(3) keeping track of how confident you feel and, consequently, when your
 next review for an skill should be.
 
 The first thing you'll want to do is to check (and probably change) the
-default text editor: from the task list view (the one you see when you 
+default text editor: from the task list view (the one you see when you
 first start the program), press 'e' for editor.
 
-Since Revuu ships with a lot of ready-made questions, you should 
-probably delete a lot of questions. You can delete all of them simply by 
+Since Revuu ships with a lot of ready-made questions, you should
+probably delete a lot of questions. You can delete all of them simply by
 navigating to /data and there deleting revuu.json (don't delete revuu.rb
---that's the app). If you want to delete them one at a time, you can do 
-so by pressing 'd' and then typing the ID number of the question to 
+--that's the app). If you want to delete them one at a time, you can do
+so by pressing 'd' and then typing the ID number of the question to
 delete.
 
-If you retain any questions, you'll want to change the "next review" 
-dates on them. You have to do that one at a time (or I can write a 
+If you retain any questions, you'll want to change the "next review"
+dates on them. You have to do that one at a time (or I can write a
 method to do that automatically--let me know if you want me to).
 
-To *really* get started, you'll want to add questions based on your 
-studies or by examining how you solved problems in your own code (you 
-want to commit that stuff to memory, right?). To get started, just press 
+To *really* get started, you'll want to add questions based on your
+studies or by examining how you solved problems in your own code (you
+want to commit that stuff to memory, right?). To get started, just press
 'n' for new and follow the instructions.
 
-After you write a task, you should answer it ('a' on the task view) and 
-then make sure the answer is correct by running your script ('r'). 
+After you write a task, you should answer it ('a' on the task view) and
+then make sure the answer is correct by running your script ('r').
 GETTINGSTARTED
     },
     {
       title: 'create a task',
       content: <<-CREATEATASK
-To write a new task for regular review, press 'n'. The app will lead you 
-through what you need to do. 
+To write a new task for regular review, press 'n'. The app will lead you
+through what you need to do.
 
-I recommend that you keep the tasks fairly simple--enough to accomplish 
-in, say, two to 10 minutes. It is also a good idea to make sure the 
+I recommend that you keep the tasks fairly simple--enough to accomplish
+in, say, two to 10 minutes. It is also a good idea to make sure the
 outcome is objective, so you can check up on yourself easily.
 
-If you don't like the default text editor, you can switch it by going to 
-the task list (the one you see when you first start the program) and 
+If you don't like the default text editor, you can switch it by going to
+the task list (the one you see when you first start the program) and
 pressing 'e'.
 
-Right now, Revuu supports Ruby, JavaScript, Java, C, and Bash (and text 
-files). I can easily add more languages; just let me know. There's no 
-reason to think your language of choice can't be supported.
+Right now, Revuu supports Ruby, JavaScript, Python, Java, C, and Bash
+(and text files). I can easily add more languages; just let me know.
+There's no reason to think your language of choice can't be supported.
 
-As to tags, a key tip to bear in mind is to add any unusual methods, 
-keywords, techniques, and concepts (that have clear names) to the tag 
-list. Tags are separated by commas, although if you enter them one to a 
+As to tags, a key tip to bear in mind is to add any unusual methods,
+keywords, techniques, and concepts (that have clear names) to the tag
+list. Tags are separated by commas, although if you enter them one to a
 line, they'll be rendered in the correct format.
 
 DO add tags, because otherwise you won't be able to search or filter.
 
-Set an initial score for yourself based on how confident you are in 
-doing the task. I don't think you have to have everything memorized to 
-get a 5, but that's up to you. Your first review is scheduled for the 
+Set an initial score for yourself based on how confident you are in
+doing the task. I don't think you have to have everything memorized to
+get a 5, but that's up to you. Your first review is scheduled for the
 same day. (See 'review a task' for more details.)
 CREATEATASK
     },
     {
       title: 'review (practice, answer) a task',
       content: <<-REVIEWATASK
-Revuu makes it really easy to review a task, i.e., writing a script that 
-follows the instructions for a task. Just go to the task view (by 
+Revuu makes it really easy to review a task, i.e., writing a script that
+follows the instructions for a task. Just go to the task view (by
 entering its ID number) and press 'a'.
 
-This will open up a file, with a well-chosen filename based on the task 
-ID and programming language, using your text editor of choice (remember, 
-you can change the default by choosing 'e' for editor from the top-level 
+This will open up a file, with a well-chosen filename based on the task
+ID and programming language, using your text editor of choice (remember,
+you can change the default by choosing 'e' for editor from the top-level
 task list).
 
-To run your script, whether it is in progress or finished, simply save 
-and press 'r'. If the language is compiled, the command to compile will 
+To run your script, whether it is in progress or finished, simply save
+and press 'r'. If the language is compiled, the command to compile will
 be run first automatically before executing the file.
 
 Be sure to press 's' for save a review after you're done. See the
 separate help items about this and also about how spaced repetition
 works.
 
-Note, if you have already written an answer before, the script prompts 
-you to save/archive your old answer; this is done automatically for you 
-just by pressing 'y'. It can be a great resource for your later review 
-to see your earlier solutions. Note that programs that have a single 
-main function (e.g., C and Java) overwrite rather than append the 
-answer. Ruby and JavaScript, by contrast, simply append answers to the 
-top of the list. You can actually read your old answers with 'o' and 
+Note, if you have already written an answer before, the script prompts
+you to save/archive your old answer; this is done automatically for you
+just by pressing 'y'. It can be a great resource for your later review
+to see your earlier solutions. Note that programs that have a single
+main function (e.g., C and Java) overwrite rather than append the
+answer. Ruby and JavaScript, by contrast, simply append answers to the
+top of the list. You can actually read your old answers with 'o' and
 re-run your old scripts with 'rr'.
 REVIEWATASK
     },
@@ -196,7 +197,7 @@ REVIEWATASK
       title: 'save (record) a review',
       content: <<-SAVEAREVIEW
 After you have successfully finished a task, you should press 's' for
-save (or record) the information that a review was performed. This 
+save (or record) the information that a review was performed. This
 prompts you to do two things: first, to judge your level of mastery of
 the material. Mastery doesn't necessarily mean your total memorization
 of every little thing; sometimes, we have mastered something that we
@@ -204,11 +205,11 @@ still have to look up information to finish.
 
 Second, Revuu asks you to either (1) accept the date that the spaced
 repetition algorithm recommends for your next review, simply by pressing
-"Enter", or (2) enter the date yourself (or, rather, a plain English 
+"Enter", or (2) enter the date yourself (or, rather, a plain English
 string such as "two weeks from now" or "next Tuesday").
 
-Bear in mind that your judgment about when you should review the 
-material is probably more reliable than the algorithm. Please look at 
+Bear in mind that your judgment about when you should review the
+material is probably more reliable than the algorithm. Please look at
 the help item titled "how the spaced repetition algorithm works."
 SAVEAREVIEW
     },
@@ -220,7 +221,7 @@ reviews of learned information in ever-increasing increments, unless
 more frequent repetitions prove to be necessary.
 
 Here are the rules that Revuu's simple version of this algorithm follows
-(note, "interval" means the interval between today and the most recent 
+(note, "interval" means the interval between today and the most recent
 review):
 
 Score  First review         All later reviews
@@ -277,7 +278,7 @@ answers for you (this is done when you press 'a' and then choose 'y' to
 archive), and then allows you view them again with 'o' for old answer
 and to run them again with 'rr' for re-run. Note that while languages
 like JavaScript and Ruby append newer answers to the top of the archive
-file, languages that permit only one main function like C and Java 
+file, languages that permit only one main function like C and Java
 entirely overwrite the old answer, which will be lost forever.
 ARCHIVE
     },
@@ -297,13 +298,13 @@ DELETEATASK
     {
       title: 'refresh the view',
       content: <<-REFRESHTASKS
-Sometimes Revuu gets to be rather messy, and important stuff has 
+Sometimes Revuu gets to be rather messy, and important stuff has
 scrolled off the top of the screen. You can refresh your view, though.
 
 If you're on the task list (the top level), press 'l' to list the tasks
 --to clear the screen and redisplay the task list.
 
-If you're viewing a particular task, press 'f' to refresh the task 
+If you're viewing a particular task, press 'f' to refresh the task
 instructions and data.
 REFRESHTASKS
     },
@@ -311,7 +312,7 @@ REFRESHTASKS
       title: 'search and filter tasks',
       content: <<-SEARCHFILTER
 First, make sure you have a decent system of tags to search and filter
-on. Just type 't' for tag and type in a tag. It must closely match a 
+on. Just type 't' for tag and type in a tag. It must closely match a
 tag to get any results.
 
 The search and filter feature is not sophisticated yet. It is not
@@ -342,8 +343,8 @@ language (which you accept by hitting "Enter" when you're creating a new task),
 go to the task list (top level) and type 'p' for programming language.
 
 As to the language of an individual task, you set it when you create the
-task. But this can be changed at any time from the view page for a particular 
-task (if you're not there, just type its ID number from the task list). The 
+task. But this can be changed at any time from the view page for a particular
+task (if you're not there, just type its ID number from the task list). The
 command is 'c' for configure language.
 CHANGELANGUAGE
     },

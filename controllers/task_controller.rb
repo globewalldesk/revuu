@@ -80,15 +80,13 @@ module TaskController
     system("pico tmp/#{field}.tmp")
     # Save upon closing: grab text.
     attrib = File.read("./tmp/#{field}.tmp").strip
-    if attrib.empty?
-      if field == 'instructions'
-        puts "ERROR: Instructions cannot be blank."
-      end
+    if attrib.empty? && field == 'instructions'
+      puts "ERROR: Instructions cannot be blank."
       return nil
     end
     # Use validation method if field type is tags.
     if field == 'tags'
-      attrib = self.class.validate_tags(attrib)
+      attrib = self.class.validate_tags(attrib, @lang)
     end
     # Set instance variable to contents of edited temp file.
     self.instance_variable_set("@#{field}", attrib)
@@ -128,11 +126,11 @@ module TaskController
     # Else the usual case: append newer answer to top of old_archive.
       # Separate different archived answers with a line of comments.
       # Use $cmnt2 for /* ... */ style comments.
-      comment_separator = (@langhash.cmnt2 ? ((@langhash.cmnt*37) + 
+      comment_separator = (@langhash.cmnt2 ? ((@langhash.cmnt*37) +
         @langhash.cmnt2) : (@langhash.cmnt*37) )
       # Concatenate current contents with archive file contents.
       new_archive =
-        contents + ("\n\n\n" + @langhash.spacer + "\n" + comment_separator + 
+        contents + ("\n\n\n" + @langhash.spacer + "\n" + comment_separator +
             + "\n\n\n") + old_archive
     end
     # Write concatenated contents to the location of the archive.

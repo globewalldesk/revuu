@@ -1,88 +1,6 @@
 {
   "tasks": [
     {
-      "instructions": "Generate array fast\n\nIn a single expression broken over a few lines for readability, generate and \nprint the array [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].",
-      "tags": [
-        "JavaScript",
-        "JS",
-        "Node",
-        "Node.js",
-        "spread operator",
-        "array constructor",
-        "keys"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "JavaScript",
-      "date_started": "2018-10-10T13:12:35-07:00",
-      "next_review_date": "2018-10-23T09:59:54-04:00",
-      "all_reviews": [
-        {
-          "score": 4,
-          "review_date": "2018-10-11T06:28:30-07:00"
-        },
-        {
-          "score": 3,
-          "review_date": "2018-10-16T10:00:07-04:00"
-        }
-      ],
-      "id": 47,
-      "file": "answer_47.js",
-      "location": "./answers/answer_47.js",
-      "old_file": "answer_old_47.js",
-      "old_location": "./answers/answer_old_47.js"
-    },
-    {
-      "instructions": "Using defaults in instance initialization\n\nThe following defaults are problematic for reasons Sandi Metz explained.\nMove them into a method and use the method in #initialize. Ensure the \nanswers remain the same.\n\nclass Dog\n  attr_accessor :cute, :breed, :weight\n  def initialize(args)\n    @cute   = args[:cute]   || false\n    @breed  = args[:breed]  || 'mutt'\n    @weight = args[:weight] || 15\n  end\nend\nlassie = Dog.new(cute: true, breed: 'collie')\nputs lassie.cute   # true\nputs lassie.breed  # collie\nputs lassie.weight # 15\nrover = Dog.new\nputs rover.breed   # mutt",
-      "tags": [
-        "Ruby",
-        "defaults",
-        "initialize",
-        "merge",
-        "optional arguments",
-        "default arguments"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "Ruby",
-      "date_started": "2018-09-25T08:24:11-04:00",
-      "next_review_date": "2018-10-16T14:37:03-04:00",
-      "all_reviews": [
-        {
-          "score": 4,
-          "review_date": "2018-09-25T14:37:03-04:00"
-        }
-      ],
-      "id": 6,
-      "file": "answer_6.rb",
-      "location": "./answers/answer_6.rb",
-      "old_file": "answer_old_6.rb",
-      "old_location": "./answers/answer_old_6.rb"
-    },
-    {
-      "instructions": "Center this in a whitespace-padded string\n\nSuppose you want to put \"Acme Products\" centered on one line and \n\"The top products for you!\" on the next line. The lines should be 75\ncharacters wide. The first should be padded with empty space, while\nthe second shoudl be padded with '=+'. Print the two lines.",
-      "tags": [
-        "Ruby",
-        "center"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "Ruby",
-      "date_started": "2018-10-03T08:38:44+01:00",
-      "next_review_date": "2018-10-17T08:42:40+01:00",
-      "all_reviews": [
-        {
-          "score": 4,
-          "review_date": "2018-10-03T08:42:04+01:00"
-        }
-      ],
-      "id": 31,
-      "file": "answer_31.rb",
-      "location": "./answers/answer_31.rb",
-      "old_file": "answer_old_31.rb",
-      "old_location": "./answers/answer_old_31.rb"
-    },
-    {
       "instructions": "Return an array of squared positive integers\n\nGiven \n\nlet nums = [3, -25, 0.67, 7, -12.25, 12.25, 12];\n\nwrite and then print the result of using chained arrow functions that \nreturn the squares of only elements that are (a) positive and \n(b) integers. Response should be [9, 49, 144].",
       "tags": [
         "JavaScript",
@@ -143,6 +61,56 @@
       "location": "./answers/answer_38.js",
       "old_file": "answer_old_38.js",
       "old_location": "./answers/answer_old_38.js"
+    },
+    {
+      "instructions": "What's higher in value?\n\n(Answer all questions before you run anything.)\n\nGenerate the (lowercase) alphabet (= az), then sort it using a \nblock: |x,y| x <=> y. What will be the value of az[0]? Predict\ncorrectly before showing. Regenerate so that az[0] has the\nopposite value.\n\nNext, sort without a block. What is az[0]? Predict then demonstrate.\n\nFinally, what is the value of 'a' <=> 'b'? Predict then demonstrate.\n\nPrint ASCII characters 32 to 126. Use the spaceship operator to \ncompare a character from the 32-47 range with a character from the\n123-126 range.\n\nWhen you sort with |x,y| x <=> y, does the sorter place the lower-\nvalued items first or last?",
+      "tags": [
+        "Ruby",
+        "sort",
+        "combined comparison operator",
+        "<=>",
+        "ASCII"
+      ],
+      "score": 2,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-17T12:19:31-04:00",
+      "next_review_date": "2018-10-19T13:44:22-04:00",
+      "all_reviews": [
+        {
+          "score": 2,
+          "review_date": "2018-10-17T13:44:39-04:00"
+        }
+      ],
+      "id": 51,
+      "file": "answer_51.rb",
+      "location": "./answers/answer_51.rb",
+      "old_file": "answer_old_51.rb",
+      "old_location": "./answers/answer_old_51.rb"
+    },
+    {
+      "instructions": "Array constructors\n\nUse an array constructor (not a literal) to create an array with 10 empty slots.\n(Wait, what are the slots filled with?) Then create an array with 10 'true'\nvalues. Finally, create an array (no cheating, must be an array constructor)\nof numbers 0 through 9.",
+      "tags": [
+        "Ruby",
+        "array",
+        "array constructor"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-17T13:50:59-04:00",
+      "next_review_date": "2018-10-19T13:53:27-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-17T13:53:20-04:00"
+        }
+      ],
+      "id": 52,
+      "file": "answer_52.rb",
+      "location": "./answers/answer_52.rb",
+      "old_file": "answer_old_52.rb",
+      "old_location": "./answers/answer_old_52.rb"
     },
     {
       "instructions": "Determine if a file has nonzero size\n\nUsing a File class method, simply print out the size of \"../revuu.rb\".",
@@ -231,6 +199,61 @@
       "old_location": "./answers/answer_old_7.rb"
     },
     {
+      "instructions": "Print \"Hello world!\" in Python",
+      "tags": [
+        "Python",
+        "hello world"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Python",
+      "date_started": "2018-10-17T07:48:36-04:00",
+      "next_review_date": "2018-10-21T07:55:12-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-17T07:55:14-04:00"
+        }
+      ],
+      "id": 49,
+      "file": "answer_49.py",
+      "location": "./answers/answer_49.py",
+      "old_file": "answer_old_49.py",
+      "old_location": "./answers/answer_old_49.py"
+    },
+    {
+      "instructions": "IDs and identity\n\nAssign a variable a symbol as a value. Then set another variable equal to the\nfirst variable. Print out the ID of the two variables; predict, before you do,\nwhether they will have the same ID.\n\nDo the same thing with a string, a number, an array, and a hash (or, enough to\npersuade yourself). Then reconstruct a similar string (e.g., if you used 'hi'\nthen use 'hi' again) and assign it to a different variable. Make sure you do \nthe latter experiment with an array. In all cases, predict in advance whether \nthe two variables will have the same value.\n\nThen do it all over again with #dup and #clone. Be sure you know the answer\nbefore you print it!",
+      "tags": [
+        "Ruby",
+        "object_id",
+        "object id",
+        "ID",
+        "symbol",
+        "string",
+        "number",
+        "array",
+        "hash",
+        "dup",
+        "clone"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-17T14:04:34-04:00",
+      "next_review_date": "2018-10-21T14:29:38-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-17T14:29:40-04:00"
+        }
+      ],
+      "id": 53,
+      "file": "answer_53.rb",
+      "location": "./answers/answer_53.rb",
+      "old_file": "answer_old_53.rb",
+      "old_location": "./answers/answer_old_53.rb"
+    },
+    {
       "instructions": "Extract letters from string\n\nGiven the string 'hxexlxlxox xwxoxrxlxdx', extract the familiar phrase \nand print it. Use string indexes--in an abbreviated version of \nString#slice-- in your answer. Do not simply delete all the x's (yes,\nstr.delete!('x') has the same effect).",
       "tags": [
         "Ruby",
@@ -256,10 +279,10 @@
     {
       "instructions": "Printing the date and time using DateTime\n\nCreate a DateTime object representing the current time, and print it \nout as a string (not with #inspect). Then add seven days to the date\nand print a string of the format, \"In a week it will be MM/DD/YYYY.\"\nFinally, take the current time, add two hours to it and print a \nstring of the format, \"In two hours it will be HH:MM AM/PM.\"",
       "tags": [
-        null,
+        "Ruby",
         "DateTime",
-        "DateTime#now",
         "strftime",
+        "directives",
         "format directives"
       ],
       "score": 4,
@@ -317,6 +340,38 @@
       "location": "./answers/answer_32.rb",
       "old_file": "answer_old_32.rb",
       "old_location": "./answers/answer_old_32.rb"
+    },
+    {
+      "instructions": "Generate array fast\n\nIn a single expression broken over a few lines for readability, generate and \nprint the array [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].",
+      "tags": [
+        "JavaScript",
+        "JS",
+        "Node",
+        "Node.js",
+        "spread operator",
+        "array constructor",
+        "keys"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "JavaScript",
+      "date_started": "2018-10-10T13:12:35-07:00",
+      "next_review_date": "2018-10-23T09:59:54-04:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-11T06:28:30-07:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-16T10:00:07-04:00"
+        }
+      ],
+      "id": 47,
+      "file": "answer_47.js",
+      "location": "./answers/answer_47.js",
+      "old_file": "answer_old_47.js",
+      "old_location": "./answers/answer_old_47.js"
     },
     {
       "instructions": "Shortcut for def self.my_class_method?\nGiven this little class, how can you abbreviate 'def self.my_class_method'\nand 'def self.my_other_class_method'?\n\nRewrite it, and then call the methods (one line per each) outside the \nclass definition.\n\nclass MyClass\n  def self.my_class_method\n    puts \"You successfully called my class method! Woo hoo!\"\n  end\n\n  def self.my_other_class_method\n    puts \"Oh my god you did it twice!\"\n  end\nend",
@@ -407,6 +462,31 @@
       "location": "./answers/answer_5.rb",
       "old_file": "answer_old_5.rb",
       "old_location": "./answers/answer_old_5.rb"
+    },
+    {
+      "instructions": "Combined comparison operator\n\nGenerate the array of integers from -10 to 10. Then use Ruby's \ncombined comparison operator together with #case (three cases)\nto construct (and then print) all the negative and all the \npositive integers in the array.\n\n(Hint: of course there are much faster ways of doing this. We're\njust reminding ourselves of how to use the tools here.)",
+      "tags": [
+        "Ruby",
+        "<=>",
+        "combined comparison operator",
+        "case"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-17T09:19:43-04:00",
+      "next_review_date": "2018-10-24T12:05:48-04:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-17T12:05:51-04:00"
+        }
+      ],
+      "id": 50,
+      "file": "answer_50.rb",
+      "location": "./answers/answer_50.rb",
+      "old_file": "answer_old_50.rb",
+      "old_location": "./answers/answer_old_50.rb"
     },
     {
       "instructions": "Advanced arrow functions\n\nRewrite this as a nested arrow function in the most concise way possible:\n\nconst factorial = function(arr) {\n  return arr.reduce(function(x,y) {\n    return x * y\n  });\n}\n\nUse the result of your rewriting to prove that factorial(arr) = 120,\nwhere arr = [5, 4, 3, 2, 1] (print out the answer).",
@@ -527,6 +607,34 @@
       "location": "./answers/answer_33.rb",
       "old_file": "answer_old_33.rb",
       "old_location": "./answers/answer_old_33.rb"
+    },
+    {
+      "instructions": "Pick some, only some, hash items\n\nCreate a hash of 26 key-value pairs, following the pattern {a: 1, b: 2, \n... z: 26} (note, must be symbols). Then return a hash that includes just \nthose pairs the values of which are multiples of 3. Display the result; \nthen print just the keys.",
+      "tags": [
+        "Ruby",
+        "hash",
+        "symbol",
+        "to_sym",
+        "intern",
+        "select",
+        "inspect"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-17T14:39:37-04:00",
+      "next_review_date": "2018-10-27T14:57:43-04:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-17T14:57:43-04:00"
+        }
+      ],
+      "id": 54,
+      "file": "answer_54.rb",
+      "location": "./answers/answer_54.rb",
+      "old_file": "answer_old_54.rb",
+      "old_location": "./answers/answer_old_54.rb"
     },
     {
       "instructions": "Using the colorize gem\n\nIn the following printed strings, use the Colorize gem to print the first one\ngreen, the second with a red background, and the third one with black-on-white\nprint.\n\nputs \"I am the first line.\"\nputs \"I am the second line.\"\nputs \"I am the third line.\"",
@@ -995,6 +1103,37 @@
       "old_location": "./answers/answer_old_11.java"
     },
     {
+      "instructions": "Using defaults in instance initialization\n\nThe following defaults are problematic for reasons Sandi Metz explained.\nMove them into a method and use the method in #initialize. Ensure the \nanswers remain the same.\n\nclass Dog\n  attr_accessor :cute, :breed, :weight\n  def initialize(args)\n    @cute   = args[:cute]   || false\n    @breed  = args[:breed]  || 'mutt'\n    @weight = args[:weight] || 15\n  end\nend\nlassie = Dog.new(cute: true, breed: 'collie')\nputs lassie.cute   # true\nputs lassie.breed  # collie\nputs lassie.weight # 15\nrover = Dog.new\nputs rover.breed   # mutt",
+      "tags": [
+        "Ruby",
+        "defaults",
+        "initialize",
+        "merge",
+        "optional arguments",
+        "default arguments"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-09-25T08:24:11-04:00",
+      "next_review_date": "2018-11-27T22:06:46-04:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-09-25T14:37:03-04:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-16T22:06:48-04:00"
+        }
+      ],
+      "id": 6,
+      "file": "answer_6.rb",
+      "location": "./answers/answer_6.rb",
+      "old_file": "answer_old_6.rb",
+      "old_location": "./answers/answer_old_6.rb"
+    },
+    {
       "instructions": "How to print a formatted table \nwith while, for, and different data types\n\nIn the following C program, add a line that prints first fahrenheit, \nthen a tab, then celsius, then a newline. Then change fahr and celsius\nso that they are floats (and try printing then). Then print the values\nfrom -20 to 120 counting by 10s. Finally, rewrite the 'while' loop with\na 'for' loop and remove all variables except fahr. Ensure the field\ntype characters are correct throughout (so, no error messages!).\n\n#include <stdio.h>\nint main() {\n    int fahr, celsius;\n    int lower, upper, step;\n    lower = 0;    /* lower limit of temperature table */\n    upper = 300;  /* upper limit */\n    step = 20;    /* step size */\n\n    fahr = lower;\n    while (fahr <= upper) {\n        celsius = (5.0/9) * (fahr-32);\n\t/* fill in this line */\n        fahr = fahr + step;\n    }\n}",
       "tags": [
         "C",
@@ -1022,6 +1161,33 @@
       "location": "./answers/answer_12.c",
       "old_file": "answer_old_12.c",
       "old_location": "./answers/answer_old_12.c"
+    },
+    {
+      "instructions": "Center this in a whitespace-padded string\n\nSuppose you want to put \"Acme Products\" centered on one line and \n\"The top products for you!\" on the next line. The lines should be 75\ncharacters wide. The first should be padded with empty space, while\nthe second shoudl be padded with '=+'. Print the two lines.",
+      "tags": [
+        "Ruby",
+        "center"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-03T08:38:44+01:00",
+      "next_review_date": "2018-11-28T06:10:17-05:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-03T08:42:04+01:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-17T07:10:17-04:00"
+        }
+      ],
+      "id": 31,
+      "file": "answer_31.rb",
+      "location": "./answers/answer_31.rb",
+      "old_file": "answer_old_31.rb",
+      "old_location": "./answers/answer_old_31.rb"
     },
     {
       "instructions": "Sorting by keys and values\n\nGiven the 'mountains' hash, sort and print (in simple table form) by name\nand then by height (NB, must be *decending*). Then do the same thing, \nusing a different method. You'll have to output an array in each case, \nand make a method to print different arrays (four times).\n\nmountains = {\n  'Mount Everest' => 29029,\n  'K2' => 28251,\n  'Kangchenjunga' => 28169,\n  'Lhotse' => 27940,\n  'Makalu' => 27838,\n  'Cho Oyo' => 26864,\n  'Dhaulagiri I' => 26795\n}",

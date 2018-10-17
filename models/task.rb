@@ -17,7 +17,7 @@ class Task
       tags = get_tags_from_user # <-- needs a lot of work/refactoring
       return nil if tags == 'q'  # TEMPORARY kluge
       # Add standard tags and massage tags. Output is an array or 'q'.
-      tags = Task.validate_tags(tags)
+      tags = Task.validate_tags(tags, lang)
       # Note: tags are not required.
       # Get initial score from user.
       score = get_initial_score_from_user
@@ -26,7 +26,7 @@ class Task
     end # of ::generate_new_task
 
     # Massage user-input tags so standardized. Returns tag array.
-    def validate_tags(tags)
+    def validate_tags(tags, lang)
       # Convert newlines to commas.
       tags.gsub!("\n", ',') if tags
       # Convert user input string, which should be comma-separted, into array.
@@ -35,9 +35,13 @@ class Task
       tags.reject! {|tag| ['JavaScript', 'JS',
         'Node', 'Node.js', 'Bash', 'command line', 'bash scripting', 'shell',
         'shell scripting', 'linux', 'Unix', 'Java', 'Ruby', 'C',
-        'C programming language', 'C language'].include? tag }
+        'C programming language', 'C language', 'Python'].include? tag }
+      # Making use of an accessor of the Lang class variable 'defined_langs',
+      # first 'find' the hash matching the param 'lang'; return [:alts] value.
+      lang_alts = Lang.defined_langs.find {|l| l[:name] == lang }[:alts]
+      puts lang, lang_alts
       # Put in canonical language tags; splat operators ensure that subarrays aren't created.
-      tags = tags.unshift(*[$lang, *$lang_alts])
+      tags = tags.unshift(*[lang, *lang_alts])
     end
   end # Of class methods
 

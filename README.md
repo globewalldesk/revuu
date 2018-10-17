@@ -153,3 +153,7 @@ controllers and views are adequately self-contained; hence the analogy to MVC
 code structure is almost complete. Fixed bugs including a problem with the
 "date prettifier."
 
+### 2.2
+???:
+
+Added Python support.

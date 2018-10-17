@@ -49,6 +49,12 @@ class Lang
       end
       return available_langs[langnum][:name]
     end
+
+    # Accessor for @@defined_langs; for use by Task::validate_tags.
+    def defined_langs
+      @@defined_langs
+    end
+
   end # of class methods
 
   # Language data hashes--now a new and improved class variable!
@@ -63,20 +69,23 @@ class Lang
       {name: 'Java', ext: 'java', cmd: 'javac', cmd2: 'java <name-no-ext>',
         cmnt: '//', one_main_per_file: true, alts: []},
 
+      {name: 'Python', ext: 'py', cmd: 'python', cmnt: '#', alts: [], spacer:
+        'print("\n")'},
+
       {name: 'C', ext: 'c', cmd: 'gcc', cmd2: './a.out', cmnt: '/*',
         cmnt2: '*/', one_main_per_file: true, alts: ['C language',
         'C programming language']},
 
-      {name: 'Bash', ext: 'sh', cmd: '/bin/bash', cmnt: '#', alts: 
-        ['command line', 'shell', 'shell scripting', 'Bash scripting', 'Linux', 
+      {name: 'Bash', ext: 'sh', cmd: '/bin/bash', cmnt: '#', alts:
+        ['command line', 'shell', 'shell scripting', 'Bash scripting', 'Linux',
           'Unix'], spacer: "echo '<--spacer-->'"},
 
-      {name: 'Other', ext: 'txt', cmd: 'more', cmnt: '#', alts: [], spacer: 
+      {name: 'Other', ext: 'txt', cmd: 'more', cmnt: '#', alts: [], spacer:
         "\n<--spacer-->\n"}
     ]
 
   # Lang objects expose language data as in a hash.
-  attr_accessor :name, :ext, :cmd, :cmnt, :cmd2, :cmnt2, :one_main_per_file, 
+  attr_accessor :name, :ext, :cmd, :cmnt, :cmd2, :cmnt2, :one_main_per_file,
     :alts, :spacer
 
   def initialize(lang_name)
