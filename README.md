@@ -154,6 +154,6 @@ code structure is almost complete. Fixed bugs including a problem with the
 "date prettifier."
 
 ### 2.2
-???:
+Ongoing:
 
-Added Python support.
+Added Python support. Fixed tag bug.
