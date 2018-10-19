@@ -1,140 +1,6 @@
 {
   "tasks": [
     {
-      "instructions": "asdf",
-      "tags": [
-        null
-      ],
-      "score": 1,
-      "saved": true,
-      "lang": "JavaScript",
-      "date_started": "2018-10-15T22:34:10-04:00",
-      "next_review_date": "2018-10-15T22:34:10-04:00",
-      "all_reviews": [
-
-      ],
-      "id": 48,
-      "langhash": "#<Lang:0x00000002c3a468>",
-      "file": "answer_48.js",
-      "location": "./answers/answer_48.js",
-      "old_file": "answer_old_48.js",
-      "old_location": "./answers/answer_old_48.js"
-    },
-    {
-      "instructions": "Demonstrate let vs. var\n\nIn the following, assign i in two different places; in one place, assign \nit \"function scope\", and in the other, \"block scope\". The result should \nprint out two different statements. Assign another variable with 'var' \nbefore the function, then try checking its value inside the function.\n\nfunction checkScope() {\n\"use strict\";\n  if (true) {\n    console.log(\"i is: \", i);\n  }\n  console.log(\"i is: \", i);\n  return i;\n}\ncheckScope();",
-      "tags": [
-        "JavaScript",
-        "JS",
-        "Node",
-        "Node.js",
-        "var",
-        "let",
-        "scope"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "JavaScript",
-      "date_started": "2018-10-03T20:02:51+02:00",
-      "next_review_date": "2018-10-16T08:10:19-05:00",
-      "all_reviews": [
-        {
-          "score": 3,
-          "review_date": "2018-10-03T20:16:09+02:00"
-        },
-        {
-          "score": 4,
-          "review_date": "2018-10-07T08:10:19-05:00"
-        }
-      ],
-      "id": 35,
-      "langhash": "#<Lang:0x000000025d6bd0>",
-      "file": "answer_35.js",
-      "location": "./answers/answer_35.js",
-      "old_file": "answer_old_35.js",
-      "old_location": "./answers/answer_old_35.js"
-    },
-    {
-      "instructions": "Generate [0, 1, 2, 3, 4] fast\n\nIn a single expression broken over a few lines for readability, generate and \nprint the array [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]. You'll need to use a spread \noperator, a constructor (not a literal), and a method, all in order to output \nan array.\n\nIf you need the review, comment each line, to say what it does.",
-      "tags": [
-        "JavaScript",
-        "JS",
-        "Node",
-        "Node.js",
-        "spread operator",
-        "array constructor",
-        "keys"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "JavaScript",
-      "date_started": "2018-10-10T13:12:35-07:00",
-      "next_review_date": "2018-10-16T06:28:30-07:00",
-      "all_reviews": [
-        {
-          "score": 4,
-          "review_date": "2018-10-11T06:28:30-07:00"
-        }
-      ],
-      "id": 47,
-      "langhash": "#<Lang:0x0000000259aef0>",
-      "file": "answer_47.js",
-      "location": "./answers/answer_47.js",
-      "old_file": "answer_old_47.js",
-      "old_location": "./answers/answer_old_47.js"
-    },
-    {
-      "instructions": "Using defaults in instance initialization\n\nThe following defaults are problematic for reasons Sandi Metz explained.\nMove them into a method and use the method in #initialize. Ensure the \nanswers remain the same.\n\nclass Dog\n  attr_accessor :cute, :breed, :weight\n  def initialize(args)\n    @cute   = args[:cute]   || false\n    @breed  = args[:breed]  || 'mutt'\n    @weight = args[:weight] || 15\n  end\nend\nlassie = Dog.new(cute: true, breed: 'collie')\nputs lassie.cute   # true\nputs lassie.breed  # collie\nputs lassie.weight # 15\nrover = Dog.new\nputs rover.breed   # mutt",
-      "tags": [
-        "Ruby",
-        "defaults",
-        "initialize",
-        "merge",
-        "optional arguments",
-        "default arguments"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "Ruby",
-      "date_started": "2018-09-25T08:24:11-04:00",
-      "next_review_date": "2018-10-16T14:37:03-04:00",
-      "all_reviews": [
-        {
-          "score": 4,
-          "review_date": "2018-09-25T14:37:03-04:00"
-        }
-      ],
-      "id": 6,
-      "langhash": "#<Lang:0x000000025842e0>",
-      "file": "answer_6.rb",
-      "location": "./answers/answer_6.rb",
-      "old_file": "answer_old_6.rb",
-      "old_location": "./answers/answer_old_6.rb"
-    },
-    {
-      "instructions": "Center this in a whitespace-padded string\n\nSuppose you want to put \"Acme Products\" centered on one line and \n\"The top products for you!\" on the next line. The lines should be 75\ncharacters wide. The first should be padded with empty space, while\nthe second shoudl be padded with '=+'. Print the two lines.",
-      "tags": [
-        "Ruby",
-        "center"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "Ruby",
-      "date_started": "2018-10-03T08:38:44+01:00",
-      "next_review_date": "2018-10-17T08:42:40+01:00",
-      "all_reviews": [
-        {
-          "score": 4,
-          "review_date": "2018-10-03T08:42:04+01:00"
-        }
-      ],
-      "id": 31,
-      "langhash": "#<Lang:0x00000002577158>",
-      "file": "answer_31.rb",
-      "location": "./answers/answer_31.rb",
-      "old_file": "answer_old_31.rb",
-      "old_location": "./answers/answer_old_31.rb"
-    },
-    {
       "instructions": "Return an array of squared positive integers\n\nGiven \n\nlet nums = [3, -25, 0.67, 7, -12.25, 12.25, 12];\n\nwrite and then print the result of using chained arrow functions that \nreturn the squares of only elements that are (a) positive and \n(b) integers. Response should be [9, 49, 144].",
       "tags": [
         "JavaScript",
@@ -160,8 +26,8 @@
           "review_date": "2018-10-09T10:50:06-04:00"
         }
       ],
+      "starter": null,
       "id": 43,
-      "langhash": "#<Lang:0x000000025636d0>",
       "file": "answer_43.js",
       "location": "./answers/answer_43.js",
       "old_file": "answer_old_43.js",
@@ -191,12 +57,64 @@
           "review_date": "2018-10-09T10:56:37-04:00"
         }
       ],
+      "starter": null,
       "id": 38,
-      "langhash": "#<Lang:0x0000000251ba60>",
       "file": "answer_38.js",
       "location": "./answers/answer_38.js",
       "old_file": "answer_old_38.js",
       "old_location": "./answers/answer_old_38.js"
+    },
+    {
+      "instructions": "What's higher in value?\n\n(Answer all questions before you run anything.)\n\nGenerate the (lowercase) alphabet (= az), then sort it using a \nblock: |x,y| x <=> y. What will be the value of az[0]? Predict\ncorrectly before showing. Regenerate so that az[0] has the\nopposite value.\n\nNext, sort without a block. What is az[0]? Predict then demonstrate.\n\nFinally, what is the value of 'a' <=> 'b'? Predict then demonstrate.\n\nPrint ASCII characters 32 to 126. Use the spaceship operator to \ncompare a character from the 32-47 range with a character from the\n123-126 range.\n\nWhen you sort with |x,y| x <=> y, does the sorter place the lower-\nvalued items first or last?",
+      "tags": [
+        "Ruby",
+        "sort",
+        "combined comparison operator",
+        "<=>",
+        "ASCII"
+      ],
+      "score": 2,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-17T12:19:31-04:00",
+      "next_review_date": "2018-10-19T13:44:22-04:00",
+      "all_reviews": [
+        {
+          "score": 2,
+          "review_date": "2018-10-17T13:44:39-04:00"
+        }
+      ],
+      "starter": null,
+      "id": 51,
+      "file": "answer_51.rb",
+      "location": "./answers/answer_51.rb",
+      "old_file": "answer_old_51.rb",
+      "old_location": "./answers/answer_old_51.rb"
+    },
+    {
+      "instructions": "Array constructors\n\nUse an array constructor (not a literal) to create an array with 10 empty slots.\n(Wait, what are the slots filled with?) Then create an array with 10 'true'\nvalues. Finally, create an array (no cheating, must be an array constructor)\nof numbers 0 through 9.",
+      "tags": [
+        "Ruby",
+        "array",
+        "array constructor"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-17T13:50:59-04:00",
+      "next_review_date": "2018-10-19T13:53:27-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-17T13:53:20-04:00"
+        }
+      ],
+      "starter": null,
+      "id": 52,
+      "file": "answer_52.rb",
+      "location": "./answers/answer_52.rb",
+      "old_file": "answer_old_52.rb",
+      "old_location": "./answers/answer_old_52.rb"
     },
     {
       "instructions": "Determine if a file has nonzero size\n\nUsing a File class method, simply print out the size of \"../revuu.rb\".",
@@ -219,8 +137,8 @@
           "review_date": "2018-10-10T10:47:07-07:00"
         }
       ],
+      "starter": null,
       "id": 34,
-      "langhash": "#<Lang:0x0000000250c470>",
       "file": "answer_34.rb",
       "location": "./answers/answer_34.rb",
       "old_file": "answer_old_34.rb",
@@ -247,8 +165,8 @@
           "review_date": "2018-09-29T19:46:41-04:00"
         }
       ],
+      "starter": null,
       "id": 14,
-      "langhash": "#<Lang:0x000000023b9460>",
       "file": "answer_14.js",
       "location": "./answers/answer_14.js",
       "old_file": "answer_old_14.js",
@@ -280,12 +198,69 @@
           "review_date": "2018-09-26T00:23:33-04:00"
         }
       ],
+      "starter": null,
       "id": 7,
-      "langhash": "#<Lang:0x0000000237fc10>",
       "file": "answer_7.rb",
       "location": "./answers/answer_7.rb",
       "old_file": "answer_old_7.rb",
       "old_location": "./answers/answer_old_7.rb"
+    },
+    {
+      "instructions": "Print \"Hello world!\" in Python",
+      "tags": [
+        "Python",
+        "hello world"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Python",
+      "date_started": "2018-10-17T07:48:36-04:00",
+      "next_review_date": "2018-10-21T07:55:12-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-17T07:55:14-04:00"
+        }
+      ],
+      "starter": null,
+      "id": 49,
+      "file": "answer_49.py",
+      "location": "./answers/answer_49.py",
+      "old_file": "answer_old_49.py",
+      "old_location": "./answers/answer_old_49.py"
+    },
+    {
+      "instructions": "IDs and identity\n\nAssign a variable a symbol as a value. Then set another variable equal to the\nfirst variable. Print out the ID of the two variables; predict, before you do,\nwhether they will have the same ID.\n\nDo the same thing with a string, a number, an array, and a hash (or, enough to\npersuade yourself). Then reconstruct a similar string (e.g., if you used 'hi'\nthen use 'hi' again) and assign it to a different variable. Make sure you do \nthe latter experiment with an array. In all cases, predict in advance whether \nthe two variables will have the same value.\n\nThen do it all over again with #dup and #clone. Be sure you know the answer\nbefore you print it!",
+      "tags": [
+        "Ruby",
+        "object_id",
+        "object id",
+        "ID",
+        "symbol",
+        "string",
+        "number",
+        "array",
+        "hash",
+        "dup",
+        "clone"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-17T14:04:34-04:00",
+      "next_review_date": "2018-10-21T14:29:38-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-17T14:29:40-04:00"
+        }
+      ],
+      "starter": null,
+      "id": 53,
+      "file": "answer_53.rb",
+      "location": "./answers/answer_53.rb",
+      "old_file": "answer_old_53.rb",
+      "old_location": "./answers/answer_old_53.rb"
     },
     {
       "instructions": "Extract letters from string\n\nGiven the string 'hxexlxlxox xwxoxrxlxdx', extract the familiar phrase \nand print it. Use string indexes--in an abbreviated version of \nString#slice-- in your answer. Do not simply delete all the x's (yes,\nstr.delete!('x') has the same effect).",
@@ -304,12 +279,39 @@
           "review_date": "2018-10-01T18:20:10-04:00"
         }
       ],
+      "starter": null,
       "id": 29,
-      "langhash": "#<Lang:0x0000000236e0f0>",
       "file": "answer_29.rb",
       "location": "./answers/answer_29.rb",
       "old_file": "answer_old_29.rb",
       "old_location": "./answers/answer_old_29.rb"
+    },
+    {
+      "instructions": "Printing the date and time using DateTime\n\nCreate a DateTime object representing the current time, and print it \nout as a string (not with #inspect). Then add seven days to the date\nand print a string of the format, \"In a week it will be MM/DD/YYYY.\"\nFinally, take the current time, add two hours to it and print a \nstring of the format, \"In two hours it will be HH:MM AM/PM.\"",
+      "tags": [
+        "Ruby",
+        "DateTime",
+        "strftime",
+        "directives",
+        "format directives"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-15T23:16:13-04:00",
+      "next_review_date": "2018-10-22T23:24:55-04:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-15T23:25:15-04:00"
+        }
+      ],
+      "starter": null,
+      "id": 48,
+      "file": "answer_48.rb",
+      "location": "./answers/answer_48.rb",
+      "old_file": "answer_old_48.rb",
+      "old_location": "./answers/answer_old_48.rb"
     },
     {
       "instructions": "So many ways to write an em dash\n\nUse Integer#chr, a string containing \\u, and Array#pack to write three em \ndashes. No need to have these perfectly memorized (and the hex code, \ndefinitely not). The question is, how confident are you in using these things?\n\nNOTE: You definitely need to add questions about each of these methods because\neach is fairly involved and you're having to brute-force memorize this, which\nis really contrary to what Revuu questions are all about.",
@@ -344,12 +346,45 @@
           "review_date": "2018-10-09T09:49:54-04:00"
         }
       ],
+      "starter": null,
       "id": 32,
-      "langhash": "#<Lang:0x00000002d2b188>",
       "file": "answer_32.rb",
       "location": "./answers/answer_32.rb",
       "old_file": "answer_old_32.rb",
       "old_location": "./answers/answer_old_32.rb"
+    },
+    {
+      "instructions": "Generate array fast\n\nIn a single expression broken over a few lines for readability, generate and \nprint the array [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].",
+      "tags": [
+        "JavaScript",
+        "JS",
+        "Node",
+        "Node.js",
+        "spread operator",
+        "array constructor",
+        "keys"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "JavaScript",
+      "date_started": "2018-10-10T13:12:35-07:00",
+      "next_review_date": "2018-10-23T09:59:54-04:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-11T06:28:30-07:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-16T10:00:07-04:00"
+        }
+      ],
+      "starter": null,
+      "id": 47,
+      "file": "answer_47.js",
+      "location": "./answers/answer_47.js",
+      "old_file": "answer_old_47.js",
+      "old_location": "./answers/answer_old_47.js"
     },
     {
       "instructions": "Shortcut for def self.my_class_method?\nGiven this little class, how can you abbreviate 'def self.my_class_method'\nand 'def self.my_other_class_method'?\n\nRewrite it, and then call the methods (one line per each) outside the \nclass definition.\n\nclass MyClass\n  def self.my_class_method\n    puts \"You successfully called my class method! Woo hoo!\"\n  end\n\n  def self.my_other_class_method\n    puts \"Oh my god you did it twice!\"\n  end\nend",
@@ -374,8 +409,8 @@
           "review_date": "2018-10-09T10:39:05-04:00"
         }
       ],
+      "starter": null,
       "id": 4,
-      "langhash": "#<Lang:0x00000002d14528>",
       "file": "answer_4.rb",
       "location": "./answers/answer_4.rb",
       "old_file": "answer_old_4.rb",
@@ -407,8 +442,8 @@
           "review_date": "2018-10-09T11:05:36-04:00"
         }
       ],
+      "starter": null,
       "id": 39,
-      "langhash": "#<Lang:0x00000002cf8ee0>",
       "file": "answer_39.js",
       "location": "./answers/answer_39.js",
       "old_file": "answer_old_39.js",
@@ -437,12 +472,38 @@
           "review_date": "2018-10-02T16:04:18-04:00"
         }
       ],
+      "starter": null,
       "id": 5,
-      "langhash": "#<Lang:0x00000002ce00e8>",
       "file": "answer_5.rb",
       "location": "./answers/answer_5.rb",
       "old_file": "answer_old_5.rb",
       "old_location": "./answers/answer_old_5.rb"
+    },
+    {
+      "instructions": "Combined comparison operator\n\nGenerate the array of integers from -10 to 10. Then use Ruby's \ncombined comparison operator together with #case (three cases)\nto construct (and then print) all the negative and all the \npositive integers in the array.\n\n(Hint: of course there are much faster ways of doing this. We're\njust reminding ourselves of how to use the tools here.)",
+      "tags": [
+        "Ruby",
+        "<=>",
+        "combined comparison operator",
+        "case"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-17T09:19:43-04:00",
+      "next_review_date": "2018-10-24T12:05:48-04:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-17T12:05:51-04:00"
+        }
+      ],
+      "starter": null,
+      "id": 50,
+      "file": "answer_50.rb",
+      "location": "./answers/answer_50.rb",
+      "old_file": "answer_old_50.rb",
+      "old_location": "./answers/answer_old_50.rb"
     },
     {
       "instructions": "Advanced arrow functions\n\nRewrite this as a nested arrow function in the most concise way possible:\n\nconst factorial = function(arr) {\n  return arr.reduce(function(x,y) {\n    return x * y\n  });\n}\n\nUse the result of your rewriting to prove that factorial(arr) = 120,\nwhere arr = [5, 4, 3, 2, 1] (print out the answer).",
@@ -470,8 +531,8 @@
           "review_date": "2018-10-10T13:03:16-07:00"
         }
       ],
+      "starter": null,
       "id": 42,
-      "langhash": "#<Lang:0x00000002ca34e0>",
       "file": "answer_42.js",
       "location": "./answers/answer_42.js",
       "old_file": "answer_old_42.js",
@@ -499,8 +560,8 @@
           "review_date": "2018-10-04T18:53:35+02:00"
         }
       ],
+      "starter": null,
       "id": 37,
-      "langhash": "#<Lang:0x00000002c94d78>",
       "file": "answer_37.js",
       "location": "./answers/answer_37.js",
       "old_file": "answer_old_37.js",
@@ -532,8 +593,8 @@
           "review_date": "2018-10-15T10:29:59-04:00"
         }
       ],
+      "starter": null,
       "id": 28,
-      "langhash": "#<Lang:0x00000002c76940>",
       "file": "answer_28.rb",
       "location": "./answers/answer_28.rb",
       "old_file": "answer_old_28.rb",
@@ -561,12 +622,41 @@
           "review_date": "2018-10-12T08:22:35-07:00"
         }
       ],
+      "starter": null,
       "id": 33,
-      "langhash": "#<Lang:0x00000002c630c0>",
       "file": "answer_33.rb",
       "location": "./answers/answer_33.rb",
       "old_file": "answer_old_33.rb",
       "old_location": "./answers/answer_old_33.rb"
+    },
+    {
+      "instructions": "Pick some, only some, hash items\n\nCreate a hash of 26 key-value pairs, following the pattern {a: 1, b: 2, \n... z: 26} (note, must be symbols). Then return a hash that includes just \nthose pairs the values of which are multiples of 3. Display the result; \nthen print just the keys.",
+      "tags": [
+        "Ruby",
+        "hash",
+        "symbol",
+        "to_sym",
+        "intern",
+        "select",
+        "inspect"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-17T14:39:37-04:00",
+      "next_review_date": "2018-10-27T14:57:43-04:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-17T14:57:43-04:00"
+        }
+      ],
+      "starter": null,
+      "id": 54,
+      "file": "answer_54.rb",
+      "location": "./answers/answer_54.rb",
+      "old_file": "answer_old_54.rb",
+      "old_location": "./answers/answer_old_54.rb"
     },
     {
       "instructions": "Using the colorize gem\n\nIn the following printed strings, use the Colorize gem to print the first one\ngreen, the second with a red background, and the third one with black-on-white\nprint.\n\nputs \"I am the first line.\"\nputs \"I am the second line.\"\nputs \"I am the third line.\"",
@@ -589,8 +679,8 @@
           "review_date": "2018-10-08T01:43:33-04:00"
         }
       ],
+      "starter": null,
       "id": 24,
-      "langhash": "#<Lang:0x00000002c50330>",
       "file": "answer_24.rb",
       "location": "./answers/answer_24.rb",
       "old_file": "answer_old_24.rb",
@@ -624,8 +714,8 @@
           "review_date": "2018-10-15T10:45:20-04:00"
         }
       ],
+      "starter": null,
       "id": 46,
-      "langhash": "#<Lang:0x00000002c3af30>",
       "file": "answer_46.c",
       "location": "./answers/answer_46.c",
       "old_file": "answer_old_46.c",
@@ -661,8 +751,8 @@
           "review_date": "2018-10-02T14:48:14-04:00"
         }
       ],
+      "starter": null,
       "id": 10,
-      "langhash": "#<Lang:0x00000002c20270>",
       "file": "answer_10.js",
       "location": "./answers/answer_10.js",
       "old_file": "answer_old_10.js",
@@ -690,8 +780,8 @@
           "review_date": "2018-09-29T20:31:42-04:00"
         }
       ],
+      "starter": null,
       "id": 8,
-      "langhash": "#<Lang:0x000000028e5448>",
       "file": "answer_8.rb",
       "location": "./answers/answer_8.rb",
       "old_file": "answer_old_8.rb",
@@ -730,8 +820,8 @@
           "review_date": "2018-10-14T14:47:56-04:00"
         }
       ],
+      "starter": null,
       "id": 1,
-      "langhash": "#<Lang:0x000000023c4810>",
       "file": "answer_1.c",
       "location": "./answers/answer_1.c",
       "old_file": "answer_old_1.c",
@@ -760,8 +850,8 @@
           "review_date": "2018-10-05T06:46:14+02:00"
         }
       ],
+      "starter": null,
       "id": 25,
-      "langhash": "#<Lang:0x00000002d295e0>",
       "file": "answer_25.rb",
       "location": "./answers/answer_25.rb",
       "old_file": "answer_old_25.rb",
@@ -793,8 +883,8 @@
           "review_date": "2018-10-03T08:30:39+01:00"
         }
       ],
+      "starter": null,
       "id": 16,
-      "langhash": "#<Lang:0x00000002ce27d0>",
       "file": "answer_16.rb",
       "location": "./answers/answer_16.rb",
       "old_file": "answer_old_16.rb",
@@ -824,8 +914,8 @@
           "review_date": "2018-10-09T10:53:14-04:00"
         }
       ],
+      "starter": null,
       "id": 40,
-      "langhash": "#<Lang:0x00000002c97190>",
       "file": "answer_40.js",
       "location": "./answers/answer_40.js",
       "old_file": "answer_old_40.js",
@@ -856,8 +946,8 @@
           "review_date": "2018-10-06T08:42:15+02:00"
         }
       ],
+      "starter": null,
       "id": 15,
-      "langhash": "#<Lang:0x00000002c6b450>",
       "file": "answer_15.js",
       "location": "./answers/answer_15.js",
       "old_file": "answer_old_15.js",
@@ -889,12 +979,49 @@
           "review_date": "2018-09-29T20:26:54-04:00"
         }
       ],
+      "starter": null,
       "id": 13,
-      "langhash": "#<Lang:0x00000002c49c38>",
       "file": "answer_13.js",
       "location": "./answers/answer_13.js",
       "old_file": "answer_old_13.js",
       "old_location": "./answers/answer_old_13.js"
+    },
+    {
+      "instructions": "Demonstrate let vs. var\n\nIn the following, assign i in two different places; in one place, assign \nit \"function scope\", and in the other, \"block scope\". The result should \nprint out two different statements. Assign another variable with 'var' \nbefore the function, then try checking its value inside the function.\n\nfunction checkScope() {\n\"use strict\";\n  if (true) {\n    console.log(\"i is: \", i);\n  }\n  console.log(\"i is: \", i);\n  return i;\n}\ncheckScope();",
+      "tags": [
+        "JavaScript",
+        "JS",
+        "Node",
+        "Node.js",
+        "var",
+        "let",
+        "scope"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "JavaScript",
+      "date_started": "2018-10-03T20:02:51+02:00",
+      "next_review_date": "2018-11-11T09:56:03-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-03T20:16:09+02:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-07T08:10:19-05:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-16T09:56:33-04:00"
+        }
+      ],
+      "starter": null,
+      "id": 35,
+      "file": "answer_35.js",
+      "location": "./answers/answer_35.js",
+      "old_file": "answer_old_35.js",
+      "old_location": "./answers/answer_old_35.js"
     },
     {
       "instructions": "Create a default parameter\n\nCreate a 'hello' function with a default parameter of 'John Doe'. Call the\nfunction supplying a value, then not supplying a value; the latter should\nprint out as 'Hello, John Doe.'",
@@ -920,8 +1047,8 @@
           "review_date": "2018-10-13T12:18:13-07:00"
         }
       ],
+      "starter": null,
       "id": 44,
-      "langhash": "#<Lang:0x00000002c23150>",
       "file": "answer_44.js",
       "location": "./answers/answer_44.js",
       "old_file": "answer_old_44.js",
@@ -947,8 +1074,8 @@
           "review_date": "2018-10-06T14:27:17+01:00"
         }
       ],
+      "starter": null,
       "id": 45,
-      "langhash": "#<Lang:0x0000000256c4b0>",
       "file": "answer_45.js",
       "location": "./answers/answer_45.js",
       "old_file": "answer_old_45.js",
@@ -981,8 +1108,8 @@
           "review_date": "2018-10-13T12:24:56-07:00"
         }
       ],
+      "starter": null,
       "id": 17,
-      "langhash": "#<Lang:0x00000002d29180>",
       "file": "answer_17.rb",
       "location": "./answers/answer_17.rb",
       "old_file": "answer_old_17.rb",
@@ -1005,12 +1132,44 @@
           "review_date": "2018-09-27T04:51:10-04:00"
         }
       ],
+      "starter": null,
       "id": 11,
-      "langhash": "#<Lang:0x00000002ca7b30>",
       "file": "answer_11.java",
       "location": "./answers/answer_11.java",
       "old_file": "answer_old_11.java",
       "old_location": "./answers/answer_old_11.java"
+    },
+    {
+      "instructions": "Using defaults in instance initialization\n\nThe following defaults are problematic for reasons Sandi Metz explained.\nMove them into a method and use the method in #initialize. Ensure the \nanswers remain the same.\n\nclass Dog\n  attr_accessor :cute, :breed, :weight\n  def initialize(args)\n    @cute   = args[:cute]   || false\n    @breed  = args[:breed]  || 'mutt'\n    @weight = args[:weight] || 15\n  end\nend\nlassie = Dog.new(cute: true, breed: 'collie')\nputs lassie.cute   # true\nputs lassie.breed  # collie\nputs lassie.weight # 15\nrover = Dog.new\nputs rover.breed   # mutt",
+      "tags": [
+        "Ruby",
+        "defaults",
+        "initialize",
+        "merge",
+        "optional arguments",
+        "default arguments"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-09-25T08:24:11-04:00",
+      "next_review_date": "2018-11-27T22:06:46-04:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-09-25T14:37:03-04:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-16T22:06:48-04:00"
+        }
+      ],
+      "starter": null,
+      "id": 6,
+      "file": "answer_6.rb",
+      "location": "./answers/answer_6.rb",
+      "old_file": "answer_old_6.rb",
+      "old_location": "./answers/answer_old_6.rb"
     },
     {
       "instructions": "How to print a formatted table \nwith while, for, and different data types\n\nIn the following C program, add a line that prints first fahrenheit, \nthen a tab, then celsius, then a newline. Then change fahr and celsius\nso that they are floats (and try printing then). Then print the values\nfrom -20 to 120 counting by 10s. Finally, rewrite the 'while' loop with\na 'for' loop and remove all variables except fahr. Ensure the field\ntype characters are correct throughout (so, no error messages!).\n\n#include <stdio.h>\nint main() {\n    int fahr, celsius;\n    int lower, upper, step;\n    lower = 0;    /* lower limit of temperature table */\n    upper = 300;  /* upper limit */\n    step = 20;    /* step size */\n\n    fahr = lower;\n    while (fahr <= upper) {\n        celsius = (5.0/9) * (fahr-32);\n\t/* fill in this line */\n        fahr = fahr + step;\n    }\n}",
@@ -1035,12 +1194,40 @@
           "review_date": "2018-09-28T04:14:12-04:00"
         }
       ],
+      "starter": null,
       "id": 12,
-      "langhash": "#<Lang:0x00000002c70248>",
       "file": "answer_12.c",
       "location": "./answers/answer_12.c",
       "old_file": "answer_old_12.c",
       "old_location": "./answers/answer_old_12.c"
+    },
+    {
+      "instructions": "Center this in a whitespace-padded string\n\nSuppose you want to put \"Acme Products\" centered on one line and \n\"The top products for you!\" on the next line. The lines should be 75\ncharacters wide. The first should be padded with empty space, while\nthe second shoudl be padded with '=+'. Print the two lines.",
+      "tags": [
+        "Ruby",
+        "center"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-03T08:38:44+01:00",
+      "next_review_date": "2018-11-28T06:10:17-05:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-03T08:42:04+01:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-17T07:10:17-04:00"
+        }
+      ],
+      "starter": null,
+      "id": 31,
+      "file": "answer_31.rb",
+      "location": "./answers/answer_31.rb",
+      "old_file": "answer_old_31.rb",
+      "old_location": "./answers/answer_old_31.rb"
     },
     {
       "instructions": "Sorting by keys and values\n\nGiven the 'mountains' hash, sort and print (in simple table form) by name\nand then by height (NB, must be *decending*). Then do the same thing, \nusing a different method. You'll have to output an array in each case, \nand make a method to print different arrays (four times).\n\nmountains = {\n  'Mount Everest' => 29029,\n  'K2' => 28251,\n  'Kangchenjunga' => 28169,\n  'Lhotse' => 27940,\n  'Makalu' => 27838,\n  'Cho Oyo' => 26864,\n  'Dhaulagiri I' => 26795\n}",
@@ -1060,8 +1247,8 @@
           "review_date": "2018-10-01T13:20:54-04:00"
         }
       ],
+      "starter": null,
       "id": 27,
-      "langhash": "#<Lang:0x00000002c41fd8>",
       "file": "answer_27.rb",
       "location": "./answers/answer_27.rb",
       "old_file": "answer_old_27.rb",
@@ -1085,8 +1272,8 @@
           "review_date": "2018-10-01T12:35:54-04:00"
         }
       ],
+      "starter": null,
       "id": 26,
-      "langhash": "#<Lang:0x000000028fc350>",
       "file": "answer_26.rb",
       "location": "./answers/answer_26.rb",
       "old_file": "answer_old_26.rb",
@@ -1124,8 +1311,8 @@
           "review_date": "2018-10-14T14:46:38-04:00"
         }
       ],
+      "starter": null,
       "id": 36,
-      "langhash": "#<Lang:0x000000023732f8>",
       "file": "answer_36.js",
       "location": "./answers/answer_36.js",
       "old_file": "answer_old_36.js",
@@ -1159,8 +1346,8 @@
           "review_date": "2018-09-25T17:08:51-04:00"
         }
       ],
+      "starter": null,
       "id": 9,
-      "langhash": "#<Lang:0x00000002cce208>",
       "file": "answer_9.sh",
       "location": "./answers/answer_9.sh",
       "old_file": "answer_old_9.sh",
@@ -1184,8 +1371,8 @@
           "review_date": "2018-10-06T09:06:39+02:00"
         }
       ],
+      "starter": null,
       "id": 41,
-      "langhash": "#<Lang:0x00000002c6ec40>",
       "file": "answer_41.rb",
       "location": "./answers/answer_41.rb",
       "old_file": "answer_old_41.rb",
@@ -1213,8 +1400,8 @@
           "review_date": "2018-09-24T18:50:49-04:00"
         }
       ],
+      "starter": null,
       "id": 2,
-      "langhash": "#<Lang:0x00000002c39c48>",
       "file": "answer_2.rb",
       "location": "./answers/answer_2.rb",
       "old_file": "answer_old_2.rb",
@@ -1240,8 +1427,8 @@
           "review_date": "2018-10-01T18:27:37-04:00"
         }
       ],
+      "starter": null,
       "id": 30,
-      "langhash": "#<Lang:0x00000002627b98>",
       "file": "answer_30.rb",
       "location": "./answers/answer_30.rb",
       "old_file": "answer_old_30.rb",
@@ -1265,8 +1452,8 @@
           "review_date": "2018-09-29T23:15:21-04:00"
         }
       ],
+      "starter": null,
       "id": 18,
-      "langhash": "#<Lang:0x00000002d0c4e0>",
       "file": "answer_18.rb",
       "location": "./answers/answer_18.rb",
       "old_file": "answer_old_18.rb",

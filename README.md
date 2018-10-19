@@ -54,10 +54,6 @@ Online help is available from the task list by pressing 'c' for 'commands'.
 * Refactoring of the detailed cleanup/editing still needed.
 * Improve an "installation" or "first run" script, allowing the user to select
 default language and default text editor. Think through the flow.
-* Add starter code (for user to edit in his answer) rather than putting this
-directly in the instructions. Ensure that, as with Java now, unedited starter
-code is not interpreted as an answer (so it won't overwrite the archive). No
-reason this bit can't be opened with the default text editor instead of Pico.
 * Add wrapper code for C? Think about this.
 * Create features to export and import some (tagged) or all items.
 * Create features to mass-delete items (such as the pre-loaded questions, or
@@ -154,6 +150,9 @@ code structure is almost complete. Fixed bugs including a problem with the
 "date prettifier."
 
 ### 2.2
-Ongoing:
+Added starter code and Python:
 
-Added Python support. Fixed tag bug.
+Code that a task writer wants the user to use in solving a problem is dubbed
+"starter code"; this code was included in the task instructions, but has now
+been separated out, so the user doesn't have to copy and paste it from the
+question. Also, added Python support. Fixed various bugs, especially a tag bug.

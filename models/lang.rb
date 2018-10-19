@@ -10,7 +10,7 @@ class Lang
     # This is just a wrapper for the rather complex ::solicit_languages_from_user.
     # Might not be necessary. Always returns the name of a language.
     def pick_language_name(current)
-      puts "\nSET LANGUAGE:"
+      puts "SET LANGUAGE:"
       solicit_languages_from_user(current)
     end
 

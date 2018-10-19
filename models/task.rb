@@ -6,13 +6,16 @@ class Task
     # Prepares data for new task.
     def generate_new_task
       clear_screen
+      # Get language from user; returns a canonical, approved name for saving.
+      lang = Lang.pick_language_name($lang_defaults.name)
       # Get task instructions from user.
-      instructions = self.get_input(type: 'Instructions', prompt:
+      instructions = get_input(type: 'Instructions', prompt:
         "INPUT INSTRUCTIONS:\nOn the next screen, you'll type in the instructions for your new task. ",
         required: true)         # <-- needs a lot of work/refactoring
       return nil if instructions == nil or instructions == 'q' # Instructions required.
-      # Get language from user; returns a canonical, approved name for saving.
-      lang = Lang.pick_language_name($lang_defaults.name)
+      # Get starter code; returns some starter code or nil.
+      starter_arg = (lang == 'Java' ? 'Java' : false)
+      starter = starter_code_sequence(starter_arg)
       # Get tags from user. Arrives as string.
       tags = get_tags_from_user # <-- needs a lot of work/refactoring
       return nil if tags == 'q'  # TEMPORARY kluge
@@ -22,7 +25,8 @@ class Task
       # Get initial score from user.
       score = get_initial_score_from_user
       # Construct new task!
-      Task.new(instructions: instructions, tags: tags, score: score, lang: lang)
+      Task.new(instructions: instructions, tags: tags, score: score,
+               lang: lang, starter: starter)
     end # of ::generate_new_task
 
     # Massage user-input tags so standardized. Returns tag array.
@@ -45,8 +49,8 @@ class Task
     end
   end # Of class methods
 
-  attr_accessor :instructions, :tags, :score, :saved, :lang, :langhash, :file, :location,
-                :old_file, :old_location
+  attr_accessor :instructions, :tags, :score, :saved, :lang, :langhash, :file,
+                :location, :old_file, :old_location, :starter, :starter_location
   attr_reader :id, :date_started, :next_review_date, :all_reviews
 
   def initialize(args = {})
@@ -63,12 +67,16 @@ class Task
       @id = args[:id]
       @langhash = Lang.new(@lang)
       get_locations # This assigns @file, @location, @old_file, and @old_location
+      @starter = load_starter
     else      # For use when creating new tasks.
       @id = calculate_id
       @langhash = Lang.new(@lang)
       # First review is due immediately.
       @next_review_date = DateTime.now.to_s # Saved as string.
       get_locations # This assigns @file, @location, @old_file, and @old_location
+      @starter = args[:starter]
+      @starter = add_id_to_java_starter if @lang == 'Java'
+      File.write(@starter_location, @starter)
       save_new_task
       edit
     end
@@ -79,6 +87,7 @@ class Task
     hash = {}
     self.instance_variables.each do |var|
       next if var.to_s[1..-1] == 'langhash' # No need to save this object.
+      next if var.to_s[1..-1] == 'starter'  # Ditto; it's in a file.
       hash[var.to_s[1..-1]] = self.instance_variable_get var
     end
     hash
@@ -93,6 +102,7 @@ class Task
     # Determine filename for old answers for this task. (Helper.)
     @old_file = "answer_old_#{@id}.#{ext}"
     @old_location = "./answers/#{@old_file}"
+    @starter_location = "./data/starters/starter_#{@id}.#{ext}"
   end
 
   def change_language
@@ -178,6 +188,15 @@ class Task
           interval * 3
         end
         return DateTime.now + adjust_by
+      end
+    end
+
+    # If starter exists, return it (to be loaded in @starter).
+    def load_starter
+      if File.exist?(@starter_location)
+        File.read(@starter_location)
+      else
+        nil
       end
     end
 

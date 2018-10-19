@@ -4,8 +4,9 @@ module TaskView
   # him abandon adding the new @
   # REFACTOR: UGH, fix this or split it in two!
   def get_input(args)
-    while true
-      args[:prompt] += "\nThen press Ctrl-W to save and Ctrl-X to submit. "
+    loop do
+      args[:prompt] = (args[:prompt] ? "\n" + args[:prompt] : "\n")
+      args[:prompt] += "\nPress Ctrl-W to save and Ctrl-X to submit. "
       args[:prompt] += "\nPress <Enter> now to continue (or [q]uit)... "
       print args[:prompt]
       choice = gets.chomp
@@ -13,10 +14,15 @@ module TaskView
       if (choice == "q")
         return 'q'
       end
-      system("rm tmp/temp.tmp") if File.file?("./tmp/temp.tmp")
-      system("pico tmp/temp.tmp")
-      input = File.read("./tmp/temp.tmp").strip if File.file?("./tmp/temp.tmp")
-      system("rm tmp/temp.tmp") if File.file?("./tmp/temp.tmp")
+      system("rm tmp/#{args[:type].downcase}.tmp") if
+        File.file?("./tmp/#{args[:type].downcase}.tmp")
+      File.write("./tmp/#{args[:type].downcase}.tmp", java_starter) if
+        args[:java]
+      system("pico tmp/#{args[:type].downcase}.tmp")
+      input = File.read("./tmp/#{args[:type].downcase}.tmp").strip if
+        File.file?("./tmp/#{args[:type].downcase}.tmp")
+      system("rm tmp/#{args[:type].downcase}.tmp") if
+        File.file?("./tmp/#{args[:type].downcase}.tmp")
       if args[:required]
         if input
           if input.length < 3
@@ -37,9 +43,21 @@ module TaskView
     end
   end # of ::get_input
 
+  # Ask user if he wants to edit starter code up front.
+  def get_starter_code?
+    puts "\nEDIT STARTER CODE:"
+    starter_decision = nil
+    loop do
+      print "Edit some starter code (you can do this later)? <Enter> for [y]es, or [n]o:"
+      starter_decision = gets.chomp
+      break if ('yn'.include? starter_decision || starter_decision == '')
+    end
+    (starter_decision == 'y' || starter_decision == '') ? true : false
+  end
+
   def get_tags_from_user
     get_input(type: 'Tags', prompt:
-      "\nINPUT TAGS:\nOn the next screen, you'll input tags, separated by commas (optional).",
+      "INPUT TAGS:\nOn the next screen, you'll input tags, separated by commas (optional).",
       required: false)
   end
 
@@ -58,7 +76,8 @@ module TaskView
     puts '(' + @lang + ') ' + @instructions
     puts '=' * 75
     date = DateTime.parse(@date_started).strftime("%-m/%-d/%Y")
-    printf("  ID: %d   Started: %-10s   Reviews: %d   Score: %s\n",
+    starter_string = @starter ? '*Yes*' : 'No'
+    printf("  ID: %d   Started: %-10s   Reviews: %d   Score: %s   Starter: #{starter_string}\n",
       @id, date, @all_reviews.length, @score)
     last_date_timestamp = @all_reviews.empty? ?
       nil : @all_reviews.max_by {|r| r['review_date']}['review_date']
@@ -66,10 +85,11 @@ module TaskView
       DateTime.parse(last_date_timestamp).strftime("%-m/%-d/%Y") : 'none yet'
     next_precise_date = DateTime.parse(@next_review_date).
       strftime("%-m/%-d/%Y")
-    puts "  Review dates >>  Last: #{last_precise_date}  Next: #{next_precise_date} (#{prettify_timestamp(@next_review_date)})"
+    puts "  Review dates >>  Last: #{last_precise_date}   Next: #{next_precise_date} (#{prettify_timestamp(@next_review_date)})"
     puts "\nCOMMANDS  Review: [s]ave review  [a]nswer  [r]un answer  [h]elp"
     puts   "                  [o]ld answers  [rr]un old answers  [c]onfigure language"
     puts   "            Edit: [i]nstructions  [t]ags  [d]ate of next review  [sc]ore"
+    puts   "                  [st]arter code"
     puts   "            Also: re[f]resh view  [q]uit review and editing\n\n"
   end
 
@@ -101,11 +121,24 @@ module TaskView
     date
   end
 
+  def edit_starter
+    puts "Editing the starter code in #{$texted}. Don't forget to save."
+    system("#{$textedcmd} #{@starter_location}")
+    print "Save your work, then press <Enter> to load the starter code: "
+    if ( gets && File.exist?(@starter_location) &&
+         File.stat(@starter_location).size > 0 )
+      @starter = File.read(@starter_location)
+      puts "Starter text (last saved version) now loaded."
+    else
+      puts "Starter text not saved. Try saving first, then press 'st' again."
+    end
+  end
+
   # Given a task, opens its answer file with the default text editor.
   def write_answer
     # If answer file has content, ask user if he wants it archived first.
     if (File.exist?(@location) && File.stat(@location).size > 0 &&
-      File.read(@location) != java_starter)
+      File.read(@location) != java_starter && File.read(@location) != @starter)
       puts "An answer exists. Want to archive it before opening? ([y]/n)"
       ans = get_user_command('a')
       if (ans == 'y' || ans == '')
@@ -148,7 +181,7 @@ module TaskView
       if @langhash.cmd2
         # Java, e.g., needs to remove the extension. Other rules can be
         # added here for new languages as needed.
-        subbed_cmd = @langhash.cmd2.gsub('<name-no-ext>', 
+        subbed_cmd = @langhash.cmd2.gsub('<name-no-ext>',
           file.gsub(".#{@langhash.ext}", ''))
         system("cd answers && #{subbed_cmd}")
       end

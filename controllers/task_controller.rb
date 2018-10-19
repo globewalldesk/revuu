@@ -1,8 +1,4 @@
 module TaskController
-    # NOTE (delete later): any method that requires user input or displays
-    # anything to the user is in a _view file. _controller files prep data
-    # to show the user and accept data from the user, so the controller is
-    # constantly talking to the view.
 
   # Loads data and launches edit view for particular task.
   def edit
@@ -42,6 +38,8 @@ module TaskController
       save_review_date(date) if date
     when 'sc' # Edit score.
       edit_score
+    when 'st'
+      edit_starter
     when 'f'
       display_info
     else
@@ -96,6 +94,20 @@ module TaskController
     display_info
   end
 
+  # Asks the user if he wants to write some starter code. If so, opens a temp
+  # file in the text editor, then grabs the text when the user gives the OK,
+  # deletes the file, and returns the text (or nil).
+  def starter_code_sequence(java=nil) # Lang needed for file extension.
+    starter_desired = get_starter_code?
+    if starter_desired
+      get_input(type: 'Starter', required: false, prompt:
+        "Edit the starter code on the next screen.",
+        java: java)
+    else
+      nil
+    end
+  end
+
   # Used only in the "date of next review" command.
   def save_review_date(date)
     @next_review_date = date
@@ -143,7 +155,9 @@ module TaskController
     if ! File.exist?(@location)
       system("touch #{@location}")
     end
-    if @lang == 'Java'
+    if @starter
+      File.write(@location, @starter)
+    elsif @lang == 'Java'
       # So far, only Java files need to be written-to before getting started.
       File.write(@location, java_starter)
     else
@@ -152,14 +166,23 @@ module TaskController
   end
 
   def java_starter
-    return <<JAVASTARTER
+    return <<-JAVASTARTER
 public class answer_#{@id} {
     public static void main(String[] args) {
+        /* Edit only between here... */
 
+        /* ... and here */
     }
 }
 JAVASTARTER
   end
 
+  # Adding @id to the class name is necessary here if the code is to be
+  # runnable and if the @id isn't assigned by the factory method. (The
+  # factory method, Task#generate_new_task, only prepares the values
+  # necessary to initialize the object.)
+  def add_id_to_java_starter
+    @starter = @starter.gsub!('answer_ {', "answer_#{@id} {")
+  end
 
 end
