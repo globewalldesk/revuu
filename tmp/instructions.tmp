@@ -1,0 +1,9 @@
+Destructuring assignment 
+
+Rewrite the following ES5 code using a "destructuring assignment"  
+permitted by ES6. (Comment out the old-fashioned lines.) 
+
+const Faves = { fruit: 'apple', music: 'Irish trad', prog_lang: 'Ruby' };
+const fruit = Faves.fruit; 
+const music = Faves.music;
+const prog_lang = Faves.prog_lang;

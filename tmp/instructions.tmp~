@@ -1,0 +1,5 @@
+(JavaScript) Arrays of const values
+
+If an array arr is made up of the values of variables declared with 'const',
+and arr itself is declared with 'const', is it possible to change one of 
+values of the array using, e.g., arr[0] = 'foo'?
