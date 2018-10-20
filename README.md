@@ -3,6 +3,8 @@ Handy command line app for learning and reviewing programming tasks--improving
 procedural (as opposed to declarative) knowledge--using spaced repetition
 methods.
 
+See [this video introduction](https://youtu.be/rv11AHD8wik).
+
 ## User introduction
 
 This app will help you review programming tasks, improving understanding and
