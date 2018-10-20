@@ -37,12 +37,13 @@ module TasklistView
     puts ''
   end
 
-  def help 
+  def help
     <<-HELP
 
 Commands are:
-[n]ew task  [1] review/edit task #1  show ne[x]t  [l]ist all tasks  [h]elp
-[d]elete task  [t]ag search  set text [e]ditor  set [p]rogramming language 
+[n]ew task  [1] review/edit task #1  [l]ist all tasks
+show ne[x]t  [d]elete task  [t]ag search  [b]ackup data
+set text [e]ditor  set [p]rogramming language [h]elp
 HELP
   end
 

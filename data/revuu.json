@@ -1,39 +1,6 @@
 {
   "tasks": [
     {
-      "instructions": "Return an array of squared positive integers\n\nGiven \n\nlet nums = [3, -25, 0.67, 7, -12.25, 12.25, 12];\n\nwrite and then print the result of using chained arrow functions that \nreturn the squares of only elements that are (a) positive and \n(b) integers. Response should be [9, 49, 144].",
-      "tags": [
-        "JavaScript",
-        "JS",
-        "Node",
-        "Node.js",
-        "filter",
-        "map",
-        "pow"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "JavaScript",
-      "date_started": "2018-10-06T13:12:15+01:00",
-      "next_review_date": "2018-10-19T10:50:06-04:00",
-      "all_reviews": [
-        {
-          "score": 3,
-          "review_date": "2018-10-06T14:13:27+01:00"
-        },
-        {
-          "score": 3,
-          "review_date": "2018-10-09T10:50:06-04:00"
-        }
-      ],
-      "id": 43,
-      "file": "answer_43.js",
-      "location": "./answers/answer_43.js",
-      "old_file": "answer_old_43.js",
-      "old_location": "./answers/answer_old_43.js",
-      "starter_location": "./data/starters/starter_43.js"
-    },
-    {
       "instructions": "Arrays of const values\n\nIf an array arr is made up of the values of variables declared with 'const',\nand arr itself is declared with 'const', is it possible to change one of \nvalues of the array using, e.g., arr[0] = 'foo'? Demonstrate (and know the\nanswer in advance).",
       "tags": [
         "JavaScript",
@@ -63,6 +30,33 @@
       "old_file": "answer_old_38.js",
       "old_location": "./answers/answer_old_38.js",
       "starter_location": "./data/starters/starter_38.js"
+    },
+    {
+      "instructions": "Destructuring assignment \n\nRewrite the following ES5 code using a \"destructuring assignment\"  \npermitted by ES6. (Comment out the old-fashioned lines.) \n\nconst Faves = { fruit: 'apple', music: 'Irish trad', prog_lang: 'Ruby' };\nconst fruit = Faves.fruit; \nconst music = Faves.music;\nconst prog_lang = Faves.prog_lang;",
+      "tags": [
+        "JavaScript",
+        "JS",
+        "Node",
+        "Node.js",
+        "destructuring assignment"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "JavaScript",
+      "date_started": "2018-10-18T23:08:52-04:00",
+      "next_review_date": "2018-10-19T12:00:00-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-18T23:10:57-04:00"
+        }
+      ],
+      "id": 56,
+      "file": "answer_56.js",
+      "location": "./answers/answer_56.js",
+      "old_file": "answer_old_56.js",
+      "old_location": "./answers/answer_old_56.js",
+      "starter_location": "./data/starters/starter_56.js"
     },
     {
       "instructions": "What's higher in value?\n\n(Answer all questions before you run anything.)\n\nGenerate the (lowercase) alphabet (= az), then sort it using a \nblock: { |x,y| x <=> y }. What will be the value of az[0]? \nPredict correctly before showing. Regenerate so that az[0] has the\nopposite value.\n\nNext, sort without a block. What is az[0]? Predict then demonstrate.\n\nFinally, what is the value of 'a' <=> 'b'? Predict then demonstrate.\n\nPrint ASCII characters 32 to 126. Use the spaceship operator to \ncompare a character from the 32-47 range with a character from the\n123-126 range.\n\nWhen you sort with |x,y| x <=> y, does the sorter place the lower-\nvalued items first or last?",
@@ -568,6 +562,34 @@
       "starter_location": "./data/starters/starter_37.js"
     },
     {
+      "instructions": "Fix this broken use of the spread operator\n\nThis is very quick and easy: fix the error in the starter code.",
+      "tags": [
+        "JavaScript",
+        "JS",
+        "Node",
+        "Node.js",
+        "spread operator",
+        "..."
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "JavaScript",
+      "date_started": "2018-10-18T22:59:50-04:00",
+      "next_review_date": "2018-10-25T23:00:11-04:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-18T23:00:13-04:00"
+        }
+      ],
+      "id": 55,
+      "file": "answer_55.js",
+      "location": "./answers/answer_55.js",
+      "old_file": "answer_old_55.js",
+      "old_location": "./answers/answer_old_55.js",
+      "starter_location": "./data/starters/starter_55.js"
+    },
+    {
       "instructions": "Demonstrate the splat operator\n\nSuppose you have \n\nfriends = ['Jack', 'Jill', 'Sam']\n\nand you want to pass the array's elements not as an array, but \nindividually, to a method, preceded by a greeting type (the \"yo\"\nmethod in the starter code). How do you do that quite simply?\n\nRelated problem: suppose you want to use 'first' and 'the_rest' \nfor 'a' and ['b', 'c', 'd'], respectively. You already have \n\narr = ['a', 'b', 'c', 'd']\n\nso how do you assign the variables in *one simple* line? Do so\nand then print them in a string: \"I really like a, but as\nto b, c, d...they're OK.\"",
       "tags": [
         "Ruby",
@@ -722,6 +744,43 @@
       "starter_location": "./data/starters/starter_46.c"
     },
     {
+      "instructions": "Return an array of squared positive integers \n\nGiven \n\nlet nums = [3, -25, 0.67, 7, -12.25, 12.25, 12]; \n\nwrite and then print the result of using chained arrow functions that  \nreturn the squares of only elements that are (a) positive and \n(b) integers. Response should be [9, 49, 144].",
+      "tags": [
+        "JavaScript",
+        "JS",
+        "Node",
+        "Node.js",
+        "filter",
+        "map",
+        "pow"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "JavaScript",
+      "date_started": "2018-10-06T13:12:15+01:00",
+      "next_review_date": "2018-10-29T17:52:58-04:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-06T14:13:27+01:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-09T10:50:06-04:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-19T17:53:01-04:00"
+        }
+      ],
+      "id": 43,
+      "file": "answer_43.js",
+      "location": "./answers/answer_43.js",
+      "old_file": "answer_old_43.js",
+      "old_location": "./answers/answer_old_43.js",
+      "starter_location": "./data/starters/starter_43.js"
+    },
+    {
       "instructions": "Create an object literal with properties and function\n\nCreate a johnDoe object literal with firstName and lastName properties\nand greet function. Calling the function should output to the console\nthe message, \"Hi, I'm John Doe.\"",
       "tags": [
         "JavaScript",
@@ -795,7 +854,14 @@
         "C programming language",
         "int",
         "main",
-        "printf"
+        "printf",
+        "foo",
+        "boo",
+        "bar",
+        "far",
+        "baz",
+        "qux",
+        "sucks"
       ],
       "score": 4,
       "saved": true,

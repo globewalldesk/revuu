@@ -38,6 +38,9 @@ class App
     start = line + "\n" + start + "\n" + line
     start = "\n\n\n" + start + "\n\n\n"
     start += intro
+    # If no tasks, orient user. Note, 'help' method is in tasklist_view.rb.
+    start += (new_user_text + help + "\n") unless
+      File.exist?("./data/revuu.json")
     puts start
   end
 
@@ -50,6 +53,14 @@ that you've done a review, and schedule more for the future. The developer
 finds it to be a handy way to learn and solidify easy-to-forget skills.
 
 ENDINST
+  end
+
+  def new_user_text
+    newbie = <<NEWBIE
+You're new to Revuu! Press 'n' to add your first task. Choose your text
+editor with 'e' and your default programming language with 'p'. For a
+general introduction and detailed instructions, press 'h'.
+NEWBIE
   end
 
   # Load the default language and text editor ($lang, $texted).
@@ -167,6 +178,8 @@ ENDINST
       choose_text_editor
     when 'p'
       choose_default_language
+    when 'b'
+      save_backup_data
     when 'h'
       launch_instructions_system
       $tasks.display_tasks  # Redisplay tasklist after returning from help.

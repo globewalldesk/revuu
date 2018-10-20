@@ -73,11 +73,14 @@ module TaskController
       (self.instance_variable_get("@#{field}").join(', ') if
       self.instance_variable_get("@#{field}") ) :
       self.instance_variable_get("@#{field}") )
+    contents = wrap_overlong_paragraphs(contents) if field == 'tags'
     File.write("./tmp/#{field}.tmp", contents)
     # Open file for editing.
     system("pico tmp/#{field}.tmp")
     # Save upon closing: grab text.
     attrib = File.read("./tmp/#{field}.tmp").strip
+    # Strip newlines if tags (otherwise commas are introduced).
+    attrib.gsub!("\n", '') if field == 'tags'
     if attrib.empty? && field == 'instructions'
       puts "ERROR: Instructions cannot be blank."
       return nil
@@ -86,6 +89,8 @@ module TaskController
     if field == 'tags'
       attrib = self.class.validate_tags(attrib, @lang)
     end
+    # In helpers/helpers.rb:
+    attrib = wrap_overlong_paragraphs(attrib) if attrib.class == String
     # Set instance variable to contents of edited temp file.
     self.instance_variable_set("@#{field}", attrib)
     # Save updated instructions to JSON file if you've made it this far.
@@ -169,9 +174,7 @@ module TaskController
     return <<-JAVASTARTER
 public class answer_#{@id} {
     public static void main(String[] args) {
-        /* Edit only between here... */
-
-        /* ... and here */
+        /* do not edit 'answer_<id>' */
     }
 }
 JAVASTARTER

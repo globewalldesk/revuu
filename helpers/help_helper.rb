@@ -164,6 +164,14 @@ same day. (See 'review a task' for more details.)
 CREATEATASK
     },
     {
+      title: 'how do I add a title?',
+      content: <<-ADDTITLE
+It's simple to add a title to your task: the first line of the task
+instructions serves as a title. Revuu's author skips down a line or two
+after the title just for clarity to the reader.
+ADDTITLE
+    },
+    {
       title: 'review (practice, answer) a task',
       content: <<-REVIEWATASK
 Revuu makes it really easy to review a task, i.e., writing a script that

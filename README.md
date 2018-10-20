@@ -51,14 +51,18 @@ Online help is available from the task list by pressing 'c' for 'commands'.
 
 ## Development to do list
 
+* Top priority:
+  * Solve problem of saving usable sample data to Github without threatening
+  to overwrite user's own data when they perform `git pull`. Probably:
+  * Create features to export and import some (tagged) or all items.
+  * Create features to mass-delete items (such as the pre-loaded questions, or
+all of a language you're not studying, or just a tag you're putting aside for
+a while).
 * Refactoring of the detailed cleanup/editing still needed.
 * Improve an "installation" or "first run" script, allowing the user to select
 default language and default text editor. Think through the flow.
+* Test with Java; write supporting code so it's more feasible to use with Java.
 * Add wrapper code for C? Think about this.
-* Create features to export and import some (tagged) or all items.
-* Create features to mass-delete items (such as the pre-loaded questions, or
-all of a language you're not studying, or just a tag you're putting aside for
-a while).
 * Add statistics (number of questions, averages, number overdue, number to do
 today, etc.).
 * Major improvement would be a feature to let user write and run Rails thangs
@@ -149,10 +153,16 @@ controllers and views are adequately self-contained; hence the analogy to MVC
 code structure is almost complete. Fixed bugs including a problem with the
 "date prettifier."
 
-### 2.2
+### 2.2 (October 18, 2018)
 Added starter code and Python:
 
 Code that a task writer wants the user to use in solving a problem is dubbed
 "starter code"; this code was included in the task instructions, but has now
 been separated out, so the user doesn't have to copy and paste it from the
 question. Also, added Python support. Fixed various bugs, especially a tag bug.
+
+### 2.3
+
+Autowrap overwide tasks and tags (without autowrapping code, hopefully).
+Added simple data backup feature. Made introductory video to get people using
+Revuu!

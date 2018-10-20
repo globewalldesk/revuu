@@ -36,14 +36,15 @@ class Task
       # Convert user input string, which should be comma-separted, into array.
       tags = (tags ? tags.split(',').map!(&:strip) : [])
       # Strip out language tags so you can put 'em in correctly; also, strip empty tags.
-      tags.reject! {|tag| ['JavaScript', 'JS',
+      langs_to_reject = ['JavaScript', 'JS',
         'Node', 'Node.js', 'Bash', 'command line', 'bash scripting', 'shell',
         'shell scripting', 'linux', 'Unix', 'Java', 'Ruby', 'C',
-        'C programming language', 'C language', 'Python'].include? tag }
+        'C programming language', 'C language', 'Python']
+      # Remove any tags that (case-insensitively) match langs_to_reject.
+      tags.reject! {|tag| langs_to_reject.any? {|l| /\A#{l}\Z/i.match(tag) } }
       # Making use of an accessor of the Lang class variable 'defined_langs',
       # first 'find' the hash matching the param 'lang'; return [:alts] value.
       lang_alts = Lang.defined_langs.find {|l| l[:name] == lang }[:alts]
-      puts lang, lang_alts
       # Put in canonical language tags; splat operators ensure that subarrays aren't created.
       tags = tags.unshift(*[lang, *lang_alts])
     end
