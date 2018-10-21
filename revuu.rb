@@ -161,6 +161,7 @@ NEWBIE
     puts "\nAll data is automatically saved. Goodbye until next time!"
   end
 
+  # REFACTOR: Move to tasklist_controller.rb, probably.
   def process_input(command)
     case command
     when 'n'

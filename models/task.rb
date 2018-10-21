@@ -12,7 +12,11 @@ class Task
       instructions = get_input(type: 'Instructions', prompt:
         "INPUT INSTRUCTIONS:\nOn the next screen, you'll type in the instructions for your new task. ",
         required: true)         # <-- needs a lot of work/refactoring
-      return nil if instructions == nil or instructions == 'q' # Instructions required.
+      if instructions == nil or instructions == 'q' # Instructions required.
+        return nil
+      else
+        instructions = wrap_overlong_paragraphs(instructions, lang.length)
+      end
       # Get starter code; returns some starter code or nil.
       starter_arg = (lang == 'Java' ? 'Java' : false)
       starter = starter_code_sequence(starter_arg)
@@ -99,10 +103,10 @@ class Task
     # Determine filename for answer for this task.
     ext = @langhash.ext
     @file = "answer_#{@id}.#{ext}"
-    @location = "./answers/#{@file}"
+    @location = "./data/answers/#{@file}"
     # Determine filename for old answers for this task. (Helper.)
     @old_file = "answer_old_#{@id}.#{ext}"
-    @old_location = "./answers/#{@old_file}"
+    @old_location = "./data/answers/#{@old_file}"
     @starter_location = "./data/starters/starter_#{@id}.#{ext}"
   end
 

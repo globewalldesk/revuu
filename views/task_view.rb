@@ -14,15 +14,12 @@ module TaskView
       if (choice == "q")
         return 'q'
       end
-      system("rm tmp/#{args[:type].downcase}.tmp") if
-        File.file?("./tmp/#{args[:type].downcase}.tmp")
-      File.write("./tmp/#{args[:type].downcase}.tmp", java_starter) if
-        args[:java]
-      system("pico tmp/#{args[:type].downcase}.tmp")
-      input = File.read("./tmp/#{args[:type].downcase}.tmp").strip if
-        File.file?("./tmp/#{args[:type].downcase}.tmp")
-      system("rm tmp/#{args[:type].downcase}.tmp") if
-        File.file?("./tmp/#{args[:type].downcase}.tmp")
+      tempfile = "tmp/#{args[:type].downcase}.tmp"
+      system("rm #{tempfile}") if File.file?(tempfile)
+      File.write(tempfile, java_starter) if args[:java]
+      system("pico #{tempfile}")
+      input = File.read(tempfile).strip if File.file?(tempfile)
+      system("rm #{tempfile}") if File.file?(tempfile)
       if args[:required]
         if input
           if input.length < 3
@@ -48,7 +45,8 @@ module TaskView
     puts "\nEDIT STARTER CODE:"
     starter_decision = nil
     loop do
-      print "Edit some starter code (you can do this later)? <Enter> for [y]es, or [n]o:"
+      puts "Edit some starter code (you can do this later)?"
+      print "<Enter> for [y]es, or [n]o: "
       starter_decision = gets.chomp
       break if ('yn'.include? starter_decision || starter_decision == '')
     end
@@ -175,7 +173,7 @@ module TaskView
       puts "Running #{file}:"
       puts ("=" * 75)
       puts ''
-      system("cd answers && #{@langhash.cmd} #{file}")
+      system("cd data/answers && #{@langhash.cmd} #{file}")
       # If the language is compiled, the @langhash.cmd line runs the compiler.
       # The following then runs the compiled executable.
       if @langhash.cmd2
@@ -183,7 +181,7 @@ module TaskView
         # added here for new languages as needed.
         subbed_cmd = @langhash.cmd2.gsub('<name-no-ext>',
           file.gsub(".#{@langhash.ext}", ''))
-        system("cd answers && #{subbed_cmd}")
+        system("cd data/answers && #{subbed_cmd}")
       end
       puts ''
       puts ("=" * 75)

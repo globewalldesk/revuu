@@ -19,8 +19,16 @@ module Helpers
     gets.chomp
   end
 
-  def wrap_overlong_paragraphs(para_string)
-    # First, divide para (which is one long string with potentially many \n
+  # Given a string representing the contents of a longish file, output a
+  # similar string with newlines redistributed so that the likely paragraphs
+  # are wrapped before n (=75) characters while the code bits are not wrapped.
+  def wrap_overlong_paragraphs(para_string, spacer=0)
+    # First, for instruction fields that feature e.g. '(Ruby)', insert a
+    # placeholder into the text (temporarily) so wrapping looks good when
+    # displayed with those prepended strings.
+    spacer += 3 if spacer > 0 # for '(', ')', and ' '
+    para_string = ('x' * spacer) + para_string
+    # Next, divide para (which is one long string with potentially many \n
     # in it) into an array of *likely* paragraphs.
     # Identify potential paragraphs (=two or more newlines).
     paras = para_string.split(/\n\n/)
@@ -36,8 +44,7 @@ module Helpers
         para[:text]
       end
     end
-    # Finally, reconstruct and return the string.
-    paras.join("\n\n")
+    paras.join("\n\n")[spacer..-1]
   end
 
   # Output an array of hashes with data about whether a para is really a para.
@@ -90,7 +97,7 @@ module Helpers
   # Simply makes a copy of revuu.json. Future versions will also save answers etc.
   def save_backup_data
     if system("cp ./data/revuu.json ./data/backup.json")
-      puts "Backed up the data."
+      puts "Backed up the data to data/backup.json."
     else
       puts "Probably, you don't have anything to back up."
     end

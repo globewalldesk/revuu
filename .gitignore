@@ -6,4 +6,6 @@ package-lock.json
 Gemfile.lock
 package-lock.json
 planning.txt
+planning.md
 talk_outline.md
+data/eliminator.rb

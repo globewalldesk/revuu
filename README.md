@@ -7,6 +7,10 @@ See [this video introduction](https://youtu.be/rv11AHD8wik).
 
 ## User introduction
 
+*NOTE:* Be careful about using `git pull` after you've replaced my data with
+yours. This might screw up your data. I'll soon make a feature allowing me
+to share my data via an export feature, and leave data/ clean when uploading.
+
 This app will help you review programming tasks, improving understanding and
 keeping your skills fresh. It was written with the notion that programmers (and
 others) need repetition of not declarative but procedural knowledge.
@@ -45,7 +49,7 @@ to start the app on your \*nix system just by typing `ruby revuu.rb`.
 
 ## Use
 The app ships with both tasks (mostly Ruby) and answers. The tasks are in
-data/revuu.json and the answers are in answers/, and, if you didn't want to
+data/revuu.json and the answers are in data/, and, if you didn't want to
 delete them all by hand, you could simply delete the data file and the app
 should still work. (If you try and it doesn't, let me know and I'll fix it.)
 
@@ -165,6 +169,7 @@ question. Also, added Python support. Fixed various bugs, especially a tag bug.
 
 ### 2.3
 
-Autowrap overwide tasks and tags (without autowrapping code, hopefully).
-Added simple data backup feature. Made introductory video to get people using
-Revuu!
+Autowrap overwide tasks and tags (without autowrapping code, hopefully);
+debugged this. Added simple data backup feature. Made introductory video to get
+people using Revuu! Moved answers/ to data/answers (so all data is in the same
+place now).

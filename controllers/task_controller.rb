@@ -90,7 +90,8 @@ module TaskController
       attrib = self.class.validate_tags(attrib, @lang)
     end
     # In helpers/helpers.rb:
-    attrib = wrap_overlong_paragraphs(attrib) if attrib.class == String
+    attrib = wrap_overlong_paragraphs(attrib, @lang.length) if
+      attrib.class == String
     # Set instance variable to contents of edited temp file.
     self.instance_variable_set("@#{field}", attrib)
     # Save updated instructions to JSON file if you've made it this far.

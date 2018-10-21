@@ -1,3 +1,16 @@
+const BUILDING = {
+  name: 'Empire State Building', location: 'New York City'
+}
+Object.freeze(BUILDING);
+console.log(BUILDING.location);
+BUILDING.location = 'Palookaville';
+console.log(BUILDING.location);
+
+
+console.log(' ')
+//////////////////////////////////////////////////////////////////////////
+
+
 const FUN_OBJECT = {
   name: 'George',
   favorite_activity: 'being held and cuddled by the abominable snowman'

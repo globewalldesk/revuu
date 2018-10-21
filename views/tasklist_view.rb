@@ -43,7 +43,7 @@ module TasklistView
 Commands are:
 [n]ew task  [1] review/edit task #1  [l]ist all tasks
 show ne[x]t  [d]elete task  [t]ag search  [b]ackup data
-set text [e]ditor  set [p]rogramming language [h]elp
+set text [e]ditor  set [p]rogramming language  [h]elp
 HELP
   end
 

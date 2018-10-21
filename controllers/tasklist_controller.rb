@@ -14,9 +14,9 @@ module TasklistController
   def delete_task_files(task)
     ending = "#{task.id}.#{task.langhash.ext}"
     # Delete current answer.
-    system("rm ./answers/answer_#{ending}")
+    system("rm ./data/answers/answer_#{ending}")
     # Delete archive.
-    system("rm ./answers/answer_old_#{ending}")
+    system("rm ./data/answers/answer_old_#{ending}")
     # Delete code starter.
     system("rm ./data/starters/starter_#{ending}")
   end

@@ -1,9 +1,11 @@
-Destructuring assignment 
+Make a block method that uses "yield" 
 
-Rewrite the following ES5 code using a "destructuring assignment"  
-permitted by ES6. (Comment out the old-fashioned lines.) 
+Write a block method, Array#each_odd, that returns in place a version of  
+the array that replaces each element having an odd-numbered index (so,  
+[1], [3], [5], etc.) with the result of passing that element to the block.
 
-const Faves = { fruit: 'apple', music: 'Irish trad', prog_lang: 'Ruby' };
-const fruit = Faves.fruit; 
-const music = Faves.music;
-const prog_lang = Faves.prog_lang;
+Apply the methods to 'az' and 'nums' (in the code starter) and display  
+the output, which should be, precisely: 
+
+["a", "B", "c", "D", "e", "F", "g"]
+[1, 4, 3, 8, 5, 12, 7, 16, 9, 20]
