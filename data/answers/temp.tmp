@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html class="no-touch" lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://larrysanger.org/xmlrpc.php">
+<title>Larry Sanger Blog &#8211; Education, Internet, and more</title>
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Larry Sanger Blog &raquo; Feed" href="http://larrysanger.org/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Larry Sanger Blog &raquo; Comments Feed" href="http://larrysanger.org/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/larrysanger.org\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.8"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='layerslider-css'  href='http://larrysanger.org/wp-content/plugins/LayerSlider/static/layerslider/css/layerslider.css?ver=6.6.4' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css'  href='http://larrysanger.org/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.0.4' type='text/css' media='all' />
+<link rel='stylesheet' id='rs-plugin-settings-css'  href='http://larrysanger.org/wp-content/plugins/revslider/public/assets/css/settings.css?ver=5.4.6.3.1' type='text/css' media='all' />
+<style id='rs-plugin-settings-inline-css' type='text/css'>
+#rs-demo-id {}
+</style>
+<link rel='stylesheet' id='uncode-style-css'  href='http://larrysanger.org/wp-content/themes/uncode/library/css/style.css?ver=2042404515' type='text/css' media='all' />
+<style id='uncode-style-inline-css' type='text/css'>
+
+@media (min-width: 960px) { .limit-width { max-width: 1200px; margin: auto;}}
+</style>
+<link rel='stylesheet' id='uncode-icons-css'  href='http://larrysanger.org/wp-content/themes/uncode/library/css/uncode-icons.css?ver=2042404515' type='text/css' media='all' />
+<link rel='stylesheet' id='uncode-custom-style-css'  href='http://larrysanger.org/wp-content/themes/uncode/library/css/style-custom.css?ver=2042404515' type='text/css' media='all' />
+<style id='uncode-custom-style-inline-css' type='text/css'>
+.logo-container {display:none;}
+</style>
+<link rel='stylesheet' id='uncodefont-google-css'  href='//fonts.googleapis.com/css?family=Poppins%3A300%2Cregular%2C500%2C600%2C700%7CDroid+Serif%3Aregular%2Citalic%2C700%2C700italic%7CDosis%3A200%2C300%2Cregular%2C500%2C600%2C700%2C800%7CPlayfair+Display%3Aregular%2Citalic%2C700%2C700italic%2C900%2C900italic%7COswald%3A300%2Cregular%2C700%7CRoboto%3A100%2C100italic%2C300%2C300italic%2Cregular%2Citalic%2C500%2C500italic%2C700%2C700italic%2C900%2C900italic%7CNunito%3A200%2C200italic%2C300%2C300italic%2Cregular%2Citalic%2C600%2C600italic%2C700%2C700italic%2C900%2C900italic&#038;subset=devanagari%2Clatin-ext%2Clatin%2Ccyrillic%2Cvietnamese%2Cgreek%2Ccyrillic-ext%2Cgreek-ext&#038;ver=1.6.4.2' type='text/css' media='all' />
+<script type='text/javascript' src='http://larrysanger.org/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://larrysanger.org/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var LS_Meta = {"v":"6.6.4"};
+/* ]]> */
+</script>
+<script type='text/javascript' data-cfasync="false" src='http://larrysanger.org/wp-content/plugins/LayerSlider/static/layerslider/js/greensock.js?ver=1.19.0'></script>
+<script type='text/javascript' data-cfasync="false" src='http://larrysanger.org/wp-content/plugins/LayerSlider/static/layerslider/js/layerslider.kreaturamedia.jquery.js?ver=6.6.4'></script>
+<script type='text/javascript' data-cfasync="false" src='http://larrysanger.org/wp-content/plugins/LayerSlider/static/layerslider/js/layerslider.transitions.js?ver=6.6.4'></script>
+<script type='text/javascript' src='http://larrysanger.org/wp-content/plugins/revslider/public/assets/js/jquery.themepunch.tools.min.js?ver=5.4.6.3.1'></script>
+<script type='text/javascript' src='http://larrysanger.org/wp-content/plugins/revslider/public/assets/js/jquery.themepunch.revolution.min.js?ver=5.4.6.3.1'></script>
+<script type='text/javascript'>
+var mejsL10n = {"language":"en","strings":{"mejs.install-flash":"You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer\/","mejs.fullscreen-off":"Turn off Fullscreen","mejs.fullscreen-on":"Go Fullscreen","mejs.download-video":"Download Video","mejs.fullscreen":"Fullscreen","mejs.time-jump-forward":["Jump forward 1 second","Jump forward %1 seconds"],"mejs.loop":"Toggle Loop","mejs.play":"Play","mejs.pause":"Pause","mejs.close":"Close","mejs.time-slider":"Time Slider","mejs.time-help-text":"Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.","mejs.time-skip-back":["Skip back 1 second","Skip back %1 seconds"],"mejs.captions-subtitles":"Captions\/Subtitles","mejs.captions-chapters":"Chapters","mejs.none":"None","mejs.mute-toggle":"Mute Toggle","mejs.volume-help-text":"Use Up\/Down Arrow keys to increase or decrease volume.","mejs.unmute":"Unmute","mejs.mute":"Mute","mejs.volume-slider":"Volume Slider","mejs.video-player":"Video Player","mejs.audio-player":"Audio Player","mejs.ad-skip":"Skip ad","mejs.ad-skip-info":["Skip in 1 second","Skip in %1 seconds"],"mejs.source-chooser":"Source Chooser","mejs.stop":"Stop","mejs.speed-rate":"Speed Rate","mejs.live-broadcast":"Live Broadcast","mejs.afrikaans":"Afrikaans","mejs.albanian":"Albanian","mejs.arabic":"Arabic","mejs.belarusian":"Belarusian","mejs.bulgarian":"Bulgarian","mejs.catalan":"Catalan","mejs.chinese":"Chinese","mejs.chinese-simplified":"Chinese (Simplified)","mejs.chinese-traditional":"Chinese (Traditional)","mejs.croatian":"Croatian","mejs.czech":"Czech","mejs.danish":"Danish","mejs.dutch":"Dutch","mejs.english":"English","mejs.estonian":"Estonian","mejs.filipino":"Filipino","mejs.finnish":"Finnish","mejs.french":"French","mejs.galician":"Galician","mejs.german":"German","mejs.greek":"Greek","mejs.haitian-creole":"Haitian Creole","mejs.hebrew":"Hebrew","mejs.hindi":"Hindi","mejs.hungarian":"Hungarian","mejs.icelandic":"Icelandic","mejs.indonesian":"Indonesian","mejs.irish":"Irish","mejs.italian":"Italian","mejs.japanese":"Japanese","mejs.korean":"Korean","mejs.latvian":"Latvian","mejs.lithuanian":"Lithuanian","mejs.macedonian":"Macedonian","mejs.malay":"Malay","mejs.maltese":"Maltese","mejs.norwegian":"Norwegian","mejs.persian":"Persian","mejs.polish":"Polish","mejs.portuguese":"Portuguese","mejs.romanian":"Romanian","mejs.russian":"Russian","mejs.serbian":"Serbian","mejs.slovak":"Slovak","mejs.slovenian":"Slovenian","mejs.spanish":"Spanish","mejs.swahili":"Swahili","mejs.swedish":"Swedish","mejs.tagalog":"Tagalog","mejs.thai":"Thai","mejs.turkish":"Turkish","mejs.ukrainian":"Ukrainian","mejs.vietnamese":"Vietnamese","mejs.welsh":"Welsh","mejs.yiddish":"Yiddish"}};
+</script>
+<script type='text/javascript' src='http://larrysanger.org/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=4.2.6-78496d1'></script>
+<script type='text/javascript' src='http://larrysanger.org/wp-includes/js/mediaelement/mediaelement-migrate.min.js?ver=4.9.8'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/","classPrefix":"mejs-","stretching":"responsive"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/themes/uncode/library/js/min/ai-uncode.min.js' id='uncodeAI' data-home='/' data-path='/' data-breakpoints-images='258,516,720,1032,1440,2064,2880'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var SiteParameters = {"site_url":"http:\/\/larrysanger.org\/","theme_directory":"http:\/\/larrysanger.org\/wp-content\/themes\/uncode","days":"days","hours":"hours","minutes":"minutes","seconds":"seconds","constant_scroll":"on","scroll_speed":"2","parallax_factor":"0.25","loading":"Loading\u2026"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://larrysanger.org/wp-content/themes/uncode/library/js/init.js?ver=2042404515'></script>
+<meta name="generator" content="Powered by LayerSlider 6.6.4 - Multi-Purpose, Responsive, Parallax, Mobile-Friendly Slider Plugin for WordPress." />
+<!-- LayerSlider updates and docs at: https://layerslider.kreaturamedia.com -->
+<link rel='https://api.w.org/' href='http://larrysanger.org/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://larrysanger.org/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://larrysanger.org/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.9.8" />
+<link rel="canonical" href="http://larrysanger.org/" />
+<link rel='shortlink' href='http://larrysanger.org/' />
+<link rel="alternate" type="application/json+oembed" href="http://larrysanger.org/wp-json/oembed/1.0/embed?url=http%3A%2F%2Flarrysanger.org%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://larrysanger.org/wp-json/oembed/1.0/embed?url=http%3A%2F%2Flarrysanger.org%2F&#038;format=xml" />
+<!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="http://larrysanger.org/wp-content/plugins/uncode-js_composer/assets/css/vc_lte_ie9.min.css" media="screen"><![endif]--><meta name="generator" content="Powered by Slider Revolution 5.4.6.3.1 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface." />
+<script type="text/javascript">function setREVStartSize(e){
+				try{ var i=jQuery(window).width(),t=9999,r=0,n=0,l=0,f=0,s=0,h=0;					
+					if(e.responsiveLevels&&(jQuery.each(e.responsiveLevels,function(e,f){f>i&&(t=r=f,l=e),i>f&&f>r&&(r=f,n=e)}),t>r&&(l=n)),f=e.gridheight[l]||e.gridheight[0]||e.gridheight,s=e.gridwidth[l]||e.gridwidth[0]||e.gridwidth,h=i/s,h=h>1?1:h,f=Math.round(h*f),"fullscreen"==e.sliderLayout){var u=(e.c.width(),jQuery(window).height());if(void 0!=e.fullScreenOffsetContainer){var c=e.fullScreenOffsetContainer.split(",");if (c) jQuery.each(c,function(e,i){u=jQuery(i).length>0?u-jQuery(i).outerHeight(!0):u}),e.fullScreenOffset.split("%").length>1&&void 0!=e.fullScreenOffset&&e.fullScreenOffset.length>0?u-=jQuery(window).height()*parseInt(e.fullScreenOffset,0)/100:void 0!=e.fullScreenOffset&&e.fullScreenOffset.length>0&&(u-=parseInt(e.fullScreenOffset,0))}f=u}else void 0!=e.minHeight&&f<e.minHeight&&(f=e.minHeight);e.c.closest(".rev_slider_wrapper").css({height:f})					
+				}catch(d){console.log("Failure at Presize of Slider:"+d)}
+			};</script>
+<style type="text/css" data-type="vc_shortcodes-custom-css">.vc_custom_1444381443552{border-bottom-width: 1px !important;}</style><noscript><style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript></head>
+<body class="home page-template-default page page-id-4929  style-color-lxmt-bg smooth-scroller hmenu-center header-full-width main-center-align wpb-js-composer js-comp-ver-5.4.5 vc_responsive" data-border="0">
+		<div class="body-borders" data-border="0"><div class="top-border body-border-shadow"></div><div class="right-border body-border-shadow"></div><div class="bottom-border body-border-shadow"></div><div class="left-border body-border-shadow"></div><div class="top-border style-light-bg"></div><div class="right-border style-light-bg"></div><div class="bottom-border style-light-bg"></div><div class="left-border style-light-bg"></div></div>	<div class="box-wrapper">
+		<div class="box-container">
+		<script type="text/javascript">UNCODE.initBox();</script>
+		<div class="menu-wrapper menu-sticky style-light-original"><div class="navbar menu-secondary menu-primary menu-light submenu-light style-light-original">
+														<div class="menu-container-mobile  menu-hide style-color-xsdn-bg menu-no-borders">
+															<div class="row-menu style-light-bg">
+																<div class="row-menu-inner">
+																	<div id="logo-container-mobile" class="col-lg-0 logo-container">
+																		<div id="main-logo" class="navbar-header style-light">
+																			<a href="http://larrysanger.org" class="navbar-brand" data-minheight="20"><h2 class="text-logo h3 logo-skinnable" data-maxheight="20" style="font-size:20px;">Larry Sanger Blog</h2></a>
+																		</div>
+																	</div>
+																</div>
+																<div class="mmb-container"><div class="mobile-menu-button mobile-menu-button-light lines-button x2"><span class="lines"></span></div></div>
+															</div>
+														</div>
+													</div>
+													<header id="masthead" class="navbar menu-primary menu-light submenu-light style-light-original">
+														<div class="menu-container menu-hide style-color-xsdn-bg menu-no-borders">
+															<div class="row-menu limit-width">
+																<div class="row-menu-inner">
+																	<div class="col-lg-12 main-menu-container middle">
+																		<div class="menu-horizontal">
+																			<div class="menu-horizontal-inner">
+																				<div class="nav navbar-nav navbar-main navbar-nav-last"><ul id="menu-pages" class="menu-primary-inner menu-smart sm"><li id="menu-item-65452" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-4929 current_page_item menu-item-65452 active menu-item-link"><a title="Home" href="http://larrysanger.org/">Home<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+<li id="menu-item-72" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-72 dropdown menu-item-link"><a title="About" href="http://larrysanger.org/about-me/" data-toggle="dropdown" class="dropdown-toggle" data-type="title">About<i class="fa fa-angle-down fa-dropdown"></i></a>
+<ul role="menu" class="drop-menu">
+	<li id="menu-item-166" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-166"><a title="Articles About Me" href="http://larrysanger.org/old-writing-and-speeches/published-writings/some-articles-about-yours-truly/">Articles About Me<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+	<li id="menu-item-77" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-77"><a title="Contact" href="http://larrysanger.org/contact/">Contact<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+</ul>
+</li>
+<li id="menu-item-93" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-93 dropdown menu-item-link"><a title="Role In Wikipedia" href="http://larrysanger.org/role-in-wikipedia/" data-toggle="dropdown" class="dropdown-toggle" data-type="title">Role In Wikipedia<i class="fa fa-angle-down fa-dropdown"></i></a>
+<ul role="menu" class="drop-menu">
+	<li id="menu-item-150" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-150"><a title="Wikipedia Links" href="http://larrysanger.org/role-in-wikipedia/my-role-in-wikipedia-links/">Wikipedia Links<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+</ul>
+</li>
+<li id="menu-item-270" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-270 menu-item-link"><a title="Essay on Baby Reading" href="http://larrysanger.org/2010/12/baby-reading/">Essay on Baby Reading<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+<li id="menu-item-180" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-180 dropdown menu-item-link"><a title="Some Writing and Speeches" href="http://larrysanger.org/old-writing-and-speeches/" data-toggle="dropdown" class="dropdown-toggle" data-type="title">Some Writing and Speeches<i class="fa fa-angle-down fa-dropdown"></i></a>
+<ul role="menu" class="drop-menu">
+	<li id="menu-item-184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-184"><a title="Selected Speeches" href="http://larrysanger.org/old-writing-and-speeches/selected-speeches/">Selected Speeches<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+	<li id="menu-item-94" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-94"><a title="Project Writings" href="http://larrysanger.org/old-writing-and-speeches/selected-project-writings/">Project Writings<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+	<li id="menu-item-137" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-137"><a title="Published Writings" href="http://larrysanger.org/old-writing-and-speeches/published-writings/">Published Writings<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+</ul>
+</li>
+<li id="menu-item-71" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71 menu-item-link"><a title="Videos" href="http://larrysanger.org/videos/">Videos<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+</ul></div><div class="desktop-hidden">
+														 							</div></div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</header>
+												</div>			<script type="text/javascript">UNCODE.fixMenuHeight();</script>
+			<div class="main-wrapper">
+				<div class="main-container">
+					<div class="page-wrapper">
+						<div class="sections-container">
+<div id="page-header"><div class="remove-menu-padding remove-menu-padding-mobile header-wrapper header-uncode-block header-scroll-opacity">
+									<div data-parent="true" class="style-color-wayh-bg row-container with-parallax boomapps_vcrow"><div class="row-background background-element">
+											<div class="background-wrapper">
+												<div class="background-inner adaptive-async" style="background-image: url(http://larrysanger.org/wp-content/uploads/2015/07/larry2-1-uai-258x130.jpg);background-repeat: no-repeat;background-position: center bottom;background-size: cover;" data-uniqueid="65467-101789" data-guid="http://larrysanger.org/wp-content/uploads/2015/07/larry2-1.jpg" data-path="2015/07/larry2-1.jpg" data-width="2670" data-height="1347" data-singlew="12" data-singleh="null" data-crop=""></div>
+												<div class="block-bg-overlay style-color-wayh-bg" style="opacity: 0.35;"></div>
+											</div>
+										</div><div class="row limit-width row-parent row-header" data-height-ratio="80"><div class="row-inner"><div class="pos-middle pos-center align_center column_parent col-lg-12 boomapps_vccolumn half-internal-gutter"><div class="uncol style-dark font-134980"  ><div class="uncoltable"><div class="uncell  boomapps_vccolumn no-block-padding"><div class="uncont"><div class="heading-text el-text" ><h1 class="font-762333 fontsize-163035 font-weight-700" ><span>Larry Sanger</span></h1></div><div class="clear"></div><div class="heading-text el-text" ><h3 class="font-179917 h3 font-weight-400 text-color-gyho-color" ><span>Education, Internet, and more</span></h3></div><div class="clear"></div></div></div></div></div></div><script id="script-252573" type="text/javascript">UNCODE.initRow(document.getElementById("script-252573"));</script></div></div></div></div></div><script type="text/javascript">UNCODE.initHeader();</script><article id="post-4929" class="page-body style-light-bg post-4929 page type-page status-publish hentry page_category-demo-blog">
+						<div class="post-wrapper">
+							<div class="post-body"><div class="post-content"><div data-parent="true" class="style-color-lxmt-bg vc_custom_1444381443552 border-color-gyho-color row-container boomapps_vcrow" style="border-style: solid;"><div class="row single-top-padding double-bottom-padding single-h-padding limit-width row-parent"><div class="row-inner"><div class="pos-top pos-center align_center column_parent col-lg-12 boomapps_vccolumn half-internal-gutter"><div class="uncol style-light"  ><div class="uncoltable"><div class="uncell  boomapps_vccolumn no-block-padding"><div class="uncont"><div class="row-internal row-container boomapps_vcrow"><div class="row row-child"><div class="row-inner"><div class="pos-top pos-center align_center column_child col-lg-12 boomapps_vccolumn single-internal-gutter"><div class="uncol style-light font-134980 shift_y_neg_triple shift_y_fixed" ><div class="uncoltable"><div class="uncell  boomapps_vccolumn no-block-padding"><div class="uncont"><div class="uncode-single-media  text-center"><div class="single-wrapper" style="max-width: 140px;"><div class="uncode-single-media-wrapper single-advanced"><div class="tmb tmb-light tmb-overlay-text-left  img-circle tmb-bordered tmb-media-shadowed tmb-media-shadowed-xs tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay">
+						<div class="t-inside style-color-xsdn-bg" ><div class="t-entry-visual" tabindex="0"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 100%;"></div><a tabindex="-1" href="#" class="inactive-link pushed"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"></div></div></div></div><img class="adaptive-async" src="http://larrysanger.org/wp-content/uploads/2017/12/Screenshot-2017-12-05-22.43.01-uai-241x241.png" width="241" height="241" alt="" data-uniqueid="65443-371514" data-guid="http://larrysanger.org/wp-content/uploads/2017/12/Screenshot-2017-12-05-22.43.01.png" data-path="2017/12/Screenshot-2017-12-05-22.43.01.png" data-width="249" data-height="241" data-singlew="140" data-singleh="140" data-crop="1" data-fixed="width" /></a></div>
+								</div>
+							</div></div>
+					</div></div></div></div><div class="heading-text el-text" ><h4 class="font-762333 h4 text-capitalize" ><span>Larry Sanger</span></h4><div class="text-top-reduced"><p>Online knowledge organizer. Co-founder of Wikipedia, Ph.D. Philosophy.</p>
+</div></div><div class="clear"></div></div></div></div></div></div></div></div></div></div></div></div></div></div><script id="script-994432" type="text/javascript">UNCODE.initRow(document.getElementById("script-994432"));</script></div></div></div><div data-parent="true" class="row-container boomapps_vcrow"><div class="row double-top-padding double-bottom-padding single-h-padding limit-width row-parent"><div class="row-inner"><div class="pos-top pos-center align_left column_parent col-lg-8 boomapps_vccolumn single-internal-gutter"><div class="uncol style-light"  ><div class="uncoltable"><div class="uncell  boomapps_vccolumn no-block-padding"><div class="uncont" style="max-width:600px;"><div id="index-1746509884" class="isotope-system isotope-general-light">
+                    <div class="isotope-wrapper single-gutter">
+      <div class="isotope-container isotope-layout style-masonry isotope-pagination" data-type="masonry" data-layout="vertical" data-lg="1200" data-md="600" data-sm="480" data-vp-height="">
+        <div class="tmb tmb-iso-w12 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-content-left  grid-cat-10 grid-cat-11 grid-cat-15 grid-cat-21 tmb-id-65587 tmb-img-ratio tmb-only-text tmb-content-under tmb-no-bg">
+						<div class="t-inside" ><div class="t-entry-text">
+							<div class="t-entry-text-tc no-block-padding"><div class="t-entry"><p class="t-entry-meta"><span class="t-entry-date">September 12, 2018</span></p><h3 class="t-entry-title font-762333 h4"><a href="http://larrysanger.org/2018/09/im-quitting-social-media-cold-turkey/">I&#8217;m quitting social media cold turkey</a></h3><p>"Yet another public resolution to leave Facebook or Twitter," you say with a laugh. "Only soon to be given up like so many others, no doubt." That's a reasonable reaction. But go ahead, check up on me: here are my Twitter account and my Facebook account. My last posts were Sept. 11 and Sept. 12. I…</p></div></div>
+					</div></div>
+					</div><div class="tmb tmb-iso-w12 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-content-left  grid-cat-15 grid-cat-19 grid-cat-21 tmb-id-65576 tmb-img-ratio tmb-only-text tmb-content-under tmb-no-bg">
+						<div class="t-inside" ><div class="t-entry-text">
+							<div class="t-entry-text-tc no-block-padding"><div class="t-entry"><p class="t-entry-meta"><span class="t-entry-date">August 10, 2018</span></p><h3 class="t-entry-title font-762333 h4"><a href="http://larrysanger.org/2018/08/so-i-tried-out-gab-ai/">So I tried out Gab.ai</a></h3><p>After the recent purges of Alex Jones and assorted conservatives and libertarians by Facebook, YouTube, Twitter, and others, I decided it really is time for me to learn more about other social networks that are more committed to free speech. I decided to try Gab.ai, hoping against hope that it…</p></div></div>
+					</div></div>
+					</div><div class="tmb tmb-iso-w12 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-content-left  grid-cat-10 grid-cat-11 grid-cat-96 tmb-id-65565 tmb-img-ratio tmb-only-text tmb-content-under tmb-no-bg">
+						<div class="t-inside" ><div class="t-entry-text">
+							<div class="t-entry-text-tc no-block-padding"><div class="t-entry"><p class="t-entry-meta"><span class="t-entry-date">July 24, 2018</span></p><h3 class="t-entry-title font-762333 h4"><a href="http://larrysanger.org/2018/07/i-am-informed-you-are-misinformed-and-the-government-should-do-something-about-this-problem/">I am informed; you are misinformed; and the government should do something about this problem</a></h3><p>Poynter, the famous journalism thinktank, has published "A guide to anti-misinformation actions around the world." This sort of thing is mostly interesting not just for the particular facts it gathers but also for the assumptions and categories it takes for granted. The word "misinformation" is…</p></div></div>
+					</div></div>
+					</div><div class="tmb tmb-iso-w12 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-content-left  grid-cat-96 tmb-id-65538 tmb-img-ratio tmb-only-text tmb-content-under tmb-no-bg">
+						<div class="t-inside" ><div class="t-entry-text">
+							<div class="t-entry-text-tc no-block-padding"><div class="t-entry"><p class="t-entry-meta"><span class="t-entry-date">July 1, 2018</span></p><h3 class="t-entry-title font-762333 h4"><a href="http://larrysanger.org/2018/07/the-new-york-times-comes-out-against-free-speech/">The New York Times comes out against free speech</a></h3><p>According to a front page New York Times news (not opinion) article by Adam Liptak ("Weaponizing the First Amendment: How Free Speech Became a Conservative Cudgel"), we must adopt a stance of skepticism toward all this talk of free speech, if we wish to be sophisticated and sensitive, as all good…</p></div></div>
+					</div></div>
+					</div><div class="tmb tmb-iso-w12 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-content-left  grid-cat-16 grid-cat-20 tmb-id-65530 tmb-img-ratio tmb-only-text tmb-content-under tmb-no-bg">
+						<div class="t-inside" ><div class="t-entry-text">
+							<div class="t-entry-text-tc no-block-padding"><div class="t-entry"><p class="t-entry-meta"><span class="t-entry-date">June 29, 2018</span></p><h3 class="t-entry-title font-762333 h4"><a href="http://larrysanger.org/2018/06/positivity-and-motivation/">Positivity and motivation</a></h3><p>One thing that almost nobody knows about me is how much time I've spent on self-analysis of one sort or another. I'm deeply impressed by people who are more motivated and self-disciplined than I am, and I frequently try to get to the bottom of the many issues surrounding self-discipline.
+Recently…</p></div></div>
+					</div></div>
+					</div><div class="tmb tmb-iso-w12 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-content-left  grid-cat-16 grid-cat-20 tmb-id-65526 tmb-img-ratio tmb-only-text tmb-content-under tmb-no-bg">
+						<div class="t-inside" ><div class="t-entry-text">
+							<div class="t-entry-text-tc no-block-padding"><div class="t-entry"><p class="t-entry-meta"><span class="t-entry-date">June 25, 2018</span></p><h3 class="t-entry-title font-762333 h4"><a href="http://larrysanger.org/2018/06/why-do-i-get-so-much-work-done-on-airplanes/">Why do I get so much work done on airplanes?</a></h3><p>Riding in planes ain't so bad. I wholeheartedly believe they're safer than cars--and this is the one actual advantage of having short legs. So I don't mind riding in planes. Maybe, I admit, I even look forward to it a little. But more important than that, I usually get quite a bit of work done on…</p></div></div>
+					</div></div>
+					</div><div class="tmb tmb-iso-w12 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-content-left  grid-cat-11 grid-cat-15 tmb-id-65514 tmb-img-ratio tmb-only-text tmb-content-under tmb-no-bg">
+						<div class="t-inside" ><div class="t-entry-text">
+							<div class="t-entry-text-tc no-block-padding"><div class="t-entry"><p class="t-entry-meta"><span class="t-entry-date">June 20, 2018</span></p><h3 class="t-entry-title font-762333 h4"><a href="http://larrysanger.org/2018/06/is-it-time-to-move-from-social-media-to-blogs/">Is it time to move from social media to blogs?</a></h3><p>This began as a Twitter thread.
+I've finally put my finger on a thing that annoys me—probably, all of us—about social media. When we check in on our friends and colleagues and what they're sharing, we are constantly bombarded with simplistic attacks on our core beliefs, especially political…</p></div></div>
+					</div></div>
+					</div><div class="tmb tmb-iso-w12 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-content-left  grid-cat-3 grid-cat-15 tmb-id-65500 tmb-img-ratio tmb-only-text tmb-content-under tmb-no-bg">
+						<div class="t-inside" ><div class="t-entry-text">
+							<div class="t-entry-text-tc no-block-padding"><div class="t-entry"><p class="t-entry-meta"><span class="t-entry-date">May 30, 2018</span></p><h3 class="t-entry-title font-762333 h4"><a href="http://larrysanger.org/2018/05/eu-copyright-reform-could-threaten-wiki-encyclopedias/">EU copyright reform could threaten wiki encyclopedias</a></h3><p>If we are to believe its critics, under the pending EU copyright reform legislation, the EU would implement a "link tax" across all of Europe. So if you link to a news article, for example, including a text snippet, then you'd have to pay a fee. When Spain tried this, Google News simply…</p></div></div>
+					</div></div>
+					</div><div class="tmb tmb-iso-w12 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-content-left  grid-cat-10 tmb-id-65494 tmb-img-ratio tmb-only-text tmb-content-under tmb-no-bg">
+						<div class="t-inside" ><div class="t-entry-text">
+							<div class="t-entry-text-tc no-block-padding"><div class="t-entry"><p class="t-entry-meta"><span class="t-entry-date">February 28, 2018</span></p><h3 class="t-entry-title font-762333 h4"><a href="http://larrysanger.org/2018/02/the-well-ordered-life/">The Well-Ordered Life</a></h3><p>The well-ordered life may be defined as that set of sound beliefs and good practices which are most conducive to productivity and therefore happiness, at least insofar as as happiness depends on productivity.
+The well-ordered life has several types of component: goals; projects, which naturally…</p></div></div>
+					</div></div>
+					</div><div class="tmb tmb-iso-w12 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-content-left  grid-cat-14 tmb-id-65487 tmb-img-ratio tmb-only-text tmb-content-under tmb-no-bg">
+						<div class="t-inside" ><div class="t-entry-text">
+							<div class="t-entry-text-tc no-block-padding"><div class="t-entry"><p class="t-entry-meta"><span class="t-entry-date">February 12, 2018</span></p><h3 class="t-entry-title font-762333 h4"><a href="http://larrysanger.org/2018/02/how-to-crowdsource-videos-via-a-shared-video-channel/">How to crowdsource videos via a shared video channel</a></h3><p>I got to talking to one of my colleagues here at Everipedia, the encyclopedia of everything, where I am now CIO, about future plans. I had the following idea.
+We could create an Everipedia channel--basically, just a YouTube account, but owned by Everipedia and devoted to regularly posting new…</p></div></div>
+					</div></div>
+					</div>      </div>
+
+    </div>
+        <div class="isotope-footer style-light single-gutter">
+        <div class="isotope-footer-inner limit-width menu-light text-center">
+            <ul class='pagination'><li class="page-prev"><a class="btn btn-link text-default-color" href=""><i class="fa fa-angle-left"></i></a></li><li><span class="btn btn-link text-default-color"><span aria-current='page' class='page-numbers current'>1</span></span></li><li><span class="btn btn-link text-default-color"><a class='page-numbers' href='http://larrysanger.org/?upage=2'>2</a></span></li><li><span class="btn btn-link text-default-color"><a class='page-numbers' href='http://larrysanger.org/?upage=3'>3</a></span></li><li><span class="btn btn-link text-default-color"><span class="page-numbers dots">&hellip;</span></span></li><li><span class="btn btn-link text-default-color"><a class='page-numbers' href='http://larrysanger.org/?upage=18'>18</a></span></li><li class="page-next"><a class="btn btn-link text-default-color" href="http://larrysanger.org/?upage=2"><i class="fa fa-angle-right"></i></a></li></ul>        </div>
+    </div>
+    </div></div></div></div></div></div><div class="pos-top pos-center align_left column_parent col-lg-4 boomapps_vccolumn single-internal-gutter"><div class="uncol style-light"  ><div class="uncoltable"><div class="uncell  boomapps_vccolumn no-block-padding"><div class="uncont"><div class="animate_when_almost_visible zoom-in icon-box icon-box-top icon-inline" data-delay="300"><div class="icon-box-icon fa-container" style="margin-bottom: 0px;"><a href="mailto:larry@everipedia.com" class="fa fa-stack fa-rounded btn-default fa-2x custom-link"><i class="fa fa-envelope2"></i></a></div></div><div class="animate_when_almost_visible zoom-in icon-box icon-box-top icon-inline" data-delay="400"><div class="icon-box-icon fa-container" style="margin-bottom: 0px;"><a href="https://twitter.com/lsanger" class="fa fa-stack fa-rounded btn-default fa-2x custom-link"><i class="fa fa-twitter"></i></a></div></div><div class="animate_when_almost_visible zoom-in icon-box icon-box-top icon-inline" data-delay="500"><div class="icon-box-icon fa-container" style="margin-bottom: 0px;"><a href="https://www.facebook.com/YoLarrySanger/" class="fa fa-stack fa-rounded btn-default fa-2x custom-link"><i class="fa fa-facebook"></i></a></div></div><div class="animate_when_almost_visible zoom-in icon-box icon-box-top icon-inline" data-delay="200"><div class="icon-box-icon fa-container" style="margin-bottom: 0px;"><a href="https://www.linkedin.com/in/larry-sanger-a868954/" class="fa fa-stack fa-rounded btn-default fa-2x custom-link"><i class="fa fa-linkedin-square"></i></a></div></div><div class="row-internal row-container boomapps_vcrow"><div class="row row-child"><div class="row-inner"><div class="pos-top pos-center align_left column_child col-lg-12 boomapps_vccolumn single-internal-gutter"><div class="uncol style-light" ><div class="uncoltable"><div class="uncell  boomapps_vccolumn no-block-padding"><div class="uncont"><div  class="vc_wp_categories wpb_content_element"><div class="widget widget_categories"><h2 class="widgettitle">Categories</h2>		<ul>
+	<li class="cat-item cat-item-3"><a href="http://larrysanger.org/category/wiki/" >Wiki</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://larrysanger.org/category/citizendium/" >Citizendium</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://larrysanger.org/category/theory/" >Theory</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://larrysanger.org/category/theory/communication/" >Communication</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://larrysanger.org/category/education/" >Education</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="http://larrysanger.org/category/theory/privacy/" >Privacy</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://larrysanger.org/category/theory/knowledge/" >Knowledge</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://larrysanger.org/category/publishing/" >Publishing</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://larrysanger.org/category/other-weird-stuff/" >Other Weird Stuff</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="http://larrysanger.org/category/education/reading-bear/" >WKL/Reading Bear</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://larrysanger.org/category/theory/internet/" >Internet</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="http://larrysanger.org/category/moi/" >Moi</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://larrysanger.org/category/theory/social/" >Social</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="http://larrysanger.org/category/infobitt/" >Infobitt</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://larrysanger.org/category/theory/religion/" >Religion</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://larrysanger.org/category/politics/" >Politics</a>
+</li>
+		</ul>
+</div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><script id="script-163391" type="text/javascript">UNCODE.initRow(document.getElementById("script-163391"));</script></div></div></div></div></div>
+						</div>
+					</article>
+							</div><!-- sections container -->
+						</div><!-- page wrapper -->
+										<footer id="colophon" class="site-footer">
+						<div class="row-container style-dark-bg footer-last">
+	  					<div class="row row-parent style-dark limit-width no-top-padding no-h-padding no-bottom-padding">
+								<div class="site-info uncell col-lg-6 pos-middle text-left">&copy; 2018 Larry Sanger Blog All rights reserved</div><!-- site info -->
+							</div>
+						</div>					</footer>
+									</div><!-- main container -->
+			</div><!-- main wrapper -->
+					</div><!-- box container -->
+	</div><!-- box wrapper -->
+	<div class="style-light footer-scroll-top"><a href="#" class="scroll-top"><i class="fa fa-angle-up fa-stack fa-rounded btn-default btn-hover-nobg"></i></a></div>	<div class="overlay overlay-sequential style-dark style-dark-bg overlay-search" data-area="search" data-container="box-container">
+		<div class="mmb-container"><div class="menu-close-search mobile-menu-button menu-button-offcanvas mobile-menu-button-dark lines-button x2 overlay-close close" data-area="search" data-container="box-container"><span class="lines"></span></div></div>
+		<div class="search-container"><form action="http://larrysanger.org/" method="get">
+	<div class="search-container-inner">
+		<input type="search" class="search-field form-fluid no-livesearch" placeholder="Search…" value="" name="s" title="Search for:">
+	  <i class="fa fa-search3"></i>
+	</div>
+</form>
+</div>
+	</div>
+
+	
+<!-- tracker added by Ultimate Google Analytics plugin v1.6.0: http://www.oratransplant.nl/uga -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-20214108-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+<script type='text/javascript' src='http://larrysanger.org/wp-includes/js/underscore.min.js?ver=1.8.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var DavesWordPressLiveSearchConfig = {"resultsDirection":"","showThumbs":"false","showExcerpt":"false","displayPostCategory":"false","showMoreResultsLink":"true","minCharsToSearch":"0","xOffset":"0","yOffset":"0","blogURL":"http:\/\/larrysanger.org","ajaxURL":"http:\/\/larrysanger.org\/wp-admin\/admin-ajax.php","viewMoreText":"View more results","outdatedJQuery":"Dave's WordPress Live Search requires jQuery 1.2.6 or higher. WordPress ships with current jQuery versions. But if you are seeing this message, it's likely that another plugin is including an earlier version.","resultTemplate":"<ul id=\"dwls_search_results\" class=\"search_results dwls_search_results\">\n<input type=\"hidden\" name=\"query\" value=\"<%- resultsSearchTerm %>\" \/>\n<% _.each(searchResults, function(searchResult, index, list) { %>\n        <%\n        \/\/ Thumbnails\n        if(DavesWordPressLiveSearchConfig.showThumbs == \"true\" && searchResult.attachment_thumbnail) {\n                liClass = \"post_with_thumb\";\n        }\n        else {\n                liClass = \"\";\n        }\n        %>\n        <li class=\"post-<%= searchResult.ID %> daves-wordpress-live-search_result <%- liClass %>\">\n\n        <a href=\"<%= searchResult.permalink %>\" class=\"daves-wordpress-live-search_title\">\n        <% if(DavesWordPressLiveSearchConfig.displayPostCategory == \"true\" && searchResult.post_category !== undefined) { %>\n                <span class=\"search-category\"><%= searchResult.post_category %><\/span>\n        <% } %><span class=\"search-title\"><%= searchResult.post_title %><\/span><\/a>\n\n        <% if(searchResult.post_price !== undefined) { %>\n                <p class=\"price\"><%- searchResult.post_price %><\/p>\n        <% } %>\n\n        <% if(DavesWordPressLiveSearchConfig.showExcerpt == \"true\" && searchResult.post_excerpt) { %>\n                <%= searchResult.post_excerpt %>\n        <% } %>\n\n        <% if(e.displayPostMeta) { %>\n                <p class=\"meta clearfix daves-wordpress-live-search_author\" id=\"daves-wordpress-live-search_author\">Posted by <%- searchResult.post_author_nicename %><\/p><p id=\"daves-wordpress-live-search_date\" class=\"meta clearfix daves-wordpress-live-search_date\"><%- searchResult.post_date %><\/p>\n        <% } %>\n        <div class=\"clearfix\"><\/div><\/li>\n<% }); %>\n\n<% if(searchResults[0].show_more !== undefined && searchResults[0].show_more && DavesWordPressLiveSearchConfig.showMoreResultsLink == \"true\") { %>\n        <div class=\"clearfix search_footer\"><a href=\"<%= DavesWordPressLiveSearchConfig.blogURL %>\/?s=<%-  resultsSearchTerm %>\"><%- DavesWordPressLiveSearchConfig.viewMoreText %><\/a><\/div>\n<% } %>\n\n<\/ul>"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://larrysanger.org/wp-content/plugins/uncode-daves-wordpress-live-search/js/daves-wordpress-live-search.js?ver=4.9.8'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"http:\/\/larrysanger.org\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://larrysanger.org/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.0.4'></script>
+<script type='text/javascript' src='http://larrysanger.org/wp-includes/js/mediaelement/wp-mediaelement.min.js?ver=4.9.8'></script>
+<script type='text/javascript' src='http://larrysanger.org/wp-content/themes/uncode/library/js/plugins.js?ver=2042404515'></script>
+<script type='text/javascript' src='http://larrysanger.org/wp-content/themes/uncode/library/js/app.js?ver=2042404515'></script>
+<script type='text/javascript' src='http://larrysanger.org/wp-includes/js/wp-embed.min.js?ver=4.9.8'></script>
+</body>
+</html>This is another line.
