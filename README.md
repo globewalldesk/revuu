@@ -11,8 +11,6 @@ See [this video introduction](https://youtu.be/rv11AHD8wik).
 yours. This might screw up your data. I'll soon make a feature allowing me
 to share my data via an export feature, and leave data/ clean when uploading.
 
-testing
-
 This app will help you review programming tasks, improving understanding and
 keeping your skills fresh. It was written with the notion that programmers (and
 others) need repetition of not declarative but procedural knowledge.
