@@ -9,7 +9,8 @@ planning.txt
 planning.md
 talk_outline.md
 minitar.txt
-archives/*.json
+archives/*.tar
+!archives/.gitkeep
 data/eliminator.rb
 data/*.json
 data/answers/*
