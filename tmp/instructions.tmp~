@@ -1,5 +1,4 @@
-(JavaScript) Arrays of const values
+Generate array fast 
 
-If an array arr is made up of the values of variables declared with 'const',
-and arr itself is declared with 'const', is it possible to change one of 
-values of the array using, e.g., arr[0] = 'foo'?
+In a single expression broken over a few lines for readability, generate  
+and print the array [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]. 

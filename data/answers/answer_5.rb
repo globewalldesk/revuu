@@ -25,4 +25,5 @@ class MyClass
 end
 
 def global_number; 10; end
-puts MyClass.create_with_num.my_sum
+fred = MyClass.create_with_num
+p fred.my_sum 

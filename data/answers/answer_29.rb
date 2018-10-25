@@ -1,5 +1,4 @@
-s = 'hxexlxlxox xwxoxrxlxdx'
-s.length.times do |count|
-  print s[count] if count.even?
-end
-puts ''
+str = "hxexlxlxox xwxoxrxlxdx"
+str2 = ''
+str.chars.each_with_index { |e,i| str2 <<  str[i] unless i.odd? }
+puts str2

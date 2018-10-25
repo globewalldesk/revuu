@@ -153,6 +153,7 @@ module TaskController
     end
     # Write concatenated contents to the location of the archive.
     File.write(@old_location, new_archive)
+    save_change_timestamp_to_settings
     # Finally, overwrite the current answer file with '' or Java template.
     create_answer_file
   end
@@ -163,11 +164,14 @@ module TaskController
     end
     if @starter
       File.write(@location, @starter)
+      save_change_timestamp_to_settings
     elsif @lang == 'Java'
       # So far, only Java files need to be written-to before getting started.
       File.write(@location, java_starter)
+      save_change_timestamp_to_settings
     else
       File.write(@location, '')
+      save_change_timestamp_to_settings
     end
   end
 

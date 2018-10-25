@@ -30,11 +30,18 @@ class Archiv
       Dir.mkdir("archives") unless Dir.exists?("archives")
       Minitar.pack("./data", File.open("archives/#{@archive}", 'wb'))
       puts "Created #{@archive}."
+      save_archive_timestamp_to_settings
     rescue StandardError => e
       puts "Oops, error: #{e}"
       puts "Archive not created."
       nil
     end
+  end
+
+  def save_archive_timestamp_to_settings
+    $last_archive = DateTime.now.to_s
+    $unsaved_changes = false
+    update_settings_file({'last_archive' => $last_archive, 'unsaved_changes' => false})
   end
 
   private

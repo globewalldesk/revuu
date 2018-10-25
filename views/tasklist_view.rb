@@ -38,11 +38,12 @@ module TasklistView
   end
 
   def help
+    ast = $unsaved_changes ? '*' : ''
     <<-HELP
 
 Commands are:
 [n]ew task  [1] review/edit task #1  [l]ist all tasks
-show ne[x]t  [d]elete task  [t]ag search  [a]rchive data
+show ne[x]t  [d]elete task  [t]ag search  [a]rchive data#{ast}
 set text [e]ditor  set [p]rogramming language  [h]elp
 HELP
   end

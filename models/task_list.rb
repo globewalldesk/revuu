@@ -38,6 +38,7 @@ class TaskList
     File.open("./data/tasks.json", "w") do |f|
       f.write(json)
     end
+    save_change_timestamp_to_settings
   end
 
   def to_json

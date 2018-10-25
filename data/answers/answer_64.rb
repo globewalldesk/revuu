@@ -1,0 +1,2 @@
+files = Dir["./*"]
+p files

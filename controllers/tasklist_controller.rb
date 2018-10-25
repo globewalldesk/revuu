@@ -12,6 +12,7 @@ module TasklistController
   end
 
   def delete_task_files(task)
+    return nil unless defined?(task.id)
     ending = "#{task.id}.#{task.langhash.ext}"
     # Delete current answer.
     system("rm ./data/answers/answer_#{ending}")

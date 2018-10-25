@@ -81,6 +81,9 @@ NEWBIE
       $texted = settings_hash['texted']
       $textedcmd = $text_editors[$texted]
     end
+    $last_change = settings_hash['last_change'] if settings_hash['last_change']
+    $unsaved_change = settings_hash['unsaved_change'] if settings_hash['unsaved_change']
+    $last_archive = settings_hash['last_archive'] if settings_hash['last_archive']
   end
 
   def choose_text_editor(choice_required = false)

@@ -82,6 +82,7 @@ class Task
       @starter = args[:starter]
       @starter = add_id_to_java_starter if @lang == 'Java'
       File.write(@starter_location, @starter)
+      save_change_timestamp_to_settings
       save_new_task
       edit
     end

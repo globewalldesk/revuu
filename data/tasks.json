@@ -1,379 +1,33 @@
 {
   "tasks": [
     {
-      "instructions": "Extract letters from string\n\nGiven the string 'hxexlxlxox xwxoxrxlxdx', extract the familiar phrase \nand print it. Use string indexes--in an abbreviated version of \nString#slice-- in your answer. Do not simply delete all the x's (yes,\nstr.delete!('x') has the same effect).",
-      "tags": [
-        "Ruby",
-        "strings"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "Ruby",
-      "date_started": "2018-10-01T18:08:14-04:00",
-      "next_review_date": "2018-10-22T12:00:00-04:00",
-      "all_reviews": [
-        {
-          "score": 4,
-          "review_date": "2018-10-01T18:20:10-04:00"
-        }
-      ],
-      "id": 29,
-      "file": "answer_29.rb",
-      "location": "./data/answers/answer_29.rb",
-      "old_file": "answer_old_29.rb",
-      "old_location": "./data/answers/answer_old_29.rb",
-      "starter_location": "./data/starters/starter_29.rb"
-    },
-    {
-      "instructions": "Zip and unzip via the command line \n\nIn case you do something really stupid, be sure to make a backup before  \nyou do this. \n\nOn the command line, zip (not gz, not tar) the revuu/data/starters/  \ndirectory and put the resulting zip file in the data/answers directory.  \nThen unzip it in that directory. Then delete both the zip file and the  \nunzipped starters directory.",
-      "tags": [
-        "Bash",
-        "command line",
-        "shell",
-        "shell scripting",
-        "Bash scripting",
-        "Linux",
-        "Unix",
-        "zip",
-        "unzip"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "Bash",
-      "date_started": "2018-10-22T15:45:30-05:00",
-      "next_review_date": "2018-10-22T15:45:30-05:00",
-      "all_reviews": [
-
-      ],
-      "id": 63,
-      "file": "answer_63.sh",
-      "location": "./data/answers/answer_63.sh",
-      "old_file": "answer_old_63.sh",
-      "old_location": "./data/answers/answer_old_63.sh",
-      "starter_location": "./data/starters/starter_63.sh"
-    },
-    {
-      "instructions": "List files in a directory \n\nWithout making a system call, load an array of the files in the current  \ndirectory and then inspect the resulting array. ",
-      "tags": [
-        "Ruby",
-        "Dir"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "Ruby",
-      "date_started": "2018-10-22T16:08:39-05:00",
-      "next_review_date": "2018-10-22T16:08:39-05:00",
-      "all_reviews": [
-
-      ],
-      "id": 64,
-      "file": "answer_64.rb",
-      "location": "./data/answers/answer_64.rb",
-      "old_file": "answer_old_64.rb",
-      "old_location": "./data/answers/answer_old_64.rb",
-      "starter_location": "./data/starters/starter_64.rb"
-    },
-    {
-      "instructions": "Printing the date and time using DateTime\n\nCreate a DateTime object representing the current time, and print it \nout as a string (not with #inspect). Then add seven days to the date\nand print a string of the format, \"In a week it will be MM/DD/YYYY.\"\nFinally, take the current time, add two hours to it and print a \nstring of the format, \"In two hours it will be HH:MM AM/PM.\"",
-      "tags": [
-        "Ruby",
-        "DateTime",
-        "strftime",
-        "directives",
-        "format directives"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "Ruby",
-      "date_started": "2018-10-15T23:16:13-04:00",
-      "next_review_date": "2018-10-22T23:24:55-04:00",
-      "all_reviews": [
-        {
-          "score": 4,
-          "review_date": "2018-10-15T23:25:15-04:00"
-        }
-      ],
-      "id": 48,
-      "file": "answer_48.rb",
-      "location": "./data/answers/answer_48.rb",
-      "old_file": "answer_old_48.rb",
-      "old_location": "./data/answers/answer_old_48.rb",
-      "starter_location": "./data/starters/starter_48.rb"
-    },
-    {
-      "instructions": "So many ways to write an em dash\n\nUse Integer#chr, a string containing \\u, and Array#pack to write three em \ndashes. No need to have these perfectly memorized (and the hex code, \ndefinitely not). The question is, how confident are you in using these things?\n\nNOTE: You definitely need to add questions about each of these methods because\neach is fairly involved and you're having to brute-force memorize this, which\nis really contrary to what Revuu questions are all about.",
-      "tags": [
-        "Ruby",
-        "chr",
-        "pack",
-        "\\u",
-        "\\x",
-        "character encoding"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "Ruby",
-      "date_started": "2018-10-03T09:10:43+01:00",
-      "next_review_date": "2018-10-23T09:49:54-04:00",
-      "all_reviews": [
-        {
-          "score": 2,
-          "review_date": "2018-10-03T10:09:50+01:00"
-        },
-        {
-          "score": 3,
-          "review_date": "2018-10-04T08:46:01+02:00"
-        },
-        {
-          "score": 3,
-          "review_date": "2018-10-06T08:34:18+02:00"
-        },
-        {
-          "score": 4,
-          "review_date": "2018-10-09T09:49:54-04:00"
-        }
-      ],
-      "id": 32,
-      "file": "answer_32.rb",
-      "location": "./data/answers/answer_32.rb",
-      "old_file": "answer_old_32.rb",
-      "old_location": "./data/answers/answer_old_32.rb",
-      "starter_location": "./data/starters/starter_32.rb"
-    },
-    {
-      "instructions": "Generate array fast \n\nIn a single expression broken over a few lines for readability, generate  \nand print the array [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]. ",
+      "instructions": "Changing a CONST?!\n\nChange this\n\nconst UNTOUCHABLE = ['a', 'b', 'c'];\n\nso that its total value is [1, 2, 3]. First, use a try-catch block to show the\nerror message that you get when you simply try to reassign the variable\nidentifier UNTOUCHABLE. After changing the array, print it.",
       "tags": [
         "JavaScript",
         "JS",
         "Node",
         "Node.js",
-        "spread operator",
-        "array constructor",
-        "keys"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "JavaScript",
-      "date_started": "2018-10-10T13:12:35-07:00",
-      "next_review_date": "2018-10-23T09:59:54-04:00",
-      "all_reviews": [
-        {
-          "score": 4,
-          "review_date": "2018-10-11T06:28:30-07:00"
-        },
-        {
-          "score": 3,
-          "review_date": "2018-10-16T10:00:07-04:00"
-        }
-      ],
-      "id": 47,
-      "file": "answer_47.js",
-      "location": "./data/answers/answer_47.js",
-      "old_file": "answer_old_47.js",
-      "old_location": "./data/answers/answer_old_47.js",
-      "starter_location": "./data/starters/starter_47.js"
-    },
-    {
-      "instructions": "Shortcut for def self.my_class_method?\n\nGiven the little class in the starter code, how can you abbreviate \n'def self.my_class_method' and 'def self.my_other_class_method'?\n\nRewrite it, and then call the methods (one line per each) outside the \nclass definition.",
-      "tags": [
-        "Ruby",
-        "class << self",
-        "self",
-        "class methods"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "Ruby",
-      "date_started": "2018-09-25T03:29:33-04:00",
-      "next_review_date": "2018-10-23T10:39:05-04:00",
-      "all_reviews": [
-        {
-          "score": 3,
-          "review_date": "2018-09-25T03:42:08-04:00"
-        },
-        {
-          "score": 3,
-          "review_date": "2018-10-09T10:39:05-04:00"
-        }
-      ],
-      "id": 4,
-      "file": "answer_4.rb",
-      "location": "./data/answers/answer_4.rb",
-      "old_file": "answer_old_4.rb",
-      "old_location": "./data/answers/answer_old_4.rb",
-      "starter_location": "./data/starters/starter_4.rb"
-    },
-    {
-      "instructions": "Calling class, instance, and global methods\n\nRefer to the starter code.\n\nFrom ::create_with_num, set num equal to ::class_number, then (within the\nsame method) return an instance of MyClass with (number: num) as an argument. \nUse ::create_with_num to create an instance. (3) Let #my_sum = the \nsum of @number, ::class_number_deux, #instance_number, and global_number. \nPrint the result of calling #my_sum on the instance. Should be 27.",
-      "tags": [
-        "Ruby",
-        "self",
-        "class",
-        "new"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "Ruby",
-      "date_started": "2018-09-25T05:56:23-04:00",
-      "next_review_date": "2018-10-23T16:04:18-04:00",
-      "all_reviews": [
-        {
-          "score": 3,
-          "review_date": "2018-09-25T07:35:36-04:00"
-        },
-        {
-          "score": 4,
-          "review_date": "2018-10-02T16:04:18-04:00"
-        }
-      ],
-      "id": 5,
-      "file": "answer_5.rb",
-      "location": "./data/answers/answer_5.rb",
-      "old_file": "answer_old_5.rb",
-      "old_location": "./data/answers/answer_old_5.rb",
-      "starter_location": "./data/starters/starter_5.rb"
-    },
-    {
-      "instructions": "Destructure an array \n\nExamine the code starter. Rewrite the three number const assignments so  \nthat they are done together in one expression. Make sure the result  \nremains the same. ",
-      "tags": [
-        "JavaScript",
-        "JS",
-        "Node",
-        "Node.js",
-        "destructuring assignment",
-        "assignment"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "JavaScript",
-      "date_started": "2018-10-20T09:32:17-04:00",
-      "next_review_date": "2018-10-24T09:33:33-04:00",
-      "all_reviews": [
-        {
-          "score": 3,
-          "review_date": "2018-10-20T09:33:34-04:00"
-        }
-      ],
-      "id": 57,
-      "file": "answer_57.js",
-      "location": "./data/answers/answer_57.js",
-      "old_file": "answer_old_57.js",
-      "old_location": "./data/answers/answer_old_57.js",
-      "starter_location": "./data/starters/starter_57.js"
-    },
-    {
-      "instructions": "Array constructors\n\nUse an array constructor (not a literal) to create an array with 10 empty slots.\n(Wait, what are the slots filled with?) Then create an array with 10 'true'\nvalues. Finally, create an array (no cheating, must be an array constructor)\nof numbers 0 through 9.",
-      "tags": [
-        "Ruby",
-        "array",
-        "array constructor"
-      ],
-      "score": 3,
-      "saved": true,
-      "lang": "Ruby",
-      "date_started": "2018-10-17T13:50:59-04:00",
-      "next_review_date": "2018-10-24T10:35:32-04:00",
-      "all_reviews": [
-        {
-          "score": 3,
-          "review_date": "2018-10-17T13:53:20-04:00"
-        },
-        {
-          "score": 3,
-          "review_date": "2018-10-20T10:35:32-04:00"
-        }
-      ],
-      "id": 52,
-      "file": "answer_52.rb",
-      "location": "./data/answers/answer_52.rb",
-      "old_file": "answer_old_52.rb",
-      "old_location": "./data/answers/answer_old_52.rb",
-      "starter_location": "./data/starters/starter_52.rb"
-    },
-    {
-      "instructions": "Combined comparison operator\n\nGenerate the array of integers from -10 to 10. Then use Ruby's \ncombined comparison operator together with #case (three cases)\nto construct (and then print) all the negative and all the \npositive integers in the array.\n\n(Hint: of course there are much faster ways of doing this. We're\njust reminding ourselves of how to use the tools here.)",
-      "tags": [
-        "Ruby",
-        "<=>",
-        "combined comparison operator",
-        "case"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "Ruby",
-      "date_started": "2018-10-17T09:19:43-04:00",
-      "next_review_date": "2018-10-24T12:05:48-04:00",
-      "all_reviews": [
-        {
-          "score": 4,
-          "review_date": "2018-10-17T12:05:51-04:00"
-        }
-      ],
-      "id": 50,
-      "file": "answer_50.rb",
-      "location": "./data/answers/answer_50.rb",
-      "old_file": "answer_old_50.rb",
-      "old_location": "./data/answers/answer_old_50.rb",
-      "starter_location": "./data/starters/starter_50.rb"
-    },
-    {
-      "instructions": "Don't warn me about deprecated code, plz \n\nThe starter code uses a deprecated class and a coder warns the user that  \nit is, indeed, deprecated. Turn off his warning (not by deleting it). ",
-      "tags": [
-        "Ruby",
-        "$VERBOSE",
-        "$VERBOSE = nil",
-        "warn"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "Ruby",
-      "date_started": "2018-10-20T14:53:47-04:00",
-      "next_review_date": "2018-10-24T14:55:21-04:00",
-      "all_reviews": [
-        {
-          "score": 4,
-          "review_date": "2018-10-20T14:55:21-04:00"
-        }
-      ],
-      "id": 61,
-      "file": "answer_61.rb",
-      "location": "./data/answers/answer_61.rb",
-      "old_file": "answer_old_61.rb",
-      "old_location": "./data/answers/answer_old_61.rb",
-      "starter_location": "./data/starters/starter_61.rb"
-    },
-    {
-      "instructions": "Advanced arrow functions\n\nRewrite this as a nested arrow function in the most concise way possible:\n\nconst factorial = function(arr) {\n  return arr.reduce(function(x,y) {\n    return x * y\n  });\n}\n\nUse the result of your rewriting to prove that factorial(arr) = 120,\nwhere arr = [5, 4, 3, 2, 1] (print out the answer).",
-      "tags": [
-        "JavaScript",
-        "JS",
-        "Node",
-        "Node.js",
-        "arrow functions",
-        "reduce",
-        "nested functions"
+        "const",
+        "try",
+        "catch"
       ],
       "score": 4,
       "saved": true,
       "lang": "JavaScript",
-      "date_started": "2018-10-06T12:36:05+01:00",
-      "next_review_date": "2018-10-24T13:03:16-07:00",
+      "date_started": "2018-10-04T18:30:57+02:00",
+      "next_review_date": "2018-10-25T12:00:00-07:00",
       "all_reviews": [
         {
           "score": 4,
-          "review_date": "2018-10-06T13:05:42+01:00"
-        },
-        {
-          "score": 4,
-          "review_date": "2018-10-10T13:03:16-07:00"
+          "review_date": "2018-10-04T18:53:35+02:00"
         }
       ],
-      "id": 42,
-      "file": "answer_42.js",
-      "location": "./data/answers/answer_42.js",
-      "old_file": "answer_old_42.js",
-      "old_location": "./data/answers/answer_old_42.js",
-      "starter_location": "./data/starters/starter_42.js"
+      "id": 37,
+      "file": "answer_37.js",
+      "location": "./data/answers/answer_37.js",
+      "old_file": "answer_old_37.js",
+      "old_location": "./data/answers/answer_old_37.js",
+      "starter_location": "./data/starters/starter_37.js"
     },
     {
       "instructions": "Destructuring assignment \n\nRewrite the ES5 code in the starter code using a \"destructuring  \nassignment\" permitted by ES6. (Comment out the old-fashioned lines.) ",
@@ -388,7 +42,7 @@
       "saved": true,
       "lang": "JavaScript",
       "date_started": "2018-10-18T23:08:52-04:00",
-      "next_review_date": "2018-10-25T10:09:53-04:00",
+      "next_review_date": "2018-10-25T12:00:00-07:00",
       "all_reviews": [
         {
           "score": 3,
@@ -405,35 +59,6 @@
       "old_file": "answer_old_56.js",
       "old_location": "./data/answers/answer_old_56.js",
       "starter_location": "./data/starters/starter_56.js"
-    },
-    {
-      "instructions": "Changing a CONST?!\n\nChange this\n\nconst UNTOUCHABLE = ['a', 'b', 'c'];\n\nso that its total value is [1, 2, 3]. First, use a try-catch block to show the\nerror message that you get when you simply try to reassign the variable\nidentifier UNTOUCHABLE. After changing the array, print it.",
-      "tags": [
-        "JavaScript",
-        "JS",
-        "Node",
-        "Node.js",
-        "const",
-        "try",
-        "catch"
-      ],
-      "score": 4,
-      "saved": true,
-      "lang": "JavaScript",
-      "date_started": "2018-10-04T18:30:57+02:00",
-      "next_review_date": "2018-10-25T18:53:35+02:00",
-      "all_reviews": [
-        {
-          "score": 4,
-          "review_date": "2018-10-04T18:53:35+02:00"
-        }
-      ],
-      "id": 37,
-      "file": "answer_37.js",
-      "location": "./data/answers/answer_37.js",
-      "old_file": "answer_old_37.js",
-      "old_location": "./data/answers/answer_old_37.js",
-      "starter_location": "./data/starters/starter_37.js"
     },
     {
       "instructions": "Fix this broken use of the spread operator\n\nThis is very quick and easy: fix the error in the starter code.",
@@ -462,6 +87,41 @@
       "old_file": "answer_old_55.js",
       "old_location": "./data/answers/answer_old_55.js",
       "starter_location": "./data/starters/starter_55.js"
+    },
+    {
+      "instructions": "Zip and unzip via the command line \n\nIn case you do something really stupid, be sure to make a backup before  \nyou do this. \n\nOn the command line, zip (not gz, not tar) the revuu/data/starters/  \ndirectory and put the resulting zip file in the review/data/answers  \ndirectory. Then unzip it in that directory. Use 'ls' to show the files \nto confirm it was done. Then delete both the zip file and the unzipped  \nstarters directory.",
+      "tags": [
+        "Bash",
+        "command line",
+        "shell",
+        "shell scripting",
+        "Bash scripting",
+        "Linux",
+        "Unix",
+        "zip",
+        "unzip"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Bash",
+      "date_started": "2018-10-22T15:45:30-05:00",
+      "next_review_date": "2018-10-26T07:24:58-07:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-23T07:06:23-07:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-24T07:24:58-07:00"
+        }
+      ],
+      "id": 63,
+      "file": "answer_63.sh",
+      "location": "./data/answers/answer_63.sh",
+      "old_file": "answer_old_63.sh",
+      "old_location": "./data/answers/answer_old_63.sh",
+      "starter_location": "./data/starters/starter_63.sh"
     },
     {
       "instructions": "Demonstrate the splat operator\n\nSuppose you have \n\nfriends = ['Jack', 'Jill', 'Sam']\n\nand you want to pass the array's elements not as an array, but \nindividually, to a method, preceded by a greeting type (the \"yo\"\nmethod in the starter code). How do you do that quite simply?\n\nRelated problem: suppose you want to use 'first' and 'the_rest' \nfor 'a' and ['b', 'c', 'd'], respectively. You already have \n\narr = ['a', 'b', 'c', 'd']\n\nso how do you assign the variables in *one simple* line? Do so\nand then print them in a string: \"I really like a, but as\nto b, c, d...they're OK.\"",
@@ -562,6 +222,55 @@
       "old_file": "answer_old_33.rb",
       "old_location": "./data/answers/answer_old_33.rb",
       "starter_location": "./data/starters/starter_33.rb"
+    },
+    {
+      "instructions": "Shorter way to make letter array \n\nShow a faster way to create an array of the letters and spaces in \"Hello  ",
+      "tags": [
+        "Ruby",
+        "split",
+        "chars"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-23T00:15:12-07:00",
+      "next_review_date": "2018-10-27T00:15:49-07:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-23T00:15:51-07:00"
+        }
+      ],
+      "id": 65,
+      "file": "answer_65.rb",
+      "location": "./data/answers/answer_65.rb",
+      "old_file": "answer_old_65.rb",
+      "old_location": "./data/answers/answer_old_65.rb",
+      "starter_location": "./data/starters/starter_65.rb"
+    },
+    {
+      "instructions": "List files in a directory \n\nWithout making a system call, load an array of the files in the current  \ndirectory and then inspect the resulting array. ",
+      "tags": [
+        "Ruby",
+        "Dir"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-22T16:08:39-05:00",
+      "next_review_date": "2018-10-27T07:13:05-07:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-23T07:13:09-07:00"
+        }
+      ],
+      "id": 64,
+      "file": "answer_64.rb",
+      "location": "./data/answers/answer_64.rb",
+      "old_file": "answer_old_64.rb",
+      "old_location": "./data/answers/answer_old_64.rb",
+      "starter_location": "./data/starters/starter_64.rb"
     },
     {
       "instructions": "Determine if a file has nonzero size \n\nUsing a File class method, simply print out the size of \"../revuu.rb\" in  \nbytes; then in KB; then show all decimals in the answer; then limit the  \ndecimal places to two. ",
@@ -708,6 +417,38 @@
       "old_file": "answer_old_54.rb",
       "old_location": "./data/answers/answer_old_54.rb",
       "starter_location": "./data/starters/starter_54.rb"
+    },
+    {
+      "instructions": "Destructure an array \n\nExamine the code starter. Rewrite the three number const assignments so  \nthat they are done together in one expression. Make sure the result  \nremains the same. ",
+      "tags": [
+        "JavaScript",
+        "JS",
+        "Node",
+        "Node.js",
+        "destructuring assignment",
+        "assignment"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "JavaScript",
+      "date_started": "2018-10-20T09:32:17-04:00",
+      "next_review_date": "2018-10-27T22:37:54-07:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-20T09:33:34-04:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-23T22:37:54-07:00"
+        }
+      ],
+      "id": 57,
+      "file": "answer_57.js",
+      "location": "./data/answers/answer_57.js",
+      "old_file": "answer_old_57.js",
+      "old_location": "./data/answers/answer_old_57.js",
+      "starter_location": "./data/starters/starter_57.js"
     },
     {
       "instructions": "Print \"Hello world!\" in Python",
@@ -906,6 +647,81 @@
       "starter_location": "./data/starters/starter_43.js"
     },
     {
+      "instructions": "Printing the date and time using DateTime\n\nCreate a DateTime object representing the current time, and print it \nout as a string (not with #inspect). Then add seven days to the date\nand print a string of the format, \"In a week it will be MM/DD/YYYY.\"\nFinally, take the current time, add two hours to it and print a \nstring of the format, \"In two hours it will be HH:MM AM/PM.\"",
+      "tags": [
+        "Ruby",
+        "DateTime",
+        "strftime",
+        "directives",
+        "format directives"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-15T23:16:13-04:00",
+      "next_review_date": "2018-10-30T07:31:42-07:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-15T23:25:15-04:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-23T07:32:01-07:00"
+        }
+      ],
+      "id": 48,
+      "file": "answer_48.rb",
+      "location": "./data/answers/answer_48.rb",
+      "old_file": "answer_old_48.rb",
+      "old_location": "./data/answers/answer_old_48.rb",
+      "starter_location": "./data/starters/starter_48.rb"
+    },
+    {
+      "instructions": "So many ways to write an em dash\n\nUse Integer#chr, a string containing \\u, and Array#pack to write three em \ndashes. No need to have these perfectly memorized (and the hex code, \ndefinitely not). The question is, how confident are you in using these things?\n\nNOTE: You definitely need to add questions about each of these methods because\neach is fairly involved and you're having to brute-force memorize this, which\nis really contrary to what Revuu questions are all about.",
+      "tags": [
+        "Ruby",
+        "chr",
+        "pack",
+        "\\u",
+        "\\x",
+        "character encoding"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-03T09:10:43+01:00",
+      "next_review_date": "2018-10-30T07:41:23-07:00",
+      "all_reviews": [
+        {
+          "score": 2,
+          "review_date": "2018-10-03T10:09:50+01:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-04T08:46:01+02:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-06T08:34:18+02:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-09T09:49:54-04:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-23T07:41:23-07:00"
+        }
+      ],
+      "id": 32,
+      "file": "answer_32.rb",
+      "location": "./data/answers/answer_32.rb",
+      "old_file": "answer_old_32.rb",
+      "old_location": "./data/answers/answer_old_32.rb",
+      "starter_location": "./data/starters/starter_32.rb"
+    },
+    {
       "instructions": "Stop that mutation!\n\nCreate an object (using const) that has components (elements or attributes)\nand then apply a certain method that will prevent those components from\nbeing changed. Print out a component; then attempt to change it; then print\nit out again. Did you know what would happen? Make your prediction in a \ncomment beforehand.",
       "tags": [
         "JavaScript",
@@ -941,6 +757,66 @@
       "old_file": "answer_old_39.js",
       "old_location": "./data/answers/answer_old_39.js",
       "starter_location": "./data/starters/starter_39.js"
+    },
+    {
+      "instructions": "Combined comparison operator \n\nGenerate the array of integers from -10 to 10. Then use Ruby's combined  \ncomparison operator together with #case (three cases) (comparing array  \nvalues with 0) to construct (and then print) all the negative and all the  \npositive integers in the array. \n\n(Hint: of course there are much faster ways of doing this. We're\njust reminding ourselves of how to use the tools here.)",
+      "tags": [
+        "Ruby",
+        "<=>",
+        "combined comparison operator",
+        "case"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-17T09:19:43-04:00",
+      "next_review_date": "2018-10-31T07:11:44-07:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-17T12:05:51-04:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-24T07:12:08-07:00"
+        }
+      ],
+      "id": 50,
+      "file": "answer_50.rb",
+      "location": "./data/answers/answer_50.rb",
+      "old_file": "answer_old_50.rb",
+      "old_location": "./data/answers/answer_old_50.rb",
+      "starter_location": "./data/starters/starter_50.rb"
+    },
+    {
+      "instructions": "Don't warn me about deprecated code, plz \n\nThe starter code uses a deprecated class and a coder warns the user that  \nit is, indeed, deprecated. Turn off his warning (not by deleting it). ",
+      "tags": [
+        "Ruby",
+        "$VERBOSE",
+        "$VERBOSE = nil",
+        "warn"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-20T14:53:47-04:00",
+      "next_review_date": "2018-11-01T07:13:25-07:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-20T14:55:21-04:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-24T07:13:26-07:00"
+        }
+      ],
+      "id": 61,
+      "file": "answer_61.rb",
+      "location": "./data/answers/answer_61.rb",
+      "old_file": "answer_old_61.rb",
+      "old_location": "./data/answers/answer_old_61.rb",
+      "starter_location": "./data/starters/starter_61.rb"
     },
     {
       "instructions": "Create an object literal with properties and function\n\nCreate a johnDoe object literal with firstName and lastName properties\nand greet function. Calling the function should output to the console\nthe message, \"Hi, I'm John Doe.\"",
@@ -1117,6 +993,43 @@
       "starter_location": "./data/starters/starter_25.rb"
     },
     {
+      "instructions": "Generate array fast \n\nIn a single expression (can be broken over a few lines for readability),  \ngenerate and print the array [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]. ",
+      "tags": [
+        "JavaScript",
+        "JS",
+        "Node",
+        "Node.js",
+        "spread operator",
+        "array constructor",
+        "keys"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "JavaScript",
+      "date_started": "2018-10-10T13:12:35-07:00",
+      "next_review_date": "2018-11-06T06:45:03-08:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-11T06:28:30-07:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-16T10:00:07-04:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-23T07:45:03-07:00"
+        }
+      ],
+      "id": 47,
+      "file": "answer_47.js",
+      "location": "./data/answers/answer_47.js",
+      "old_file": "answer_old_47.js",
+      "old_location": "./data/answers/answer_old_47.js",
+      "starter_location": "./data/starters/starter_47.js"
+    },
+    {
       "instructions": "'For...in' inclusive vs. exclusive\n\nFirst, construct the array of numbers 1 through 5 very concisely,\nusing a range operator. Then use a form of Ruby's for...in loop \nsyntactic sugar to multiply these numbers by 3 (printing the result \nafter each). Then construct a duplicate array using another form of\nthe range operator. Demonstrate which range operator is *inclusive* \nand which is *exclusive*; be able to say in advance which operator\ndoes what.",
       "tags": [
         "Ruby",
@@ -1148,6 +1061,69 @@
       "old_file": "answer_old_16.rb",
       "old_location": "./data/answers/answer_old_16.rb",
       "starter_location": "./data/starters/starter_16.rb"
+    },
+    {
+      "instructions": "Array constructors\n\nUse an array constructor (not a literal) to create an array with 10 empty slots.\n(Wait, what are the slots filled with?) Then create an array with 10 'true'\nvalues. Finally, create an array (no cheating, must be an array constructor)\nof numbers 0 through 9.",
+      "tags": [
+        "Ruby",
+        "array",
+        "array constructor"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-17T13:50:59-04:00",
+      "next_review_date": "2018-11-07T06:56:26-07:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-10-17T13:53:20-04:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-20T10:35:32-04:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-24T06:56:40-07:00"
+        }
+      ],
+      "id": 52,
+      "file": "answer_52.rb",
+      "location": "./data/answers/answer_52.rb",
+      "old_file": "answer_old_52.rb",
+      "old_location": "./data/answers/answer_old_52.rb",
+      "starter_location": "./data/starters/starter_52.rb"
+    },
+    {
+      "instructions": "Extract letters from string \n\nGiven the string 'hxexlxlxox xwxoxrxlxdx', extract the familiar phrase \nand print it. Use string indexes--in an abbreviated version of \nString#slice-- in your answer. Do not simply delete all the x's (yes,\nstr.delete!('x') has the same effect).",
+      "tags": [
+        "Ruby",
+        "strings",
+        "chars",
+        "split"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-10-01T18:08:14-04:00",
+      "next_review_date": "2018-11-09T00:12:50-07:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-01T18:20:10-04:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-23T00:12:59-07:00"
+        }
+      ],
+      "id": 29,
+      "file": "answer_29.rb",
+      "location": "./data/answers/answer_29.rb",
+      "old_file": "answer_old_29.rb",
+      "old_location": "./data/answers/answer_old_29.rb",
+      "starter_location": "./data/starters/starter_29.rb"
     },
     {
       "instructions": "Arrow function syntax\n\nRewrite this simple function without the word 'function()', and then prove\nthat it works by printing the result of calling it:\n\nconst LoveMyFunction = function() {\n  return \"This is really nice function, isn't it?\"\n}",
@@ -1337,6 +1313,77 @@
       "old_file": "answer_old_44.js",
       "old_location": "./data/answers/answer_old_44.js",
       "starter_location": "./data/starters/starter_44.js"
+    },
+    {
+      "instructions": "Advanced arrow functions\n\nRewrite this as a nested arrow function in the most concise way possible:\n\nconst factorial = function(arr) {\n  return arr.reduce(function(x,y) {\n    return x * y\n  });\n}\n\nUse the result of your rewriting to prove that factorial(arr) = 120,\nwhere arr = [5, 4, 3, 2, 1] (print out the answer).",
+      "tags": [
+        "JavaScript",
+        "JS",
+        "Node",
+        "Node.js",
+        "arrow functions",
+        "reduce",
+        "nested functions"
+      ],
+      "score": 4,
+      "saved": true,
+      "lang": "JavaScript",
+      "date_started": "2018-10-06T12:36:05+01:00",
+      "next_review_date": "2018-11-14T06:30:19-08:00",
+      "all_reviews": [
+        {
+          "score": 4,
+          "review_date": "2018-10-06T13:05:42+01:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-10T13:03:16-07:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-24T07:28:40-07:00"
+        }
+      ],
+      "id": 42,
+      "file": "answer_42.js",
+      "location": "./data/answers/answer_42.js",
+      "old_file": "answer_old_42.js",
+      "old_location": "./data/answers/answer_old_42.js",
+      "starter_location": "./data/starters/starter_42.js"
+    },
+    {
+      "instructions": "Calling class, instance, and global methods \n\nRefer to the starter code. \n\nFrom ::create_with_num, set num equal to ::class_number, then (within the  \nsame method) return an instance of MyClass with (number: num) as an  \nargument. Set @number to something obvious. Use ::create_with_num to  \ncreate an instance. Let #my_sum = the sum of @number,  \n::class_number_deux, #instance_number, and global_number. Print the  \nresult of calling #my_sum on the instance. Should be 27. ",
+      "tags": [
+        "Ruby",
+        "self",
+        "class",
+        "new"
+      ],
+      "score": 3,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-09-25T05:56:23-04:00",
+      "next_review_date": "2018-11-14T07:56:18-07:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-09-25T07:35:36-04:00"
+        },
+        {
+          "score": 4,
+          "review_date": "2018-10-02T16:04:18-04:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-23T07:56:30-07:00"
+        }
+      ],
+      "id": 5,
+      "file": "answer_5.rb",
+      "location": "./data/answers/answer_5.rb",
+      "old_file": "answer_old_5.rb",
+      "old_location": "./data/answers/answer_old_5.rb",
+      "starter_location": "./data/starters/starter_5.rb"
     },
     {
       "instructions": "The rest operator\n\nRewrite this Ruby method as a JavaScript function. It should as near to \nidentical as possible.\n\ndef count_args(*args)\n  puts \"You passed #{args.length} to this function.\"\nend\n\nThen call the function and ensure it gives the correct output.",
@@ -1673,6 +1720,40 @@
       "starter_location": "./data/starters/starter_9.sh"
     },
     {
+      "instructions": "Shortcut for def self.my_class_method?\n\nGiven the little class in the starter code, how can you abbreviate \n'def self.my_class_method' and 'def self.my_other_class_method'?\n\nRewrite it, and then call the methods (one line per each) outside the \nclass definition.",
+      "tags": [
+        "Ruby",
+        "class << self",
+        "self",
+        "class methods"
+      ],
+      "score": 5,
+      "saved": true,
+      "lang": "Ruby",
+      "date_started": "2018-09-25T03:29:33-04:00",
+      "next_review_date": "2019-01-15T07:46:35-07:00",
+      "all_reviews": [
+        {
+          "score": 3,
+          "review_date": "2018-09-25T03:42:08-04:00"
+        },
+        {
+          "score": 3,
+          "review_date": "2018-10-09T10:39:05-04:00"
+        },
+        {
+          "score": 5,
+          "review_date": "2018-10-23T07:46:41-07:00"
+        }
+      ],
+      "id": 4,
+      "file": "answer_4.rb",
+      "location": "./data/answers/answer_4.rb",
+      "old_file": "answer_old_4.rb",
+      "old_location": "./data/answers/answer_old_4.rb",
+      "starter_location": "./data/starters/starter_4.rb"
+    },
+    {
       "instructions": "Sort array of hashes by hash attribute\n\nGiven this array of hashes:\n\nsightings = [ {bird: 'pigeon', date: '2007/04/16'}, {bird: 'bald eagle', \n  date: '1999/07/23'}, {bird: 'dodo', date: '2001/12/25'}, {bird: \n  'blue heron', date: '2012/3/1'} ]\n\nsort the hash items by date from oldest sighting date to newest, then\nprint the result in a simple table.",
       "tags": [
         "Ruby",
@@ -1754,7 +1835,7 @@
       "starter_location": "./data/starters/starter_30.rb"
     },
     {
-      "instructions": "Multidimensional array\n\nBy referring to positions of the numbers in this array,\n\na = [[5, 4], [3, 6, 2, [1, 7]], [[8]], [[[9], 10]] ]\n\nconstruct this array:\n\n[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
+      "instructions": "Multidimensional array \n\nBy referring to positions of the numbers in this array, \n\na = [[5, 4], [3, 6, 2, [1, 7]], [[8]], [[[9], 10]] ] \n\nconstruct this array: \n\n[1, 2, 3, 4, 5] ",
       "tags": [
         "Ruby",
         "multidimensional array",

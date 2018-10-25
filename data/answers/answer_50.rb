@@ -1,13 +1,17 @@
-arr  = *(-10..10)
+arr = *(-10..10)
 pos = []
+saame = []
 neg = []
 arr.each do |n|
-  case n <=> 0
+  case 0 <=> n
   when 1
-    pos << n
-  when -1
     neg << n
+  when 0
+    saame << n
+  when -1
+    pos << n
   end
 end
-p pos
 p neg
+p saame
+p pos

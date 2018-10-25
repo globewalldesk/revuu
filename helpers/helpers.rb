@@ -117,7 +117,10 @@ module Helpers
       return
     else
       system("touch #{settings_file}")
-      ur_settings = {'lang' => 'Ruby', 'texted' => 'Pico'}
+      ur_settings = { 'lang' => 'Ruby', 
+                      'texted' => 'Pico', 
+                      'last_change' => DateTime.now.to_s,
+                      'unsaved_changes' => true }
       File.write(settings_file, ur_settings.to_json)
     end
   end
@@ -127,6 +130,14 @@ module Helpers
     raw_settings = File.read("./data/settings.json")
     raw_settings = {} if raw_settings == ""
     settings_hash = ( raw_settings == {} ? {} : JSON.parse(raw_settings) )
+  end
+
+  def save_change_timestamp_to_settings
+    $last_change = DateTime.now.to_s
+    $last_archive = (DateTime.now - 1).to_s unless $last_archive
+    $unsaved_changes = DateTime.parse($last_change) > DateTime.parse($last_archive)
+    update_settings_file( { 'last_change'     => $last_change, 
+                            'unsaved_changes' => $unsaved_changes } )
   end
 
   $text_editors = {
