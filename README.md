@@ -172,6 +172,8 @@ Archive system and autowrap:
 
 Added fully-functional data archive system with full CRUD functionality, such
 as creating new tarballs, loading old ones, showing them, and deleting them.
+I make my data available via a new sample_data/ folder that won't interfere
+with your data, if and when you want to pull down the latest, greatest version.
 Autowrap overwide text fields and tags (without autowrapping code, hopefully);
 debugged this. Made introductory video to get people using Revuu! Moved 
 answers/ to data/answers (so all data is in the same place now) and renamed 
