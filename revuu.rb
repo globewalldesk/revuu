@@ -24,11 +24,40 @@ Dir["./models/*.rb"].each {|file| require file}
 ###############################################################################
 # Program wrapper object
 class App
+
+  class << self
+    def load_data
+      load_defaults_from_settings
+      $tasks = TaskList.new    
+    end
+
+    # Load the default language and text editor ($lang, $texted).
+    def load_defaults_from_settings
+      initialize_settings_if_necessary
+      settings_hash = load_settings_into_hash
+      # Checks if 'lang' key exists. NOTE: REFACTORING SHOULD CREATE ONE.
+      if settings_hash['lang']
+        # Given a programming language name, return a Lang object, stored in a global.
+        $lang_defaults = Lang.new(settings_hash['lang'])
+      end
+      # NOTE: WHEN REFACTORING, expand the following in case this setting is lost.
+      # ALSO, ENSURE THAT THE USER STILL HAS THIS TEXT ED AVAILABLE! Require an
+      # alternate if it has come unavailable.
+      if settings_hash['texted']
+        $texted = settings_hash['texted']
+        $textedcmd = $text_editors[$texted]
+      end
+      $last_change = settings_hash['last_change'] if settings_hash['last_change']
+      $unsaved_changes = settings_hash['unsaved_changes'] if settings_hash['unsaved_changes']
+      $last_archive = settings_hash['last_archive'] if settings_hash['last_archive']
+    end
+  end
+
   def initialize
     system("clear")
     start_text
-    load_defaults_from_settings
-    $tasks = TaskList.new
+    self.class.load_data
+    $tasks.display_tasks('first screen')
     app_loop
   end
 
@@ -63,27 +92,6 @@ You're new to Revuu! Press 'n' to add your first task. Choose your text
 editor with 'e' and your default programming language with 'p'. For a
 general introduction and detailed instructions, press 'h'.
 NEWBIE
-  end
-
-  # Load the default language and text editor ($lang, $texted).
-  def load_defaults_from_settings
-    initialize_settings_if_necessary
-    settings_hash = load_settings_into_hash
-    # Checks if 'lang' key exists. NOTE: REFACTORING SHOULD CREATE ONE.
-    if settings_hash['lang']
-      # Given a programming language name, return a Lang object, stored in a global.
-      $lang_defaults = Lang.new(settings_hash['lang'])
-    end
-    # NOTE: WHEN REFACTORING, expand the following in case this setting is lost.
-    # ALSO, ENSURE THAT THE USER STILL HAS THIS TEXT ED AVAILABLE! Require an
-    # alternate if it has come unavailable.
-    if settings_hash['texted']
-      $texted = settings_hash['texted']
-      $textedcmd = $text_editors[$texted]
-    end
-    $last_change = settings_hash['last_change'] if settings_hash['last_change']
-    $unsaved_change = settings_hash['unsaved_change'] if settings_hash['unsaved_change']
-    $last_archive = settings_hash['last_archive'] if settings_hash['last_archive']
   end
 
   def choose_text_editor(choice_required = false)
@@ -163,7 +171,9 @@ NEWBIE
       command = get_user_command('=')
       process_input(command)
     end
-    puts "\nAll data is automatically saved. Goodbye until next time!"
+    puts "Note, you have unarchived (un-backed up) changes, but your data is saved." if 
+      $unsaved_changes
+    puts "\nGoodbye until next time!"
   end
 
   # REFACTOR: Move to tasklist_controller.rb, probably.
@@ -202,6 +212,8 @@ NEWBIE
       $tasks.nav('top')
     when 'x'
       $tasks.show_next_item
+    when 'de'
+      $tasks.destroy_all
     when 'q'
       return
     else

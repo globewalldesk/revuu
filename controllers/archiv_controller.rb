@@ -10,15 +10,19 @@ module ArchivController
 
     def dispatch_table(command)
       case command
-      when 's'
-        display_archives; puts '';
       when 'c'
         archive = Archiv.new    # Since no argument, a name is created for 'archive'.
         archive.create_archive  # Uses the new name.
       when 'l'
         choose_archive_and_load
+      when 's'
+        display_archives; puts '';
+      when 'd'
+        delete
       when 'f'
         welcome_to_archive
+      when 'sa'
+        copy_sample_data
       when 'h'
         launch_instructions_system
         welcome_to_archive
@@ -35,19 +39,61 @@ module ArchivController
       # then copy unpacked directories and files into data/.
       if archive_name
         archive = Archiv.new(archive: archive_name) # With argument, a name is saved.
-        archive.load_archive
+        msg = archive.load_archive
+        puts "Nothing new loaded; escaping." if msg == nil
       else
-        puts "No archive specified, so no archive loaded."
+        puts "Escaping; didn't load anything.\n\n"
       end
     end
 
     def load_archive
-      puts "Saving archive of your latest, so you don't lose your work."
-      Archive.new(affix_date_and_ext('')).create_archive # Does as it tells the user...
-      puts "Deleting old data, hang on to your hat!"
-      system('rm -rf data/*')
-      puts "Now loading #{self.archive}."
-      # Unpacks 'test.tar' to 'x', creating 'x' if necessary.
-      Minitar.unpack(self.archive, data/)
+      unless $tasks.list.empty?
+        puts "\nDo you want to save an archive of the currently-loaded data first?"
+        puts "\nNOTE! Be sure before proceeding. Don't overwrite new data with old!"
+        puts "NOTE!! The currently-loaded data does have unsaved changes." if $unsaved_changes
+        puts ''
+        save_first = nil
+        until save_first && (save_first == '' || 'ynq'.include?(save_first) )
+          puts "Press <Enter> for [y], [n], or [q]uit (escape)."
+          save_first = get_user_command("l")
+        end
+        return nil if save_first == 'q'
+        if save_first == '' || save_first == 'y'
+          Archiv.new(archive: affix_date_and_ext('')).create_archive # Does as it tells the user...
+        end
+      end
+      system('rm -rf data/')
+      # Actually copy from zip file to data folder, reconstructing the data folder!
+      Minitar.unpack(self.archive, "./")
+      # Reload the goods, just as App.new does. But REFACTORING PROBLEM: do I really
+      # want to be calling #new here?
+      App.load_defaults_from_settings
+      $tasks = TaskList.new
+      puts "Done! Quit the archive system to see the newly-loaded archive."
+      return true # indicating to #choose_archive_and_load that loading went fine.
     end
+
+    def delete
+      # Show archives and solicit number.
+      puts "OK, ready to delete. Choose wisely!"
+      archive_name = choose_archive
+      puts "Escaping without deleting." unless archive_name
+      begin
+        # Delete that archive.
+        system("rm #{archive_name}")
+      rescue "Couldn't delete, for some reason."
+      ensure
+        display_archives
+        puts ''
+      end
+    end
+
+    def copy_sample_data
+      puts "\nThis simple function just makes a sample data set available in your"
+      puts "list of archives. It's already done: "
+      system('cp sample_data/* archives/')
+      display_archives
+      puts "You can now [l]oad this data and check it out.\n\n"
+    end
+
 end

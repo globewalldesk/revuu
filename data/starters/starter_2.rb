@@ -1,1 +1,0 @@
-['xanax', 'Hello', 'aya', 'FooBar']

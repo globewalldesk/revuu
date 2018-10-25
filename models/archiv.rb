@@ -9,11 +9,6 @@ class Archiv
       archive_loop
     end
 
-    # For use in ArchivView#welcome_to_archive.
-    def compile_stats
-      
-    end
-
   end
 
   attr_accessor :archive

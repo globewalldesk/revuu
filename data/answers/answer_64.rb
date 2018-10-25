@@ -1,2 +1,0 @@
-files = Dir["./*"]
-p files

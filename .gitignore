@@ -8,7 +8,11 @@ package-lock.json
 planning.txt
 planning.md
 talk_outline.md
-data/eliminator.rb
 minitar.txt
-data/revuu.json
 archives/*
+data/eliminator.rb
+data/*.json
+data/answers/*
+data/starters/*
+less
+history

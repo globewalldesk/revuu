@@ -17,7 +17,6 @@ class TaskList
       data = JSON.parse(file)
       task_array = data['tasks']
       construct_tasks_array(task_array)
-      display_tasks('first screen')
     end
   end
 
@@ -43,6 +42,28 @@ class TaskList
 
   def to_json
     JSON.pretty_generate({"tasks": @list.map{|task| task.to_hash } })
+  end
+
+  # Start over. Delete all data in tasks.json, starters/, and answers/.
+  def destroy_all
+    if user_confirms_destruction
+      # Actually perform the file deletions.
+      system("rm data/tasks.json")
+      system("rm data/settings.json")
+      # Save the user's existing editor and default language in new settings file.
+      update_settings_file({lang: $lang_defaults.name, texted: $texted})
+      system("rm -f answers/*")
+      system("rm -f starters/*")
+    else
+      puts "Nothing destroyed. Remember, you can back up your data with [a]rchive."
+    end
+    # Reload the goods.
+    App.load_defaults_from_settings
+    $tasks = TaskList.new
+    sleep 2
+    $tasks.display_tasks
+    # Tell the user if it worked.
+    puts "All tasks destroyed."
   end
 
   # Given an integer, return a task from the tasklist.

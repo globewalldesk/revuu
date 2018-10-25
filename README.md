@@ -168,9 +168,12 @@ been separated out, so the user doesn't have to copy and paste it from the
 question. Also, added Python support. Fixed various bugs, especially a tag bug.
 
 ### 2.3
+Archive system and autowrap:
 
-Autowrap overwide tasks and tags (without autowrapping code, hopefully);
-debugged this. Added simple data backup feature. Made introductory video to get
-people using Revuu! Moved answers/ to data/answers (so all data is in the same
-place now) and renamed data/revuu.json to data/tasks.json (so now all data is 
-ready to copy in one folder).
+Added fully-functional data archive system with full CRUD functionality, such
+as creating new tarballs, loading old ones, showing them, and deleting them.
+Autowrap overwide text fields and tags (without autowrapping code, hopefully);
+debugged this. Made introductory video to get people using Revuu! Moved 
+answers/ to data/answers (so all data is in the same place now) and renamed 
+data/revuu.json to data/tasks.json (so now all data is ready to copy in one 
+folder).

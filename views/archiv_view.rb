@@ -18,8 +18,8 @@ module ArchivView
   # List of dispatch_table commands for user.
   def archive_help
     <<~ARCHIVEHELP
-    Archives: [c]reate/export  [l]oad/import  [s]how all  
-    Also:     re[f]resh view  [h]elp  [q]uit archive system
+    Archives: [c]reate/export  [l]oad/import  [s]how all  [d]elete 
+    Also:     re[f]resh view  [sa]mple data  [h]elp  [q]uit archive system
 
     ARCHIVEHELP
   end
@@ -44,11 +44,12 @@ module ArchivView
     # Display archives and also output an array of archive locations.
     archives = display_archives
     load_num = nil
-    until [*(1..archives.length)].include? (load_num)
-      puts "\nWhich of the archives above?"
-      load_num = get_user_command('c').to_i
+    until ([*(1..archives.length)].include?(load_num) || load_num == 'q')
+      puts "\nWhich of the archives above (or [q]uit to escape)?"
+      load_num = get_user_command('l')
+      load_num = load_num.to_i unless load_num == 'q'
     end
-    archives[load_num-1]
+    load_num.class == String ? false : archives[load_num-1]
   end
 
   # Loads list of archive names, then displays them in numbered fashion.
@@ -58,7 +59,11 @@ module ArchivView
     # Construct string
     line = ''
     archives.each_with_index do |a,i|
-      addition = "(#{i+1}) #{a} ".gsub!('archives/', '')
+      a =~ /^archives\/(\w+?)_(\d{8})\.tar$/
+      tag, date = $1, $2
+      date = Time.parse(date).strftime("%Y/%-m/%-d")
+      tag = tag == 'archive' ? '' : "#{tag.gsub!('_archive', '')}: "
+      addition = "(#{i+1}) #{tag}#{date} "
       if (line + addition).length > 74
         puts line
         line = addition
