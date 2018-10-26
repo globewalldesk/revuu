@@ -1,22 +1,20 @@
 # revuu
-Handy command line app for learning and reviewing programming tasks--improving
-procedural (as opposed to declarative) knowledge--using spaced repetition
-methods.
+Manage and schedule programming tasks you're learning, improving procedural (as opposed to declarative) knowledge, using spaced repetition methods. Several languages and text editors supported.
 
 See [this video introduction](https://youtu.be/rv11AHD8wik).
 
 ## User introduction
 
-*NOTE:* Be careful about using `git pull` after you've replaced my data with
-yours. This might screw up your data. I'll soon make a feature allowing me
-to share my data via an export feature, and leave data/ clean when uploading.
-
-This app will help you review programming tasks, improving understanding and
-keeping your skills fresh. It was written with the notion that programmers (and
+Revuu helps you review programming tasks, improving understanding and keeping
+your skills fresh. It was written with the notion that programmers (and
 others) need repetition of not declarative but procedural knowledge.
 
-So when you perform a review, you don't try to answer a question in words.
-Instead, you try to perform a task. Essentially, to use Revuu, you'd add
+The great thing about Revuu is that it handles all file naming, retrieving,
+opening with your text editor, saving, and running for you automatically, so you
+can focus on learning. It's a tremendous time-saver for drilling coding skills.
+
+When you perform a review, you don't try to answer a question in words.
+Instead, you try to perform a task.  Essentially, to use Revuu, you'd add
 complex, not simple, tasks. Probably the ideal Revuu task would require
 2-10 minutes to complete.
 
@@ -26,14 +24,13 @@ running the script and seeing the results, and recording that you've done a
 review and that the next review should be done on a certain date. The two basic
 views of the app are a paginated list of tasks and an individual task view.
 
-Currently, we support Ruby, Node.js (JavaScript), Java, C, and Bash scripting.
-We also support many commonly-used text editors and IDEs.
+Currently, we support Ruby, Node.js (JavaScript), Python, Java, C, and Bash scripting. We also support many commonly-used text editors and IDEs.
 
 Add copious, well-chosen tags in order to be able to sort tasks.
 
-Revuu ships with a bunch of pre-made questions and answers by way of
-demonstration. You can delete these and make your own, if you like. The
-questions are mostly Ruby and JavaScript right now.
+Revuu ships with a bunch of pre-made questions (in the "sample data" folder) and answers by way of demonstration.
+
+You can now easily import (load) and export (archive, back up, share) your data.
 
 ## Install and requirements
 Clone the repo (instructions should be clear enough from Github). Should
@@ -41,7 +38,7 @@ probably make sure a recent version of Ruby (>2.2) is installed. Execute
 `bundle install` to install the gem requirements.
 
 Only works on \*nix systems (including modern Macs). I could make some changes
-so that it works on Windows, if anybody cares.
+so that it works on Windows, if anybody cares (do let me know).
 
 ## Run
 Once Ruby, the app, and the gem dependencies are installed, you should be able
@@ -55,37 +52,29 @@ should still work. (If you try and it doesn't, let me know and I'll fix it.)
 
 Online help is available from the task list by pressing 'c' for 'commands'.
 
+## Author
+Larry Sanger (yo.larrysanger@gmail.com)
+
 ## Development to do list
 
-* Top priority:
-  * Solve problem of saving usable sample data to Github without threatening
-  to overwrite user's own data when they perform `git pull`. Probably:
-  * Create features to export and import some (tagged) or all items.
-  * Create features to mass-delete items (such as the pre-loaded questions, or
-all of a language you're not studying, or just a tag you're putting aside for
-a while).
-* Refactoring of the detailed cleanup/editing still needed.
+* Major improvement would be a feature to let user write and run Rails thangs
+and play with CSS, HTML, and web-based JavaScript.
+* Refactoring/cleanup/editing still needed; begin by cleaning up task creation.
 * Improve an "installation" or "first run" script, allowing the user to select
 default language and default text editor. Think through the flow.
 * Test with Java; write supporting code so it's more feasible to use with Java.
 * Add wrapper code for C? Think about this.
 * Add statistics (number of questions, averages, number overdue, number to do
 today, etc.).
-* Major improvement would be a feature to let user write and run Rails thangs
-and play with CSS, HTML, and web-based JavaScript.
 
 ## MVC refactoring notes
 
-In order to make the codebase more maintainable, I've decided to do a major
-refactoring. My strategy is (1) move the various helper code to "controller"
-and "view" modules associated with "models," although the controller and view
-code will be in modules rather than classes, (2) starting from the basic
-classes App, TaskList, and Task, I will add a few more classes corresponding
-to major data-and-method groupings, to wit, TextEditor, ProgLang, and maybe a
-few others.
-
-Actually, I might end up converting the modules to classes later. Some method
-calls can become class method calls.
+In order to make the codebase more maintainable, I did a major refactoring. My
+strategy is (1) move the various helper code to "controller" and "view" modules
+associated with "models," although the controller and view code will be in
+modules rather than classes, (2) starting from the basic classes App, TaskList,
+and Task, I will add a few more classes corresponding to major data-and-method
+groupings, such as Lang and Archiv.
 
 ## Version notes
 
@@ -167,15 +156,18 @@ Code that a task writer wants the user to use in solving a problem is dubbed
 been separated out, so the user doesn't have to copy and paste it from the
 question. Also, added Python support. Fixed various bugs, especially a tag bug.
 
-### 2.3
+### 2.3 (October 26, 2018)
 Archive system and autowrap:
 
 Added fully-functional data archive system with full CRUD functionality, such
 as creating new tarballs, loading old ones, showing them, and deleting them.
-I make my data available via a new sample_data/ folder that won't interfere
+I make my data available via a new `sample_data/` folder that won't interfere
 with your data, if and when you want to pull down the latest, greatest version.
 Autowrap overwide text fields and tags (without autowrapping code, hopefully);
-debugged this. Made introductory video to get people using Revuu! Moved 
-answers/ to data/answers (so all data is in the same place now) and renamed 
-data/revuu.json to data/tasks.json (so now all data is ready to copy in one 
-folder).
+debugged this. Made introductory video to get people using Revuu! Moved
+`answers/` to `data/answers` (so all data is in the same place now) and renamed
+`data/revuu.json` to `data/tasks.json` (so now all data is ready to copy in one
+folder). Prepared codebase for clean start (and safe `git pull`ing) by cleaning
+out the content of `data/` and encouraging user to use sample data. Also,
+experimentally changed (shortened) the spaced repetition intervals, since they
+had been too long for me.

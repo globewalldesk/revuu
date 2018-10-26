@@ -8,7 +8,7 @@ module Helpers
   end
 
   def header
-    puts sprintf("%-69s%s", " * R * E * V * U * U *",  "v. 2.2").
+    puts sprintf("%-69s%s", " * R * E * V * U * U *",  "v. 2.3").
       colorize(:color => :black, :background => :white)
     puts "\n"
   end
@@ -117,8 +117,8 @@ module Helpers
       return
     else
       system("touch #{settings_file}")
-      ur_settings = { 'lang' => 'Ruby', 
-                      'texted' => 'Pico', 
+      ur_settings = { 'lang' => 'Ruby',
+                      'texted' => 'Pico',
                       'last_change' => DateTime.now.to_s,
                       'unsaved_changes' => true }
       File.write(settings_file, ur_settings.to_json)
@@ -136,7 +136,7 @@ module Helpers
     $last_change = DateTime.now.to_s
     $last_archive = (DateTime.now - 1).to_s unless $last_archive
     $unsaved_changes = DateTime.parse($last_change) > DateTime.parse($last_archive)
-    update_settings_file( { 'last_change'     => $last_change, 
+    update_settings_file( { 'last_change'     => $last_change,
                             'unsaved_changes' => $unsaved_changes } )
   end
 

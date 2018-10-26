@@ -39,10 +39,13 @@ module HelpHelper
       if (line_counter + this_addition.length) > 75
         title_string << new_line + "\n"
         new_line = this_addition
+        if ($big_instruction_array.length - 1 == i)
+          title_string << new_line
+        end
         line_counter = this_addition.length
       else
         new_line << this_addition
-        if i == ($big_instruction_array.length - 1)
+        if ($big_instruction_array.length - 1 == i)
           title_string << new_line
         end
         line_counter += this_addition.length
@@ -236,10 +239,10 @@ review):
 
 Score  First review         All later reviews
     1  tomorrow             tomorrow
-    2  day after tomorrow   greater of 0.25 the interval or in 4 days
-    3  in 4 days            greater of 0.8 of the interval or in 1 week
-    4  in 1 weeks           in 2 times the interval
-    5  in 10 days           in 3 times the interval
+    2  tomorrow             lesser of 0.25 the interval or in 2 days
+    3  in 2 days            lesser of 0.5 of the interval or in 4 days
+    4  in 4 days            in 1.5 times the interval
+    5  in 1 week            in 2 times the interval
 
 Please DO NOT rely religiously on this algorithm. Your judgment is
 probably considerably more reliable than the algorithm. Sometimes you
@@ -281,8 +284,8 @@ future.
 EDITOTHERTASKINFO
     },
     {
-      title: 'archive and view archive',
-      content: <<-ARCHIVE
+      title: 'save, run, and view old answers',
+      content: <<-OLDANSWERS
 Another cool feature of Revuu is that the app automatically archives old
 answers for you (this is done when you press 'a' and then choose 'y' to
 archive), and then allows you view them again with 'o' for old answer
@@ -290,7 +293,7 @@ and to run them again with 'rr' for re-run. Note that while languages
 like JavaScript and Ruby append newer answers to the top of the archive
 file, languages that permit only one main function like C and Java
 entirely overwrite the old answer, which will be lost forever.
-ARCHIVE
+OLDANSWERS
     },
     {
       title: 'delete a task',
@@ -348,14 +351,15 @@ CHANGEEDITOR
       title: 'change programming language',
       content: <<-CHANGELANGUAGE
 Each task has its own associated programming language, so you can use
-several different languages at the same time on Revuu. To set the default
-language (which you accept by hitting "Enter" when you're creating a new task),
-go to the task list (top level) and type 'p' for programming language.
+several different languages at the same time on Revuu. To set the
+default language (which you accept by hitting "Enter" when you're
+creating a new task), go to the task list (top level) and type 'p' for
+programming language.
 
 As to the language of an individual task, you set it when you create the
-task. But this can be changed at any time from the view page for a particular
-task (if you're not there, just type its ID number from the task list). The
-command is 'c' for configure language.
+task. But this can be changed at any time from the view page for a
+particular task (if you're not there, just type its ID number from the
+task list). The command is 'c' for configure language.
 CHANGELANGUAGE
     },
     {
@@ -370,6 +374,84 @@ To go to the next page of tasks (assuming you have over 10), press '>'
 (or '.'). To go back, press '<' (or ','). To go to the end of several
 pages, type '>>' (or '..'); to go to the beginning, '<<' (or ',,').
 NAVIGATE
+    },
+    {
+      title: 'how do I delete all loaded data and start afresh?',
+      content: <<-DESTROY
+Simply press 'de'. If you really don't care about your data and want it
+erased forever, this is a good option. It's also how you'd get rid of
+the sample data after you looked it over. It's also how you'd start a
+new data collection with a specific topic after properly archiving
+another collection with a different topic.
+DESTROY
+    },
+    {
+      title: 'can I save different data repositories separately?',
+      content: <<-DIFFREPOS
+Revuu's archive system should allow you to manage your questions about
+different topics (or questions by different people using the same
+system) separately. If you just want to have questions about different
+languages kept separate, just remember that your tasks are tagged
+automatically by language and it's easy to restrict a review session to
+one language or another.
+
+But if you want different data repos for different topics (or people),
+here's how you'd do it:
+
+(1) Press 'a' from the task list to go to the archive system, and with
+'c', for 'create archive', save the current data set (assuming it's a
+self-contained data set) *using a tag*. Make sure you use a tag.
+
+Then:
+(2a) Return to the task list ('q' for quit from the archive system).
+(2b) Press 'de' to destroy all the questions. Be damn sure you have
+created a tagged archive and that your latest data is saved there.
+(2c) Start a new repo.
+(2d) When you're ready to archive it, return to the archive system and
+use a *different* tag from the first.
+
+Or, if there is already another archive available in the archive system:
+(3a) Press 'l' in the archive system to load the other archive.
+(3b) Exit the archive system (with 'q') and view the other data set.
+
+After that, whenever you want to switch from data set to data set, then:
+(4) Go to the archive system with 'a'.
+(5) Press 'c' to create an archive of your latest data and be sure to
+use the CORRECT tag, i.e., the one of the one you're saving.
+(6) Then press 'l' to load the archive you want to switch to.
+DIFFREPOS
+    },
+    {
+      title: 'back up, share, and import data',
+      content: <<-ARCHIVESYSTEM
+Revuu has a fairly extensive archive system. Press 'a' from the tasklist
+to launch it.
+
+Your live data is saved in the data/ folder, not the archives/ folder.
+When you archive (with 'c' for create archive) your data, you are simply
+making a tarball, a copy, of the data/ folder and placing the copy in
+archives/.
+
+When you press 'l' for load archive, you are getting ready to take an
+existing archive (tarball) and making it your live data.
+
+If you're new to Revuu, you can check out some sample data by
+(1) pressing 'sa', (2) pressing 'l' and then choosing the sample data
+archive you just imported, then (3) 'q' to quit the archive system.
+From the task list, you can always delete this data en mass with 'de'.
+
+WARNING 1: Please be aware that this will first ERASE any existing live
+data in data/. So do, do make an archive (with 'c').
+
+WARNING 2: Overwriting your most recent archive, and permanently losing
+it, is possible if you accidentally load some old data into your data/
+folder (i.e., make it live) and then archive that. So be careful not to
+re-archive old data.
+
+That said, it is possible (using tags) to work with and switch between
+different archives. Just be sure, always, to use tagged names for your
+archive files rather than the default plain "archive_YYYYMMDD.tar" name.
+ARCHIVESYSTEM
     }
   ]
 end

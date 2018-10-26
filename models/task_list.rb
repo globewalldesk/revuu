@@ -46,24 +46,28 @@ class TaskList
 
   # Start over. Delete all data in tasks.json, starters/, and answers/.
   def destroy_all
-    if user_confirms_destruction
-      # Actually perform the file deletions.
-      system("rm data/tasks.json")
-      system("rm data/settings.json")
-      # Save the user's existing editor and default language in new settings file.
-      update_settings_file({lang: $lang_defaults.name, texted: $texted})
-      system("rm -f answers/*")
-      system("rm -f starters/*")
-    else
-      puts "Nothing destroyed. Remember, you can back up your data with [a]rchive."
+    begin
+      if user_confirms_destruction
+        # Actually perform the file deletions.
+        system("rm data/tasks.json")
+        system("rm data/settings.json")
+        # Save the user's existing editor and default language in new settings file.
+        update_settings_file({lang: $lang_defaults.name, texted: $texted})
+        system("rm -f answers/*")
+        system("rm -f starters/*")
+        # Reload the goods.
+        App.load_defaults_from_settings
+        $tasks = TaskList.new
+        sleep 1
+        $tasks.display_tasks
+        # Tell the user if it worked.
+        puts "\nAll tasks destroyed.\n\n"
+      else
+        puts "\nNothing destroyed. Remember, you can back up your data with [a]rchive.\n\n"
+      end
+    rescue => err
+      puts "\nThere was an error: #{err}\n\n"
     end
-    # Reload the goods.
-    App.load_defaults_from_settings
-    $tasks = TaskList.new
-    sleep 2
-    $tasks.display_tasks
-    # Tell the user if it worked.
-    puts "All tasks destroyed."
   end
 
   # Given an integer, return a task from the tasklist.

@@ -28,7 +28,7 @@ class App
   class << self
     def load_data
       load_defaults_from_settings
-      $tasks = TaskList.new    
+      $tasks = TaskList.new
     end
 
     # Load the default language and text editor ($lang, $texted).
@@ -171,9 +171,9 @@ NEWBIE
       command = get_user_command('=')
       process_input(command)
     end
-    puts "Note, you have unarchived (un-backed up) changes, but your data is saved." if 
+    puts "\nNote, you have unarchived (un-backed up) changes, but your data is saved." if
       $unsaved_changes
-    puts "\nGoodbye until next time!"
+    puts "Goodbye until next time!"
   end
 
   # REFACTOR: Move to tasklist_controller.rb, probably.

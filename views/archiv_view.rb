@@ -7,9 +7,11 @@ module ArchivView
     puts title
     puts '*-' * (title.length / 2).round
     puts <<~ARCHIVEHEADER
-      Here, you can archive (i.e., export) and load (i.e., import) your data. 
-      Use these tools to cache or reload a task set, to back up your data so 
-      it won't be lost, or to share a task set with others.
+      Here, you can [c]reate an archive (i.e., export) your data and [l]oad
+      (i.e., import) data--such as the [sa]mple data. This is where to back up
+      your data so it won't be lost, or to share a task set with others. Note,
+      at present, old answers, starter code, and old review data are part of
+      your archive.
 
     ARCHIVEHEADER
     puts archive_help
@@ -18,7 +20,7 @@ module ArchivView
   # List of dispatch_table commands for user.
   def archive_help
     <<~ARCHIVEHELP
-    Archives: [c]reate/export  [l]oad/import  [s]how all  [d]elete 
+    Archives: [c]reate/export  [l]oad/import  [s]how all  [d]elete
     Also:     re[f]resh view  [sa]mple data  [h]elp  [q]uit archive system
 
     ARCHIVEHELP
@@ -26,7 +28,7 @@ module ArchivView
 
   # Pesters user for a valid archive name; returns it.
   def set_archive_name
-    puts <<~SETARCHIVENAME 
+    puts <<~SETARCHIVENAME
     Press <Enter> for a generic archive name or enter a brief label;
     this could be your last name, a company or project name, or the
     name of some technology you're learning.

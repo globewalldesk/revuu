@@ -166,13 +166,13 @@ class Task
         when 1
           1
         when 2
-          2
+          1
         when 3
-          4
+          2
         when 4
-          7
+          4
         when 5
-          10
+          7
         end
         return DateTime.now + adjust_by
 
@@ -185,13 +185,13 @@ class Task
         when 1
           1
         when 2
-          [(interval * 0.25), 4].max.round
+          [(interval * 0.25), 2].min.round
         when 3
-          [(interval * 0.8), 7].max.round
+          [(interval * 0.5), 4].min.round
         when 4
-          interval * 2
+          interval * 1.5
         when 5
-          interval * 3
+          interval * 2.0
         end
         return DateTime.now + adjust_by
       end
