@@ -30,7 +30,7 @@ class Task
       score = get_initial_score_from_user
       # Construct new task!
       Task.new(instructions: instructions, tags: tags, score: score,
-               lang: lang, starter: starter)
+               lang: lang, starter: starter, saved: false)
     end # of ::generate_new_task
 
     # Massage user-input tags so standardized. Returns tag array.
@@ -93,7 +93,13 @@ class Task
     hash = {}
     self.instance_variables.each do |var|
       next if var.to_s[1..-1] == 'langhash' # No need to save this object.
-      next if var.to_s[1..-1] == 'starter'  # Ditto; it's in a file.
+      next if var.to_s[1..-1] == 'starter'  # Ditto for the rest.
+      next if var.to_s[1..-1] == 'file'
+      next if var.to_s[1..-1] == 'location'
+      next if var.to_s[1..-1] == 'old_file'
+      next if var.to_s[1..-1] == 'old_location'
+      next if var.to_s[1..-1] == 'starter_location'
+      next if var.to_s[1..-1] == 'saved'
       hash[var.to_s[1..-1]] = self.instance_variable_get var
     end
     hash
@@ -134,7 +140,7 @@ class Task
       {
         tags: [],
         score: 1,
-        saved: false,
+        saved: true,
         lang: $lang_defaults.name,
         date_started: DateTime.now.to_s,
         all_reviews: []
@@ -179,15 +185,15 @@ class Task
       else
         # Otherwise, it is the second or later review, and so we make some calculations.
         # Set interval (time between present and most recent review):
-        interval = ( DateTime.now - DateTime.parse(@all_reviews[0]['review_date']) ).round
+        interval = ( DateTime.now - DateTime.parse(@all_reviews[-1]['review_date']) ).round
         interval = 1 if interval < 1 # Minimum interval time = 1 day.
         adjust_by = case score
         when 1
           1
         when 2
-          [(interval * 0.25), 2].min.round
+          [(interval * 0.25), 2].max.round
         when 3
-          [(interval * 0.5), 4].min.round
+          [(interval * 0.5), 4].max.round
         when 4
           interval * 1.5
         when 5

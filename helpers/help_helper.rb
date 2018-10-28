@@ -239,8 +239,8 @@ review):
 
 Score  First review         All later reviews
     1  tomorrow             tomorrow
-    2  tomorrow             lesser of 0.25 the interval or in 2 days
-    3  in 2 days            lesser of 0.5 of the interval or in 4 days
+    2  tomorrow             greater of 0.25 the interval or in 2 days
+    3  in 2 days            greater of 0.5 of the interval or in 4 days
     4  in 4 days            in 1.5 times the interval
     5  in 1 week            in 2 times the interval
 

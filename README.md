@@ -171,3 +171,7 @@ folder). Prepared codebase for clean start (and safe `git pull`ing) by cleaning
 out the content of `data/` and encouraging user to use sample data. Also,
 experimentally changed (shortened) the spaced repetition intervals, since they
 had been too long for me.
+
+### 2.4
+
+Adjusted spaced repetition intervals again.

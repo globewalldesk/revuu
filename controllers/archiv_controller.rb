@@ -18,7 +18,7 @@ module ArchivController
       when 's'
         display_archives; puts '';
       when 'd'
-        delete
+        delete_archive
       when 'f'
         welcome_to_archive
       when 'sa'
@@ -73,7 +73,7 @@ module ArchivController
       return true # indicating to #choose_archive_and_load that loading went fine.
     end
 
-    def delete
+    def delete_archive
       # Show archives and solicit number.
       puts "OK, ready to delete. Choose wisely!"
       archive_name = choose_archive
