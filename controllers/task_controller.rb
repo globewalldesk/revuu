@@ -105,6 +105,7 @@ module TaskController
   # deletes the file, and returns the text (or nil).
   def starter_code_sequence(java=nil) # Lang needed for file extension.
     starter_desired = get_starter_code?
+    return 'q' if starter_desired == 'q'
     if starter_desired
       get_input(type: 'Starter', required: false, prompt:
         "Edit the starter code on the next screen.",

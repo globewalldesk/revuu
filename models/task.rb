@@ -7,7 +7,9 @@ class Task
     def generate_new_task
       clear_screen
       # Get language from user; returns a canonical, approved name for saving.
-      lang = Lang.pick_language_name($lang_defaults.name)
+      puts "CHOOSE LANGUAGE:"
+      lang = Lang.solicit_languages_from_user('n', $lang_defaults.name)
+      return nil unless lang
       # Get task instructions from user.
       instructions = get_input(type: 'Instructions', prompt:
         "INPUT INSTRUCTIONS:\nOn the next screen, you'll type in the instructions for your new task. ",
@@ -20,14 +22,16 @@ class Task
       # Get starter code; returns some starter code or nil.
       starter_arg = (lang == 'Java' ? 'Java' : false)
       starter = starter_code_sequence(starter_arg)
+      return nil if starter == 'q'
       # Get tags from user. Arrives as string.
       tags = get_tags_from_user # <-- needs a lot of work/refactoring
-      return nil if tags == 'q'  # TEMPORARY kluge
+      return nil if tags == 'q'
       # Add standard tags and massage tags. Output is an array or 'q'.
       tags = Task.validate_tags(tags, lang)
       # Note: tags are not required.
       # Get initial score from user.
       score = get_initial_score_from_user
+      return nil if score == 'q'
       # Construct new task!
       Task.new(instructions: instructions, tags: tags, score: score,
                lang: lang, starter: starter, saved: false)
@@ -118,9 +122,9 @@ class Task
   end
 
   def change_language
-    new_lang = Lang.pick_language_name(@lang)
+    new_lang = Lang.solicit_languages_from_user('c', @lang)
     # Save if new, and tell user if he is now switching languages.
-    if (@lang != new_lang)
+    if (new_lang && @lang != new_lang)
       puts "OK, switching from #{@lang} to #{new_lang}."
       # Save new language instance variables.
       @lang = new_lang

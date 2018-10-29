@@ -7,13 +7,11 @@ module TaskView
     loop do
       args[:prompt] = (args[:prompt] ? "\n" + args[:prompt] : "\n")
       args[:prompt] += "\nPress Ctrl-W to save and Ctrl-X to submit. "
-      args[:prompt] += "\nPress <Enter> now to continue (or [q]uit)... "
-      print args[:prompt]
-      choice = gets.chomp
+      args[:prompt] += "\nPress <Enter> now to continue or [q]uit."
+      puts args[:prompt]
+      choice = get_user_command('n')
       # Ways to abandon input have two possible effects...
-      if (choice == "q")
-        return 'q'
-      end
+      return 'q' if choice == 'q'
       tempfile = "tmp/#{args[:type].downcase}.tmp"
       system("rm #{tempfile}") if File.file?(tempfile)
       File.write(tempfile, java_starter) if args[:java]
@@ -46,10 +44,11 @@ module TaskView
     starter_decision = nil
     loop do
       puts "Edit some starter code (you can do this later)?"
-      print "<Enter> for [y]es, or [n]o: "
-      starter_decision = gets.chomp
-      break if ('yn'.include? starter_decision || starter_decision == '')
+      puts "<Enter> for [y]es, [n]o, or [q]uit."
+      starter_decision = get_user_command('n')
+      break if ('ynq'.include? starter_decision || starter_decision == '')
     end
+    return 'q' if starter_decision == 'q'
     (starter_decision == 'y' || starter_decision == '') ? true : false
   end
 
@@ -61,9 +60,10 @@ module TaskView
 
   def get_initial_score_from_user
     puts "\nINITIAL SCORE:"
-    puts "Input initial score (5: mastered, 4: confident, 3: shaky, 2: barely recall, 1: blank)"
-    score = get_user_command('n').to_i
-    score = 1 unless [1, 2, 3, 4, 5].include? score
+    puts "Enter 5: mastered, 4: confident, 3: shaky, 2: barely recall, 1: blank, or [q]uit."
+    score = get_user_command('n')
+    score = score.to_i unless score == 'q'
+    score = 1 unless [1, 2, 3, 4, 5, 'q'].include? score
     return score
   end
 

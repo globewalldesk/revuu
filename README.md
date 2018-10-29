@@ -174,4 +174,7 @@ had been too long for me.
 
 ### 2.4
 
-Adjusted spaced repetition intervals again.
+Adjusted spaced repetition intervals again. Cleaned up datafile (`tasks.json`),
+which had been needlessly saving calculated attributes, reducing file size by
+22%. Improvements to UX when adding tasks (allowing user to quit).
+

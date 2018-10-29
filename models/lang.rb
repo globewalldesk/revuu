@@ -6,17 +6,9 @@
 class Lang
 
   class << self
-    # Returns *only* a canonical language name; doesn't create an object.
-    # This is just a wrapper for the rather complex ::solicit_languages_from_user.
-    # Might not be necessary. Always returns the name of a language.
-    def pick_language_name(current)
-      puts "SET LANGUAGE:"
-      solicit_languages_from_user(current)
-    end
-
     # Extracts from user answers that result in the name of the task's language.
     # Requires a string identifying the current language.
-    def solicit_languages_from_user(current=$lang_defaults.name)
+    def solicit_languages_from_user(prompt, current=$lang_defaults.name)
       default = $lang_defaults.name
       # Show user language.
       if default != current
@@ -38,8 +30,9 @@ class Lang
       available_langs.each_with_index {|l,i| print "(#{i+1}) #{l[:name]} "}
       puts "\n"
       # Solicit new language.
-      puts "Enter the number of a language to switch to or <Enter> for current."
-      langnum = get_user_command('c')
+      puts "Enter the number of a language; <Enter> for current; or [q]uit."
+      langnum = get_user_command(prompt)
+      (return nil) if langnum == 'q'
       (return current) if langnum == ''
       langnum = langnum.to_i - 1 # -1 to compensate for +1 above.
       # Use default if number not listed.

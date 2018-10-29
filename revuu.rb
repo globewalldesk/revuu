@@ -155,8 +155,8 @@ NEWBIE
   def choose_default_language
     puts "OK, let's choose a default language."
     default = $lang_defaults.name ? $lang_defaults.name : 'Other'
-    new_default = Lang.solicit_languages_from_user(default)
-    if new_default != default
+    new_default = Lang.solicit_languages_from_user('p', default)
+    if (new_default && new_default != default)
       update_settings_file({'lang' => new_default})
       $lang_defaults = Lang.new(new_default)
       puts "Saved #{$lang_defaults.name} as the default language."
