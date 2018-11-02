@@ -7,23 +7,29 @@ module TasklistView
       print "   "
       puts "Filtered by '#{@default_tag}'".colorize(background: :green)
     end
-    printf("%5s | %-47s| %-20s\n", 'ID', 'Instructions (first line)', 'Due date')
+    printf("%2s | %-49s| %-21s\n", ' #', 'Instructions (first line)', 'Due date')
     puts separator = '=' * 75
     # If the TaskList knows that the user has successfully searched for a tag,
     # then display the search results here.
     list = (@default_tag ? @tag_filtered_list : @list)
     list.sort!{|x,y| DateTime.parse(x.next_review_date) <=>
         DateTime.parse(y.next_review_date)}
+    @displayed_tasks = []
     if ! list.empty?
       pindex = (@pagination_num - 1) * 10 # The array index to copy from.
       list = list[pindex, 10]
-      list[0..10].each do |task|
+      list[0..10].each_with_index do |task, i|
+        @displayed_tasks[i] = task # Used in switching to task view for a task.
         # Grab the first 45 characters of the first line of @instructions.
         # First, add the language in parens and calculate how much space this takes up.
         instr = '(' + task.lang + ') '
-        limit = 45 - instr.length # Subtract length of the parenthetical addition from title
-        instr = instr + task.instructions[0..limit].split("\n")[0]
-        line = sprintf("%5s | %-47s| %-20s", task.id, instr,
+        limit = 47 - instr.length # Subtract length of the parenthetical addition from title
+        # Prepare '...' at end of string if nec.
+        line_1 = task.instructions.split("\n")[0][0..limit]
+        task_str = line_1 == task.instructions.split("\n")[0] ?
+          line_1 : line_1[0..-4] + '...'
+        instr = instr + task_str
+        line = sprintf("%2s | %-49s| %-21s", i, instr,
           prettify_timestamp(task.next_review_date))
         puts(colored ? line.colorize(:color => :green) : line)
         colored = !colored
@@ -33,19 +39,15 @@ module TasklistView
     end
     puts separator
     show_pagination_string
-    puts help
-    puts ''
-  end
-
-  def help
     ast = $unsaved_changes ? '*' : ''
-    <<-HELP
+    puts <<~HELP
 
-Commands are:
-[n]ew task  [1] review/edit task #1  [l]ist all tasks
-show ne[x]t  [d]elete task  [t]ag search  [a]rchive data#{ast}
-set text [e]ditor  set [p]rogramming language  [de]stroy  [h]elp
-HELP
+    Commands are:
+    [n]ew task  [1] review/edit task #1  [l]ist all tasks
+    show ne[x]t  [d]elete task  [t]ag search  [a]rchive data#{ast}
+    set text [e]ditor  set [p]rogramming language  [de]stroy  [h]elp
+
+    HELP
   end
 
   # Get search term (tag) from user.

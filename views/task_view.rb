@@ -53,9 +53,22 @@ module TaskView
   end
 
   def get_tags_from_user
-    get_input(type: 'Tags', prompt:
-      "INPUT TAGS:\nOn the next screen, you'll input tags, separated by commas (optional).",
-      required: false)
+    tag_decision = nil
+    loop do
+      puts "Edit tags (you can do this later)?"
+      puts "<Enter> for [y]es, [n]o, or [q]uit."
+      tag_decision = get_user_command('n')
+      break if ('ynq'.include? tag_decision || tag_decision == '')
+    end
+    return 'q' if tag_decision == 'q'
+    tag_decision = (tag_decision == 'y' || tag_decision == '') ? true : false
+    if tag_decision
+      get_input(type: 'Tags', prompt:
+        "Edit tags on the next screen; language-related tags are added automatically.",
+        required: false)
+    else
+      nil
+    end
   end
 
   def get_initial_score_from_user
@@ -75,20 +88,28 @@ module TaskView
     puts '=' * 75
     date = DateTime.parse(@date_started).strftime("%-m/%-d/%Y")
     starter_string = @starter ? '*Yes*' : 'No'
-    printf("  ID: %d   Started: %-10s   Reviews: %d   Score: %s   Starter: #{starter_string}\n",
+    printf("  ID: %d  Started: %-10s  Reviews: %d  Score: %s  Starter: #{starter_string}\n",
       @id, date, @all_reviews.length, @score)
     last_date_timestamp = @all_reviews.empty? ?
       nil : @all_reviews.max_by {|r| r['review_date']}['review_date']
     last_precise_date = last_date_timestamp ?
       DateTime.parse(last_date_timestamp).strftime("%-m/%-d/%Y") : 'none yet'
+    last_time = last_date_timestamp ? DateTime.parse(last_date_timestamp).
+      strftime(" %H:%M") : ''
     next_precise_date = DateTime.parse(@next_review_date).
       strftime("%-m/%-d/%Y")
-    puts "  Review dates >>  Last: #{last_precise_date}   Next: #{next_precise_date} (#{prettify_timestamp(@next_review_date)})"
-    puts "\nCOMMANDS  Review: [s]ave review  [a]nswer  [r]un answer  [h]elp"
-    puts   "                  [o]ld answers  [rr]un old answers  [c]onfigure language"
-    puts   "            Edit: [i]nstructions  [t]ags  [d]ate of next review  [sc]ore"
-    puts   "                  [st]arter code"
-    puts   "            Also: re[f]resh view  [q]uit review and editing\n\n"
+    default_tag_count = @langhash.lang_alts.length + 1 # +1 for the lang name.
+    tag_str = "(#{@tags.length - default_tag_count})"
+    puts <<~DISPLAYDATA
+      Review dates >> Last: #{last_precise_date}#{last_time}  Next: #{next_precise_date} (#{prettify_timestamp(@next_review_date)})
+
+    COMMANDS  Review: [s]ave review  [a]nswer  [r]un answer  [h]elp
+                      [o]ld answers  [rr]un old answers  [c]onfigure language
+                Edit: [i]nstructions  [t]ags#{tag_str}  [d]ate of next review
+                      [sc]ore  [st]arter code
+                Also: re[f]resh view  [q]uit review and editing
+
+    DISPLAYDATA
   end
 
   def get_score(prompt)

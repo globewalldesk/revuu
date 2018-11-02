@@ -8,7 +8,7 @@ module Helpers
   end
 
   def header
-    puts sprintf("%-69s%s", " * R * E * V * U * U *",  "v. 2.3").
+    puts sprintf("%-69s%s", " * R * E * V * U * U *",  "v. 2.4").
       colorize(:color => :black, :background => :white)
     puts "\n"
   end
@@ -82,14 +82,16 @@ module Helpers
     newlines = []
     line = ''
     word_array = text.split(/\s+/)
-    word_array.each do |word|
+    puts word_array
+    word_array.each_with_index do |word,i|
       # See if this word can be added to a line.
       if (line + " " + word).length >= width
         newlines << line + " "
         line = word + " "
+        newlines << line if i + 1 == word_array.length
       else
         line += word + " "
-        newlines << line if word == word_array.last
+        newlines << line if i + 1 == word_array.length
       end
     end
     newlines.join("\n")

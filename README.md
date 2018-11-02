@@ -172,8 +172,12 @@ out the content of `data/` and encouraging user to use sample data. Also,
 experimentally changed (shortened) the spaced repetition intervals, since they
 had been too long for me.
 
-### 2.4
+### 2.4 (November 1, 2018)
+Misc bug fixes and improvements:
 
 Adjusted spaced repetition intervals again. Cleaned up datafile (`tasks.json`),
 which had been needlessly saving calculated attributes, reducing file size by
-22%. Improvements to UX when adding tasks (allowing user to quit).
+22%. Improvements to UX when adding tasks (allowing user to quit). Finally
+fixed three bugs with the wrapping method. Added time to the last reviewed
+date. Added # of tags to task view screen. Since my task IDs have entered three
+digits, I hid them and replaced them with 0-9 in the task list view.

@@ -1,7 +1,7 @@
 ###############################################################################
 class TaskList
-  attr_accessor :list, :default_tag, :tag_filtered_list, :pagination_num,
-    :old_tag, :tag_hash
+  attr_accessor :list, :displayed_tasks, :default_tag, :tag_filtered_list,
+    :pagination_num, :old_tag, :tag_hash
   def initialize
     @list = []
     @tasklist_filter = 'all'
@@ -71,8 +71,8 @@ class TaskList
   end
 
   # Given an integer, return a task from the tasklist.
-  def validate_edit_request(num)
-    @list.find {|t| t.id == num }
+  def fetch_task_from_displayed_number(num)
+    @displayed_tasks[num]
   end
 
   def prepare_hash_of_tag_arrays

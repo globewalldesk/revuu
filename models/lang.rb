@@ -43,7 +43,7 @@ class Lang
       return available_langs[langnum][:name]
     end
 
-    # Accessor for @@defined_langs; for use by Task::validate_tags.
+    # Accessor for @@defined_langs; for use by Task::prep_tags.
     def defined_langs
       @@defined_langs
     end
@@ -79,7 +79,7 @@ class Lang
 
   # Lang objects expose language data as in a hash.
   attr_accessor :name, :ext, :cmd, :cmnt, :cmd2, :cmnt2, :one_main_per_file,
-    :alts, :spacer
+    :alts, :lang_alts, :spacer
 
   def initialize(lang_name)
     l = fetch_lang_hash_from_name_cmd(lang_name)

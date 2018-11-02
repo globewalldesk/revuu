@@ -4,6 +4,7 @@ class Task
 
   class << self
     # Prepares data for new task.
+    # REFACTORING NOTES: desperately needs refactoring for consistency.
     def generate_new_task
       clear_screen
       # Get language from user; returns a canonical, approved name for saving.
@@ -24,10 +25,11 @@ class Task
       starter = starter_code_sequence(starter_arg)
       return nil if starter == 'q'
       # Get tags from user. Arrives as string.
-      tags = get_tags_from_user # <-- needs a lot of work/refactoring
+      puts "\nINPUT TAGS:"
+      tags = get_tags_from_user
       return nil if tags == 'q'
-      # Add standard tags and massage tags. Output is an array or 'q'.
-      tags = Task.validate_tags(tags, lang)
+      # Add standard tags and massage tags.
+      tags = Task.prep_tags(tags, lang)
       # Note: tags are not required.
       # Get initial score from user.
       score = get_initial_score_from_user
@@ -38,7 +40,7 @@ class Task
     end # of ::generate_new_task
 
     # Massage user-input tags so standardized. Returns tag array.
-    def validate_tags(tags, lang)
+    def prep_tags(tags, lang)
       # Convert newlines to commas.
       tags.gsub!("\n", ',') if tags
       # Convert user input string, which should be comma-separted, into array.
@@ -199,9 +201,9 @@ class Task
         when 3
           [(interval * 0.5), 4].max.round
         when 4
-          interval * 1.5
+          (interval * 1.5) < 5 ? 5 : interval * 1.5
         when 5
-          interval * 2.0
+          (interval * 2.0) < 7 ? 7 : interval * 2.0
         end
         return DateTime.now + adjust_by
       end

@@ -36,7 +36,7 @@ module ArchivView
     SETARCHIVENAME
     archive_name = nil
     until is_valid?(archive_name)
-      archive_name = get_user_command('a')
+      archive_name = get_user_command('c')
     end
     affix_date_and_ext(archive_name)
   end

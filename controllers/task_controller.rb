@@ -85,9 +85,9 @@ module TaskController
       puts "ERROR: Instructions cannot be blank."
       return nil
     end
-    # Use validation method if field type is tags.
+    # Use tag prep method if field type is tags.
     if field == 'tags'
-      attrib = self.class.validate_tags(attrib, @lang)
+      attrib = self.class.prep_tags(attrib, @lang)
     end
     # In helpers/helpers.rb:
     attrib = wrap_overlong_paragraphs(attrib, @lang.length) if

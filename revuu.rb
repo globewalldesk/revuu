@@ -200,7 +200,7 @@ NEWBIE
       launch_instructions_system
       $tasks.display_tasks  # Redisplay tasklist after returning from help.
     when /\A(\d+)\Z/
-      task = $tasks.validate_edit_request($1.to_i)
+      task = $tasks.fetch_task_from_displayed_number($1.to_i)
       task ? task.edit : (puts "Task not found.")
     when '>', '.'
       $tasks.nav('next')
