@@ -93,7 +93,7 @@ module TasklistView
       # Delete the "page" above the last page that doesn't exist.
       str.gsub!(") #{pnum + 1}", ')')
     end
-    puts("   " + "Nav: " + str)
+    puts("Nav: " + str)
   end
 
   def user_confirms_destruction
@@ -103,15 +103,15 @@ module TasklistView
     if $unsaved_changes
       puts 'ALERT! You have unarchived changes. Do you really want to do this?'
       puts 'Confirm with [y]es; all else quits this function.'
-      command = get_user_command('p')
+      command = get_user_command('de')
       return false unless command == 'y'
     else
       puts "Looks like you're ready; the currently-loaded data has been archived,"
       puts "so it can be easily reloaded from the [a]rchive system."
     end
     # Final confirmation.
-    puts "WARNING! Are you ready to delete all tasks? Press [y]es or [n]o."
-    command = get_user_command('p')
+    puts "WARNING! Are you ready to delete all tasks? LAST WARNING! Press [y]es or [n]o."
+    command = get_user_command('de')
     return command == 'y' # Returns boolean.
   end
 

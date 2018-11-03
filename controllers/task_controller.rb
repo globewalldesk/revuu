@@ -8,7 +8,6 @@ module TaskController
       command = get_user_command('+')
       process_edit_input(command)
     end
-    $tasks.display_tasks
   end
 
   # Given a user command in the Task view, dispatch as appropriate.

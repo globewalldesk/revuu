@@ -181,3 +181,12 @@ which had been needlessly saving calculated attributes, reducing file size by
 fixed three bugs with the wrapping method. Added time to the last reviewed
 date. Added # of tags to task view screen. Since my task IDs have entered three
 digits, I hid them and replaced them with 0-9 in the task list view.
+
+### 2.4
+
+Starting major refactoring in preparation for the big "directory-based tasks"
+feature. Moved main dispatch table to class TaskList; removed $tasks references
+from within TaskList class and modules; included TasklistController and
+TasklistView in TaskList class; removed global inclusion from revuu.rb. Fixed
+very bad (inadvertantly deleted tasks!) bug introduced when switching to 0-9 in
+task list view.

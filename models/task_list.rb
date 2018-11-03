@@ -1,5 +1,7 @@
 ###############################################################################
 class TaskList
+  include TasklistController
+  include TasklistView
   attr_accessor :list, :displayed_tasks, :default_tag, :tag_filtered_list,
     :pagination_num, :old_tag, :tag_hash
   def initialize
@@ -7,6 +9,9 @@ class TaskList
     @tasklist_filter = 'all'
     @pagination_num = 1
     load_all_tasks
+    $tasks = self # class Task needs access for saving etc.
+    display_tasks('first screen')
+    app_loop
   end
 
   def load_all_tasks
@@ -30,8 +35,19 @@ class TaskList
     end
   end
 
+  def app_loop
+    command = nil
+    until command == 'q'
+      command = get_user_command('=')
+      process_input(command)
+    end
+    puts "\nNote, you have unarchived (un-backed up) changes, but your data is saved." if
+      $unsaved_changes
+    puts "Goodbye until next time!"
+  end
+
   def save_tasklist
-    # Convert $tasks.list to JSON.
+    # Convert @list to JSON.
     json = to_json
     # Overwrite datafile.
     File.open("./data/tasks.json", "w") do |f|
@@ -57,9 +73,9 @@ class TaskList
         system("rm -f starters/*")
         # Reload the goods.
         App.load_defaults_from_settings
-        $tasks = TaskList.new
+        TaskList.new
         sleep 1
-        $tasks.display_tasks
+        display_tasks
         # Tell the user if it worked.
         puts "\nAll tasks destroyed.\n\n"
       else
@@ -77,7 +93,7 @@ class TaskList
 
   def prepare_hash_of_tag_arrays
     @tag_hash = {}
-    $tasks.list.each do |task|
+    list.each do |task|
       next unless task.tags
       task.tags.each do |tag|
         @tag_hash[tag] = [] unless @tag_hash[tag]

@@ -82,7 +82,6 @@ module Helpers
     newlines = []
     line = ''
     word_array = text.split(/\s+/)
-    puts word_array
     word_array.each_with_index do |word,i|
       # See if this word can be added to a line.
       if (line + " " + word).length >= width
@@ -97,18 +96,25 @@ module Helpers
     newlines.join("\n")
   end
 
-  # Accepts a hash (e.g., {'lang' => 'C'}) & overwrites settings file with it.
-  def update_settings_file(args)
-    ensure_there_is_a_default_settings_file
+  # Load the default language and text editor ($lang, $texted).
+  def load_defaults_from_settings
+    initialize_settings_if_necessary
     settings_hash = load_settings_into_hash
-    # Merge new language info into hash.
-    hash_to_write = settings_hash.merge(args)
-    # Write new hash.
-    File.write("./data/settings.json", hash_to_write.to_json)
-  end
-
-  def ensure_there_is_a_default_settings_file
-    `touch ./data/settings.json` unless File.exists? ("./data/settings.json")
+    # Checks if 'lang' key exists. NOTE: REFACTORING SHOULD CREATE ONE.
+    if settings_hash['lang']
+      # Given a programming language name, return a Lang object, stored in a global.
+      $lang_defaults = Lang.new(settings_hash['lang'])
+    end
+    # NOTE: WHEN REFACTORING, expand the following in case this setting is lost.
+    # ALSO, ENSURE THAT THE USER STILL HAS THIS TEXT ED AVAILABLE! Require an
+    # alternate if it has come unavailable.
+    if settings_hash['texted']
+      $texted = settings_hash['texted']
+      $textedcmd = $text_editors[$texted]
+    end
+    $last_change = settings_hash['last_change'] if settings_hash['last_change']
+    $unsaved_changes = settings_hash['unsaved_changes'] if settings_hash['unsaved_changes']
+    $last_archive = settings_hash['last_archive'] if settings_hash['last_archive']
   end
 
   # Checks if there is no data/settings.json file. Creates one and populates it
@@ -125,6 +131,21 @@ module Helpers
                       'unsaved_changes' => true }
       File.write(settings_file, ur_settings.to_json)
     end
+  end
+
+
+  # Accepts a hash (e.g., {'lang' => 'C'}) & overwrites settings file with it.
+  def update_settings_file(args)
+    ensure_there_is_a_default_settings_file
+    settings_hash = load_settings_into_hash
+    # Merge new language info into hash.
+    hash_to_write = settings_hash.merge(args)
+    # Write new hash.
+    File.write("./data/settings.json", hash_to_write.to_json)
+  end
+
+  def ensure_there_is_a_default_settings_file
+    `touch ./data/settings.json` unless File.exists? ("./data/settings.json")
   end
 
   # Loads JSON from settings.json into hash, or else returns {}.
@@ -160,5 +181,77 @@ module Helpers
     'Emacs'               => 'emacs',
     'gedit'               => 'gedit'
   }
+
+  def choose_text_editor(choice_required = false)
+    # Display text editors available on the user's system.
+    available_editors = display_list_of_editors_to_user
+    editor_num = nil
+    # Select new editor; two circumstances of doing so:
+    # user is required to choose an editor if none is saved in settings...
+    if choice_required
+      until editor_num.between?(0,available_editors.length)
+        # Let user select new editor.
+        puts "Please select which one you'll use to write answers."
+        editor_num = get_user_command('e') - 1
+        puts "Choose a number between 1 and #{available_editors.length}." unless
+          editor_num.between?(0,available_editors.length)
+      end
+    else # ...or user is simply switching editors. (Can return nil.)
+        puts "Please select which one you'll use to write answers."
+        editor_num = get_user_command('e').to_i - 1
+        unless editor_num.between?(0,available_editors.length)
+          puts "Sticking with #{$texted}."
+          return nil
+        end
+    end
+    # Reset text editor global ($texted).
+    edname = available_editors[editor_num]
+    puts "OK, you'll use #{edname}."
+    $texted = $text_editors[edname]
+    $textedcmd = $text_editors[edname]
+    update_settings_file({'texted' => edname})
+    # Double-check that editor is still available.
+  end
+
+  # Both compiles a list of available editors and displays them to the user.
+  def display_list_of_editors_to_user
+    puts "Text editors on your system:"
+    width = 0
+    # Actually do the displaying. Note, available_editors is a method.
+    available_editors.each_with_index do |editor,i|
+      item = "(#{i+1}) #{editor} "
+      if item.length + width >= 75
+        puts('')
+        width = 0
+      end
+      width += item.length
+      print item
+    end
+    puts ''
+    return available_editors
+  end
+
+  def available_editors
+    # Given list of text editors, return those available on this system.
+    eds = $text_editors.select do |nm,cmd|
+      `which #{cmd}`.length > 0
+    end
+    eds.keys.sort # Alpha order names and return as array.
+  end
+
+  # After getting a language from Lang::choose_default, saves to defaults.
+  def choose_default_language
+    puts "OK, let's choose a default language."
+    default = $lang_defaults.name ? $lang_defaults.name : 'Other'
+    new_default = Lang.solicit_languages_from_user('p', default)
+    if (new_default && new_default != default)
+      update_settings_file({'lang' => new_default})
+      $lang_defaults = Lang.new(new_default)
+      puts "Saved #{$lang_defaults.name} as the default language."
+    else
+      puts "Sticking with #{default}."
+    end
+  end
+
 
 end

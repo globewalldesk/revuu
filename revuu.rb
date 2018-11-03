@@ -11,12 +11,10 @@ include HelpHelper
 # CONTROLLERS
 Dir["./controllers/*.rb"].each {|file| require file }
 include TaskController
-include TasklistController
 include ArchivController
 # VIEWS
 Dir["./views/*.rb"].each {|file| require file }
 include TaskView
-include TasklistView
 include ArchivView
 # MODELS (all are classes so don't need to be 'include'-ed)
 Dir["./models/*.rb"].each {|file| require file}
@@ -25,40 +23,11 @@ Dir["./models/*.rb"].each {|file| require file}
 # Program wrapper object
 class App
 
-  class << self
-    def load_data
-      load_defaults_from_settings
-      $tasks = TaskList.new
-    end
-
-    # Load the default language and text editor ($lang, $texted).
-    def load_defaults_from_settings
-      initialize_settings_if_necessary
-      settings_hash = load_settings_into_hash
-      # Checks if 'lang' key exists. NOTE: REFACTORING SHOULD CREATE ONE.
-      if settings_hash['lang']
-        # Given a programming language name, return a Lang object, stored in a global.
-        $lang_defaults = Lang.new(settings_hash['lang'])
-      end
-      # NOTE: WHEN REFACTORING, expand the following in case this setting is lost.
-      # ALSO, ENSURE THAT THE USER STILL HAS THIS TEXT ED AVAILABLE! Require an
-      # alternate if it has come unavailable.
-      if settings_hash['texted']
-        $texted = settings_hash['texted']
-        $textedcmd = $text_editors[$texted]
-      end
-      $last_change = settings_hash['last_change'] if settings_hash['last_change']
-      $unsaved_changes = settings_hash['unsaved_changes'] if settings_hash['unsaved_changes']
-      $last_archive = settings_hash['last_archive'] if settings_hash['last_archive']
-    end
-  end
-
   def initialize
     system("clear")
     start_text
-    self.class.load_data
-    $tasks.display_tasks('first screen')
-    app_loop
+    load_defaults_from_settings
+    TaskList.new
   end
 
   def start_text
@@ -92,133 +61,6 @@ You're new to Revuu! Press 'n' to add your first task. Choose your text
 editor with 'e' and your default programming language with 'p'. For a
 general introduction and detailed instructions, press 'h'.
 NEWBIE
-  end
-
-  def choose_text_editor(choice_required = false)
-    # Display text editors available on the user's system.
-    available_editors = display_list_of_editors_to_user
-    editor_num = nil
-    # Select new editor; two circumstances of doing so:
-    # user is required to choose an editor if none is saved in settings...
-    if choice_required
-      until editor_num.between?(0,available_editors.length)
-        # Let user select new editor.
-        puts "Please select which one you'll use to write answers."
-        editor_num = get_user_command('e') - 1
-        puts "Choose a number between 1 and #{available_editors.length}." unless
-          editor_num.between?(0,available_editors.length)
-      end
-    else # ...or user is simply switching editors. (Can return nil.)
-        puts "Please select which one you'll use to write answers."
-        editor_num = get_user_command('e').to_i - 1
-        unless editor_num.between?(0,available_editors.length)
-          puts "Sticking with #{$texted}."
-          return nil
-        end
-    end
-    # Reset text editor global ($texted).
-    edname = available_editors[editor_num]
-    puts "OK, you'll use #{edname}."
-    $texted = $text_editors[edname]
-    $textedcmd = $text_editors[edname]
-    update_settings_file({'texted' => edname})
-    # Double-check that editor is still available.
-  end
-
-  # Both compiles a list of available editors and displays them to the user.
-  def display_list_of_editors_to_user
-    puts "Text editors on your system:"
-    width = 0
-    # Actually do the displaying. Note, available_editors is a method.
-    available_editors.each_with_index do |editor,i|
-      item = "(#{i+1}) #{editor} "
-      if item.length + width >= 75
-        puts('')
-        width = 0
-      end
-      width += item.length
-      print item
-    end
-    puts ''
-    return available_editors
-  end
-
-  def available_editors
-    # Given list of text editors, return those available on this system.
-    eds = $text_editors.select do |nm,cmd|
-      `which #{cmd}`.length > 0
-    end
-    eds.keys.sort # Alpha order names and return as array.
-  end
-
-  # After getting a language from Lang::choose_default, saves to defaults.
-  def choose_default_language
-    puts "OK, let's choose a default language."
-    default = $lang_defaults.name ? $lang_defaults.name : 'Other'
-    new_default = Lang.solicit_languages_from_user('p', default)
-    if (new_default && new_default != default)
-      update_settings_file({'lang' => new_default})
-      $lang_defaults = Lang.new(new_default)
-      puts "Saved #{$lang_defaults.name} as the default language."
-    else
-      puts "Sticking with #{default}."
-    end
-  end
-
-  def app_loop
-    command = nil
-    until command == 'q'
-      command = get_user_command('=')
-      process_input(command)
-    end
-    puts "\nNote, you have unarchived (un-backed up) changes, but your data is saved." if
-      $unsaved_changes
-    puts "Goodbye until next time!"
-  end
-
-  # REFACTOR: Move to tasklist_controller.rb, probably.
-  def process_input(command)
-    case command
-    when 'n'
-      task = Task.generate_new_task
-      puts task ? "New task saved." :
-        "Task input abandoned or failed."
-    when 'l'
-      $tasks.clear_tag_search
-      $tasks.display_tasks
-    when 'd'
-      $tasks.delete
-    when 't'
-      $tasks.tag_search
-    when 'e'
-      choose_text_editor
-    when 'p'
-      choose_default_language
-    when 'a'
-      Archiv.launch_archive_system
-    when 'h'
-      launch_instructions_system
-      $tasks.display_tasks  # Redisplay tasklist after returning from help.
-    when /\A(\d+)\Z/
-      task = $tasks.fetch_task_from_displayed_number($1.to_i)
-      task ? task.edit : (puts "Task not found.")
-    when '>', '.'
-      $tasks.nav('next')
-    when '<', ','
-      $tasks.nav('back')
-    when '>>', '..'
-      $tasks.nav('end')
-    when '<<', ',,'
-      $tasks.nav('top')
-    when 'x'
-      $tasks.show_next_item
-    when 'de'
-      $tasks.destroy_all
-    when 'q'
-      return
-    else
-      puts 'Huh?' unless command == 'q'
-    end
   end
 
 end
