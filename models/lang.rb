@@ -8,8 +8,8 @@ class Lang
   class << self
     # Extracts from user answers that result in the name of the task's language.
     # Requires a string identifying the current language.
-    def solicit_languages_from_user(prompt, current=$lang_defaults.name)
-      default = $lang_defaults.name
+    def solicit_languages_from_user(prompt, current)
+      default = $lang_defaults ? $lang_defaults.name : 'Other'
       # Show user language.
       if default != current
         puts "Default language is #{default}; the current language is #{current}."

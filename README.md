@@ -185,8 +185,10 @@ digits, I hid them and replaced them with 0-9 in the task list view.
 ### 2.4
 
 Starting major refactoring in preparation for the big "directory-based tasks"
-feature. Moved main dispatch table to class TaskList; removed $tasks references
-from within TaskList class and modules; included TasklistController and
-TasklistView in TaskList class; removed global inclusion from revuu.rb. Fixed
-very bad (inadvertantly deleted tasks!) bug introduced when switching to 0-9 in
-task list view.
+feature. Moved main dispatch table to class `TaskList`; removed `$tasks`
+references from within `TaskList` class and modules; included
+`TasklistController` and `TasklistView` in `TaskList` class; removed global
+inclusion from revuu.rb. Fixed very bad (inadvertantly deleted tasks!) bug
+introduced when switching to 0-9 in task list view. Thoroughly refactored
+revuu.rb, settings methods (now located in settings_helper.rb), and added
+edge case logic for missing settings.

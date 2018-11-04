@@ -1,7 +1,7 @@
 module TasklistController
 
   def process_input(command)
-    case command
+    case command.downcase
     when 'n'
       task = Task.generate_new_task
       puts task ? "New task saved." : "Task input abandoned or failed."

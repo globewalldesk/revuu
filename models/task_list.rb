@@ -2,8 +2,10 @@
 class TaskList
   include TasklistController
   include TasklistView
-  attr_accessor :list, :displayed_tasks, :default_tag, :tag_filtered_list,
-    :pagination_num, :old_tag, :tag_hash
+  attr_accessor :list
+  # These might not need accessors; I'm just listing them for clarity.
+  attr_reader :displayed_tasks, :default_tag, :tag_filtered_list, :old_tag,
+    :tag_hash, :pagination_num
   def initialize
     @list = []
     @tasklist_filter = 'all'

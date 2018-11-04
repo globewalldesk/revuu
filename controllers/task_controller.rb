@@ -12,7 +12,7 @@ module TaskController
 
   # Given a user command in the Task view, dispatch as appropriate.
   def process_edit_input(command)
-    case command
+    case command.downcase
     when 's' # Record information about review.
       record_review
     when 'a' # See Answer module for this and many of the next features.

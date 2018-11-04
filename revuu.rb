@@ -6,8 +6,9 @@ Bundler.require(:default)
 Dir["./helpers/*.rb"].each {|file| require file }
 include Helpers
 include DatePrettifier
-include LanguageHelper
 include HelpHelper
+include SettingsHelper
+include WrappingHelper
 # CONTROLLERS
 Dir["./controllers/*.rb"].each {|file| require file }
 include TaskController
@@ -16,7 +17,7 @@ include ArchivController
 Dir["./views/*.rb"].each {|file| require file }
 include TaskView
 include ArchivView
-# MODELS (all are classes so don't need to be 'include'-ed)
+# MODELS (all are classes)
 Dir["./models/*.rb"].each {|file| require file}
 
 ###############################################################################
@@ -26,41 +27,42 @@ class App
   def initialize
     system("clear")
     start_text
-    load_defaults_from_settings
-    TaskList.new
+    load_defaults_from_settings # Assigns a number of settings globals.
+    TaskList.new # Exiting this means the end of app process.
   end
 
   def start_text
-    wd = 75
+    wd = 75 # Standard line width, could be made into a global.
     logo = "* R * E * V * U * U *"
     start = logo.center(wd)
+    # Center the logo.
     line = ('=' * logo.length).center(wd)
-    start = line + "\n" + start + "\n" + line
-    start = "\n\n\n" + start + "\n\n\n"
-    start += intro
-    # If no tasks, orient user. Note, 'help' method is in tasklist_view.rb.
-    start += (new_user_text + help + "\n") unless
-      File.exist?("./data/tasks.json")
-    puts start
+    # Introductory padding and text on startup.
+    puts "\n\n\n" + line + "\n" + start + "\n" + line + "\n\n\n" + intro
+    # NB if no tasks, orient user. Note, 'help' method is in tasklist_view.rb.
+    puts (new_user_text + help + "\n") unless File.exist?("./data/tasks.json")
   end
 
+  # Shown to everyone, only on startup.
   def intro
-    intro = <<ENDINST
-Revuu is a Ruby command line app to help you organize practical reviews of
-programming tasks that you want to learn. You can add problems, solve them
-with your favorite text editor, run the resulting script in Revuu, record
-that you've done a review, and schedule more for the future. The developer
-finds it to be a handy way to learn and solidify easy-to-forget skills.
+    intro = <<~ENDINST
+    Revuu is a Ruby command line app to help you organize practical reviews of
+    programming tasks that you want to learn. You can add problems, solve them
+    with your favorite text editor, run the resulting script in Revuu, record
+    that you've done a review, and schedule more for the future. The developer
+    finds it to be a handy way to learn and solidify easy-to-forget skills.
 
-ENDINST
+    ENDINST
   end
 
+  # Shown only if user has no tasks loaded.
   def new_user_text
-    newbie = <<NEWBIE
-You're new to Revuu! Press 'n' to add your first task. Choose your text
-editor with 'e' and your default programming language with 'p'. For a
-general introduction and detailed instructions, press 'h'.
-NEWBIE
+    newbie = <<~NEWBIE
+    No tasks are loaded! Press 'n' to add your first task or press 'a' to load
+    a task list from the archive. Choose your text editor with 'e' and your
+    default programming language with 'p'. For a general introduction and
+    detailed instructions, press 'h'.
+    NEWBIE
   end
 
 end
