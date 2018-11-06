@@ -1,22 +1,22 @@
 module TasklistView
 
-  def display_tasks(first_screen=nil)
+  def display_tasks(first_screen=nil, message='')
     clear_screen unless first_screen
     colored = false
-    if @default_tag
+    if @filter_tag
       print "   "
-      puts "Filtered by '#{@default_tag}'".colorize(background: :green)
+      puts "Filtered by '#{@filter_tag}'".colorize(background: :green)
     end
     printf("%2s | %-49s| %-21s\n", ' #', 'Instructions (first line)', 'Due date')
     puts separator = '=' * 75
     # If the TaskList knows that the user has successfully searched for a tag,
     # then display the search results here.
-    list = (@default_tag ? @tag_filtered_list : @list)
+    list = (@filter_tag ? @tag_filtered_list : @list)
     list.sort!{|x,y| DateTime.parse(x.next_review_date) <=>
         DateTime.parse(y.next_review_date)}
     @displayed_tasks = []
     if ! list.empty?
-      pindex = (@pagination_num - 1) * 10 # The array index to copy from.
+      pindex = (@page_num - 1) * 10 # The array index to copy from.
       list = list[pindex, 10]
       list[0..10].each_with_index do |task, i|
         @displayed_tasks[i] = task # Used in switching to task view for a task.
@@ -48,25 +48,26 @@ module TasklistView
     set text [e]ditor  set [p]rogramming language  [de]stroy  [h]elp
 
     HELP
+    puts message unless (message == '' || message == nil)
   end
 
-  # Get search term (tag) from user.
+  # Get search term (tag) from user. RF
   def get_search_tag_from_user
-    default_text = @old_tag.nil? ? '' :
-      " (<enter> for '#{@old_tag}')"
+    default_text = @default_tag.nil? ? '' :
+      " (<enter> for '#{@default_tag}')"
     puts "Enter tag#{default_text}."
-    get_user_command('t')   # Used as 'tag' in controller.
+    get_user_command('t')
   end
 
-  # Given @list (or @tag_filtered_list) & @pagination_num, prepare (mostly) and
+  # Given @list (or @tag_filtered_list) & @page_num, prepare (mostly) and
   # show a string, e.g.: [<<]top [<]back ...5 (6) 7... next[>] end[>>]
   def show_pagination_string
     # Set 'list' equal to the tag-filtered list if a tag search is in use.
-    list = @default_tag ? @tag_filtered_list : @list
+    list = @filter_tag ? @tag_filtered_list : @list
     # No pagination at all if list.length < 10.
     return '' if list.length < 10
-    pnum = @pagination_num.dup         # The page number the user is on.
-    last_pg = get_last_page(list)
+    pnum = @page_num.dup         # The page number the user is on.
+    last_pg = calculate_last_page_number(list)
     on_first = (pnum == 1 ? true : false)
     on_last = (pnum == last_pg ? true : false)
     # Print page number plus surrounding pages; remove stuff from this as nec.
@@ -94,6 +95,14 @@ module TasklistView
       str.gsub!(") #{pnum + 1}", ')')
     end
     puts("Nav: " + str)
+  end
+
+  def confirm_delete
+    print "WARNING! CANNOT UNDO!\nType number of task to delete: "
+    num = gets.chomp.to_i
+    # Receives back a message for the user or false if delete not successful.
+    message = delete_task(num)
+    return message
   end
 
   def user_confirms_destruction

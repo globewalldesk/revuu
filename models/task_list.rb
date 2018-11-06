@@ -1,21 +1,26 @@
 ###############################################################################
+# TaskLists contain, most importantly, a sorted array of tasks and come with
+# various helpers for CRUD functions with respect to tasks, although the
+# actual display and editing of tasks is handled by class Task. RF
 class TaskList
   include TasklistController
   include TasklistView
   attr_accessor :list
   # These might not need accessors; I'm just listing them for clarity.
-  attr_reader :displayed_tasks, :default_tag, :tag_filtered_list, :old_tag,
-    :tag_hash, :pagination_num
+  attr_reader :displayed_tasks, :tag_filtered_list, :filter_tag, :default_tag,
+    :page_num
   def initialize
     @list = []
     @tasklist_filter = 'all'
-    @pagination_num = 1
+    @page_num = 1
     load_all_tasks
-    $tasks = self # class Task needs access for saving etc.
+    $tasks = self # class Task & class Archiv need access for saving etc.
     display_tasks('first screen')
     app_loop
   end
 
+  # Loads contents of tasks.json into an array that is iterated in order to
+  # output @list. RF
   def load_all_tasks
     # Let it work without the datafile existing.
     if (File.exist?("./data/tasks.json") &&
@@ -23,34 +28,20 @@ class TaskList
       file = File.read "./data/tasks.json"
       data = JSON.parse(file)
       task_array = data['tasks']
-      construct_tasks_array(task_array)
-    end
-  end
-
-  def construct_tasks_array(task_array)
-    task_array.each do |task|
-      task_with_symbols = {}
-      task.each {|k,v| task_with_symbols[k.to_sym] = v }
-      @list << Task.new(task_with_symbols)
+      task_array.each do |task|
+        task_with_symbols = {}
+        task.each {|k,v| task_with_symbols[k.to_sym] = v }
+        @list << Task.new(task_with_symbols)
+      end
       @list = @list.sort!{|x,y| DateTime.parse(x.next_review_date) <=>
         DateTime.parse(y.next_review_date)}
     end
   end
 
-  def app_loop
-    command = nil
-    until command == 'q'
-      command = get_user_command('=')
-      process_input(command)
-    end
-    puts "\nNote, you have unarchived (un-backed up) changes, but your data is saved." if
-      $unsaved_changes
-    puts "Goodbye until next time!"
-  end
-
+  # Overwrites tasks.json datafile with the latest tasklist data. RF
   def save_tasklist
     # Convert @list to JSON.
-    json = to_json
+    json = JSON.pretty_generate({"tasks": @list.map{|task| task.to_hash } })
     # Overwrite datafile.
     File.open("./data/tasks.json", "w") do |f|
       f.write(json)
@@ -58,8 +49,38 @@ class TaskList
     save_change_timestamp_to_settings
   end
 
-  def to_json
-    JSON.pretty_generate({"tasks": @list.map{|task| task.to_hash } })
+  # Accepts the display number (NOT ID) of a task and attempts to delete it.
+  # Return info for user about deleted task, or false if unsuccessful. RF
+  def delete_task(num)
+    task = fetch_task_from_displayed_number(num)
+    # Prepare info about the task deleted to send back to user.
+    if @list.delete(task) # Recall that Array#delete returns nil if not found.
+      message = "(#{task.lang}) "
+      message += task.instructions.split("\n")[0][0..20]
+      message += '...' if task.instructions.split("\n")[0][0..20] !=
+                        task.instructions.split("\n")[0]
+      message += " (ID ##{task.id.to_s})"
+      delete_task_files(task)
+      save_tasklist
+      return "Deleted:\n#{message}"
+    else
+      return "'#{num}' not found; nothing deleted."
+    end
+  end
+
+  # Delete any files associated with the task to delete. RF
+  def delete_task_files(task)
+    return nil unless defined?(task.id)
+    ending = "#{task.id}.#{task.langhash.ext}"
+    # Delete current answer.
+    system("rm data/answers/answer_#{ending}") if
+      File.exist? "data/answers/answer_#{ending}"
+    # Delete archive.
+    system("rm data/answers/answer_old_#{ending}") if
+      File.exist? "data/answers/answer_old_#{ending}"
+    # Delete code starter.
+    system("rm data/starters/starter_#{ending}") if
+      File.exist? "data/starters/starter_#{ending}"
   end
 
   # Start over. Delete all data in tasks.json, starters/, and answers/.
@@ -69,58 +90,21 @@ class TaskList
         # Actually perform the file deletions.
         system("rm data/tasks.json")
         system("rm data/settings.json")
-        # Save the user's existing editor and default language in new settings file.
+        # Save the user's old settings in new settings file.
         update_settings_file({lang: $lang_defaults.name, texted: $texted})
         system("rm -f answers/*")
         system("rm -f starters/*")
         # Reload the goods.
-        App.load_defaults_from_settings
+        load_defaults_from_settings
         TaskList.new
-        sleep 1
-        display_tasks
-        # Tell the user if it worked.
-        puts "\nAll tasks destroyed.\n\n"
+        sleep 1 # Pause for dramatic effect.
+        return "All tasks destroyed."
       else
-        puts "\nNothing destroyed. Remember, you can back up your data with [a]rchive.\n\n"
+        return "Nothing destroyed. Remember, you can back up your data with [a]rchive."
       end
     rescue => err
-      puts "\nThere was an error: #{err}\n\n"
+      return "There was an error: #{err}"
     end
-  end
-
-  # Given an integer, return a task from the tasklist.
-  def fetch_task_from_displayed_number(num)
-    @displayed_tasks[num]
-  end
-
-  def prepare_hash_of_tag_arrays
-    @tag_hash = {}
-    list.each do |task|
-      next unless task.tags
-      task.tags.each do |tag|
-        @tag_hash[tag] = [] unless @tag_hash[tag]
-        @tag_hash[tag] << task
-      end
-    end
-  end
-
-  def clear_tag_search
-    @default_tag = nil
-    @tag_filtered_list = []
-  end
-
-  # Given a task list (whole or filtered), calculate and return the last page.
-  def get_last_page(list)
-    last_pg = (list.length/10.0).floor + 1
-    # This gets rid of an empty page when user has multiples of 10.
-    last_pg -= 1 if (list.length/10.0) == (list.length/10)
-    last_pg
-  end
-
-  # Simply loads the next item (i.e., with the earliest review date).
-  def show_next_item
-    list = @default_tag ? @tag_filtered_list : @list
-    list[0].edit
   end
 
 end # of class TaskList

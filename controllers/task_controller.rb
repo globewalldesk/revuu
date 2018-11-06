@@ -8,6 +8,7 @@ module TaskController
       command = get_user_command('+')
       process_edit_input(command)
     end
+    nil # No dispatch table message.
   end
 
   # Given a user command in the Task view, dispatch as appropriate.
@@ -42,7 +43,7 @@ module TaskController
     when 'f'
       display_info
     else
-      puts 'Huh?' unless command == 'q'
+      puts 'Huh?'
     end
   end
 

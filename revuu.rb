@@ -27,8 +27,15 @@ class App
   def initialize
     system("clear")
     start_text
-    load_defaults_from_settings # Assigns a number of settings globals.
-    TaskList.new # Exiting this means the end of app process.
+    # From here you always view the tasklist; if you exit the tasklist while
+    # $view_archive is true, you enter the archive system; otherwise, you quit
+    # the app altogether.
+    loop do
+      $view_archive = false
+      load_defaults_from_settings # Assigns a number of settings globals.
+      TaskList.new
+      $view_archive ? (Archiv.launch_archive_system; clear_screen) : break
+    end
   end
 
   def start_text

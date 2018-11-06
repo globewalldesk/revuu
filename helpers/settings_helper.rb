@@ -57,12 +57,8 @@ module SettingsHelper
       $lang_defaults = Lang.new(settings_hash['lang'])
     else
       puts "LANGUAGE SETTING MISSING."
-      lang = choose_default_language # Saves the language if the user picks one.
-      # If choose_default_language returned a language, it needs to be saved.
-      if lang
-        $lang_defaults = Lang.new(lang)
-        update_settings_file({'lang': $lang_defaults.name})
-      end
+      message = choose_default_language # Saves the language if the user picks one.
+      puts message
     end
   end
 
@@ -98,7 +94,7 @@ module SettingsHelper
       $last_change = DateTime.now.to_s
       settings_to_merge.merge!({'last_change' => $last_change})
     end
-    if settings_hash['unsaved_changes'] != nil
+    if defined? settings_hash['unsaved_changes']
       $unsaved_changes = settings_hash['unsaved_changes']
     else
       # If there isn't an unsaved changes setting, prompt the user to save.
@@ -161,17 +157,15 @@ module SettingsHelper
       puts "Please select which one you'll use to write answers."
       editor_num = get_user_command('e').to_i - 1
       unless editor_num.between?(0,available_editors.length)
-        puts "Sticking with #{$texted}."
-        return nil
+        return "Sticking with #{$texted}."
       end
     end
     # Reset text editor global ($texted).
     edname = available_editors[editor_num]
-    print "OK, you'll use #{edname}.\n\n"
-    $texted = text_editors[edname]
+    $texted = edname
     $textedcmd = text_editors[edname]
     update_settings_file({'texted' => edname})
-    # Double-check that editor is still available.
+    return "OK, you'll use #{edname}."
   end
 
   # Both compiles a list of available editors and displays them to the user.
@@ -211,13 +205,14 @@ module SettingsHelper
     new_default = Lang.solicit_languages_from_user('p', default)
     if (new_default && new_default != default)
       update_settings_file({'lang' => new_default})
-      $lang_defaults = Lang.new(new_defadisplay_list_of_editors_to_userult)
-      print "Saved #{$lang_defaults.name} as the default language.\n\n"
-      return nil #
+      $lang_defaults = Lang.new(new_default)
+      message = "Saved #{$lang_defaults.name} as the default language."
     else
-      print "Sticking with #{default}.\n\n"
-      return default
+      update_settings_file({'lang' => default})
+      $lang_defaults = Lang.new(default)
+      message = "Sticking with #{default}."
     end
+    return message
   end
 
 end

@@ -27,8 +27,9 @@ module ArchivController
         launch_instructions_system
         welcome_to_archive
       when 'q'
-        $tasks.display_tasks
         return
+      else
+        puts 'Huh?'
       end
     end
 
@@ -67,8 +68,6 @@ module ArchivController
       Minitar.unpack(self.archive, "./")
       # Reload the goods, just as App.new does. But REFACTORING PROBLEM: do I really
       # want to be calling #new here?
-      App.load_defaults_from_settings
-      $tasks = TaskList.new
       puts "Done! Quit the archive system to see the newly-loaded archive."
       return true # indicating to #choose_archive_and_load that loading went fine.
     end

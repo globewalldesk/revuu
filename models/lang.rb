@@ -73,6 +73,9 @@ class Lang
         ['command line', 'shell', 'shell scripting', 'Bash scripting', 'Linux',
           'Unix'], spacer: "echo '<--spacer-->'"},
 
+      {name: 'SQL', ext: 'rb', cmd: 'ruby', cmnt: '#', alts: ['postgresql',
+        'psql'], spacer: "puts ''" },
+
       {name: 'Other', ext: 'txt', cmd: 'more', cmnt: '#', alts: [], spacer:
         "\n<--spacer-->\n"}
     ]

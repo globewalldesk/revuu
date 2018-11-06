@@ -191,4 +191,6 @@ references from within `TaskList` class and modules; included
 inclusion from revuu.rb. Fixed very bad (inadvertantly deleted tasks!) bug
 introduced when switching to 0-9 in task list view. Thoroughly refactored
 revuu.rb, settings methods (now located in settings_helper.rb), and added
-edge case logic for missing settings.
+edge case logic for missing settings. Also refactored TaskList class and
+modules, fixing bugs, thereby loading the tasklist instantly (as before),
+making the tasklist UX more consistent, etc.
