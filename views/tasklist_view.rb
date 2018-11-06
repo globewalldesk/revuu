@@ -1,5 +1,6 @@
 module TasklistView
 
+  # START HERE with refactoring
   def display_tasks(first_screen=nil, message='')
     clear_screen unless first_screen
     colored = false
@@ -97,6 +98,7 @@ module TasklistView
     puts("Nav: " + str)
   end
 
+  # Warns user & gets a number to delete from user; returns message. RF
   def confirm_delete
     print "WARNING! CANNOT UNDO!\nType number of task to delete: "
     num = gets.chomp.to_i
@@ -105,21 +107,23 @@ module TasklistView
     return message
   end
 
+  # Simply prompts the user (twice if there's unsaved data) to confirm that
+  # he indeed wants to destroy all task data. RF
   def user_confirms_destruction
     # Explain what's happening.
     puts "\nTo \"destroy\" is to delete all tasks, i.e., erase everything loaded."
     # Get user confirmation or report status if there are unsaved changes.
     if $unsaved_changes
-      puts 'ALERT! You have unarchived changes. Do you really want to do this?'
+      puts "\nALERT! You have unarchived changes. Do you really want to do this?"
       puts 'Confirm with [y]es; all else quits this function.'
       command = get_user_command('de')
       return false unless command == 'y'
     else
-      puts "Looks like you're ready; the currently-loaded data has been archived,"
+      puts "\nLooks like you're ready; the currently-loaded data has been archived,"
       puts "so it can be easily reloaded from the [a]rchive system."
     end
     # Final confirmation.
-    puts "WARNING! Are you ready to delete all tasks? LAST WARNING! Press [y]es or [n]o."
+    puts "\nWARNING! Are you ready to delete all tasks? LAST WARNING! Press [y]es or [n]o."
     command = get_user_command('de')
     return command == 'y' # Returns boolean.
   end

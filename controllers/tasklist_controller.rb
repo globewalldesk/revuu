@@ -7,7 +7,8 @@ module TasklistController
     until command == 'q'
       command = get_user_command('=')
       process_tasklist_input(command)
-      return if $view_archive # Escape from TaskList when user requests archive.
+       # Escape from TaskList when user requests archive or deletes all data.
+      return if $view_archive or $destroyed_data
     end
     puts ''
     puts "You have unarchived (un-backed up) changes, but your data is saved." if
@@ -19,7 +20,7 @@ module TasklistController
   # Typically (not always) redisplays tasks after executing some function. RF
   def process_tasklist_input(command)
     # A 'message' (or nil) is returned by most of these functions, and then
-    # passed off to TasklistView::display_tasks
+    # passed off to TasklistView::display_tasks.
     message = case command.downcase
     when '>', '.'
       nav('next')
@@ -44,15 +45,15 @@ module TasklistController
     when 't'
       tag_search
     when 'a'
-      $view_archive = true # Used in revuu.rb: App#initialize.
+      $view_archive = true # Used in revuu.rb. Exits TaskList.
       return
-    # START HERE--START REVIEWING METHODS USED FROM HERE
     when 'e'
       choose_text_editor
     when 'p'
       choose_default_language
     when 'de'
       destroy_all
+      return if $destroyed_data # Used in revuu.rb. Exits TaskList.
     when 'h', '?'
       launch_instructions_system
     when 'q'
@@ -61,7 +62,7 @@ module TasklistController
       puts 'Huh?'
       no_refresh = true
     end
-    # Note, no_refresh is declared only after 'else' above.
+    # Note, no_refresh is declared only after 'else' just above.
     clear_screen unless no_refresh
     # Note, 'message' is the return value of the 'case' block above.
     display_tasks(false, message) unless no_refresh

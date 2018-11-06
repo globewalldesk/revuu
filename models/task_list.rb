@@ -83,22 +83,26 @@ class TaskList
       File.exist? "data/starters/starter_#{ending}"
   end
 
-  # Start over. Delete all data in tasks.json, starters/, and answers/.
+  # Start over. Delete all data in tasks.json, starters/, and answers/. Results
+  # in a clean install, ready to add new tasks.
   def destroy_all
     begin
       if user_confirms_destruction
         # Actually perform the file deletions.
         system("rm data/tasks.json")
+        puts "tasks.json removed..."
         system("rm data/settings.json")
-        # Save the user's old settings in new settings file.
-        update_settings_file({lang: $lang_defaults.name, texted: $texted})
+        puts "settings.json removed..."
         system("rm -f answers/*")
+        puts "answers/ removed..."
         system("rm -f starters/*")
-        # Reload the goods.
-        load_defaults_from_settings
-        TaskList.new
-        sleep 1 # Pause for dramatic effect.
-        return "All tasks destroyed."
+        puts "starters/ removed..."
+        # The following triggers exit from TaskList loop to App for reloading.
+        $destroyed_data = true
+        puts "All tasks destroyed."
+        print "Press any key to continue..."
+        gets
+        clear_screen
       else
         return "Nothing destroyed. Remember, you can back up your data with [a]rchive."
       end

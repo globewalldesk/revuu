@@ -389,33 +389,18 @@ DESTROY
     {
       title: 'can I save different data repositories separately?',
       content: <<-DIFFREPOS
-Revuu's archive system should allow you to manage your questions about
-different topics (or questions by different people using the same
-system) separately. If you just want to have questions about different
-languages kept separate, just remember that your tasks are tagged
-automatically by language and it's easy to restrict a review session to
-one language or another.
+Revuu's archive system allows you to manage questions from different
+topics (or people) separately. You can restrict a review session to one
+language or another by searching on a language tag.
 
-But if you want different data repos for different topics (or people),
-here's how you'd do it:
-
+To make different data repos for different topics (or people),
 (1) Press 'a' from the task list to go to the archive system, and with
-'c', for 'create archive', save the current data set (assuming it's a
-self-contained data set) *using a tag*. Make sure you use a tag.
+'c', for 'create archive', save the current data set *using a tag*.
+(2) Back in the task view, press 'de' to destroy all the questions.
+(3) Start a new repo. When you're ready to archive it, return to the
+archive system and use a *different* tag from the first.
 
-Then:
-(2a) Return to the task list ('q' for quit from the archive system).
-(2b) Press 'de' to destroy all the questions. Be damn sure you have
-created a tagged archive and that your latest data is saved there.
-(2c) Start a new repo.
-(2d) When you're ready to archive it, return to the archive system and
-use a *different* tag from the first.
-
-Or, if there is already another archive available in the archive system:
-(3a) Press 'l' in the archive system to load the other archive.
-(3b) Exit the archive system (with 'q') and view the other data set.
-
-After that, whenever you want to switch from data set to data set, then:
+Whenever you want to switch from data set to data set, then:
 (4) Go to the archive system with 'a'.
 (5) Press 'c' to create an archive of your latest data and be sure to
 use the CORRECT tag, i.e., the one of the one you're saving.
@@ -431,10 +416,10 @@ to launch it.
 Your live data is saved in the data/ folder, not the archives/ folder.
 When you archive (with 'c' for create archive) your data, you are simply
 making a tarball, a copy, of the data/ folder and placing the copy in
-archives/.
+archives/. Grab it from there to share with others.
 
-When you press 'l' for load archive, you are getting ready to take an
-existing archive (tarball) and making it your live data.
+When you press 'l' for load archive, you are getting ready to make an
+existing archive (tarball) your live data.
 
 If you're new to Revuu, you can check out some sample data by
 (1) pressing 'sa', (2) pressing 'l' and then choosing the sample data
@@ -442,7 +427,7 @@ archive you just imported, then (3) 'q' to quit the archive system.
 From the task list, you can always delete this data en mass with 'de'.
 
 WARNING 1: Please be aware that this will first ERASE any existing live
-data in data/. So do, do make an archive (with 'c').
+data in data/. You can make an archive of your live data with 'c'.
 
 WARNING 2: Overwriting your most recent archive, and permanently losing
 it, is possible if you accidentally load some old data into your data/

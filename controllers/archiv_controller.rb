@@ -23,7 +23,7 @@ module ArchivController
         welcome_to_archive
       when 'sa'
         copy_sample_data
-      when 'h'
+      when 'h', '?'
         launch_instructions_system
         welcome_to_archive
       when 'q'

@@ -18,7 +18,7 @@ module TaskController
       record_review
     when 'a' # See Answer module for this and many of the next features.
       write_answer
-    when 'h'
+    when 'h', '?'
       launch_instructions_system
       display_info # Display the task after returning from help.
     when 'r'

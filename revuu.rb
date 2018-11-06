@@ -28,13 +28,23 @@ class App
     system("clear")
     start_text
     # From here you always view the tasklist; if you exit the tasklist while
-    # $view_archive is true, you enter the archive system; otherwise, you quit
+    # $view_archive is true, you enter the archive system; if you exit while
+    # $destroyed_data is true, you reload the tasklist; otherwise, you quit
     # the app altogether.
     loop do
-      $view_archive = false
-      load_defaults_from_settings # Assigns a number of settings globals.
-      TaskList.new
-      $view_archive ? (Archiv.launch_archive_system; clear_screen) : break
+      # First, we reset globals that might have been set true by the user.
+      $view_archive = false       # Cf. TasklistController dispatch table.
+      $destroyed_data = false     # Cf. TaskList#destroy_all
+      load_defaults_from_settings # Loads/assigns a number of settings globals.
+      TaskList.new                # Contains the main app loop.
+      if $view_archive
+        Archiv.launch_archive_system
+        clear_screen
+      elsif $destroyed_data
+        redo                      # Since the data is now gone, restart.
+      else
+        break
+      end
     end
   end
 
@@ -47,7 +57,7 @@ class App
     # Introductory padding and text on startup.
     puts "\n\n\n" + line + "\n" + start + "\n" + line + "\n\n\n" + intro
     # NB if no tasks, orient user. Note, 'help' method is in tasklist_view.rb.
-    puts (new_user_text + help + "\n") unless File.exist?("./data/tasks.json")
+    puts (new_user_text + "\n") unless File.exist?("./data/tasks.json")
   end
 
   # Shown to everyone, only on startup.
@@ -66,9 +76,10 @@ class App
   def new_user_text
     newbie = <<~NEWBIE
     No tasks are loaded! Press 'n' to add your first task or press 'a' to load
-    a task list from the archive. Choose your text editor with 'e' and your
-    default programming language with 'p'. For a general introduction and
-    detailed instructions, press 'h'.
+    a task list from the archive (where you can find some sample data to play
+    with). Choose your text editor with 'e' and your default programming
+    language with 'p'. For a general introduction and detailed instructions,
+    press 'h'.
     NEWBIE
   end
 
