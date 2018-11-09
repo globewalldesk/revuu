@@ -182,7 +182,8 @@ fixed three bugs with the wrapping method. Added time to the last reviewed
 date. Added # of tags to task view screen. Since my task IDs have entered three
 digits, I hid them and replaced them with 0-9 in the task list view.
 
-### 2.5
+### 2.5 (November 8, 2018)
+Refactored TaskList and new TaskFactory:
 
 Started major refactoring in preparation for the big "directory-based tasks"
 feature. Moved main dispatch table to class `TaskList`; removed `$tasks`
@@ -190,7 +191,11 @@ references from within `TaskList` class and modules; included
 `TasklistController` and `TasklistView` in `TaskList` class; removed global
 inclusion from revuu.rb. Fixed very bad (inadvertantly deleted tasks!) bug
 introduced when switching to 0-9 in task list view. Thoroughly refactored
-revuu.rb, settings methods (now located in settings_helper.rb), and added
-edge case logic for missing settings. Also refactored TaskList class and
-modules, fixing bugs, thereby loading the tasklist instantly (as before),
-making the tasklist UX more consistent, etc.
+revuu.rb, settings methods (now located in settings_helper.rb), and added edge 
+case logic for missing settings. Also refactored `TaskList` class and both 
+modules, fixing bugs, thereby loading the tasklist instantly (as before), 
+making the tasklist UX more consistent, etc. Consolidated `Task` class methods,
+as well as all methods used in creating new tasks, in a brand new 
+task_factory.rb helper (I'm thinking `helpers/` needs to live in `lib/`); also, 
+refactored all task-creation methods.
+

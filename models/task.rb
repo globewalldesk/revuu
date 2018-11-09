@@ -1,64 +1,7 @@
 ###############################################################################
 # The Task class enables the user to input new tasks and do basic task manipulation.
 class Task
-
-  class << self
-    # Prepares data for new task.
-    # REFACTORING NOTES: desperately needs refactoring for consistency.
-    def generate_new_task
-      clear_screen
-      # Get language from user; returns a canonical, approved name for saving.
-      puts "CHOOSE LANGUAGE:"
-      lang = Lang.solicit_languages_from_user('n', $lang_defaults.name)
-      return nil unless lang
-      # Get task instructions from user.
-      instructions = get_input(type: 'Instructions', prompt:
-        "INPUT INSTRUCTIONS:\nOn the next screen, you'll type in the instructions for your new task. ",
-        required: true)         # <-- needs a lot of work/refactoring
-      if instructions == nil or instructions == 'q' # Instructions required.
-        return nil
-      else
-        instructions = wrap_overlong_paragraphs(instructions, lang.length)
-      end
-      # Get starter code; returns some starter code or nil.
-      starter_arg = (lang == 'Java' ? 'Java' : false)
-      starter = starter_code_sequence(starter_arg)
-      return nil if starter == 'q'
-      # Get tags from user. Arrives as string.
-      puts "\nINPUT TAGS:"
-      tags = get_tags_from_user
-      return nil if tags == 'q'
-      # Add standard tags and massage tags.
-      tags = Task.prep_tags(tags, lang)
-      # Note: tags are not required.
-      # Get initial score from user.
-      score = get_initial_score_from_user
-      return nil if score == 'q'
-      # Construct new task!
-      Task.new(instructions: instructions, tags: tags, score: score,
-               lang: lang, starter: starter, saved: false)
-    end # of ::generate_new_task
-
-    # Massage user-input tags so standardized. Returns tag array.
-    def prep_tags(tags, lang)
-      # Convert newlines to commas.
-      tags.gsub!("\n", ',') if tags
-      # Convert user input string, which should be comma-separted, into array.
-      tags = (tags ? tags.split(',').map!(&:strip) : [])
-      # Strip out language tags so you can put 'em in correctly; also, strip empty tags.
-      langs_to_reject = ['JavaScript', 'JS',
-        'Node', 'Node.js', 'Bash', 'command line', 'bash scripting', 'shell',
-        'shell scripting', 'linux', 'Unix', 'Java', 'Ruby', 'C',
-        'C programming language', 'C language', 'Python']
-      # Remove any tags that (case-insensitively) match langs_to_reject.
-      tags.reject! {|tag| langs_to_reject.any? {|l| /\A#{l}\Z/i.match(tag) } }
-      # Making use of an accessor of the Lang class variable 'defined_langs',
-      # first 'find' the hash matching the param 'lang'; return [:alts] value.
-      lang_alts = Lang.defined_langs.find {|l| l[:name] == lang }[:alts]
-      # Put in canonical language tags; splat operators ensure that subarrays aren't created.
-      tags = tags.unshift(*[lang, *lang_alts])
-    end
-  end # Of class methods
+  extend TaskFactory # This prepares the data needed to start a new task.
 
   attr_accessor :instructions, :tags, :score, :saved, :lang, :langhash, :file,
                 :location, :old_file, :old_location, :starter, :starter_location
@@ -66,11 +9,11 @@ class Task
 
   def initialize(args = {})
     args = defaults.merge(args)
-    @instructions = args[:instructions]
+    @lang = args[:lang]
+    @instructions = wrap_overlong_paragraphs(args[:instructions], @lang.length)
     @tags = args[:tags]
     @score = args[:score]
     @saved = args[:saved]
-    @lang = args[:lang]
     @date_started = args[:date_started]
     @next_review_date = args[:next_review_date]
     @all_reviews = args[:all_reviews]
@@ -98,14 +41,10 @@ class Task
   def to_hash
     hash = {}
     self.instance_variables.each do |var|
-      next if var.to_s[1..-1] == 'langhash' # No need to save this object.
-      next if var.to_s[1..-1] == 'starter'  # Ditto for the rest.
-      next if var.to_s[1..-1] == 'file'
-      next if var.to_s[1..-1] == 'location'
-      next if var.to_s[1..-1] == 'old_file'
-      next if var.to_s[1..-1] == 'old_location'
-      next if var.to_s[1..-1] == 'starter_location'
-      next if var.to_s[1..-1] == 'saved'
+      # These attributes don't need to be saved in tasks.json.
+      skip = %w|langhash starter file location old_file old_location
+                starter_location saved|
+      next if skip.include? var.to_s[1..-1]
       hash[var.to_s[1..-1]] = self.instance_variable_get var
     end
     hash
@@ -126,7 +65,7 @@ class Task
   def change_language
     new_lang = Lang.solicit_languages_from_user('c', @lang)
     # Save if new, and tell user if he is now switching languages.
-    if (new_lang && @lang != new_lang)
+    if (new_lang && new_lang != 'q' && @lang != new_lang)
       puts "OK, switching from #{@lang} to #{new_lang}."
       # Save new language instance variables.
       @lang = new_lang
@@ -138,6 +77,14 @@ class Task
     else
       puts "Sticking with #{@lang}."
     end
+  end
+
+  # Adding @id to the class name is necessary here if the code is to be
+  # runnable and if the @id isn't assigned by the factory method. (The
+  # factory method, Task#generate_new_task, only prepares the values
+  # necessary to initialize the object.)
+  def add_id_to_java_starter
+    @starter = @starter.gsub!('answer_ {', "answer_#{@id} {")
   end
 
   private

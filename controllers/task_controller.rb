@@ -100,21 +100,6 @@ module TaskController
     display_info
   end
 
-  # Asks the user if he wants to write some starter code. If so, opens a temp
-  # file in the text editor, then grabs the text when the user gives the OK,
-  # deletes the file, and returns the text (or nil).
-  def starter_code_sequence(java=nil) # Lang needed for file extension.
-    starter_desired = get_starter_code?
-    return 'q' if starter_desired == 'q'
-    if starter_desired
-      get_input(type: 'Starter', required: false, prompt:
-        "Edit the starter code on the next screen.",
-        java: java)
-    else
-      nil
-    end
-  end
-
   # Used only in the "date of next review" command.
   def save_review_date(date)
     @next_review_date = date
@@ -174,24 +159,6 @@ module TaskController
       File.write(@location, '')
       save_change_timestamp_to_settings
     end
-  end
-
-  def java_starter
-    return <<-JAVASTARTER
-public class answer_#{@id} {
-    public static void main(String[] args) {
-        /* do not edit 'answer_<id>' */
-    }
-}
-JAVASTARTER
-  end
-
-  # Adding @id to the class name is necessary here if the code is to be
-  # runnable and if the @id isn't assigned by the factory method. (The
-  # factory method, Task#generate_new_task, only prepares the values
-  # necessary to initialize the object.)
-  def add_id_to_java_starter
-    @starter = @starter.gsub!('answer_ {', "answer_#{@id} {")
   end
 
 end

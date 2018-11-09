@@ -20,3 +20,4 @@ data/starters/*
 !data/starters/.gitkeep
 less
 history
+nohup.out

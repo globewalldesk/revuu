@@ -221,7 +221,7 @@ module SettingsHelper
     puts "OK, let's choose a default language."
     default = $lang_defaults ? $lang_defaults.name : 'Other'
     new_default = Lang.solicit_languages_from_user('p', default)
-    if (new_default && new_default != default)
+    if (new_default && new_default != default && new_default != 'q')
       update_settings_file({'lang' => new_default})
       $lang_defaults = Lang.new(new_default)
       message = "Saved #{$lang_defaults.name} as the default language."

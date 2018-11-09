@@ -122,8 +122,8 @@ Since Revuu ships with a lot of ready-made questions, you should
 probably delete a lot of questions. You can delete all of them simply by
 navigating to /data and there deleting tasks.json (don't delete revuu.rb
 --that's the app). If you want to delete them one at a time, you can do
-so by pressing 'd' and then typing the ID number of the question to
-delete.
+so by pressing 'd' and then typing the number next to the question you
+want to delete.
 
 If you retain any questions, you'll want to change the "next review"
 dates on them. You have to do that one at a time (or I can write a
@@ -182,7 +182,7 @@ ADDTITLE
       content: <<-REVIEWATASK
 Revuu makes it really easy to review a task, i.e., writing a script that
 follows the instructions for a task. Just go to the task view (by
-entering its ID number) and press 'a'.
+entering the number next to it) and press 'a'.
 
 This will open up a file, with a well-chosen filename based on the task
 ID and programming language, using your text editor of choice (remember,
@@ -300,9 +300,10 @@ OLDANSWERS
       title: 'delete a task',
       content: <<-DELETEATASK
 To delete a task, first you have to be on the task list view (the top
-level). Then press 'd' and enter the task ID number. WARNING: there is
-no "are you sure?"-type prompt, so be careful about what number you
-enter. The deleted task and its data will be gone forever; be careful.
+level). Then press 'd' and enter the number next to the task you want to
+delete. WARNING: there is no "are you sure?"-type prompt, so be careful 
+about what number you enter. The deleted task and its data will be gone 
+forever; be careful.
 
 If you just don't want to see a task for a long time, you can always
 view the task and then press 'd' for date and put in something like
@@ -359,14 +360,15 @@ programming language.
 
 As to the language of an individual task, you set it when you create the
 task. But this can be changed at any time from the view page for a
-particular task (if you're not there, just type its ID number from the
-task list). The command is 'c' for configure language.
+particular task (if you're not there, just type the number next to it 
+from the task list). The command is 'c' for configure language.
 CHANGELANGUAGE
     },
     {
       title: 'navigation',
       content: <<-NAVIGATE
-To open a task, type its ID; to go back to the task list, press 'q'.
+To open a task, type the number next to it; to get back to the task 
+list, press 'q'.
 
 To view the next task (the one with the earliest due date), press 'x'
 from the task list (top level) view.

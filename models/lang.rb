@@ -32,8 +32,8 @@ class Lang
       # Solicit new language.
       puts "Enter the number of a language; <Enter> for current; or [q]uit."
       langnum = get_user_command(prompt)
-      (return nil) if langnum == 'q'
-      (return current) if langnum == ''
+      return 'q' if langnum == 'q'
+      return current if langnum == ''
       langnum = langnum.to_i - 1 # -1 to compensate for +1 above.
       # Use default if number not listed.
       if ! available_langs[langnum]
@@ -46,6 +46,16 @@ class Lang
     # Accessor for @@defined_langs; for use by Task::prep_tags.
     def defined_langs
       @@defined_langs
+    end
+
+    # An array of all the language names, plus the alternative names.
+    # Used in the task_factory's tag massager method.
+    def all_lang_names_and_alts(lang)
+      all_names = []
+      l = @@defined_langs.find {|l| lang == l[:name]}
+      all_names << l[:name]
+      all_names.concat(l[:alts]) unless l[:alts].empty?
+      all_names
     end
 
   end # of class methods
