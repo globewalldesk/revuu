@@ -8,7 +8,7 @@ module Helpers
   end
 
   def header
-    puts sprintf("%-69s%s", " * R * E * V * U * U *",  "v. 2.4").
+    puts sprintf("%-69s%s", " * R * E * V * U * U *",  "v. 2.5").
       colorize(:color => :black, :background => :white)
     puts "\n"
   end
