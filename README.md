@@ -198,15 +198,15 @@ references from within `TaskList` class and modules; included
 `TasklistController` and `TasklistView` in `TaskList` class; removed global
 inclusion from revuu.rb. Fixed very bad (inadvertantly deleted tasks!) bug
 introduced when switching to 0-9 in task list view. Thoroughly refactored
-revuu.rb, settings methods (now located in settings_helper.rb), and added edge
-case logic for missing settings. Also refactored `TaskList` class and both
-modules, fixing bugs, thereby loading the tasklist instantly (as before),
+`revuu.rb`, settings methods (now located in settings_helper.rb), and added
+edge case logic for missing settings. Also refactored `TaskList` class and
+both modules, fixing bugs, thereby loading the tasklist instantly (as before),
 making the tasklist UX more consistent, etc. Consolidated `Task` class methods,
 as well as all methods used in creating new tasks, in a brand new
-task_factory.rb helper); also, refactored all task-creation methods.
+`task_factory.rb` helper); also, refactored all task-creation methods.
 
 ### 2.6
 
-Continued refactoring class Task. Renamed helpers/ to lib/. Included
-TaskController and TaskView in class Task, so they're no longer globals.
-Fixed bugs.
+Continued refactoring class `Task`. Renamed `helpers/` to `lib/`. Included
+`TaskController` and `TaskView` in class `Task`, so they're no longer globals.
+Fixed bugs. Very little change in task view and editing functionality.

@@ -162,15 +162,4 @@ module TaskFactory
     return input
   end
 
-  # This is copied into new Java answers. Used throughout class Task.  RF
-  def java_starter
-    return <<~JAVASTARTER
-      public class answer_#{@id} {
-          public static void main(String[] args) {
-              /* do not edit 'answer_<id>' */
-          }
-      }
-      JAVASTARTER
-  end
-
 end
