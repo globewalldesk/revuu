@@ -21,3 +21,4 @@ data/starters/*
 less
 history
 nohup.out
+models/helpers.js
