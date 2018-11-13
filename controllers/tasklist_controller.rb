@@ -1,5 +1,7 @@
 module TasklistController
 
+  private
+
   # This is the top-level app loop. It's here rather than in App because most
   # of its functions concern the Tasklist. RF
   def app_loop
@@ -35,7 +37,7 @@ module TasklistController
       task ? "New task saved." : "Task input abandoned or failed."
     when /\A(\d+)\Z/
       task = fetch_task_from_displayed_number($1.to_i)
-      task ? (task.edit) : "Task not found."
+      task ? (task.launch_task_interface) : "Task not found."
     when 'l'
       prep_to_show_all_tasks # Clears @default_tag and stops filtering.
     when 'x'
@@ -108,7 +110,7 @@ module TasklistController
   # Simply opens the item with the earliest review date to edit. RF
   def edit_next_item
     list = @filter_tag ? @tag_filtered_list : @list
-    list[0].edit
+    list[0].launch_task_interface
     nil # No dispatch table message.
   end
 
@@ -134,7 +136,7 @@ module TasklistController
       @page_num = 1
       # Save sorted array of tasks filtered by this tag.
       @tag_filtered_list = tag_hash[tag_match]
-      return ''
+      return "Filtering by '#{tag}'. Press 'l' to clear filter."
     else
       return "'#{tag}' not found."
     end
@@ -147,7 +149,7 @@ module TasklistController
       next unless task.tags
       task.tags.each do |tag|
         tag_hash[tag] = [] unless tag_hash[tag]
-        tag_hash[tag] << task
+        tag_hash[tag] << task unless tag_hash[tag].include? task
       end
     end
     tag_hash

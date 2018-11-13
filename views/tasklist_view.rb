@@ -1,5 +1,7 @@
 module TasklistView
 
+  private
+
   # Displays a view of (part of) the task list to the user. Uses many methods
   # that only it calls. RF
   def display_tasks(first_screen=nil, message='')

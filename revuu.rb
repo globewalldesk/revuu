@@ -2,20 +2,14 @@ require 'rubygems'
 require 'bundler/setup'
 Bundler.require(:default)
 
-# HELPERS
-Dir["./helpers/*.rb"].each {|file| require file }
-include Helpers
-include DatePrettifier
-include HelpHelper
-include SettingsHelper
-include WrappingHelper
+# LIBRARY/HELPERS
+Dir["./lib/*.rb"].each {|file| require file }
+include Helpers, DatePrettifier, HelpHelper, SettingsHelper, WrappingHelper
 # CONTROLLERS
 Dir["./controllers/*.rb"].each {|file| require file }
-include TaskController
-include ArchivController
+include ArchivController # Need to make these included in class Archiv, not globally.
 # VIEWS
 Dir["./views/*.rb"].each {|file| require file }
-include TaskView
 include ArchivView
 # MODELS (all are classes)
 Dir["./models/*.rb"].each {|file| require file}

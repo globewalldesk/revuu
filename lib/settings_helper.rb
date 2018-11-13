@@ -124,11 +124,17 @@ module SettingsHelper
     update_settings_file(settings_to_merge) unless settings_to_merge.empty?
   end
 
+  # Should be called whenever a task is created or changed. Generates a new 
+  # "last [most recent] change" timestamp as well as a "last archive" which is
+  # set to an arbitrary time before the task is marked as created. These are
+  # used to calculate whether there are unsaved changes. Finally, saves these
+  # three values to settings. RF
   def save_change_timestamp_to_settings
     $last_change = DateTime.now.to_s
     $last_archive = (DateTime.now - 1).to_s unless $last_archive
     $unsaved_changes = DateTime.parse($last_change) > DateTime.parse($last_archive)
     update_settings_file( { 'last_change'     => $last_change,
+                            'last_archive'    => $last_archive,
                             'unsaved_changes' => $unsaved_changes } )
   end
 

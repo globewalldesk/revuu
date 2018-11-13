@@ -1,5 +1,8 @@
 # revuu
-Manage and schedule programming tasks you're learning, improving procedural (as opposed to declarative) knowledge, using spaced repetition methods. Several languages and text editors supported.
+If you are trying to commit a lot of programming techniques to memory, try
+it--you'll like it. Revuu gives you one place to make or copy practical (how-to)
+programming questions, auto-creating and keeping track of answer files, running
+your answers in-app, scheduling reviews automatically, etc.
 
 See [this video introduction](https://youtu.be/rv11AHD8wik).
 
@@ -24,11 +27,13 @@ running the script and seeing the results, and recording that you've done a
 review and that the next review should be done on a certain date. The two basic
 views of the app are a paginated list of tasks and an individual task view.
 
-Currently, we support Ruby, Node.js (JavaScript), Python, Java, C, and Bash scripting. We also support many commonly-used text editors and IDEs.
+Currently, we support Ruby, Node.js (JavaScript), Python, Java, C, and Bash
+scripting. We also support many commonly-used text editors and IDEs.
 
 Add copious, well-chosen tags in order to be able to sort tasks.
 
-Revuu ships with a bunch of pre-made questions (in the "sample data" folder) and answers by way of demonstration.
+Revuu ships with a bunch of pre-made questions (in the "sample data" folder) and
+answers by way of demonstration.
 
 You can now easily import (load) and export (archive, back up, share) your data.
 
@@ -57,23 +62,25 @@ Larry Sanger (yo.larrysanger@gmail.com)
 
 ## Development to do list
 
-* Major improvement would be a feature to let user write and run Rails thangs
-and play with CSS, HTML, and web-based JavaScript.
-* Refactoring/cleanup/editing still needed; begin by cleaning up task creation.
-* Improve an "installation" or "first run" script, allowing the user to select
-default language and default text editor. Think through the flow.
-* Test with Java; write supporting code so it's more feasible to use with Java.
-* Add wrapper code for C? Think about this.
+* Finish major refactoring/cleanup/editing in preparation for directory-based
+tasks.
+* Directory-based tasks: let users do tasks that make changes to Rails apps,
+play with CSS, HTML, and web-based JavaScript, and other directory-based apps.
+* Eventually, distribute files into subdirectories of 100 apiece based on IDs.
+* Add a "sort by date added" or "sort by ID" feature.
+* Make some archive safety improvements/clarifications.
 * Add statistics (number of questions, averages, number overdue, number to do
 today, etc.).
 
-## MVC refactoring notes
+## Programmer notes
+
+If Rubyists want to help out, I'd be very happy.
 
 In order to make the codebase more maintainable, I did a major refactoring. My
-strategy is (1) move the various helper code to "controller" and "view" modules
-associated with "models," although the controller and view code will be in
+strategy was (1) move the various helper code to "controller" and "view"
+modules associated with "models," although the controller and view code are in
 modules rather than classes, (2) starting from the basic classes App, TaskList,
-and Task, I will add a few more classes corresponding to major data-and-method
+and Task, I added a few more classes corresponding to major data-and-method
 groupings, such as Lang and Archiv.
 
 ## Version notes
@@ -191,11 +198,15 @@ references from within `TaskList` class and modules; included
 `TasklistController` and `TasklistView` in `TaskList` class; removed global
 inclusion from revuu.rb. Fixed very bad (inadvertantly deleted tasks!) bug
 introduced when switching to 0-9 in task list view. Thoroughly refactored
-revuu.rb, settings methods (now located in settings_helper.rb), and added edge 
-case logic for missing settings. Also refactored `TaskList` class and both 
-modules, fixing bugs, thereby loading the tasklist instantly (as before), 
+revuu.rb, settings methods (now located in settings_helper.rb), and added edge
+case logic for missing settings. Also refactored `TaskList` class and both
+modules, fixing bugs, thereby loading the tasklist instantly (as before),
 making the tasklist UX more consistent, etc. Consolidated `Task` class methods,
-as well as all methods used in creating new tasks, in a brand new 
-task_factory.rb helper (I'm thinking `helpers/` needs to live in `lib/`); also, 
-refactored all task-creation methods.
+as well as all methods used in creating new tasks, in a brand new
+task_factory.rb helper); also, refactored all task-creation methods.
 
+### 2.6
+
+Continued refactoring class Task. Renamed helpers/ to lib/. Included
+TaskController and TaskView in class Task, so they're no longer globals.
+Fixed bugs.

@@ -1,47 +1,51 @@
 module TaskController
 
-  # Loads data and launches edit view for particular task.
-  def edit
+  # Launches task display for user and prompts for input (e.g., write answer,
+  # save review, run answer, edit instructions, etc.). RF
+  def launch_task_interface
     display_info
     command = ''
     until command == 'q'
       command = get_user_command('+')
       process_edit_input(command)
     end
-    nil # No dispatch table message.
+    nil # No tasklist dispatch table message.
   end
 
-  # Given a user command in the Task view, dispatch as appropriate.
+  # Given a user command in the Task view, dispatch as appropriate. RF
   def process_edit_input(command)
     case command.downcase
     when 's' # Record information about review.
       record_review
-    when 'a' # See Answer module for this and many of the next features.
+    when 'a' # Opens file in your text editor so you can write answer.
       write_answer
-    when 'h', '?'
+    when 'r' # Execute the file you wrote.
+      run_answer
+    when 'h', '?' # Launch help.
       launch_instructions_system
       display_info # Display the task after returning from help.
-    when 'r'
-      run_answer
-    when 'rr'
-      run_answer('old')
-    when 'o'
+    when 'o' # Open file containing old/archived answers for this task.
       view_old_answers
-    when 'c'
+    when 'rr' # Run old answer. No guarantee it will work.
+      run_answer('old')
+    when 'c' # Change language setting for this task.
       self.change_language
-    when 'i' # Edit instructions.
+    when 'i' # Edit instructions for this task.
       edit_field('instructions')
-    when 't' # Edit tags.
+    when 't' # Edit tags for this task.
       edit_field('tags')
-    when 'd' # Edit date of next review (might be based on spaced repetition algorithm).
+    # START HERE -- almost done refactoring Task
+    when 'd' # Edit date of next review (spaced repetition algorithm suggests).
       date = get_next_review_date('d')
       save_review_date(date) if date
-    when 'sc' # Edit score.
+    when 'sc' # Edit score of personal knowledge of this task.
       edit_score
-    when 'st'
+    when 'st' # Open starter code file in text editor & load it when done.
       edit_starter
-    when 'f'
+    when 'f' # Re[f]resh task page. Maybe should be done automatically.
       display_info
+    when 'q' # Quit task view and return to tasklist.
+      return
     else
       puts 'Huh?'
     end
@@ -50,51 +54,18 @@ module TaskController
   def record_review
     puts "Good, you completed a review."
     # Get @score from user.
-    score = get_score('r')
+    score = get_score('r') # User gets one chance; abandons attempt otherwise.
     return unless score
     # Get @next_review_date from user (might be based on spaced repetition algorithm).
     date = get_next_review_date('r', score)
     return unless date
-    # Update current @score.
+    # Update current @score only after date is acceptable.
     @score = score
     # Update @next_review_date.
     @next_review_date = date
     # Save review date and score to @all_reviews.
     @all_reviews << {score: @score, 'review_date' => DateTime.now.to_s}
     # Save updated task data to JSON file.
-    $tasks.save_tasklist
-    # Refresh view.
-    display_info
-  end
-
-  def edit_field(field)
-    # Load current attribute contents into temp file.
-    contents = (field == 'tags' ?
-      (self.instance_variable_get("@#{field}").join(', ') if
-      self.instance_variable_get("@#{field}") ) :
-      self.instance_variable_get("@#{field}") )
-    contents = wrap_overlong_paragraphs(contents) if field == 'tags'
-    File.write("./tmp/#{field}.tmp", contents)
-    # Open file for editing.
-    system("pico tmp/#{field}.tmp")
-    # Save upon closing: grab text.
-    attrib = File.read("./tmp/#{field}.tmp").strip
-    # Strip newlines if tags (otherwise commas are introduced).
-    attrib.gsub!("\n", '') if field == 'tags'
-    if attrib.empty? && field == 'instructions'
-      puts "ERROR: Instructions cannot be blank."
-      return nil
-    end
-    # Use tag prep method if field type is tags.
-    if field == 'tags'
-      attrib = self.class.prep_tags(attrib, @lang)
-    end
-    # In helpers/helpers.rb:
-    attrib = wrap_overlong_paragraphs(attrib, @lang.length) if
-      attrib.class == String
-    # Set instance variable to contents of edited temp file.
-    self.instance_variable_set("@#{field}", attrib)
-    # Save updated instructions to JSON file if you've made it this far.
     $tasks.save_tasklist
     # Refresh view.
     display_info

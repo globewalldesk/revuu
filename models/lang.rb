@@ -96,7 +96,7 @@ class Lang
 
   def initialize(lang_name)
     l = fetch_lang_hash_from_name_cmd(lang_name)
-    # User changes these starting with change_language.
+    # User changes these with Task#change_language.
     @name  = l[:name] # Programming language. Get from/set to settings.json.
     @ext   = l[:ext]                # Filename extension.
     @cmd   = l[:cmd]                # Command to execute (or compile).

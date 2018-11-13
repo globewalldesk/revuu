@@ -1,5 +1,5 @@
 # This module has the main methods needed to compile the data needed to create
-# a new task. It is a mixin (extension) of class Task. 
+# a new task. It is a mixin (extension) of class Task.
 module TaskFactory
 
   # Prepares data for new task.
@@ -9,14 +9,15 @@ module TaskFactory
   # input and offer to skip (sometimes) or to quit. Quitting returns nil. RF
   def generate_new_task
     clear_screen
-    # This is a hash we'll be passing to Task.new, which uses saved: false.
+    # This is a hash we'll be passing to Task.new, which uses saved: false in
+    # order to signal #initialize to populate
     new_task_data = {saved: false}
     lang = '' # Capture lang value when created; used in lambdas below.
     # Create methods array: these are the methods needed to generate task data.
     # Labels correspond to Task attributes.
-    new_task_lambdas = [ 
+    new_task_lambdas = [
       { lang: -> { get_initial_language_from_user } },
-      { instructions: -> { get_instructions_from_user } },
+      { instructions: -> { get_instructions_from_user(lang) } },
       { starter: -> { starter_arg = (lang == 'Java' ? 'Java' : false);
         starter_code_sequence(starter_arg) } },
       { tags: -> { get_tags_from_user(lang) } }
@@ -46,10 +47,12 @@ module TaskFactory
   end
 
   # Just a wrapper for launch_external_input... and instructions. RF
-  def get_instructions_from_user
-    launch_external_input_for_new_task(type: 'Instructions', 
+  def get_instructions_from_user(lang)
+    instructions = launch_external_input_for_new_task(type: 'Instructions',
         prompt: "INPUT INSTRUCTIONS:\nOn the next screen, you'll type in the " +
-        "instructions for your new task. ", required: true)    
+        "instructions for your new task. ", required: true)
+    instructions = (instructions == 'q' || instructions.nil?) ? instructions :
+      wrap_overlong_paragraphs(instructions, lang.length)
   end
 
   # Asks the user if he wants to write some starter code. If so, opens a temp
@@ -113,13 +116,13 @@ module TaskFactory
     tags = (tags ? tags.split(',').map!(&:strip) : [])
     # List = this language name + any alts
     lang_name_variants = Lang.all_lang_names_and_alts(lang)
-    # Remove any tags that (case-insensitively) match langs_to_reject.
-    tags.reject! {|tag| langs_to_reject.any? {|l| /\A#{l}\Z/i.match(tag) } }
+    # Remove any tags that (case-insensitively) match langs to reject.
+    tags.reject! {|tag| lang_name_variants.any? {|l| /\A#{l}\Z/i.match(tag) } }
     # Making use of an accessor of the Lang class variable 'defined_langs',
     # first 'find' the hash matching the param 'lang'; return [:alts] value.
     lang_alts = Lang.defined_langs.find {|l| l[:name] == lang }[:alts]
     # Put in canonical language tags; splat operators ensure that subarrays aren't created.
-    tags.concat(lang_name_variants)
+    lang_name_variants.concat(tags)
   end
 
   # Given a prompt and a test, wring an acceptable answer from the user or let
@@ -152,14 +155,14 @@ module TaskFactory
   def get_input_from_external_file(args)
     tempfile = "tmp/#{args[:type].downcase}.tmp"
     system("rm #{tempfile}") if File.file?(tempfile) # Just to be safe.
-    File.write(tempfile, java_starter) if args[:java]
+    File.write(tempfile, java_starter) if args[:java] # java_starter in TaskView module.
     system("pico #{tempfile}")
     input = File.read(tempfile).strip if File.file?(tempfile)
     system("rm #{tempfile}") if File.file?(tempfile)
-    return input 
+    return input
   end
 
-  # This is copied into new Java answers. Imperfect for various reasons... RF
+  # This is copied into new Java answers. Used throughout class Task.  RF
   def java_starter
     return <<~JAVASTARTER
       public class answer_#{@id} {
