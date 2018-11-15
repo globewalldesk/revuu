@@ -19,14 +19,15 @@ module TasklistView
     puts message unless (message == '' || message == nil)
   end
 
-  # Simply print the first couple lines of the task list (used only by 
+  # Simply print the first couple lines of the task list (used only by
   # #display_tasks). RF
   def print_header_for_tasklist_display
     if @filter_tag
       print "   "
       puts "Filtered by '#{@filter_tag}'".colorize(background: :green)
     end
-    printf("%2s | %-49s| %-21s\n", ' #', 'Instructions (first line)', 'Due date')
+    printf("%2s | %-49s| %-21s\n", ' #', 'Instructions (first line)',
+      'Due date')
     puts separator = '=' * 75
   end
 
@@ -47,7 +48,7 @@ module TasklistView
     colored = true
     list = list[pindex, 10]
     list[0..10].each_with_index do |task, i|
-      @displayed_tasks[i] = task # Used in switching to task view for a task.      
+      @displayed_tasks[i] = task # Used in switching to task view for a task.
       title_str = prepare_title_string(task)
       line = sprintf("%2s | %-49s| %-21s", i, title_str,
         prettify_timestamp(task.next_review_date))
@@ -64,14 +65,14 @@ module TasklistView
     # First, add the language in parens and calculate how much space is left.
     lang_str = '(' + task.lang + ') '
     limit = 47 - lang_str.length # Subtract length of the addition from title.
-    # Prepare '...' at end of string if nec.  
+    # Prepare '...' at end of string if nec.
     line_1 = task.instructions.split("\n")[0][0..limit]
     line_1_avec_dots = line_1 == task.instructions.split("\n")[0] ?
       line_1 : line_1[0..-4] + '...'
-    title_str = lang_str + line_1_avec_dots    
+    title_str = lang_str + line_1_avec_dots
   end
 
-  # From a tasklist array, prepare (mostly) and show a string, e.g.: 
+  # From a tasklist array, prepare (mostly) and show a string, e.g.:
   # [<<]top [<]back ...5 (6) 7... next[>] end[>>]       RF
   def print_pagination_string_for_tasklist_display(list)
     # No pagination at all if list.length < 10.
@@ -113,7 +114,7 @@ module TasklistView
     puts <<~HELPTEXT
 
     Commands are:
-    [n]ew task  [1] review/edit task #1  [l]ist all tasks
+    [n]ew task  new [r]epo task  [1] view task #1  [l]ist all tasks
     show ne[x]t  [d]elete task  [t]ag search  [a]rchive data#{asterisk}
     set text [e]ditor  set [p]rogramming language  [de]stroy  [h]elp
 
@@ -130,8 +131,8 @@ module TasklistView
 
   # Warns user & gets a number to delete from user; returns message. RF
   def confirm_delete
-    print "WARNING! CANNOT UNDO!\nType number of task to delete: "
-    num = gets.chomp.to_i
+    print "WARNING! CANNOT UNDO!\nType number of task to delete or 'q' to escape: "
+    num = gets.chomp
     # Receives back a message for the user or false if delete not successful.
     message = delete_task(num)
     return message

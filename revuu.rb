@@ -12,7 +12,8 @@ include ArchivController # Need to make these included in class Archiv, not glob
 Dir["./views/*.rb"].each {|file| require file }
 include ArchivView
 # MODELS (all are classes)
-Dir["./models/*.rb"].each {|file| require file}
+Dir["./models/*.rb"].each {|file| require file unless file =~ /repotask/}
+require './models/repotask'
 
 ###############################################################################
 # Program wrapper object

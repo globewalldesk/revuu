@@ -53,11 +53,12 @@ module TaskView
   # enter own. Returns timestamp or, if can't parse user-entered date, nil.  RF
   def get_next_review_date(prompt, score=@score)
     calculated_date = calculate_spaced_repetition_date(score)
-    puts "Spaced repetition date: #{calculated_date.strftime("%-m/%-d/%Y")} " +
+    puts "\nSpaced repetition date: #{calculated_date.strftime("%-m/%-d/%Y")} " +
          "(#{prettify_timestamp(calculated_date)})"
-    puts "Do next review when? Use regular English, or just press 'Enter' " +
-         "to accept date above."
+    puts "Do next review when? Use regular English, or"
+    puts "just press 'Enter' to accept date above or 'q' to escape.\n\n"
     date = get_user_command(prompt)
+    return nil if date == 'q'
     # "Chronic" gem parses ordinary English input to Time obj.
     date = ( date == '' ? calculated_date.to_time : Chronic.parse(date) )
     unless date.class == Time
@@ -74,13 +75,13 @@ module TaskView
       File.read(@location) != java_starter && File.read(@location) != @starter)
       puts "An answer exists. Want to archive it before opening? ([y]/n)"
       ans = get_user_command('a')
+      # If yes, archive the old answer and blank the answer file.
       if (ans == 'y' || ans == '')
         archive_old_answer
-        # If file doesn't exist, create it. If Java, add template.
-        create_answer_file
+        File.write(@location, '') # Erase old answer from answer file.
+        # Creates file with starter code as necessary.
+        add_starter_code_to_answer_file
       end
-    else
-      create_answer_file
     end
     # Open with default editor. (Set default in #configure_answers. Helper.)
     system("#{$textedcmd} #{@location}")
@@ -176,18 +177,25 @@ module TaskView
     display_info
   end
 
+  # Open starter code file with text editor; load and save when done.  RF
   def edit_starter
-    puts "Editing the starter code in #{$texted}. Don't forget to save."
+    puts "Editing the starter code in #{$texted}."
     system("#{$textedcmd} #{@starter_location}")
     print "Save your work, then press <Enter> to load the starter code: "
-    if ( gets && File.exist?(@starter_location) &&
+    gets
+    if ( File.exist?(@starter_location) &&
          File.stat(@starter_location).size > 0 )
       @starter = File.read(@starter_location)
-      puts "Starter text (last saved version) now loaded."
+      print "Starter text (last saved version) now loaded.\n\n"
+      save_change_timestamp_to_settings
+    elsif ( File.exist?(@starter_location) &&
+            File.stat(@starter_location).size == 0 )
+      @starter = ''
+      print "The starter code is now blank.\n\n"
+      save_change_timestamp_to_settings
     else
-      puts "Starter text not saved. Try saving first, then press 'st' again."
+      print "Starter code not saved. Try saving first, then press 'st' again.\n\n"
     end
   end
-
 
 end

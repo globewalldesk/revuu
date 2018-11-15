@@ -34,7 +34,10 @@ module TasklistController
       nav('top')
     when 'n'
       task = Task.generate_new_task
-      task ? "New task saved." : "Task input abandoned or failed."
+      task ? "New task saved." : "Task input abandoned."
+    when 'r'
+      repotask = Repotask.generate_new_repotask
+      repotask ? "New repotask saved." : "Repotask input abandoned."
     when /\A(\d+)\Z/
       task = fetch_task_from_displayed_number($1.to_i)
       task ? (task.launch_task_interface) : "Task not found."

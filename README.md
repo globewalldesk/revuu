@@ -205,8 +205,10 @@ making the tasklist UX more consistent, etc. Consolidated `Task` class methods,
 as well as all methods used in creating new tasks, in a brand new
 `task_factory.rb` helper); also, refactored all task-creation methods.
 
-### 2.6
+### 3.0 (November 13, 2018)
+Finished big refactoring of Task and TaskList classes
 
-Continued refactoring class `Task`. Renamed `helpers/` to `lib/`. Included
+Finished refactoring class `Task`. Renamed `helpers/` to `lib/`. Included
 `TaskController` and `TaskView` in class `Task`, so they're no longer globals.
-Fixed bugs. Very little change in task view and editing functionality.
+Fixed bugs and rendered UX more consistent. Should be ready to start work on
+directory-based tasks!

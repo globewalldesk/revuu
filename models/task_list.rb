@@ -51,8 +51,12 @@ class TaskList
     end
 
     # Accepts the display number (NOT ID) of a task and attempts to delete it.
-    # Return info for user about deleted task, or false if unsuccessful. RF
+    # Return user message (whether successful or not). RF
     def delete_task(num)
+      # Do a bit of validation with user-input string first.
+      return "'#{num}' entered so nothing deleted." if
+      num.to_i.to_s != num # Catches 'q', '', and any non-integer.
+      num = num.to_i # Convert to integer.
       task = fetch_task_from_displayed_number(num)
       # Prepare info about the task deleted to send back to user.
       if @list.delete(task) # Recall that Array#delete returns nil if not found.

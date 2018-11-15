@@ -1,14 +1,11 @@
 # Both logic and UI for creating, loading, and deleting archives of user data.
 class Archiv
 
-  class << self
-    def launch_archive_system
-      # Show welcome screen.
-      welcome_to_archive
-      # Launch archive loop (in controller).
-      archive_loop
-    end
-
+  def self.launch_archive_system
+    # Show welcome screen.
+    welcome_to_archive
+    # Launch archive loop (in controller).
+    archive_loop
   end
 
   attr_accessor :archive
@@ -70,7 +67,5 @@ class Archiv
       label = nm == '' ? 'archive' : nm + '_archive'
       return "#{label}_#{date}.tar".downcase
     end
-
-
 
 end

@@ -8,6 +8,7 @@ Gemfile.lock
 package-lock.json
 planning.txt
 planning.md
+repotask_planning.md
 talk_outline.md
 minitar.txt
 archives/*.tar

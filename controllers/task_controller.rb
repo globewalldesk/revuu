@@ -34,12 +34,11 @@ module TaskController
       edit_field('instructions')
     when 't' # Edit tags for this task.
       edit_field('tags')
-    # START HERE -- almost done refactoring Task
     when 'd' # Edit date of next review (spaced repetition algorithm suggests).
       date = get_next_review_date('d')
       save_review_date(date) if date
     when 'sc' # Edit score of personal knowledge of this task.
-      edit_score
+      prep_new_score
     when 'st' # Open starter code file in text editor & load it when done.
       edit_starter
     when 'f' # Re[f]resh task page. Maybe should be done automatically.
@@ -51,6 +50,7 @@ module TaskController
     end
   end
 
+  # User records that he performed a review; updates score and next date. RF
   def record_review
     puts "Good, you completed a review."
     # Get @score from user.
@@ -71,34 +71,38 @@ module TaskController
     display_info
   end
 
-  # Used only in the "date of next review" command.
+  # Used only in the "date of next review" command. RF
   def save_review_date(date)
     @next_review_date = date
     $tasks.save_tasklist
     display_info
   end
 
-  # Used only in the "edit score" command
-  def edit_score
+  # User inputs new rating of own ability to solve task. Used only in the
+  # "edit score" command. RF
+  def prep_new_score
     score = get_score('s')
     score ? @score = score : (return nil)
     $tasks.save_tasklist
     display_info
   end
 
+  # Save old answer to archive file (e.g., 'answer_old_23.rb'). Used by module
+  # TaskView#write_answer. (Not the same as archiving all data.)  RF
   def archive_old_answer
+    # Load existing answer archive, if any.
     old_archive = File.exist?(@old_location) ? File.read(@old_location) : ''
     # Load current answer file contents.
     contents = File.read(@location)
-    # If C, Java, etc., then completely overwrite old answer file
+    # Prepare new archive contents.
+    # If C, Java, etc., then completely overwrite old answer file.
     if @langhash.one_main_per_file
       new_archive = contents
       # If Java, the main class needs to be renamed to be runnable.
       if @lang == 'Java'
         new_archive.gsub!('public class answer', 'public class answer_old')
       end
-    else
-    # Else the usual case: append newer answer to top of old_archive.
+    else # Else the usual case: append newer answer to top of old_archive.
       # Separate different archived answers with a line of comments.
       # Use $cmnt2 for /* ... */ style comments.
       comment_separator = (@langhash.cmnt2 ? ((@langhash.cmnt*37) +
@@ -110,24 +114,16 @@ module TaskController
     end
     # Write concatenated contents to the location of the archive.
     File.write(@old_location, new_archive)
-    save_change_timestamp_to_settings
-    # Finally, overwrite the current answer file with '' or Java template.
-    create_answer_file
+    save_change_timestamp_to_settings # Whenever a change is made...
   end
 
-  def create_answer_file
-    if ! File.exist?(@location)
-      system("touch #{@location}")
-    end
+  # Pre-populates the task answer file with starter code.  RF
+  def add_starter_code_to_answer_file
     if @starter
       File.write(@location, @starter)
       save_change_timestamp_to_settings
     elsif @lang == 'Java'
-      # So far, only Java files need to be written-to before getting started.
       File.write(@location, java_starter)
-      save_change_timestamp_to_settings
-    else
-      File.write(@location, '')
       save_change_timestamp_to_settings
     end
   end
