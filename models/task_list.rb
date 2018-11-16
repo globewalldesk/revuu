@@ -43,7 +43,10 @@ class TaskList
         task_array.each do |task|
           task_with_symbols = {}
           task.each {|k,v| task_with_symbols[k.to_sym] = v }
-          @list << Task.new(task_with_symbols)
+          # It's a Repotask if it has a :repo key.
+          task_with_symbols[:repo] ?
+            @list << Repotask.new(task_with_symbols) :
+            @list << Task.new(task_with_symbols)
         end
         @list = @list.sort!{|x,y| DateTime.parse(x.next_review_date) <=>
           DateTime.parse(y.next_review_date)}
@@ -102,6 +105,8 @@ class TaskList
           puts "answers/ removed..."
           system("rm -f starters/*")
           puts "starters/ removed..."
+          system("rm -rf repos/*")
+          puts "repos/ removed..."
           # The following triggers exit from TaskList loop to App for reloading.
           $destroyed_data = true
           puts "All tasks destroyed."

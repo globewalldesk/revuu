@@ -7,7 +7,7 @@ module TasklistController
   def app_loop
     command = nil
     until command == 'q'
-      command = get_user_command('=')
+      command = get_user_command('=').downcase
       process_tasklist_input(command)
        # Escape from TaskList when user requests archive or deletes all data.
       return if $view_archive or $destroyed_data
@@ -23,7 +23,7 @@ module TasklistController
   def process_tasklist_input(command)
     # A 'message' (or nil) is returned by most of these functions, and then
     # passed off to TasklistView::display_tasks.
-    message = case command.downcase
+    message = case command
     when '>', '.'
       nav('next')
     when '<', ','
@@ -40,7 +40,8 @@ module TasklistController
       repotask ? "New repotask saved." : "Repotask input abandoned."
     when /\A(\d+)\Z/
       task = fetch_task_from_displayed_number($1.to_i)
-      task ? (task.launch_task_interface) : "Task not found."
+      task ? (task.class == Task ? task.launch_task_interface :
+        task.launch_repotask_interface) : "Task not found."
     when 'l'
       prep_to_show_all_tasks # Clears @default_tag and stops filtering.
     when 'x'
@@ -113,7 +114,9 @@ module TasklistController
   # Simply opens the item with the earliest review date to edit. RF
   def edit_next_item
     list = @filter_tag ? @tag_filtered_list : @list
-    list[0].launch_task_interface
+    item = list[0]
+    item.class == Task ? item.launch_task_interface :
+      item.launch_repotask_interface
     nil # No dispatch table message.
   end
 

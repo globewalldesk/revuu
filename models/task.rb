@@ -31,16 +31,18 @@ class Task
     @all_reviews = args[:all_reviews]
     @langhash = Lang.new(@lang)
     # Step (2).
-    if @saved # For use when loading old/existing tasks.
-      @id = args[:id]
-      load_locations_and_starter
-    else      # For use when creating new tasks.
-      @id = calculate_id
-      # Step (3).
-      load_locations_and_starter(args)  # (a) Load new starter & locations; save starter.
-      save_change_timestamp_to_settings # (b) Save change timestamp.
-      save_new_task                     # (c) Save task to tasks.json.
-      launch_task_interface # Actually launch the task view for the new task.
+    unless self.class == Repotask # See Repotask#initialize.
+      if @saved # For use when loading old/existing tasks.
+        @id = args[:id]
+        load_locations_and_starter
+      else      # For use when creating neqw tasks.
+        @id = calculate_id
+        # Step (3).
+        load_locations_and_starter(args)  # (a) Load new starter & locations; save starter.
+        save_change_timestamp_to_settings # (b) Save change timestamp.
+        save_new_task                     # (c) Save task to tasks.json.
+        launch_task_interface # Actually launch the task view for the new task.
+      end
     end
   end
 

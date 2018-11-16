@@ -16,7 +16,7 @@ module TaskFactory
     # Create methods array: these are the methods needed to generate task data.
     # Labels correspond to Task attributes.
     new_task_lambdas = [
-      { lang: -> { get_initial_language_from_user } },
+      { lang: -> { get_initial_language_from_user('n') } }, # n = prompt
       { instructions: -> { get_instructions_from_user(lang) } },
       { starter: -> { starter_arg = (lang == 'Java' ? 'Java' : false);
         starter_code_sequence(starter_arg) } },
@@ -34,6 +34,7 @@ module TaskFactory
         end
         new_task_data[label] = value
         lang = value if label == :lang # Grab the lang; needed for later lambdas.
+        clear_screen
       end
     end
     # Construct new task!
@@ -41,9 +42,9 @@ module TaskFactory
   end # of ::generate_new_task
 
   # Get language from user; returns a canonical, approved name for saving. RF
-  def get_initial_language_from_user
+  def get_initial_language_from_user(prompt)
     puts "CHOOSE LANGUAGE:"
-    lang = Lang.solicit_languages_from_user('n', $lang_defaults.name)
+    lang = Lang.solicit_languages_from_user(prompt, $lang_defaults.name)
   end
 
   # Just a wrapper for launch_external_input... and instructions. RF
@@ -72,7 +73,7 @@ module TaskFactory
 
   # Ask user if he wants to edit starter code up front. RF
   def get_starter_code?
-    puts "\nEDIT STARTER CODE:"
+    puts "EDIT STARTER CODE:"
     starter_decision = nil
     loop do
       puts "Edit some starter code (you can do this later)?"
@@ -86,7 +87,7 @@ module TaskFactory
 
   # Solicit tags from user (not required). RF
   def get_tags_from_user(lang)
-    puts "\nINPUT TAGS:"
+    puts "INPUT TAGS:"
     tag_decision = nil
     loop do
       puts "Edit tags (you can do this later)?"
@@ -128,7 +129,7 @@ module TaskFactory
   # Given a prompt and a test, wring an acceptable answer from the user or let
   # him abandon adding the new task. Returns input, nil, or 'q'. RF
   def launch_external_input_for_new_task(args) # :prompt, :type, :required, :java
-    args[:prompt] = (args[:prompt] ? "\n" + args[:prompt] : "\n")
+    args[:prompt] = (args[:prompt] ? args[:prompt] : "\n")
     args[:prompt] += "\nPress Ctrl-W to save and Ctrl-X to submit. " +
                      "\nPress <Enter> now to continue or [q]uit."
     # Loop = solicit input in external file; verifies or else prompts again.
@@ -145,7 +146,8 @@ module TaskFactory
           puts "\n\nPLEASE NOTE:\n#{args[:type]} required."
         end
       else # input not required
-        input ? (puts "#{args[:type]} saved."; return input) : (return nil)
+        pretty_type = args[:type].gsub!("_", " ").capitalize
+        input ? (puts "#{pretty_type} saved."; return input) : (return nil)
       end
     end
   end

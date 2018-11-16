@@ -124,7 +124,7 @@ module SettingsHelper
     update_settings_file(settings_to_merge) unless settings_to_merge.empty?
   end
 
-  # Should be called whenever a task is created or changed. Generates a new 
+  # Should be called whenever a task is created or changed. Generates a new
   # "last [most recent] change" timestamp as well as a "last archive" which is
   # set to an arbitrary time before the task is marked as created. These are
   # used to calculate whether there are unsaved changes. Finally, saves these

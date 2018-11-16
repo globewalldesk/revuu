@@ -25,22 +25,13 @@ class Lang
         puts "There's only one language available and you're using it."
         return default
       end
-      # Show available languages to user.
-      print "Available languages:\n  "
-      available_langs.each_with_index {|l,i| print "(#{i+1}) #{l[:name]} "}
-      puts "\n"
-      # Solicit new language.
-      puts "Enter the number of a language; <Enter> for current; or [q]uit."
-      langnum = get_user_command(prompt)
-      return 'q' if langnum == 'q'
-      return current if langnum == ''
-      langnum = langnum.to_i - 1 # -1 to compensate for +1 above.
-      # Use default if number not listed.
-      if ! available_langs[langnum]
-        puts "That response isn't recognized."
-        return current
-      end
-      return available_langs[langnum][:name]
+      # Show available languages to user and solicit a number.
+      puts "Enter the number of a language; <Enter> for current; or [q]uit:"
+      choice = wrap_items_with_numbers(available_langs.map{|l| l[:name]})
+      puts ''
+      return 'q' if choice == 'q'
+      return current if (choice == '' || choice == current)
+      return choice
     end
 
     # Accessor for @@defined_langs; for use by Task::prep_tags.

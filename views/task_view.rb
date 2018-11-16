@@ -25,17 +25,22 @@ module TaskView
     next_precise_date = DateTime.parse(@next_review_date).
       strftime("%-m/%-d/%Y")
     default_tag_count = @langhash.lang_alts.length + 1 # +1 for the lang name.
-    tag_str = "(#{@tags.length - default_tag_count})"
-    puts <<~DATESANDCOMMANDS
-      Review dates >> Last: #{last_precise_date}#{last_time}  Next: #{next_precise_date} (#{prettify_timestamp(@next_review_date)})
+    @tag_str = "(#{@tags.length - default_tag_count})"
+    puts "  Review dates >> Last: #{last_precise_date}#{last_time}  " +
+         "Next: #{next_precise_date} (#{prettify_timestamp(@next_review_date)})"
+    display_task_commands(@tag_str) if self.class == Task
+  end
+
+  def display_task_commands(tag_str)
+    puts <<~DISPLAYTASKCOMMANDS
 
     COMMANDS  Review: [s]ave review  [a]nswer  [r]un answer  [h]elp
-                      [o]ld answers  [rr]un old answers  [c]onfigure language
+                      [o]ld answers  [rr]un old answers  configure [l]anguage
                 Edit: [i]nstructions  [t]ags#{tag_str}  [d]ate of next review
                       [sc]ore  [st]arter code
                 Also: re[f]resh view  [q]uit review and editing
 
-    DATESANDCOMMANDS
+    DISPLAYTASKCOMMANDS
   end
 
   # Solicit and return a valid score or return nil if user fails to do so. RF

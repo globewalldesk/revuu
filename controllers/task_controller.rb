@@ -6,7 +6,7 @@ module TaskController
     display_info
     command = ''
     until command == 'q'
-      command = get_user_command('+')
+      command = get_user_command('+').downcase
       process_edit_input(command)
     end
     nil # No tasklist dispatch table message.
@@ -14,7 +14,7 @@ module TaskController
 
   # Given a user command in the Task view, dispatch as appropriate. RF
   def process_edit_input(command)
-    case command.downcase
+    case command
     when 's' # Record information about review.
       record_review
     when 'a' # Opens file in your text editor so you can write answer.
@@ -28,7 +28,7 @@ module TaskController
       view_old_answers
     when 'rr' # Run old answer. No guarantee it will work.
       run_answer('old')
-    when 'c' # Change language setting for this task.
+    when 'l' # Change language setting for this task.
       self.change_language
     when 'i' # Edit instructions for this task.
       edit_field('instructions')
