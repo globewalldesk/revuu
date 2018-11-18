@@ -87,6 +87,8 @@ module TaskView
         # Creates file with starter code as necessary.
         add_starter_code_to_answer_file
       end
+    else
+      add_starter_code_to_answer_file
     end
     # Open with default editor. (Set default in #configure_answers. Helper.)
     system("#{$textedcmd} #{@location}")

@@ -34,7 +34,7 @@ class Lang
       return choice
     end
 
-    # Accessor for @@defined_langs; for use by Task::prep_tags.
+    # Read accessor for @@defined_langs; for use by Task::prep_tags.
     def defined_langs
       @@defined_langs
     end
@@ -60,11 +60,11 @@ class Lang
       {name: 'JavaScript', ext: 'js', cmd: 'node', cmnt: '//', alts:
         ['JS', 'Node', 'Node.js'], spacer: "console.log(' ')"},
 
-      {name: 'Java', ext: 'java', cmd: 'javac', cmd2: 'java <name-no-ext>',
-        cmnt: '//', one_main_per_file: true, alts: []},
+      {name: 'HTML', ext: 'html', cmd: 'firefox', cmnt: '<!--', cmnt2: '-->',
+        alts: ['HTML5'], spacer: "<p>&nbsp;</p>", one_main_per_file: true},
 
-      {name: 'Python', ext: 'py', cmd: 'python', cmnt: '#', alts: [], spacer:
-        'print("\n")'},
+      {name: 'CSS', ext: 'css', cmd: 'firefox', cmnt: '/*', cmnt2: '*/',
+        alts: ['CSS3'], spacer: ''},
 
       {name: 'C', ext: 'c', cmd: 'gcc', cmd2: './a.out', cmnt: '/*',
         cmnt2: '*/', one_main_per_file: true, alts: ['C language',
@@ -76,6 +76,12 @@ class Lang
 
       {name: 'SQL', ext: 'rb', cmd: 'ruby', cmnt: '#', alts: ['postgresql',
         'psql'], spacer: "puts ''" },
+
+      {name: 'Java', ext: 'java', cmd: 'javac', cmd2: 'java <name-no-ext>',
+        cmnt: '//', one_main_per_file: true, alts: []},
+
+      {name: 'Python', ext: 'py', cmd: 'python', cmnt: '#', alts: [], spacer:
+        'print("\n")'},
 
       {name: 'Other', ext: 'txt', cmd: 'more', cmnt: '#', alts: [], spacer:
         "\n<--spacer-->\n"}

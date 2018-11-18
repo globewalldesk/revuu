@@ -146,7 +146,7 @@ module TaskFactory
           puts "\n\nPLEASE NOTE:\n#{args[:type]} required."
         end
       else # input not required
-        pretty_type = args[:type].gsub!("_", " ").capitalize
+        pretty_type = args[:type].gsub(/\_/, " ").capitalize
         input ? (puts "#{pretty_type} saved."; return input) : (return nil)
       end
     end

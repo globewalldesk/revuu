@@ -50,6 +50,8 @@ module RepotaskController
     when 'f'
       display_info
     when 'q' # Quit task view and return to tasklist.
+      cache_answer_in_archive_branch
+      reset_branch
       return
     else
       puts 'Huh?'
@@ -90,8 +92,9 @@ module RepotaskController
 
   def reset_branch
     g = Git.open("data/repos/#{repo}")
-    g.reset_hard
-    puts "Repo reset: files restored to original state."
+    g.branch(branch).checkout
+    #g.reset_hard
+    puts "Repo (#{repo}) reset: files restored to original state."
     true
   end
 
@@ -127,6 +130,19 @@ module RepotaskController
       display_info
       puts "Files loaded."
     end
+  end
+
+  # We'll cause errors when checking out other branches (when either creating
+  # or answering other repotasks) if our changes to this branch aren't either
+  # committed or reset. We don't want to commit them (that ruins the branch
+  # for purposes of this question). So we must reset the branch. But if the
+  # user wants to see his answer, we need to give him a place to see it.
+  # We do so by caching his answer in a special archive branch (one per task),
+  # which is always overwritten by this method.
+  def cache_answer_in_archive_branch
+    # Delete any existing archive branch.
+    # Create archive branch (again, maybe).
+    # Finally, checkout the main repotask branch.
   end
 
 end
