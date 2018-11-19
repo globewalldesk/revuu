@@ -71,6 +71,9 @@ answering a question.) Basically, whatever commands you'd have to execute
 if you were simply doing the task in a development context, list them.
 
 Note that you can edit all of this information within the task view page.
+
+It might seem like a bit of work to add a repotask, but it's not too bad
+after you've learned how. And it's really, really worth it!
 NEWREPOTASK
       },
       {
@@ -94,6 +97,27 @@ an uncommon thing), press 'c' for commands.
 Doing everything else--saving a review, configuring language, editing
 instructions, etc.--works the same as with regular tasks.
 DOREPOTASK
+      },
+      {
+        title: "why are repotasks (and Git) necessary?",
+        content: <<-REPOSNEC
+Repotasks are necessary because most of the more advanced programming
+tasks involve multiple interacting files (and media and databases and
+APIs). The most obvious example of this are modern websites, which use
+HTML, CSS, and JavaScript.
+
+The cool thing about Revuu and repotasks is that they actually enable you
+to repeatedly practice relatively complex tasks without setting up a
+complex context again and again--Revuu does that for you, once you've set
+up the question once. Now you have a way to ensure you won't forget the
+fiddly little details of CSS and other complex programming tasks.
+
+Git is necessary to manage the many versions of a repo that you'll want to
+add in order to make many questions about some tech. Revuu handles all the
+complexity of managing Git branches for you; all you have to do is make
+sure you keep your tree "clean," i.e., decide whether to commit a change
+to a branch or else reset it.
+REPOSNEC
       }
     ]
   end

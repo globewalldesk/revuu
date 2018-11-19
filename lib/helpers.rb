@@ -10,7 +10,7 @@ module Helpers
 
   # Used in clear_screen above. RF
   def header
-    puts sprintf("%-69s%s", " * R * E * V * U * U *",  "v. 3.0").
+    puts sprintf("%-69s%s", " * R * E * V * U * U *",  "v. 3.1").
       colorize(:color => :black, :background => :white)
     puts ''
   end

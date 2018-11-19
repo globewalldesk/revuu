@@ -7,7 +7,7 @@ module RepotaskView
   end
 
   def display_files
-    puts "\nFILES TO EDIT FOR THIS TASK"
+    puts "\nFILES TO EDIT FOR REPOTASK"
     show_array_with_numbers(@files)
     puts "GIT INFO  Repo: #{@repo}  Branch: #{@branch}\n\n"
   end

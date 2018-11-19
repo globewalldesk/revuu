@@ -213,9 +213,12 @@ Finished refactoring class `Task`. Renamed `helpers/` to `lib/`. Included
 Fixed bugs and rendered UX more consistent. Should be ready to start work on
 directory-based tasks!
 
-### 3.1
+### 3.1 (November 19, 2018)
+Added Repotasks
 
-Started work on the rather massive new Repotask feature. Created
+Big update. Introduced the rather massive new Repotask feature. Created
 RepotaskFactory, the model, controller, and view files for Repotasks, and in
 general made it possible to make questions based on entire directory-based
-repositories, and git branches thereof.
+repositories, and git branches thereof. Also made instructions for repotask
+system. Fixed various bugs; there are probably still a few, but the new
+feature is pretty stable.

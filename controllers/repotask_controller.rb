@@ -88,6 +88,8 @@ module RepotaskController
   def branch_reset_confirmed?(exiting = false)
     return true if @reset_this_session and ! exiting
     g = Git.open("data/repos/#{@repo}")
+    # This will make the following status query correct.
+    system("cd data/repos/#{@repo}&&git status -s") # assign to throw away
     unless g.status.changed.empty?
       if exiting
         puts <<~EXITCONFIRMATION
