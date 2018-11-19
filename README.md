@@ -4,22 +4,24 @@ it--you'll like it. Revuu gives you one place to make or copy practical (how-to)
 programming questions, auto-creating and keeping track of answer files, running
 your answers in-app, scheduling reviews automatically, etc.
 
-See [this video introduction](https://youtu.be/rv11AHD8wik).
-
 ## User introduction
 
-Revuu helps you review programming tasks, improving understanding and keeping
-your skills fresh. It was written with the notion that programmers (and
-others) need repetition of not declarative but procedural knowledge.
+Revuu helps you review programming tasks, both simple and complex, improving
+understanding and keeping your skills fresh. It was written with the notion that
+programmers need repetition of not declarative but procedural knowledge.
+
+This is the only tool we know of that makes it easy to drill your own hand-made,
+complex web development tasks (such as Rails tasks) repeatedly, handling all the
+set-up for you.
 
 The great thing about Revuu is that it handles all file naming, retrieving,
-opening with your text editor, saving, and running for you automatically, so you
-can focus on learning. It's a tremendous time-saver for drilling coding skills.
+opening with your text editor, saving, git branch management, and running for
+you automatically, so you can focus on learning. It's a tremendous time-saver
+for drilling coding skills.
 
-When you perform a review, you don't try to answer a question in words.
-Instead, you try to perform a task.  Essentially, to use Revuu, you'd add
-complex, not simple, tasks. Probably the ideal Revuu task would require
-2-10 minutes to complete.
+When you perform a review, you try to perform a task.  Essentially, to use
+Revuu, you'd add complex, not simple, tasks. Probably the ideal Revuu task would
+require 2-10 minutes to complete.
 
 The basic functions of the program are adding tasks, using the handy answer
 filing and editing system (which probably works with your favorite text editor),
@@ -27,45 +29,40 @@ running the script and seeing the results, and recording that you've done a
 review and that the next review should be done on a certain date. The two basic
 views of the app are a paginated list of tasks and an individual task view.
 
-Currently, we support Ruby, Node.js (JavaScript), Python, Java, C, and Bash
-scripting. We also support many commonly-used text editors and IDEs.
+Currently, we support Ruby, JavaScript (and Node), HTML, CSS, Python, Java, C,
+and Bash scripting. We support not just one-file scripting tasks but also
+complex, directory-based tasks (which Revuu calls "repotasks"). We also support
+many commonly-used text editors and IDEs.
 
 Add copious, well-chosen tags in order to be able to sort tasks.
 
 Revuu ships with a bunch of pre-made questions (in the "sample data" folder) and
-answers by way of demonstration.
+answers by way of demonstration. Load by pressing 'a' to go to the archive
+system, and then 'sa' to copy the sample data. Then press 'l' to load, and
+choose the sample data.
 
-You can now easily import (load) and export (archive, back up, share) your data.
+You can also easily import (load) and export (archive, back up, share) your
+data.
 
 ## Install and requirements
 Clone the repo (instructions should be clear enough from Github). Should
 probably make sure a recent version of Ruby (>2.2) is installed. Execute
 `bundle install` to install the gem requirements.
 
-Only works on \*nix systems (including modern Macs). I could make some changes
-so that it works on Windows, if anybody cares (do let me know).
+Only works on \*nix systems (including modern Macs).
 
-## Run
+## Run and Use
 Once Ruby, the app, and the gem dependencies are installed, you should be able
 to start the app on your \*nix system just by typing `ruby revuu.rb`.
 
-## Use
-The app ships with both tasks (mostly Ruby) and answers. The tasks are in
-data/tasks.json and the answers are in data/, and, if you didn't want to
-delete them all by hand, you could simply delete the data file and the app
-should still work. (If you try and it doesn't, let me know and I'll fix it.)
-
-Online help is available from the task list by pressing 'c' for 'commands'.
+To learn how to use the system, press 'h' for help. It's pretty easy to learn,
+and we have extensive help files.
 
 ## Author
 Larry Sanger (yo.larrysanger@gmail.com)
 
 ## Development to do list
 
-* Finish major refactoring/cleanup/editing in preparation for directory-based
-tasks.
-* Directory-based tasks: let users do tasks that make changes to Rails apps,
-play with CSS, HTML, and web-based JavaScript, and other directory-based apps.
 * Eventually, distribute files into subdirectories of 100 apiece based on IDs.
 * Add a "sort by date added" or "sort by ID" feature.
 * Make some archive safety improvements/clarifications.
