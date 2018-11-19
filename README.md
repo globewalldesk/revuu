@@ -212,3 +212,10 @@ Finished refactoring class `Task`. Renamed `helpers/` to `lib/`. Included
 `TaskController` and `TaskView` in class `Task`, so they're no longer globals.
 Fixed bugs and rendered UX more consistent. Should be ready to start work on
 directory-based tasks!
+
+### 3.1
+
+Started work on the rather massive new Repotask feature. Created
+RepotaskFactory, the model, controller, and view files for Repotasks, and in
+general made it possible to make questions based on entire directory-based
+repositories, and git branches thereof.

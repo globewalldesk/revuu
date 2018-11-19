@@ -1,21 +1,34 @@
 module HelpHelper
+  include HelpRepotask
 
   # Note, passes along a copy of the launching object in order to return there.
-  def launch_instructions_system
+  def launch_instructions_system(options = nil)
     clear_screen
     skip_list = false
     instr_choice = ''
+    options ||= {
+      instructions: big_instruction_array,
+      title: 'REVUU HELP TOPICS:',
+      qualifier: ''
+    }
     until instr_choice == 'q'
       unless skip_list
-        display_instruction_choices
-        puts 'Type a number above to learn how to use the system, or [q]uit: '
+        display_instruction_choices(options)
+        puts "Type a number above to learn how to use the " +
+             "#{options[:qualifier]}system, or [q]uit: "
       end
       instr_choice = get_user_command('i')
       next if instr_choice == 'q'
       instr_choice = instr_choice.to_i
-      if validate_instr_choice(instr_choice)
-        display_instruction(instr_choice)
-        skip_list = false
+      if validate_instr_choice(instr_choice, options)
+        # Repotasks have a whole nother instruction system.
+        unless options[:instructions][instr_choice-1][:title] ==
+               "NEW! How to use the repotask system"
+          display_instruction(instr_choice, options)
+          skip_list = false
+        else
+          launch_repotask_instructions_system
+        end
       else
         puts "Not a valid option.\n\n"
         skip_list = true
@@ -24,15 +37,16 @@ module HelpHelper
     return "You can type 'h' or '?' to get back to help."
   end
 
-  def display_instruction_choices
+  def display_instruction_choices(options)
+    instructions = options[:instructions]
     # Prepare string containing big_instruction_array titles.
-    title = 'REVUU HELP TOPICS:'
+    title = options[:title]
     title_string = '=+' * (title.length/2).round
     title_string += "\n#{title}\n"
     title_string += ('=+' * (title.length/2).round) + "\n"
     line_counter = 0
     new_line = ''
-    $big_instruction_array.each_with_index do |instr, i|
+    instructions.each_with_index do |instr, i|
       this_addition = "(#{i + 1}) #{instr[:title]} "
       # If addition this addition to the string would make it
       # over 75 characters, then add a newline to the string
@@ -40,13 +54,13 @@ module HelpHelper
       if (line_counter + this_addition.length) > 75
         title_string << new_line + "\n"
         new_line = this_addition
-        if ($big_instruction_array.length - 1 == i)
+        if (instructions.length - 1 == i)
           title_string << new_line
         end
         line_counter = this_addition.length
       else
         new_line << this_addition
-        if ($big_instruction_array.length - 1 == i)
+        if (instructions.length - 1 == i)
           title_string << new_line
         end
         line_counter += this_addition.length
@@ -56,25 +70,26 @@ module HelpHelper
     puts title_string + "\n\n"
   end
 
-  def validate_instr_choice(i)
+  def validate_instr_choice(i, options)
     # i is valid iff it (-1) is an index of $big_instruction_array
-    (i-1).between?(0, $big_instruction_array.length - 1)
+    (i-1).between?(0, options[:instructions].length - 1)
   end
 
   # Given an index number, print out the corresponding content from $big_instruction_array.
-  def display_instruction(i)
+  def display_instruction(i, options)
+    instructions = options[:instructions]
     clear_screen
     print("(" + i.to_s + ") ")
-    print $big_instruction_array[i-1][:title].capitalize + ":\n"
+    print instructions[i-1][:title].capitalize + ":\n"
     puts('=' * 75)
-    puts "#{$big_instruction_array[i-1][:content]}"
+    puts "#{instructions[i-1][:content]}"
     puts('=' * 75)
   end
 
-  $big_instruction_array = [
-    {
-      title: "introduction",
-      content: <<-ENDINTRO
+  def big_instruction_array
+    [ {
+        title: "introduction",
+        content: <<-ENDINTRO
 Welcome to Revuu!
 
 This app will help you review programming tasks, improving understanding
@@ -301,8 +316,8 @@ OLDANSWERS
       content: <<-DELETEATASK
 To delete a task, first you have to be on the task list view (the top
 level). Then press 'd' and enter the number next to the task you want to
-delete. WARNING: there is no "are you sure?"-type prompt, so be careful 
-about what number you enter. The deleted task and its data will be gone 
+delete. WARNING: there is no "are you sure?"-type prompt, so be careful
+about what number you enter. The deleted task and its data will be gone
 forever; be careful.
 
 If you just don't want to see a task for a long time, you can always
@@ -360,14 +375,14 @@ programming language.
 
 As to the language of an individual task, you set it when you create the
 task. But this can be changed at any time from the view page for a
-particular task (if you're not there, just type the number next to it 
+particular task (if you're not there, just type the number next to it
 from the task list). The command is 'c' for configure language.
 CHANGELANGUAGE
     },
     {
       title: 'navigation',
       content: <<-NAVIGATE
-To open a task, type the number next to it; to get back to the task 
+To open a task, type the number next to it; to get back to the task
 list, press 'q'.
 
 To view the next task (the one with the earliest due date), press 'x'
@@ -440,6 +455,10 @@ That said, it is possible (using tags) to work with and switch between
 different archives. Just be sure, always, to use tagged names for your
 archive files rather than the default plain "archive_YYYYMMDD.tar" name.
 ARCHIVESYSTEM
+    },
+    {
+      title: 'NEW! How to use the repotask system'
     }
-  ]
+ ]
+  end
 end
