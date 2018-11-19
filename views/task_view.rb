@@ -102,8 +102,7 @@ module TaskView
     old ? (file = @old_file and location = @old_location) :
       (file = @file and location = @location)
     if ( File.exist?(location) && File.stat(location).size > 0 )
-      puts ''
-      puts "Running #{file}:"
+      puts "\nRunning #{file}:"
       puts ("=" * 75)
       puts ''
       system("cd data/answers && #{@langhash.cmd} #{file}")

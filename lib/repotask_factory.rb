@@ -100,12 +100,29 @@ module RepotaskFactory
 
   def solicit_choice_of_branch_from_user(repo)
     g = Git.open("data/repos/#{repo}")
-    branches = g.branches.local.map {|b| b.full}
+    branches = g.branches.local
+                .map {|b| b.full}
+                .reject {|b| b =~ /\d\_archive$/}
     puts "Choose the git branch your task is based on."
     puts "WARNING! Your latest commit, whatever it is, will be used."
     puts "Revuu never makes git commits for you, but will reset to the latest.\n\n"
     puts "Your branches:"
+    branches = sort_branches_by_git_commit_order(repo, branches)
     branch = wrap_items_with_numbers(branches)
+  end
+
+  # I want the branches in order of most recent commit. ruby-git doesn't
+  # seem to support this, so I had to do this hacky thing.
+  def sort_branches_by_git_commit_order(repo, branches)
+    branches_ordered = `cd data/repos/#{repo}&&git for-each-ref --sort=committerdate`
+    branches_ordered = branches_ordered.split("\n")
+                                       .reverse
+                                       .map {|br| br.split('/')[-1]}
+    # Now, re-order branches in the same order.
+    branches.sort! do |x,y|
+      branches_ordered.find_index(x) <=> branches_ordered.find_index(y)
+    end
+    branches
   end
 
   ###########################################################################
@@ -143,7 +160,7 @@ module RepotaskFactory
        .reject {|d| File.directory? d}
        .reject {|f| f =~ /tmp\// || f =~ /bin\//}
        .map {|f| f.gsub!("data/repos/#{repo}/", '') }
-       .sort
+       #.sort
   end
 
   # existing_choices is a file array provided by the presently-existing
@@ -201,7 +218,7 @@ module RepotaskFactory
     response = response == '' ? nil : response
     return (files - [response]), response
   end
-puts "Quit files interface."
+
   ############################################################################
   # RUN COMMANDS METHOD
   def get_run_commands

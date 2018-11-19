@@ -17,8 +17,10 @@ data/eliminator.rb
 data/*.json
 data/answers/*
 data/starters/*
+data/repos/*
 !data/answers/.gitkeep
 !data/starters/.gitkeep
+!data/repos/.gitkeep
 less
 history
 nohup.out
