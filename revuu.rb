@@ -4,7 +4,7 @@ Bundler.require(:default)
 
 # LIBRARY/HELPERS
 Dir["./lib/*.rb"].each {|file| require file }
-include Helpers, DatePrettifier, HelpHelper, SettingsHelper, WrappingHelper
+include Helpers, DatePrettifier, HelpRepotask, HelpHelper, SettingsHelper, WrappingHelper
 # CONTROLLERS
 Dir["./controllers/*.rb"].each {|file| require file }
 include ArchivController # Need to make these included in class Archiv, not globally.

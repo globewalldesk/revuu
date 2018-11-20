@@ -1,6 +1,4 @@
 module HelpHelper
-  include HelpRepotask
-
   # Note, passes along a copy of the launching object in order to return there.
   def launch_instructions_system(options = nil)
     clear_screen
