@@ -64,6 +64,7 @@ module ArchivController
         end
       end
       system('rm -rf data/')
+      puts "Unpacking archive..."
       # Actually copy from zip file to data folder, reconstructing the data folder!
       Minitar.unpack(self.archive, "./")
       # Reload the goods, just as App.new does. But REFACTORING PROBLEM: do I really
