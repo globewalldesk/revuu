@@ -27,7 +27,8 @@ class Lang
       end
       # Show available languages to user and solicit a number.
       puts "Enter the number of a language; <Enter> for current; or [q]uit:"
-      choice = wrap_items_with_numbers(available_langs.map{|l| l[:name]})
+      choice = wrap_items_with_numbers(available_langs.map{|l| l[:name]},
+                                       {colored: true, enter_OK: true})
       puts ''
       return 'q' if choice == 'q'
       return current if (choice == '' || choice == current)
@@ -55,41 +56,46 @@ class Lang
   @@defined_langs =
     [
       {name: 'Ruby', ext: 'rb', cmd: 'ruby', cmnt: '#', alts: [], spacer:
-        "puts ''" },
+        "puts ''", color: :red },
 
       {name: 'JavaScript', ext: 'js', cmd: 'node', cmnt: '//', alts:
-        ['JS', 'Node', 'Node.js'], spacer: "console.log(' ')"},
+        ['JS', 'Node', 'Node.js'], spacer: "console.log(' ')", color:
+        :light_yellow},
 
       {name: 'HTML', ext: 'html', cmd: 'firefox', cmnt: '<!--', cmnt2: '-->',
-        alts: ['HTML5'], spacer: "<p>&nbsp;</p>", one_main_per_file: true},
+        alts: ['HTML5'], spacer: "<p>&nbsp;</p>", one_main_per_file: true,
+        color: :light_red},
 
       {name: 'CSS', ext: 'css', cmd: 'firefox', cmnt: '/*', cmnt2: '*/',
-        alts: ['CSS3'], spacer: ''},
-
-      {name: 'C', ext: 'c', cmd: 'gcc', cmd2: './a.out', cmnt: '/*',
-        cmnt2: '*/', one_main_per_file: true, alts: ['C language',
-        'C programming language']},
+        alts: ['CSS3'], spacer: '', color: :blue},
 
       {name: 'Bash', ext: 'sh', cmd: '/bin/bash', cmnt: '#', alts:
         ['command line', 'shell', 'shell scripting', 'Bash scripting', 'Linux',
-          'Unix'], spacer: "echo '<--spacer-->'"},
+          'Unix'], spacer: "echo '<--spacer-->'", color: :white},
 
-      {name: 'SQL', ext: 'rb', cmd: 'ruby', cmnt: '#', alts: ['postgresql',
-        'psql'], spacer: "puts ''" },
+      {name: 'SQL', ext: 'rb', cmd: 'ruby', cmd2: 'psql tysql postgres',
+        cmnt: '#', alts: ['postgresql', 'psql'], spacer: "puts ''", color: :cyan},
+
+      {name: 'C', ext: 'c', cmd: 'gcc', cmd2: './a.out', cmnt: '/*',
+        cmnt2: '*/', one_main_per_file: true, alts: ['C language',
+        'C programming language'], color: :light_blue},
+
+      {name: 'C++', ext: 'cpp', cmd: 'g++', cmd2: './a.out', alts: ['C plus plus'],
+        cmnt: '//', spacer: 'cout<<"\n";', color: :blue},
 
       {name: 'Java', ext: 'java', cmd: 'javac', cmd2: 'java <name-no-ext>',
-        cmnt: '//', one_main_per_file: true, alts: []},
+        cmnt: '//', one_main_per_file: true, alts: [], color: :magenta},
 
       {name: 'Python', ext: 'py', cmd: 'python', cmnt: '#', alts: [], spacer:
-        'print("\n")'},
+        'print("\n")', color: :yellow},
 
       {name: 'Other', ext: 'txt', cmd: 'more', cmnt: '#', alts: [], spacer:
-        "\n<--spacer-->\n"}
+        "\n<--spacer-->\n", color: :light_magenta}
     ]
 
   # Lang objects expose language data as in a hash.
   attr_accessor :name, :ext, :cmd, :cmnt, :cmd2, :cmnt2, :one_main_per_file,
-    :alts, :lang_alts, :spacer
+    :alts, :lang_alts, :spacer, :color
 
   def initialize(lang_name)
     l = fetch_lang_hash_from_name_cmd(lang_name)
@@ -103,6 +109,7 @@ class Lang
     @one_main_per_file = l[:one_main_per_file] ? l[:one_main_per_file] : false
     @lang_alts = l[:alts]
     @spacer = l[:spacer] ? l[:spacer] : ''  # String to append to archived file.
+    @color = l[:color]
     return self
   end
 

@@ -26,7 +26,7 @@ module TasklistView
       print "   "
       puts "Filtered by '#{@filter_tag}'".colorize(background: :green)
     end
-    printf("%2s | %-49s| %-21s\n", ' #', 'Instructions (first line)',
+    printf("%3s | %-49s| %-21s\n", ' #', 'Instructions (first line)',
       'Due date')
     puts separator = '=' * 75
   end
@@ -49,27 +49,36 @@ module TasklistView
     list = list[pindex, 10]
     list[0..10].each_with_index do |task, i|
       @displayed_tasks[i] = task # Used in switching to task view for a task.
-      title_str = prepare_title_string(task)
-      line = sprintf("%2s | %-49s| %-21s", i, title_str,
-        prettify_timestamp(task.next_review_date))
-      puts(colored ? line.colorize(:color => :green) : line)
+      # Absolute insanity required to make the colors come out right.
+      colorblock = " ".colorize(background: task.langhash.color)
+      numstr = becolor(" #{i} | ", colored)
+      lang_str = ('(' + task.lang + ') ').colorize(task.langhash.color)
+      title_str = becolor(prepare_title_string(task, (task.lang.length+3)), colored)
+      time_str = becolor(sprintf("| %-21s",
+                         prettify_timestamp(task.next_review_date)), colored)
+      puts colorblock + numstr + lang_str + title_str + time_str
+      #      (colored ? line.colorize(:green) : line) + "\n"
+      #puts line.colorize(task.langhash.color)
       colored = !colored # Toggle green and white colors with each line.
     end
     puts separator = '=' * 75
   end
 
+  def becolor(str, colored)
+    colored ? str.colorize(:green) : str
+  end
+
   # Given a task, prepare the title string that is shown in the tasklist
   # display. Requires the task, returns the string (title_str). RT
-  def prepare_title_string(task)
+  def prepare_title_string(task, lang_length)
     # Grab the first 47 characters of the first line of @instructions.
     # First, add the language in parens and calculate how much space is left.
-    lang_str = '(' + task.lang + ') '
-    limit = 47 - lang_str.length # Subtract length of the addition from title.
+    limit = 47 - lang_length # Subtract length of the addition from title.
     # Prepare '...' at end of string if nec.
     line_1 = task.instructions.split("\n")[0][0..limit]
     line_1_avec_dots = line_1 == task.instructions.split("\n")[0] ?
       line_1 : line_1[0..-4] + '...'
-    title_str = lang_str + line_1_avec_dots
+    line_1_avec_dots + (' ' * (49 - line_1_avec_dots.length - lang_length))
   end
 
   # From a tasklist array, prepare (mostly) and show a string, e.g.:

@@ -30,7 +30,7 @@ review and that the next review should be done on a certain date. The two basic
 views of the app are a paginated list of tasks and an individual task view.
 
 Currently, we support Ruby, JavaScript (and Node), HTML, CSS, Python, Java, C,
-and Bash scripting. We support not just one-file scripting tasks but also
+C++, and Bash scripting. We support not just one-file scripting tasks but also
 complex, directory-based tasks (which Revuu calls "repotasks"). We also support
 many commonly-used text editors and IDEs.
 
@@ -219,3 +219,7 @@ general made it possible to make questions based on entire directory-based
 repositories, and git branches thereof. Also made instructions for repotask
 system. Fixed various bugs; there are probably still a few, but the new
 feature is pretty stable.
+
+### 3.2
+
+Added color-coding of languages. Added HTML, CSS, and C++.

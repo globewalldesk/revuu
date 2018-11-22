@@ -34,18 +34,20 @@ module Helpers
 
   # Given an array, show it with numbers (separate method) and solicit and
   # return the element corresponding to the user choice (or nil if user quits).
-  def wrap_items_with_numbers(arr, enter_OK = false, minus_mode = false)
-    show_array_with_numbers(arr)
+  def wrap_items_with_numbers(arr, args = {})
+    args[:enter_OK] ||= false
+    args[:minus_mode] ||= false
+    show_array_with_numbers(arr, args)
     choice = 0
     minus = false # Allows user to use this interface to delete from list.
     until ( choice.between?(1,arr.length) || (choice =~ /(\-)(\d+)/ &&
                                               $2.between?(1,arr.length))
           ) do
-      or_enter = enter_OK ? 'or Enter ' : ''
-      or_minus = minus_mode ? '; -# to remove' : ''
+      or_enter = args[:enter_OK] ? 'or Enter ' : ''
+      or_minus = args[:minus_mode] ? '; -# to remove' : ''
       puts "Choose a number (#{or_enter}or 'q' to quit#{or_minus}):"
       choice = get_user_command('r')
-      return '' if choice == '' && enter_OK
+      return '' if choice == '' && args[:enter_OK]
       return 'q' if choice == 'q'
       # If user inputs something of the form '-#' (e.g., '-2') then handle
       # specially.
@@ -60,7 +62,8 @@ module Helpers
   end
 
   # Display an array in (1) format (2) like (3) this, wrapped.
-  def show_array_with_numbers(arr)
+  def show_array_with_numbers(arr, args = {})
+    args[:colored] ||= false # Used in color-coding file names.
     # FOR LATER: EITHER PUT THE MOST RECENT ON THE TOP OR MAKE DEFAULT with *.
     # Actually do the displaying. Note, available_editors is a method.
     width = 0
@@ -76,9 +79,26 @@ module Helpers
       (item = '  ' + item) if i == 0
       # Always adds to line length and prints item.
       width += item.length
+      item = args[:colored] ? colored(item) : item
       print item
     end
     print "\n\n"
+  end
+
+  # Takes a string from #show_array_with_numbers and colors it, if it
+  # corresponds to a language type.
+  def colored(item)
+    Lang.defined_langs.each do |lang|
+      ext = lang[:ext]
+      if item =~ /( ?\(\d+\) )([\w\s]+\.#{ext} )$/
+        return $1 + $2.colorize(lang[:color])
+      end
+      lname = lang[:name]
+      if item =~ /( ?\(\d+\) )(#{lname} )$/
+        return $1 + $2.colorize(lang[:color])
+      end
+    end
+    return item # If no color matches.
   end
 
 

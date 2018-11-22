@@ -13,8 +13,9 @@ module TasklistController
       return if $view_archive or $destroyed_data
     end
     puts ''
-    puts "You have unarchived (un-backed up) changes, but your data is saved." if
-      $unsaved_changes
+    puts ($unsaved_changes ?
+      "You have unarchived (un-backed up) changes, but your data is saved."
+      : "Your data is saved.")
     puts "Goodbye until next time!"
   end
 

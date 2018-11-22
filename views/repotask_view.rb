@@ -1,14 +1,14 @@
 module RepotaskView
 
   def display_info
-    super
+    super("REPOTASK")
     display_files
     display_repotask_commands(@tag_str)
   end
 
   def display_files
     puts "\nFILES TO EDIT FOR REPOTASK"
-    show_array_with_numbers(@files)
+    show_array_with_numbers(@files, {colored:true})
     puts "GIT INFO  Repo: #{@repo}  Branch: #{@branch}\n\n"
   end
 

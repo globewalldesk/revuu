@@ -50,7 +50,8 @@ class App
     # Center the logo.
     line = ('=' * logo.length).center(wd)
     # Introductory padding and text on startup.
-    puts "\n\n\n" + line + "\n" + start + "\n" + line + "\n\n\n" + intro
+    puts "\n\n\n" + line + "\n" + start + "\n" + line + "\n\n\n"
+    puts intro unless File.exist?("./data/tasks.json")
     # NB if no tasks, orient user. Note, 'help' method is in tasklist_view.rb.
     puts (new_user_text + "\n") unless File.exist?("./data/tasks.json")
   end

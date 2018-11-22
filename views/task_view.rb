@@ -2,13 +2,14 @@ module TaskView
 
   # This actually shows the task data (instructions, etc.) to the user, then
   # shows the commands for interfacing with this data. RF
-  def display_info
+  def display_info(type_label = nil) # See below re type_label.
     clear_screen
     puts '=' * 75
-    puts 'TASK INSTRUCTIONS:'
+    type_label ||= 'TASK' # # type_label is "REPOTASK" if self.class == Repotask
+    puts "#{type_label} INSTRUCTIONS:"
     # Note, lib/wrapping_helper.rb has already accommodated the space needed for
     # the (@lang) bit.
-    puts '(' + @lang + ') ' + @instructions
+    puts ('(' + @lang + ') ').colorize(@langhash.color) + @instructions
     puts '=' * 75
     # Prepare and print task data strings for line 1.
     date = DateTime.parse(@date_started).strftime("%-m/%-d/%Y")
@@ -103,7 +104,7 @@ module TaskView
       (file = @file and location = @location)
     if ( File.exist?(location) && File.stat(location).size > 0 )
       puts "\nRunning #{file}:"
-      puts ("=" * 75)
+      puts ("=" * 75).colorize(@langhash.color)
       puts ''
       system("cd data/answers && #{@langhash.cmd} #{file}")
       # If the language is compiled, the latter line runs the compiler.
@@ -116,7 +117,7 @@ module TaskView
         system("cd data/answers && #{subbed_cmd}")
       end
       puts ''
-      puts ("=" * 75)
+      puts ("=" * 75).colorize(@langhash.color)
       # Find the last review performed.
       last_review = @all_reviews.max_by {|r| r['review_date']}
       # Decide whether to prompt user to press 's'. Skip if no reviews.

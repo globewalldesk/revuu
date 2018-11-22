@@ -19,6 +19,9 @@ module RepotaskController
     case command
     when /\A(\d+)\Z/
       open_file($1.to_i)
+    when 'a'
+      puts "Interpreting 'a' as '1'."
+      open_file(1)
     when 'o'
       open_repo
     when 's' # Same as Task method.
@@ -137,11 +140,11 @@ module RepotaskController
     commands = @run_commands.split("\n").join("&&")
     commands = "cd data/repos/#{@repo}&&" + commands
     puts "\nRunning commands from ##{@id}:"
-    puts ("=" * 75)
+    puts ("=" * 75).colorize(@langhash.color)
     puts ''
     system(commands)
     puts ''
-    puts ("=" * 75)
+    puts ("=" * 75).colorize(@langhash.color)
   end
 
   def safely_check_out_branch_for_this_task
@@ -180,12 +183,11 @@ module RepotaskController
     <<~EXTBRANCHWARNING
     WARNING:
 
-    We need to switch to the "#{@branch}" branch before running. In the
-    "#{@repo}" repo, which this task belongs to, there are uncommitted changes
-    to the currently checked-out branch, "#{current}". These changes could be
-    an answer to a question, set-up of a new branch that was never saved (by
-    being committed), or some random editing you might or might not want.
-    First make sure, then answer:
+    We need to switch to the "#{@branch}" branch before running. There are
+    uncommitted changes to the currently checked-out branch,
+    "#{current}". These changes could be an answer to a question,
+    set-up of a new branch that was never saved (by being committed), or some
+    random editing you might or might not want. First make sure, then answer:
 
     Do you want to hard reset (delete) the changes to #{current}?
 

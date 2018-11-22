@@ -182,7 +182,9 @@ module RepotaskFactory
         puts "Files remaining:"
       end
       # 'true' on next line allows user to return choice of ''.
-      file, remove = wrap_items_with_numbers(files, true, true) unless
+      file, remove =
+        wrap_items_with_numbers(files,
+          {enter_OK: true, minus_mode: true, colored: true}) unless
         files.empty?
       return 'q' if file == 'q'
       break if file == ''
@@ -213,7 +215,7 @@ module RepotaskFactory
   def remove_file_from_complete_list(files)
     puts "You've included all files from the repo for editing. Press Enter"
     puts "to confirm or enter the number of a file to remove."
-    response = wrap_items_with_numbers(files, true)
+    response = wrap_items_with_numbers(files, {enter_OK: true, colored: true})
     return 'q' if response == 'q'
     response = response == '' ? nil : response
     return (files - [response]), response
