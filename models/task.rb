@@ -10,7 +10,8 @@ class Task
               :next_review_date, :all_reviews,
               # Attributes inferred from this saved data:
               :langhash, :file, :location, :old_file, :old_location, :starter,
-              :starter_location
+              :starter_location, :location_dir, :old_location_dir,
+              :starter_location_dir
   # The long Task attribute set is a function of how complex Tasks are.
 
   # Initialization is a three-step process and differs depending on whether an
@@ -53,7 +54,8 @@ class Task
     self.instance_variables.each do |var|
       # These attributes don't need to be saved in tasks.json.
       skip = %w|langhash starter file location old_file old_location
-                starter_location saved|
+                starter_location saved reset_this_session location_dir
+                old_location_dir starter_location_dir|
       next if skip.include? var.to_s[1..-1]
       hash[var.to_s[1..-1]] = self.instance_variable_get var
     end
@@ -115,7 +117,9 @@ class Task
       else # i.e., if a new task...
         @starter = args[:starter]
         @starter = add_id_to_java_starter if @lang == 'Java'
-        File.write(@starter_location, @starter)
+        create_folder_if_necessary(@location_dir)
+        create_folder_if_necessary(@starter_location_dir)
+        File.write(@starter_location, @starter) unless @starter.nil?
       end
     end
 
@@ -123,12 +127,23 @@ class Task
     def get_file_locations
       # Determine filename for answer for this task.
       ext = @langhash.ext
+      dir = determine_directory(@id)
       @file = "answer_#{@id}.#{ext}"
-      @location = "./data/answers/#{@file}"
+      @location_dir = "data/answers/#{dir}/"
+      @location = "data/answers/#{dir}/#{@file}"
       # Determine filename for old answers for this task. (Helper.)
       @old_file = "answer_old_#{@id}.#{ext}"
-      @old_location = "./data/answers/#{@old_file}"
-      @starter_location = "./data/starters/starter_#{@id}.#{ext}"
+      @old_location_dir = "data/answers/#{dir}/"
+      @old_location = "data/answers/#{dir}/#{@old_file}"
+      @starter_location_dir = "data/starters/#{dir}/"
+      @starter_location = "data/starters/#{dir}/starter_#{@id}.#{ext}"
+    end
+
+    # Tests if a folder is necessary to create for a particular answer, old
+    # answer, or starter file. Creates the folder if so. Unused return.
+    def create_folder_if_necessary(dir)
+      return if File.directory?(dir)
+      `mkdir -p #{dir}`
     end
 
     # If starter file exists, return contents (for @starter); else nil. RF

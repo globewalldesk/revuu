@@ -90,8 +90,16 @@ module RepotaskFactory
       g = Git.open("data/repos/#{repo}")
       g.branches.local.find {|b| b.full} # A branch has a "full" name.
     rescue
+      puts "NOTE!"
       puts "Directory '#{repo}' hasn't been initialized with git yet."
-      puts "Please navigate to it, type 'git init', and make a branch."
+      puts "Please navigate to it and type 'git init'. Also, commit a branch,"
+      puts "at least the master branch. I.e., you will also have to add a "
+      puts "commit, i.e., execute the commands \"git add .\" and"
+      puts "\"git commit -m 'initial commit'\". If you want to make different"
+      puts "versions of the repo (you probably will), you will have to make"
+      puts "*and commit* a different git branch for each. If you don't know"
+      puts "how to make git branches ('git branch -b <branchname>') and make"
+      puts "commits, you won't be able to make repotasks.\n\n"
       print "Press Enter to continue..."
       gets
       nil

@@ -29,6 +29,7 @@ module TaskView
     @tag_str = "(#{@tags.length - default_tag_count})"
     puts "  Review dates >> Last: #{last_precise_date}#{last_time}  " +
          "Next: #{next_precise_date} (#{prettify_timestamp(@next_review_date)})"
+    puts "  Files directory: #{@location_dir}"
     display_task_commands(@tag_str) if self.class == Task
   end
 
@@ -84,6 +85,8 @@ module TaskView
       # If yes, archive the old answer and blank the answer file.
       if (ans == 'y' || ans == '')
         archive_old_answer
+        # Create a folder for this answer if one doesn't exist yet.
+        create_folder_if_necessary(@location_dir)
         File.write(@location, '') # Erase old answer from answer file.
         # Creates file with starter code as necessary.
         add_starter_code_to_answer_file
@@ -100,13 +103,13 @@ module TaskView
   # Given a task (answer), run it (optionally, an archived task answer).
   # Long and complex but all devoted to running the answer. RF
   def run_answer(old = false)
-    old ? (file = @old_file and location = @old_location) :
-      (file = @file and location = @location)
+    old ? (file = @old_file and location = @old_location and location_dir = @old_location_dir) :
+      (file = @file and location = @location and location_dir = @location_dir)
     if ( File.exist?(location) && File.stat(location).size > 0 )
       puts "\nRunning #{file}:"
       puts ("=" * 75).colorize(@langhash.color)
       puts ''
-      system("cd data/answers && #{@langhash.cmd} #{file}")
+      system("cd #{location_dir} && #{@langhash.cmd} #{file}")
       # If the language is compiled, the latter line runs the compiler.
       # The following then runs the compiled executable.
       if @langhash.cmd2
@@ -114,7 +117,7 @@ module TaskView
         # added here for new languages as needed.
         subbed_cmd = @langhash.cmd2.gsub('<name-no-ext>',
           file.gsub(".#{@langhash.ext}", ''))
-        system("cd data/answers && #{subbed_cmd}")
+        system("cd #{location_dir} && #{subbed_cmd}")
       end
       puts ''
       puts ("=" * 75).colorize(@langhash.color)
@@ -187,6 +190,8 @@ module TaskView
   # Open starter code file with text editor; load and save when done.  RF
   def edit_starter
     puts "Editing the starter code in #{$texted}."
+    # Create a folder for this starter if one doesn't exist yet.
+    create_folder_if_necessary(@starter_location_dir)
     system("#{$textedcmd} #{@starter_location}")
     print "Save your work, then press <Enter> to load the starter code: "
     gets

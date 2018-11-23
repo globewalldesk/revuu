@@ -89,6 +89,10 @@ class Lang
       {name: 'Python', ext: 'py', cmd: 'python', cmnt: '#', alts: [], spacer:
         'print("\n")', color: :yellow},
 
+      {name: 'Rust', ext: 'rs', cmd: 'rustc', cmd2: './<name-no-ext>', cmnt: '//',
+        alts: ['Rust programming language'], one_main_per_file: true, color: :red,
+        spacer: 'println!("\n")'},
+
       {name: 'Other', ext: 'txt', cmd: 'more', cmnt: '#', alts: [], spacer:
         "\n<--spacer-->\n", color: :light_magenta}
     ]

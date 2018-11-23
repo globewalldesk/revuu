@@ -80,15 +80,16 @@ class TaskList
     def delete_task_files(task)
       return nil unless defined?(task.id)
       ending = "#{task.id}.#{task.langhash.ext}"
+      dir = determine_directory(task.id)
       # Delete current answer.
-      system("rm data/answers/answer_#{ending}") if
-        File.exist? "data/answers/answer_#{ending}"
+      system("rm data/answers/#{dir}/answer_#{ending}") if
+        File.exist? "data/answers/#{dir}/answer_#{ending}"
       # Delete archive.
-      system("rm data/answers/answer_old_#{ending}") if
-        File.exist? "data/answers/answer_old_#{ending}"
+      system("rm data/answers/#{dir}/answer_old_#{ending}") if
+        File.exist? "data/answers/#{dir}/answer_old_#{ending}"
       # Delete code starter.
-      system("rm data/starters/starter_#{ending}") if
-        File.exist? "data/starters/starter_#{ending}"
+      system("rm data/starters/#{dir}/starter_#{ending}") if
+        File.exist? "data/starters/#{dir}/starter_#{ending}"
     end
 
     # Start over. Delete all data in tasks.json, starters/, and answers/. Results

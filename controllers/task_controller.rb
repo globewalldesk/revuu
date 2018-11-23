@@ -90,6 +90,8 @@ module TaskController
   # Save old answer to archive file (e.g., 'answer_old_23.rb'). Used by module
   # TaskView#write_answer. (Not the same as archiving all data.)  RF
   def archive_old_answer
+    # Create a folder for this archive if one doesn't exist yet.
+    create_folder_if_necessary(@old_location_dir)
     # Load existing answer archive, if any.
     old_archive = File.exist?(@old_location) ? File.read(@old_location) : ''
     # Load current answer file contents.

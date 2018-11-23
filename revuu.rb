@@ -15,6 +15,8 @@ include ArchivView
 Dir["./models/*.rb"].each {|file| require file unless file =~ /repotask/}
 require './models/repotask'
 
+update_file_locations unless File.directory?("data/answers/00000")
+
 ###############################################################################
 # Program wrapper object
 class App

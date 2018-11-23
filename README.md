@@ -222,4 +222,10 @@ feature is pretty stable.
 
 ### 3.2
 
-Added color-coding of languages. Added HTML, CSS, and C++.
+Added color-coding of languages. Added HTML, CSS, and C++. Moved answers, old
+answers, and starter code into sub-sub-etc.-folders that support up to
+99,999 different tasks in the same collection. Changed the logic to create
+these new folders as needed and locate the files where they are buried deep.
+Created a data migration script for people who have existing data; this was
+extensively tested and should work flawlessly (worked flawlessly for me) behind
+the scenes.

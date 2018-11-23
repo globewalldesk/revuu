@@ -92,7 +92,7 @@ module RepotaskController
     return true if @reset_this_session and ! exiting
     g = Git.open("data/repos/#{@repo}")
     # This will make the following status query correct.
-    system("cd data/repos/#{@repo}&&git status -s") # assign to throw away
+    system("cd data/repos/#{@repo}&&git status -s")
     unless g.status.changed.empty?
       if exiting
         puts <<~EXITCONFIRMATION
@@ -124,7 +124,7 @@ module RepotaskController
       end
       reset_current_branch # Returns true.
     else
-      true
+      @reset_this_session = true
     end
   end
 
@@ -148,9 +148,12 @@ module RepotaskController
   end
 
   def safely_check_out_branch_for_this_task
+    return true if @reset_this_session
     g = Git.open("data/repos/#{@repo}")
     # Is the currently checked-out git branch this repotask's branch?
     if g.current_branch != @branch
+      # This will make the following status query correct.
+      system("cd data/repos/#{@repo}&&git status -s")
       # Give scary warning if there are uncommitted changes.
       unless g.status.changed.empty?
         unless external_branch_reset_confirmed?(g.current_branch)
@@ -238,6 +241,8 @@ module RepotaskController
     branches = g.branches.local.map {|b| b.full}
     g.branch(@branch).checkout # In case the user is on the archive branch now.
     g.branch(archive_branch).delete if branches.include? archive_branch
+    # This will make the following status query correct.
+    system("cd data/repos/#{@repo}&&git status -s")
     # Create archive branch (again, maybe).
     g.branch(archive_branch).checkout
     g.add

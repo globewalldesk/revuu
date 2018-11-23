@@ -101,5 +101,50 @@ module Helpers
     return item # If no color matches.
   end
 
+  # New, important method determines the directory within data/answers/ and
+  # data/starters that a file goes in.
+  # # Given an ID (string), return the directory (string) it goes in.
+  # Returns in the form '00000/0000/000/00'.
+  def determine_directory(id)
+    id = id.to_s.split('').reverse.join
+    # Supports up to ten thousands of answers.
+    id =~ /^(\d)(\d?)(\d?)(\d?)(\d?)/
+    tens = $2 == '' ? '0' : $2
+    huns = $3 == '' ? '0' : $3
+    thous = $4 == '' ? '0' : $4
+    tthous = $5 == '' ? '0' : $5
+    "#{tthous}0000/#{thous}000/#{huns}00/#{tens}0"
+  end
+
+  ##############################################################################
+  # DATA MIGRATION
+  # Until Revuu 3.2, all answers were held in a single directory, data/answers.
+  # Now we are putting them all into nested folders based on thousands,
+  # hundreds, and tens. Thus the user's answer for #32 will go in
+  # data/answers/0000/000/30; answer #2485 in data/answers/2000/400/80.
+
+  # Updates file locations for those few people who saved data from
+  def update_file_locations
+    # Make array of answer files.
+    answers = Dir["data/answers/*"]
+    starters = Dir["data/starters/*"]
+    files = answers + starters
+    files.each do |f|
+      # Skip it if it doesn't match; if it does, extract its ID.
+      next unless f =~ /(answer_|answer_old_|starter_)(\d+)\./
+      # For each answer file, concatenate its proper directory.
+      inner_location = determine_directory($2)
+      # If the directory doesn't exist, create it.
+      dir = if (f =~ /\/starter_/)
+        "data/starters/#{inner_location}"
+      else
+        "data/answers/#{inner_location}"
+      end
+      p dir
+      `mkdir -p #{dir}` unless File.directory?(dir)
+      # Move the answer file to the directory.
+      `mv #{f} #{dir}`
+    end
+  end
 
 end
