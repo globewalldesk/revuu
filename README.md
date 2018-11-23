@@ -30,9 +30,9 @@ review and that the next review should be done on a certain date. The two basic
 views of the app are a paginated list of tasks and an individual task view.
 
 Currently, we support Ruby, JavaScript (and Node), HTML, CSS, Python, Java, C,
-C++, and Bash scripting. We support not just one-file scripting tasks but also
-complex, directory-based tasks (which Revuu calls "repotasks"). We also support
-many commonly-used text editors and IDEs.
+C++, Rust, and Bash scripting. We support not just one-file scripting tasks but
+also complex, directory-based tasks (which Revuu calls "repotasks"). We also
+support many commonly-used text editors and IDEs.
 
 Add copious, well-chosen tags in order to be able to sort tasks.
 
@@ -228,4 +228,4 @@ answers, and starter code into sub-sub-etc.-folders that support up to
 these new folders as needed and locate the files where they are buried deep.
 Created a data migration script for people who have existing data; this was
 extensively tested and should work flawlessly (worked flawlessly for me) behind
-the scenes.
+the scenes. Added Rust
