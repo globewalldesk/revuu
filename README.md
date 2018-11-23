@@ -63,7 +63,6 @@ Larry Sanger (yo.larrysanger@gmail.com)
 
 ## Development to do list
 
-* Eventually, distribute files into subdirectories of 100 apiece based on IDs.
 * Add a "sort by date added" or "sort by ID" feature.
 * Make some archive safety improvements/clarifications.
 * Add statistics (number of questions, averages, number overdue, number to do
@@ -203,7 +202,7 @@ as well as all methods used in creating new tasks, in a brand new
 `task_factory.rb` helper); also, refactored all task-creation methods.
 
 ### 3.0 (November 13, 2018)
-Finished big refactoring of Task and TaskList classes
+Finished big refactoring of Task and TaskList classes:
 
 Finished refactoring class `Task`. Renamed `helpers/` to `lib/`. Included
 `TaskController` and `TaskView` in class `Task`, so they're no longer globals.
@@ -211,7 +210,7 @@ Fixed bugs and rendered UX more consistent. Should be ready to start work on
 directory-based tasks!
 
 ### 3.1 (November 19, 2018)
-Added Repotasks
+Added Repotasks:
 
 Big update. Introduced the rather massive new Repotask feature. Created
 RepotaskFactory, the model, controller, and view files for Repotasks, and in
@@ -220,12 +219,15 @@ repositories, and git branches thereof. Also made instructions for repotask
 system. Fixed various bugs; there are probably still a few, but the new
 feature is pretty stable.
 
-### 3.2
+### 3.2 (November 23, 2018)
+Colorize and migrate files to deep locations:
 
-Added color-coding of languages. Added HTML, CSS, and C++. Moved answers, old
-answers, and starter code into sub-sub-etc.-folders that support up to
+Added color-coding of languages. Added HTML, CSS, C++, and Rust. Moved answers,
+old answers, and starter code into sub-sub-etc.-folders that support up to
 99,999 different tasks in the same collection. Changed the logic to create
 these new folders as needed and locate the files where they are buried deep.
 Created a data migration script for people who have existing data; this was
 extensively tested and should work flawlessly (worked flawlessly for me) behind
-the scenes. Added Rust
+the scenes. Replaced Colorize gem (with the help of our first pull request,
+thanks to githubcyclist!) with a few methods now at the end of `helpers.rb`.
+Squashed many bugs associated with all these changes; few left.

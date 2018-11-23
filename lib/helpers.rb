@@ -10,8 +10,8 @@ module Helpers
 
   # Used in clear_screen above. RF
   def header
-    puts sprintf("%-69s%s", " * R * E * V * U * U *",  "v. 3.1").
-      colorize(:color => :black, :background => :white)
+    puts sprintf("%-69s%s", " * R * E * V * U * U *",  "v. 3.2").
+      colorize(:black).colorize(background: :white)
     puts ''
   end
 
@@ -157,4 +157,45 @@ class String
   def color_bg(r, g, b)
     "\033[48;2;#{r};#{g};#{b}m#{self}\u001b[0m"
   end
+
+  # Takes symbol with English color name, returns colored string.
+  # Examples: "foo".colorize(:red) => returns red string.
+  #           "foo".colorize(background: :blue) => returns blue background string.
+  def colorize(color)
+    color.class == Symbol ?
+      self.color_text(*RGB_CODES[color]) :
+      self.color_bg(*RGB_CODES[color[:background]])
+  end
+
+  RGB_CODES = {
+    # Original "Colorize" gem colors, for backwards-compatibility.
+    black:  [46, 52, 54],
+    red:    [204, 0, 0],
+    green:  [78, 154, 6],
+    yellow: [205, 176, 48],
+    blue:   [52, 101, 164],
+    magenta:[117, 80, 123],
+    cyan:   [6, 152, 154],
+    white:  [211, 215, 207],
+    light_black:  [85, 87, 83],
+    light_red:    [239, 41, 41],
+    light_green:  [158, 229, 90],
+    light_yellow: [252, 233, 79],
+    light_blue:   [114, 159, 207],
+    light_magenta:[173, 127, 168],
+    light_cyan:   [52, 226, 226],
+    light_white:  [238, 238, 236],
+    # New colors.
+    free_speech_red:[169, 16, 0],     # Ruby
+    festival:       [233, 212, 77],   # JavaScript
+    denim:          [27, 132, 193],   # CSS
+    tahiti_gold:    [233, 98, 40],    # HTML
+    chateau_green:  [69, 181, 80],    # Bash
+    malibu:         [93, 164, 221],   # SQL/PSQL
+    echo_blue:      [163, 179, 198],  # C
+    med_aquamarine: [98, 202, 175],   # C++
+    carrot_orange:  [240, 148, 33],   # Java
+    saffron:        [247, 191, 48],   # Python
+    brown:          [165, 42, 42]     # Rust
+  }
 end

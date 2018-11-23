@@ -116,7 +116,7 @@ class Task
         @starter = load_starter
       else # i.e., if a new task...
         @starter = args[:starter]
-        @starter = add_id_to_java_starter if @lang == 'Java'
+        @starter = add_id_to_java_starter if @lang == 'Java' and @starter
         create_folder_if_necessary(@location_dir)
         create_folder_if_necessary(@starter_location_dir)
         File.write(@starter_location, @starter) unless @starter.nil?

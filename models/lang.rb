@@ -56,41 +56,41 @@ class Lang
   @@defined_langs =
     [
       {name: 'Ruby', ext: 'rb', cmd: 'ruby', cmnt: '#', alts: [], spacer:
-        "puts ''", color: :red },
+        "puts ''", color: :free_speech_red },
 
       {name: 'JavaScript', ext: 'js', cmd: 'node', cmnt: '//', alts:
         ['JS', 'Node', 'Node.js'], spacer: "console.log(' ')", color:
-        :light_yellow},
+        :festival},
 
       {name: 'HTML', ext: 'html', cmd: 'firefox', cmnt: '<!--', cmnt2: '-->',
         alts: ['HTML5'], spacer: "<p>&nbsp;</p>", one_main_per_file: true,
-        color: :light_red},
+        color: :tahiti_gold},
 
       {name: 'CSS', ext: 'css', cmd: 'firefox', cmnt: '/*', cmnt2: '*/',
-        alts: ['CSS3'], spacer: '', color: :blue},
+        alts: ['CSS3'], spacer: '', color: :denim},
 
       {name: 'Bash', ext: 'sh', cmd: '/bin/bash', cmnt: '#', alts:
         ['command line', 'shell', 'shell scripting', 'Bash scripting', 'Linux',
-          'Unix'], spacer: "echo '<--spacer-->'", color: :white},
+          'Unix'], spacer: "echo '<--spacer-->'", color: :chateau_green},
 
       {name: 'SQL', ext: 'rb', cmd: 'ruby', cmd2: 'psql tysql postgres',
-        cmnt: '#', alts: ['postgresql', 'psql'], spacer: "puts ''", color: :cyan},
+        cmnt: '#', alts: ['postgresql', 'psql'], spacer: "puts ''", color: :malibu},
 
       {name: 'C', ext: 'c', cmd: 'gcc', cmd2: './a.out', cmnt: '/*',
         cmnt2: '*/', one_main_per_file: true, alts: ['C language',
-        'C programming language'], color: :light_blue},
+        'C programming language'], color: :echo_blue},
 
       {name: 'C++', ext: 'cpp', cmd: 'g++', cmd2: './a.out', alts: ['C plus plus'],
-        cmnt: '//', spacer: 'cout<<"\n";', color: :blue},
+        cmnt: '//', spacer: 'cout<<"\n";', color: :med_aquamarine},
 
       {name: 'Java', ext: 'java', cmd: 'javac', cmd2: 'java <name-no-ext>',
-        cmnt: '//', one_main_per_file: true, alts: [], color: :magenta},
+        cmnt: '//', one_main_per_file: true, alts: [], color: :carrot_orange},
 
       {name: 'Python', ext: 'py', cmd: 'python', cmnt: '#', alts: [], spacer:
-        'print("\n")', color: :yellow},
+        'print("\n")', color: :saffron},
 
       {name: 'Rust', ext: 'rs', cmd: 'rustc', cmd2: './<name-no-ext>', cmnt: '//',
-        alts: ['Rust programming language'], one_main_per_file: true, color: :red,
+        alts: ['Rust programming language'], one_main_per_file: true, color: :brown,
         spacer: 'println!("\n")'},
 
       {name: 'Other', ext: 'txt', cmd: 'more', cmnt: '#', alts: [], spacer:

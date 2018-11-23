@@ -1,7 +1,6 @@
 source "https://rubygems.org"
 gem "json", "~> 2.1"
 gem "date", "~> 1.0"
-gem "colorize", "~> 0.8.1"
 gem "chronic", "~> 0.10.2"
 gem "minitar", "~> 0.6.1"
 gem "git", "~> 1.5"
