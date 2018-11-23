@@ -148,3 +148,13 @@ module Helpers
   end
 
 end
+
+class String
+  def color_text(r, g, b)
+    "\033[38;2;#{r};#{g};#{b}m#{self}\u001b[0m"
+  end
+
+  def color_bg(r, g, b)
+    "\033[48;2;#{r};#{g};#{b}m#{self}\u001b[0m"
+  end
+end
