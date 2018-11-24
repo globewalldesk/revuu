@@ -162,7 +162,7 @@ class String
   # Examples: "foo".colorize(:red) => returns red string.
   #           "foo".colorize(background: :blue) => returns blue background string.
   def colorize(color)
-    return self unless system("echo $COLORTERM") == 'truecolor'
+    return self unless ENV["COLORTERM"]
     color.class == Symbol ?
       self.color_text(*RGB_CODES[color]) :
       self.color_bg(*RGB_CODES[color[:background]])
