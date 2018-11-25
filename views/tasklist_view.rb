@@ -114,7 +114,10 @@ module TasklistView
       # Delete the nonexistent "page" above the last page.
       str.gsub!(") #{pnum + 1}", ')')
     end
-    puts("Nav: " + str)
+    str = "Nav: " + str
+    tcl = 69 - str.length
+    task_count = sprintf("%#{tcl}s tasks", list.length)
+    puts str + task_count
   end
 
   # Prints the help text that goes underneath the tasklist display. RF

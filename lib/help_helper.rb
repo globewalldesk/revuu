@@ -433,8 +433,8 @@ When you archive (with 'c' for create archive) your data, you are simply
 making a tarball, a copy, of the data/ folder and placing the copy in
 archives/. Grab it from there to share with others.
 
-When you press 'l' for load archive, you are getting ready to make an
-existing archive (tarball) your live data.
+When you press 'l' for load archive, you are getting ready to use an
+existing archive (tarball); you'll overwrite your currently live data.
 
 If you're new to Revuu, you can check out some sample data by
 (1) pressing 'sa', (2) pressing 'l' and then choosing the sample data

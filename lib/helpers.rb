@@ -149,6 +149,10 @@ module Helpers
 
 end
 
+module Colorize::InstanceMethods
+  alias :old_colorize :colorize
+end
+
 class String
   def color_text(r, g, b)
     "\033[38;2;#{r};#{g};#{b}m#{self}\u001b[0m"
@@ -162,10 +166,20 @@ class String
   # Examples: "foo".colorize(:red) => returns red string.
   #           "foo".colorize(background: :blue) => returns blue background string.
   def colorize(color)
-    return self unless ENV["COLORTERM"]
-    color.class == Symbol ?
-      self.color_text(*RGB_CODES[color]) :
-      self.color_bg(*RGB_CODES[color[:background]])
+    if ENV["COLORTERM"]
+      color.class == Symbol ?
+        self.color_text(*RGB_CODES[color]) :
+        self.color_bg(*RGB_CODES[color[:background]])
+    else
+      if color.class == Symbol
+        color = COLOR_MAPPER.has_key?(color) ? COLOR_MAPPER[color] : color
+        self.old_colorize(color)
+      else
+        color[:background] = COLOR_MAPPER.has_key?(color[:background]) ?
+          COLOR_MAPPER[color[:background]] : color[:background]
+        self.old_colorize(color)
+      end
+    end
   end
 
   RGB_CODES = {
@@ -198,5 +212,20 @@ class String
     carrot_orange:  [240, 148, 33],   # Java
     saffron:        [247, 191, 48],   # Python
     brown:          [165, 42, 42]     # Rust
+  }
+
+  # Mapping new color names to old names for use by Colorize gem.
+  COLOR_MAPPER = {
+    free_speech_red:  :red,           # Ruby
+    festival:         :light_yellow,  # JavaScript
+    denim:            :blue,          # CSS
+    tahiti_gold:      :light_red,     # HTML
+    chateau_green:    :white,         # Bash
+    malibu:           :cyan,          # SQL/PSQL
+    echo_blue:        :light_blue,    # C
+    med_aquamarine:   :blue,          # C++
+    carrot_orange:    :magenta,       # Java
+    saffron:          :yellow,        # Python
+    brown:            :red            # Rust
   }
 end

@@ -27,3 +27,4 @@ nohup.out
 models/helpers.js
 *.DS_Store*
 color_exper.rb
+randomkeys.rb

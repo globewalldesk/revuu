@@ -18,7 +18,7 @@ class Lang
       end
       # Check which languages are available on the system.
       available_langs = @@defined_langs.reject do |l|
-        ! `which #{l[:cmd]}`
+        `which #{l[:cmd]}` == ''
       end
       # If, amazingly, there's only one language, say so and exit.
       if available_langs.length == 1
@@ -26,6 +26,7 @@ class Lang
         return default
       end
       # Show available languages to user and solicit a number.
+      puts "Here are the languages we support that are on your system."
       puts "Enter the number of a language; <Enter> for current; or [q]uit:"
       choice = wrap_items_with_numbers(available_langs.map{|l| l[:name]},
                                        {colored: true, enter_OK: true})

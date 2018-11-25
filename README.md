@@ -231,3 +231,9 @@ extensively tested and should work flawlessly (worked flawlessly for me) behind
 the scenes. Replaced Colorize gem (with the help of our first pull request,
 thanks to githubcyclist!) with a few methods now at the end of `helpers.rb`.
 Squashed many bugs associated with all these changes; few left.
+
+### 3.3
+
+Deciding it was easy to support less colorful terminals, I made the code use
+the more limited Colorize gem (which I had briefly removed) for terminals of
+which `$COLORTERM` is false.
