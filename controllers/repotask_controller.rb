@@ -10,8 +10,6 @@ module RepotaskController
       # Dispatch table returns command, which in at least one case might be
       # changed by the dispatch table.
       command = process_repotask_input(command)
-      # Return to tasklist to go forward or back to another task.
-      return command if '.,<>'.include? command if command
     end
     nil # No tasklist dispatch table message.
   end
@@ -28,8 +26,6 @@ module RepotaskController
       open_repo
     when 's' # Same as Task method.
       record_review
-#    when 'a' # Very different; needs to be replaced entirely, in fact.
-#      write_answer
     when 'r' # Execute the repotask's run_commands.
       run_answer
     when 'help', '?' # Launch help.

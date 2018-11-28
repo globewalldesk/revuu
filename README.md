@@ -63,12 +63,13 @@ Larry Sanger (yo.larrysanger@gmail.com)
 
 ## Development to do list
 
+* Add "open old" for repotask branches archive, and ensure it works.
+* Add proper support for opening PSQL terminal.
+* Full text search with regex capabilities.
 * Add a "sort by date added" or "sort by ID" feature.
-* Make some archive safety improvements/clarifications.
+* Make various archive safety improvements/clarifications.
 * Add statistics (number of questions, averages, number overdue, number to do
 today, etc.).
-* If a user loads the newest archive bearing its label (unless the label is
-simply 'archive') then label the tasklist appropriately.
 
 ## Programmer notes
 

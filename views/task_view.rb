@@ -81,7 +81,7 @@ module TaskView
     if (File.exist?(@location) && File.stat(@location).size > 0 &&
       File.read(@location) != java_starter && File.read(@location) != @starter)
       puts "An answer exists. Want to archive it before opening? ([y]/n)"
-      ans = get_user_command('a')
+      ans = get_user_command('a+')
       # If yes, archive the old answer and blank the answer file.
       if (ans == 'y' || ans == '')
         archive_old_answer
