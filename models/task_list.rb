@@ -8,13 +8,14 @@ class TaskList
   attr_accessor :list
   # These might not need accessors; I'm just listing them for clarity.
   attr_reader :displayed_tasks, :tag_filtered_list, :filter_tag, :default_tag,
-    :page_num
+    :page_num, :history
   def initialize
     @list = []
     @tasklist_filter = 'all'
     @page_num = 1
     load_all_tasks
     $tasks = self # class Task & class Archiv need access for saving etc.
+    @history = load_history
     display_tasks('first screen')
     app_loop
   end
@@ -28,6 +29,7 @@ class TaskList
       f.write(json)
     end
     save_change_timestamp_to_settings
+    load_history
   end
 
   private
@@ -51,6 +53,15 @@ class TaskList
         @list = @list.sort!{|x,y| DateTime.parse(x.next_review_date) <=>
           DateTime.parse(y.next_review_date)}
       end
+    end
+
+    def load_history
+      start = Time.now
+      reviews = {}
+      @list.each do |t|
+        t.all_reviews.each {|r| reviews[r['review_date']] = t}
+      end
+      @history = reviews.sort_by {|timestamp,task| timestamp }.reverse
     end
 
     # Accepts the display number (NOT ID) of a task and attempts to delete it.

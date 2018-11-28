@@ -36,7 +36,7 @@ module TaskView
   def display_task_commands(tag_str)
     puts <<~DISPLAYTASKCOMMANDS
 
-    COMMANDS  Review: [s]ave review  [a]nswer  [r]un answer  [h]elp
+    COMMANDS  Review: [s]ave review  [a]nswer  [r]un answer  [?] help
                       [o]ld answers  [rr]un old answers  configure [l]anguage
                 Edit: [i]nstructions  [t]ags#{tag_str}  [d]ate of next review
                       [sc]ore  [st]arter code

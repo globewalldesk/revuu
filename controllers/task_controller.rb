@@ -21,7 +21,7 @@ module TaskController
       write_answer
     when 'r' # Execute the file you wrote.
       run_answer
-    when 'h', '?' # Launch help.
+    when 'help', '?' # Launch help.
       launch_instructions_system
       display_info # Display the task after returning from help.
     when 'o' # Open file containing old/archived answers for this task.

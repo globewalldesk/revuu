@@ -22,12 +22,18 @@ module TasklistView
   # Simply print the first couple lines of the task list (used only by
   # #display_tasks). RF
   def print_header_for_tasklist_display
+    label_for_date_column = 'Due date' # By default except for history.
     if @filter_tag
-      print "   "
-      puts "Filtered by '#{@filter_tag}'".colorize(background: :green)
+      if @filter_tag == 'history'
+        puts "> History <".center(75).colorize(:black).colorize(background: :light_yellow)
+        label_for_date_column = 'Last reviewed'
+      else
+        puts "> Filtered by '#{@filter_tag}' <".center(75).colorize(background: :green)
+      end
+      puts
     end
     printf("%3s | %-49s| %-21s\n", ' #', 'Instructions (first line)',
-      'Due date')
+      label_for_date_column)
     puts separator = '=' * 75
   end
 
@@ -38,8 +44,11 @@ module TasklistView
     # then return the search results.
     @displayed_tasks = []
     list = (@filter_tag ? @tag_filtered_list : @list)
-    list.sort!{|x,y| DateTime.parse(x.next_review_date) <=>
-        DateTime.parse(y.next_review_date)}
+    unless @filter_tag == 'history'
+      list.sort!{|x,y| DateTime.parse(x.next_review_date) <=>
+          DateTime.parse(y.next_review_date)}
+    end
+    list
   end
 
   # Simply prints the tasklist. Requires tasklist; prints it for user. RF
@@ -54,8 +63,10 @@ module TasklistView
       numstr = becolor(" #{i} | ", colored)
       lang_str = ('(' + task.lang + ') ').colorize(task.langhash.color)
       title_str = becolor(prepare_title_string(task, (task.lang.length+3)), colored)
+      date_item = @filter_tag == 'history' ? task.all_reviews[-1]['review_date'] :
+                  task.next_review_date
       time_str = becolor(sprintf("| %-21s",
-                         prettify_timestamp(task.next_review_date)), colored)
+                         prettify_timestamp(date_item)), colored)
       puts colorblock + numstr + lang_str + title_str + time_str
       #      (colored ? line.colorize(:green) : line) + "\n"
       #puts line.colorize(task.langhash.color)
@@ -127,8 +138,8 @@ module TasklistView
 
     Commands are:
     [n]ew task  new [r]epo task  [1] view task #1  [l]ist all tasks
-    show ne[x]t  [d]elete task  [t]ag search  [a]rchive data#{asterisk}
-    set text [e]ditor  set [p]rogramming language  [de]stroy  [h]elp
+    show ne[x]t  [d]elete task  [t]ag search  [h]istory  [a]rchive data#{asterisk}
+    set text [e]ditor  set [p]rogramming language  [de]stroy  [?] help
 
     HELPTEXT
   end

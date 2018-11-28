@@ -21,7 +21,7 @@ module ArchivView
   def archive_help
     <<~ARCHIVEHELP
     Archives: [c]reate/export  [l]oad/import  [s]how all  [d]elete
-    Also:     re[f]resh view  [sa]mple data  [h]elp  [q]uit archive system
+    Also:     re[f]resh view  [sa]mple data  [?] help  [q]uit archive system
 
     ARCHIVEHELP
   end

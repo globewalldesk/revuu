@@ -36,13 +36,8 @@ support many commonly-used text editors and IDEs.
 
 Add copious, well-chosen tags in order to be able to sort tasks.
 
-Revuu ships with a bunch of pre-made questions (in the "sample data" folder) and
-answers by way of demonstration. Load by pressing 'a' to go to the archive
-system, and then 'sa' to copy the sample data. Then press 'l' to load, and
-choose the sample data.
-
 You can also easily import (load) and export (archive, back up, share) your
-data.
+data, or some included sample data.
 
 ## Install and requirements
 Clone the repo (instructions should be clear enough from Github). Should
@@ -55,7 +50,12 @@ Only works on \*nix systems (including modern Macs).
 Once Ruby, the app, and the gem dependencies are installed, you should be able
 to start the app on your \*nix system just by typing `ruby revuu.rb`.
 
-To learn how to use the system, press 'h' for help. It's pretty easy to learn,
+Revuu ships with a bunch of pre-made questions (in the "sample data" folder) and
+answers by way of demonstration. Load by pressing 'a' to go to the archive
+system, and then 'sa' to copy the sample data. Then press 'l' to load, and
+choose the sample data.
+
+To learn how to use the system, press '?' for help. It's pretty easy to learn,
 and we have extensive help files.
 
 ## Author
@@ -67,17 +67,12 @@ Larry Sanger (yo.larrysanger@gmail.com)
 * Make some archive safety improvements/clarifications.
 * Add statistics (number of questions, averages, number overdue, number to do
 today, etc.).
+* If a user loads the newest archive bearing its label (unless the label is
+simply 'archive') then label the tasklist appropriately.
 
 ## Programmer notes
 
 If Rubyists want to help out, I'd be very happy.
-
-In order to make the codebase more maintainable, I did a major refactoring. My
-strategy was (1) move the various helper code to "controller" and "view"
-modules associated with "models," although the controller and view code are in
-modules rather than classes, (2) starting from the basic classes App, TaskList,
-and Task, I added a few more classes corresponding to major data-and-method
-groupings, such as Lang and Archiv.
 
 ## Version notes
 
@@ -234,6 +229,7 @@ Squashed many bugs associated with all these changes; few left.
 
 ### 3.3
 
+Added review history, making it easy to find tasks you reviewed recently.
 Deciding it was easy to support less colorful terminals, I made the code use
 the more limited Colorize gem (which I had briefly removed) for terminals of
 which `$COLORTERM` is false.

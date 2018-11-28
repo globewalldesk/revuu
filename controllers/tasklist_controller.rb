@@ -61,7 +61,9 @@ module TasklistController
     when 'de'
       destroy_all
       return if $destroyed_data # Used in revuu.rb. Exits TaskList.
-    when 'h', '?'
+    when 'h'
+      display_history
+    when '?', 'help'
       launch_instructions_system
     when 'q'
       return
@@ -107,8 +109,11 @@ module TasklistController
   # Simply clears the filter tag and tag-filtered list; will cause the whole
   # list to be displayed on re-display of tasks. RF
   def prep_to_show_all_tasks
-    @filter_tag = nil
-    @tag_filtered_list = []
+    if @filter_tag
+      @filter_tag = nil
+      @tag_filtered_list = []
+      @page_num = 1
+    end
     nil # No dispatch table message.
   end
 
@@ -139,7 +144,7 @@ module TasklistController
       # Assign default tag to input. This does double duty as boolean
       # indicating whether the current tasklist display is filtered or not.
       @filter_tag = tag_match
-      @default_tag = @filter_tag.dup
+      @default_tag = @filter_tag.dup unless @default_tag == 'history'
       @page_num = 1
       # Save sorted array of tasks filtered by this tag.
       @tag_filtered_list = tag_hash[tag_match]
@@ -147,6 +152,15 @@ module TasklistController
     else
       return "'#{tag}' not found."
     end
+  end
+
+  # Basically uses the same logic as #tag_search.
+  def display_history
+    return "No history yet. Make and review a task first." if @history.empty?
+    @filter_tag = 'history'
+    @page_num = 1
+    @tag_filtered_list = @history.map{|h| h[1]}.uniq
+    return "Showing history. Press 'l' to show tasklist."
   end
 
   # For use in tag search: a hash where keys = tags while values = tasks. RF

@@ -10,6 +10,8 @@ module RepotaskController
       # Dispatch table returns command, which in at least one case might be
       # changed by the dispatch table.
       command = process_repotask_input(command)
+      # Return to tasklist to go forward or back to another task.
+      return command if '.,<>'.include? command if command
     end
     nil # No tasklist dispatch table message.
   end
@@ -30,7 +32,7 @@ module RepotaskController
 #      write_answer
     when 'r' # Execute the repotask's run_commands.
       run_answer
-    when 'h', '?' # Launch help.
+    when 'help', '?' # Launch help.
       launch_instructions_system
       display_info # Display the task after returning from help.
 #    when 'o' # Basically need to switch to backup/archive repo...
@@ -54,6 +56,7 @@ module RepotaskController
       prep_new_score
     when 'f'
       display_info
+    when '.', ',', '<', '>' # Inter-task nav handled the same as 'q'.
     when 'q' # Quit task view and return to tasklist.
       cache_answer_in_archive_branch
       if branch_reset_confirmed?(true) # true = exiting

@@ -29,7 +29,7 @@ class App
     # $destroyed_data is true, you reload the tasklist; otherwise, you quit
     # the app altogether.
     loop do
-      # First, we reset globals that might have been set true by the user.
+      # We reset globals that might have been set true by the user.
       $view_archive = false       # Cf. TasklistController dispatch table.
       $destroyed_data = false     # Cf. TaskList#destroy_all
       load_defaults_from_settings # Loads/assigns a number of settings globals.
@@ -77,7 +77,7 @@ class App
     a task list from the archive (where you can find some sample data to play
     with). Choose your text editor with 'e' and your default programming
     language with 'p'. For a general introduction and detailed instructions,
-    press 'h'.
+    press '?'.
     NEWBIE
   end
 

@@ -32,7 +32,7 @@ module HelpHelper
         skip_list = true
       end
     end
-    return "You can type 'h' or '?' to get back to help."
+    return "You can type '?' to get back to help."
   end
 
   def display_instruction_choices(options)
