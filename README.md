@@ -1,8 +1,8 @@
 # revuu
 A new kind of learning tool for programming, Revuu makes it unusually easy and
-fun to review coding tasks. Revuu makes it easy to create practical
-(how-to) programming questions, auto-creating and keeping track of answer
-files, running your answers in-app, scheduling reviews automatically, etc.
+fun to review coding tasks. You can create practical (how-to) programming
+questions, auto-creating and keeping track of answer files, running your
+answers in-app, scheduling reviews automatically, etc.
 
 ## User introduction
 
