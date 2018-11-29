@@ -29,7 +29,7 @@ module TaskView
     @tag_str = "(#{@tags.length - default_tag_count})"
     puts "  Review dates >> Last: #{last_precise_date}#{last_time}  " +
          "Next: #{next_precise_date} (#{prettify_timestamp(@next_review_date)})"
-    puts "  Files directory: #{@location_dir}"
+    puts "  Files directory: #{@location_dir}" if self.class == Task
     display_task_commands(@tag_str) if self.class == Task
   end
 

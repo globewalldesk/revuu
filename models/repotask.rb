@@ -4,7 +4,7 @@ class Repotask < Task
   include RepotaskView
 
               # Attributes saved in tasks.json:
-  attr_reader :repo, :branch, :files, :run_commands
+  attr_reader :repo, :branch, :files, :run_commands, :old_branch
               # All other attributes should be found in class Task.
 
   def initialize(args)
@@ -16,8 +16,10 @@ class Repotask < Task
     # Step (2). (Step (1) is in Task#initialize.)
     if @saved # For use when loading old/existing tasks.
       @id = args[:id]
+      @old_branch = calculate_old_branch
     else      # For use when creating neqw tasks.
       @id = calculate_id
+      @old_branch = calculate_old_branch
       # Step (3).
       save_change_timestamp_to_settings # (a) Save change timestamp.
       save_new_task                     # (b) Save task to tasks.json.
@@ -26,6 +28,10 @@ class Repotask < Task
     # Eventually, save new "defaults" (most recent choices) to settings and
     # otherwise update settings file; incl. @repo, @branch, and associated
     # commands at least.
+  end
+
+  def calculate_old_branch
+    "#{@branch}_#{@id}_archive"
   end
 
 end

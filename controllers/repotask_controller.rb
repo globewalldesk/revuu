@@ -31,10 +31,10 @@ module RepotaskController
     when 'help', '?' # Launch help.
       launch_instructions_system
       display_info # Display the task after returning from help.
-#    when 'o' # Basically need to switch to backup/archive repo...
-#      view_old_answers
-#    when 'rr' # Run old answer. Switch and run...
-#      run_answer('old')
+    when 'oo' # Switch to backup/archive repo and open.
+      open_repo('old')
+    when 'rr' # Run archived repo code.
+      run_answer('old')
     when 'l' # Same as Task method.
       self.change_language
     when 'i' # Same as Task method.
@@ -69,18 +69,30 @@ module RepotaskController
   end
 
   def open_file(file)
-    return unless safely_check_out_branch_for_this_task
-    return unless branch_reset_confirmed?
+    return unless checkout_before_open_or_run
     file = @files[file-1]
     system("#{$textedcmd} data/repos/#{@repo}/#{file}")
     puts "When you're done, don't forget to press 'r' to run."
   end
 
-  def open_repo
-    return unless safely_check_out_branch_for_this_task
-    return unless branch_reset_confirmed?
+  def open_repo(old=false)
+    return unless checkout_before_open_or_run(old)
     system("#{$textedcmd} data/repos/#{@repo}")
     puts "When you're done, don't forget to press 'r' to run."
+  end
+
+  def checkout_before_open_or_run(old=false)
+    if old # We're switching to the task's old (archive) branch.
+      # Check out the archive before launching the archive branch.
+      return false unless safely_check_out_branch(@old_branch, 'oo')
+    else # We're switching to the task's main branch.
+      # Check out the branch (and reset the previous branch) if we're not on it.
+      return false unless safely_check_out_branch
+      # If we're on the task branch, it might be unclean. Double-check and
+      # reset if necessary.
+      return false unless branch_reset_confirmed?
+    end
+    return true
   end
 
   # This prompts the user for an "OK" to hard reset the branch (rolling back
@@ -134,11 +146,27 @@ module RepotaskController
     @reset_this_session = true
   end
 
-  def run_answer
-    return unless safely_check_out_branch_for_this_task
+  def run_answer(old=false)
+    return unless checkout_before_open_or_run(old)
+    # If running the old (archive) repo, first check if the branch exists and
+    # is different from the unedited starter version.
+    if old
+      g = Git.open("data/repos/#{@repo}")
+      branches = g.branches.local.map {|b| b.full}
+      if ! branches.include? @old_branch
+        print "\nNo old branch to view. You haven't saved a solution to this " +
+              "task yet.\n\n"
+        return nil
+      elsif system("cd data/repos/#{@repo}&&git diff #{branch} #{@old_branch} --quiet")
+        print "\nNothing to run. The old (archived) task code is unchanged." +
+           "Maybe the task\nhasn't been done yet.\n\n"
+        return nil
+      end
+    end
     commands = @run_commands.split("\n").join("&&")
     commands = "cd data/repos/#{@repo}&&" + commands
-    puts "\nRunning commands from ##{@id}:"
+    archive_msg = " " + "archive".colorize(background: @langhash.color) if old
+    puts "\nRunning commands from ##{@id}#{archive_msg}:"
     puts ("=" * 75).colorize(@langhash.color)
     puts ''
     system(commands)
@@ -146,27 +174,86 @@ module RepotaskController
     puts ("=" * 75).colorize(@langhash.color)
   end
 
-  def safely_check_out_branch_for_this_task
-    return true if @reset_this_session
+  # If not already done, check out a git branch (the task's or the archive).
+  # This is skipped if we're already on the branch we want. (The latter doesn't
+  # guarantee that the tree is clean, as we might want it to be.)
+  def safely_check_out_branch(branch=@branch, prompt='o')
+    #puts "branch = #{branch}"
+    #puts "@reset_this_session = #{@reset_this_session}"
+    #puts "@reset_archive_this_session = #{@reset_archive_this_session}"
+    # The task's branch is already checked out and it's the one we want?
+    # Skip checkout.
+    return true if @reset_this_session and branch == @branch
+    # The archive's branch is already checked out and it's the one we want?
+    # Skip checkout.
+    return true if @reset_archive_this_session and branch == @old_branch
+    # If you got here, then either another branch is checked out, and we
+    # want the task's branch; OR the task's branch is checked out, and we
+    # want the archive branch.
     g = Git.open("data/repos/#{@repo}")
-    # Is the currently checked-out git branch this repotask's branch?
-    if g.current_branch != @branch
+    # Is the currently checked-out git branch the branch we want? No...
+    if g.current_branch != branch
       # This will make the following status query correct.
       system("cd data/repos/#{@repo}&&git status -s")
       # Give scary warning if there are uncommitted changes.
-      unless g.status.changed.empty?
-        unless external_branch_reset_confirmed?(g.current_branch)
-          puts "Not running. Branch #{g.current_branch} unchanged."
-          # Escape if permission not granted by user.
-          return nil
+      if branch == @branch
+        unless g.status.changed.empty?
+          if ! external_branch_reset_confirmed?(g.current_branch)
+            puts "Not running. Branch #{g.current_branch} unchanged."
+            # Escape if permission not granted by user.
+            return nil
+          else
+            @reset_this_session = true # It soon will be...
+            g.reset_hard # RESET!!!
+          end
         end
-        # If permission granted, hard-reset the external branch.
-        g.reset_hard
+          # Forget the archive session regardless of reset.
+          @reset_archive_this_session = false
+      elsif branch == @old_branch
+        # If I want the archive branch, the task branch is checked out and
+        # clean, groovy--ready to switch.
+        if g.status.changed.empty? and g.current_branch == @branch
+          puts "Current branch of the #{@repo} repo is clean, so"
+          puts "you're ready to switch to the archive branch for task #{@id}."
+        # If I want the archive branch, the task branch is checked out but
+        # NOT clean, make sure the user is OK with it.
+        elsif ! g.status.changed.empty? and g.current_branch == @branch
+          puts "The main branch of the #{@repo} repo has edits. If you want"
+          puts "to view the archive, you can, but you'll lose all your changes."
+          return nil unless old_checkout_confirmed?(prompt)
+          g.reset_hard # RESET!!!
+        end
+        # Regardless of whether the task's main branch was clean, it's been
+        # reset (cleaned).
+        @reset_this_session = false # Going away from maybe-dirty main branch.
+        @reset_archive_this_session = true
+        # If I want the archive branch, and another branch is checked out and
+        # IT is clean, groovy--ready to switch. No need of comment.
       end
       # Check out needed branch in any case.
-      g.branch(@branch).checkout
+      g.branch(branch).checkout
     end
-    true
+    true # We have the branch we want now.
+  end
+
+  # Get confirmation, if necessary, from user to switch to the archive branch.
+  def old_checkout_confirmed?(prompt)
+    # Return true if no changes yet to the current branch AND the user is on
+    # the task's branch
+    confirm = nil
+    until ['y', 'n', ''].include? confirm
+      puts "Confirm reset? (Enter for [y]es, or [n]o)"
+      confirm = get_user_command(prompt)
+    end
+    if confirm == 'n'
+      print "OK, branch not reset.\n\n"
+      return false
+    else
+      return true
+      # I.e., the user has confirmed that he's ready to switch from this
+      # repo's current unclean branch to the archive branch. The actual switch
+      # is performed in #safely_check_out_branch.
+    end
   end
 
   # Asks user to confirm hard resetting changes to an external branch.
@@ -234,18 +321,24 @@ module RepotaskController
   # this method. Specially named so they don't show up as options to base new
   # repotasks on.
   def cache_answer_in_archive_branch
-    archive_branch = "#{@branch}_#{@id}_archive"
     g = Git.open("data/repos/#{@repo}")
+    # This will make the following status queries correct.
+    system("cd data/repos/#{@repo}&&git status -s")
+    # Skip making an archive if (1) we're in the archive branch, or (2) no
+    # changes were made to the main task branch and we're in the main branch,
+    # or (3) another branch is checked out already.
+    # If we're in the archive branch, the main task branch was already reset.
+    # If we're in another branch, we don't want to overwrite this one.
+    return if ( (g.status.changed.empty? &&
+                 g.current_branch == @branch) or # Covers case (2).
+               g.current_branch != @branch) # Covers cases (1) and (3).
     # Delete any existing archive branch.
     branches = g.branches.local.map {|b| b.full}
-    g.branch(@branch).checkout # In case the user is on the archive branch now.
-    g.branch(archive_branch).delete if branches.include? archive_branch
-    # This will make the following status query correct.
-    system("cd data/repos/#{@repo}&&git status -s")
+    g.branch(@old_branch).delete if branches.include? @old_branch
     # Create archive branch (again, maybe).
-    g.branch(archive_branch).checkout
+    g.branch(@old_branch).checkout
     g.add
-    g.commit("standard archive") unless g.status.changed.empty?
+    g.commit("standard archive")
     # Finally, checkout the main repotask branch.
     g.branch(@branch).checkout
   end

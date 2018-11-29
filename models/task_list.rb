@@ -67,24 +67,24 @@ class TaskList
     # Accepts the display number (NOT ID) of a task and attempts to delete it.
     # Return user message (whether successful or not). RF
     def delete_task(num)
-      # Do a bit of validation with user-input string first.
-      return "'#{num}' entered so nothing deleted." if
-      num.to_i.to_s != num # Catches 'q', '', and any non-integer.
-      num = num.to_i # Convert to integer.
       task = fetch_task_from_displayed_number(num)
       # Prepare info about the task deleted to send back to user.
       if @list.delete(task) # Recall that Array#delete returns nil if not found.
-        message = "(#{task.lang}) "
-        message += task.instructions.split("\n")[0][0..20]
-        message += '...' if task.instructions.split("\n")[0][0..20] !=
-                          task.instructions.split("\n")[0]
-        message += " (ID ##{task.id.to_s})"
         delete_task_files(task)
         save_tasklist
+        message = delete_message(task)
         return "Deleted:\n#{message}\n\n"
       else
         return "'#{num}' not found; nothing deleted.\n\n"
       end
+    end
+
+    def delete_message(task)
+      message = "(#{task.lang}) "
+      message += task.instructions.split("\n")[0][0..20]
+      message += '...' if task.instructions.split("\n")[0][0..20] !=
+                        task.instructions.split("\n")[0]
+      message += " (ID ##{task.id.to_s})"
     end
 
     # Delete any files associated with the task to delete. RF

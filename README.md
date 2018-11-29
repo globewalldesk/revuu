@@ -1,10 +1,12 @@
 # revuu
-If you are trying to commit a lot of programming techniques to memory, try
-it--you'll like it. Revuu gives you one place to make or copy practical (how-to)
-programming questions, auto-creating and keeping track of answer files, running
-your answers in-app, scheduling reviews automatically, etc.
+A new kind of learning tool for programming, Revuu makes it unusually easy and
+fun to review coding tasks. Revuu makes it easy to create practical
+(how-to) programming questions, auto-creating and keeping track of answer
+files, running your answers in-app, scheduling reviews automatically, etc.
 
 ## User introduction
+
+See https://www.youtube.com/watch?v=Mgrdg1uwDeA for the how and why of Revuu.
 
 Revuu helps you review programming tasks, both simple and complex, improving
 understanding and keeping your skills fresh. It was written with the notion that
@@ -63,7 +65,6 @@ Larry Sanger (yo.larrysanger@gmail.com)
 
 ## Development to do list
 
-* Add "open old" for repotask branches archive, and ensure it works.
 * Add proper support for opening PSQL terminal.
 * Full text search with regex capabilities.
 * Add a "sort by date added" or "sort by ID" feature.
@@ -80,15 +81,15 @@ If Rubyists want to help out, I'd be very happy.
 ### 1.0 (September 27, 2018)
 First published version:
 
-Features include new tasks, list all tasks, delete
-task, sort by tags, and various user and programmer documentation. There are
-several features related to answering/reviewing tasks: saving a new review
-(including date and score), writing an answer using a (one supported) text
-editor, running the answer (using at the options of Ruby, Node.js, Java, C,
-Bash scripting, and text; including both compiled and interpreted languages),
-archiving old answers, and running old answers. From the same screen, the user
-can edit task instructions, tags, date of next review, and user's current
-score. Task, review, and settings data are all saved in JSON files.
+Features include new tasks, list all tasks, delete task, sort by tags, and
+various user and programmer documentation. There are several features related
+to answering/reviewing tasks: saving a new review (including date and score),
+writing an answer using a (one supported) text editor, running the answer
+(using at the options of Ruby, Node.js, Java, C, Bash scripting, and text;
+including both compiled and interpreted languages), archiving old answers, and
+running old answers. From the same screen, the user can edit task instructions,
+tags, date of next review, and user's current score. Task, review, and settings
+data are all saved in JSON files.
 
 ### 1.1 (September 28, 2018)
 Text editor support:
@@ -220,7 +221,7 @@ Colorize and migrate files to deep locations:
 
 Added color-coding of languages. Added HTML, CSS, C++, and Rust. Moved answers,
 old answers, and starter code into sub-sub-etc.-folders that support up to
-99,999 different tasks in the same collection. Changed the logic to create
+100,000 different tasks in the same collection. Changed the logic to create
 these new folders as needed and locate the files where they are buried deep.
 Created a data migration script for people who have existing data; this was
 extensively tested and should work flawlessly (worked flawlessly for me) behind
@@ -228,9 +229,12 @@ the scenes. Replaced Colorize gem (with the help of our first pull request,
 thanks to githubcyclist!) with a few methods now at the end of `helpers.rb`.
 Squashed many bugs associated with all these changes; few left.
 
-### 3.3
+### 3.3 (November 29, 2018)
+Review history, view/run old repotask code, new video:
 
 Added review history, making it easy to find tasks you reviewed recently.
+Added the ability to view and run old, archived repotask code--very complex.
 Deciding it was easy to support less colorful terminals, I made the code use
 the more limited Colorize gem (which I had briefly removed) for terminals of
-which `$COLORTERM` is false.
+which `$COLORTERM` != 'truecolor'. Let user review deleted task before deleting.
+Made and uploaded new helper video: https://www.youtube.com/watch?v=Mgrdg1uwDeA
