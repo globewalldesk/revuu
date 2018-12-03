@@ -21,7 +21,7 @@ module HelpHelper
       if validate_instr_choice(instr_choice, options)
         # Repotasks have a whole nother instruction system.
         unless options[:instructions][instr_choice-1][:title] ==
-               "NEW! How to use the repotask system"
+               "SUBSECTION: how to use the repotask system"
           display_instruction(instr_choice, options)
           skip_list = false
         else
@@ -45,7 +45,7 @@ module HelpHelper
     line_counter = 0
     new_line = ''
     instructions.each_with_index do |instr, i|
-      this_addition = "(#{i + 1}) #{instr[:title]} "
+      this_addition = "(#{i + 1}) #{instr[:title]}  "
       # If addition this addition to the string would make it
       # over 75 characters, then add a newline to the string
       # and reset line_counter
@@ -455,7 +455,7 @@ archive files rather than the default plain "archive_YYYYMMDD.tar" name.
 ARCHIVESYSTEM
     },
     {
-      title: 'NEW! How to use the repotask system'
+      title: 'SUBSECTION: how to use the repotask system'
     }
  ]
   end

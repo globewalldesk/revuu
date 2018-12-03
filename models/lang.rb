@@ -94,6 +94,9 @@ class Lang
         alts: ['Rust programming language'], one_main_per_file: true, color: :brown,
         spacer: 'println!("\n")'},
 
+      {name: 'Bootstrap', ext: 'html', cmd: 'firefox', cmnt: '<!--', cmnt2: '-->',
+        alts: ['Bootstrap.js'], one_main_per_file: true, color: :medium_purple},
+
       {name: 'Other', ext: 'txt', cmd: 'more', cmnt: '#', alts: [], spacer:
         "\n<--spacer-->\n", color: :light_magenta}
     ]

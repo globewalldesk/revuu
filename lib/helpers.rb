@@ -211,7 +211,8 @@ class String
     med_aquamarine: [98, 202, 175],   # C++
     carrot_orange:  [240, 148, 33],   # Java
     saffron:        [247, 191, 48],   # Python
-    brown:          [165, 42, 42]     # Rust
+    brown:          [165, 42, 42],    # Rust
+    medium_purple:  [139, 87, 217]    # Bootstrap
   }
 
   # Mapping new color names to old names for use by Colorize gem.
@@ -226,6 +227,7 @@ class String
     med_aquamarine:   :blue,          # C++
     carrot_orange:    :magenta,       # Java
     saffron:          :yellow,        # Python
-    brown:            :red            # Rust
+    brown:            :red,           # Rust
+    medium_purple:    :light_magenta  # Bootstrap
   }
 end

@@ -57,7 +57,7 @@ module TaskController
     score = get_score('r') # User gets one chance; abandons attempt otherwise.
     return unless score
     # Get @next_review_date from user (might be based on spaced repetition algorithm).
-    date = get_next_review_date('r', score)
+    date = get_next_review_date('s', score)
     return unless date
     # Update current @score only after date is acceptable.
     @score = score

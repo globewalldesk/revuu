@@ -36,7 +36,7 @@ class Task
       if @saved # For use when loading old/existing tasks.
         @id = args[:id]
         load_locations_and_starter
-      else      # For use when creating neqw tasks.
+      else      # For use when creating new tasks.
         @id = calculate_id
         # Step (3).
         load_locations_and_starter(args)  # (a) Load new starter & locations; save starter.

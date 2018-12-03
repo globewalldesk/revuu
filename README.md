@@ -238,3 +238,7 @@ Deciding it was easy to support less colorful terminals, I made the code use
 the more limited Colorize gem (which I had briefly removed) for terminals of
 which `$COLORTERM` != 'truecolor'. Let user review deleted task before deleting.
 Made and uploaded new helper video: https://www.youtube.com/watch?v=Mgrdg1uwDeA
+
+### 3.4
+
+Added Bootstrap to supported tech. Small bug fixes.

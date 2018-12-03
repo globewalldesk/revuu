@@ -65,16 +65,16 @@ module WrappingHelper
     word_array = text.split(/\s+/)
     word_array.each_with_index do |word,i|
       # See if this word can be added to a line.
-      if (line + " " + word).length >= width
-        newlines << line + " "
-        line = word + " "
-        newlines << line if i + 1 == word_array.length
-      else
-        line += word + " "
-        newlines << line if i + 1 == word_array.length
+      if (line + " " + word).length >= width # Too long!
+        newlines << line  # Add working line to array of lines (no space; end of line).
+        line = word + " " # Start constructing new working line, with space.
+        newlines << line if i + 1 == word_array.length # Last word gets own line!
+      else # Not too long.
+        line += word + " "  # So go ahead and add word to line, with space.
+        newlines << line if i + 1 == word_array.length # Last word gets own line!
       end
     end
-    newlines.join("\n")
+    newlines.map{|l| l.strip}.join("\n")
   end
 
 end

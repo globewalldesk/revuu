@@ -29,7 +29,13 @@ class TaskList
       f.write(json)
     end
     save_change_timestamp_to_settings
-    load_history
+    load_history # RE-load history
+    # If the user is currently filtering tasks, better add the new task to
+    # the tag-filtered list.
+    if @filter_tag
+      tag_hash = prepare_hash_of_tag_arrays
+      @tag_filtered_list = tag_hash[@filter_tag]
+    end
   end
 
   private
@@ -80,7 +86,7 @@ class TaskList
     end
 
     def delete_message(task)
-      message = "(#{task.lang}) "
+      message = "(#{task.lang}) ".colorize(task.langhash.color)
       message += task.instructions.split("\n")[0][0..20]
       message += '...' if task.instructions.split("\n")[0][0..20] !=
                         task.instructions.split("\n")[0]
