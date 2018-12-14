@@ -37,10 +37,10 @@ module TaskView
     puts <<~DISPLAYTASKCOMMANDS
 
     COMMANDS  Review: [s]ave review  [a]nswer  [r]un answer  [?] help
-                      [o]ld answers  [rr]un old answers  configure [l]anguage
+                      [o]ld answers  [rr]un old answers  review [h]istory
                 Edit: [i]nstructions  [t]ags#{tag_str}  [d]ate of next review
                       [sc]ore  [st]arter code
-                Also: re[f]resh view  [q]uit review and editing
+                Also: re[f]resh  config [l]anguage  [q]uit review and editing
 
     DISPLAYTASKCOMMANDS
   end
@@ -148,6 +148,31 @@ module TaskView
     else # ...or else say it doesn't exist.
       puts "There is no old answer archive for this task yet."
     end
+  end
+
+  # Just display the dates and scores of previous reviews.
+  def review_history
+    puts
+    puts "Review history for ##{@id}"
+    header = "Score | Date               | Time Ago"
+    puts header, '=' * (header.length + 12)
+    # Each review is a hash
+    color = :green
+    next_date = DateTime.parse(@next_review_date).strftime("%B %-d, %Y")
+    future_time = prettify_timestamp(@next_review_date)
+    puts sprintf("%-5s | %-18s | %-s", "Next>", next_date, future_time).
+                 colorize(:light_yellow)
+    @all_reviews.reverse.each do |r|
+      score = r['score']
+      raw_date = r['review_date']
+      full_date = DateTime.parse(raw_date).strftime("%B %-d, %Y")
+      time_ago = prettify_timestamp(raw_date)
+      str = sprintf("%-5s | %-18s | %-s", score, full_date, time_ago)
+      puts str.colorize(color)
+      color = color ? nil : :green
+    end
+    puts '=' * (header.length + 12)
+    puts
   end
 
   # Used to edit both instructions and tags. RF

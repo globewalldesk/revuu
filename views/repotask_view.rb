@@ -15,16 +15,12 @@ module RepotaskView
   def display_repotask_commands(tag_str)
     puts <<~DISPLAYREPOTASKCOMMANDS
     COMMANDS  Review: [1] open file #1  [o]pen repo  [r]un answer [s]ave review
-                      [oo]pen old  [rr]un old  configure [l]anguage  [?] help
+                      [oo]pen old  [rr]un old  review [h]istory  [?] help
                 Edit: [i]nstructions  [c]ommands to run  [fi]les  [t]ags#{tag_str}
                       [d]ate of next review  [sc]ore
-                Also: re[f]resh view  [q]uit review and editing
+                Also: re[f]resh  config [l]anguage  [q]uit review and editing
 
     DISPLAYREPOTASKCOMMANDS
-  end
-
-  def view_old_repo
-
   end
 
 end

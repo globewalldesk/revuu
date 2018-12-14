@@ -241,4 +241,5 @@ Made and uploaded new helper video: https://www.youtube.com/watch?v=Mgrdg1uwDeA
 
 ### 3.4
 
-Added Bootstrap to supported tech. Small bug fixes.
+Display history of individual task reviews. Allowed partial (and regex) search
+of tags. Added Bootstrap to supported tech. Small bug fixes.

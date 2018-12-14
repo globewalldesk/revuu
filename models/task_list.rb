@@ -34,7 +34,9 @@ class TaskList
     # the tag-filtered list.
     if @filter_tag
       tag_hash = prepare_hash_of_tag_arrays
-      @tag_filtered_list = tag_hash[@filter_tag]
+      tag_matches = get_tag_matches(@filter_tag, tag_hash)
+      @tag_filtered_list = match_tasks(tag: @filter_tag, tag_hash: tag_hash,
+        tag_matches: tag_matches)
     end
   end
 
@@ -68,6 +70,21 @@ class TaskList
         t.all_reviews.each {|r| reviews[r['review_date']] = t}
       end
       @history = reviews.sort_by {|timestamp,task| timestamp }.reverse
+    end
+
+    def get_tag_matches(tag, tag_hash)
+      tag_hash.keys.find_all { |k| k.downcase =~ /#{tag}/ }
+    end
+
+    def match_tasks(args)
+      tag = args[:tag]
+      tag_hash = args[:tag_hash]
+      tag_matches = args[:tag_matches]
+      @tag_filtered_list = []
+      tag_matches.each do |tag|
+        @tag_filtered_list = (@tag_filtered_list + tag_hash[tag]).uniq
+      end
+      return @tag_filtered_list
     end
 
     # Accepts the display number (NOT ID) of a task and attempts to delete it.

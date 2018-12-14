@@ -35,6 +35,8 @@ module RepotaskController
       open_repo('old')
     when 'rr' # Run archived repo code.
       run_answer('old')
+    when 'h'
+      review_history
     when 'l' # Same as Task method.
       self.change_language
     when 'i' # Same as Task method.
@@ -142,6 +144,8 @@ module RepotaskController
   def reset_current_branch
     g = Git.open("data/repos/#{repo}")
     g.reset_hard
+    # Remove untracked files (hard reset leaves them behind).
+    system("cd data/repos/#{repo}&&git clean -qfdx")
     puts "\nBranch (#{@branch}) reset: files restored to original state."
     @reset_this_session = true
   end
@@ -158,8 +162,8 @@ module RepotaskController
               "task yet.\n\n"
         return nil
       elsif system("cd data/repos/#{@repo}&&git diff #{branch} #{@old_branch} --quiet")
-        print "\nNothing to run. The old (archived) task code is unchanged." +
-           "Maybe the task\nhasn't been done yet.\n\n"
+        print "\nNothing to run. The old (archived) task code is unchanged. " +
+           "Maybe the task\nhas never been done?\n\n"
         return nil
       end
     end
@@ -205,6 +209,8 @@ module RepotaskController
           else
             @reset_this_session = true # It soon will be...
             g.reset_hard # RESET!!!
+            # Remove untracked files (hard reset leaves them behind).
+            system("cd data/repos/#{repo}&&git clean -qfdx")
           end
         end
           # Forget the archive session regardless of reset.
@@ -222,6 +228,8 @@ module RepotaskController
           puts "to view the archive, you can, but you'll lose all your changes."
           return nil unless old_checkout_confirmed?(prompt)
           g.reset_hard # RESET!!!
+          # Remove untracked files (hard reset leaves them behind).
+          system("cd data/repos/#{repo}&&git clean -qfdx")
         end
         # Regardless of whether the task's main branch was clean, it's been
         # reset (cleaned).

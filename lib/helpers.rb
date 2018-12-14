@@ -90,7 +90,7 @@ module Helpers
   def colored(item)
     Lang.defined_langs.each do |lang|
       ext = lang[:ext]
-      if item =~ /( ?\(\d+\) )([\w\s]+\.#{ext} )$/
+      if item =~ /( ?\(\d+\) )([\w\s\/]+\.#{ext} )$/
         return $1 + $2.colorize(lang[:color])
       end
       lname = lang[:name]
@@ -166,6 +166,7 @@ class String
   # Examples: "foo".colorize(:red) => returns red string.
   #           "foo".colorize(background: :blue) => returns blue background string.
   def colorize(color)
+    return self unless color # If nil color is passed, return uncolored string.
     if ENV["COLORTERM"]
       color.class == Symbol ?
         self.color_text(*RGB_CODES[color]) :

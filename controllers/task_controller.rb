@@ -28,8 +28,8 @@ module TaskController
       view_old_answers
     when 'rr' # Run old answer. No guarantee it will work.
       run_answer('old')
-    when 'l' # Change language setting for this task.
-      self.change_language
+    when 'h'
+      review_history
     when 'i' # Edit instructions for this task.
       edit_field('instructions')
     when 't' # Edit tags for this task.
@@ -43,6 +43,8 @@ module TaskController
       edit_starter
     when 'f' # Re[f]resh task page. Maybe should be done automatically.
       display_info
+    when 'l' # Change language setting for this task.
+      self.change_language
     when 'q' # Quit task view and return to tasklist.
       return
     else
@@ -64,7 +66,7 @@ module TaskController
     # Update @next_review_date.
     @next_review_date = date
     # Save review date and score to @all_reviews.
-    @all_reviews << {score: @score, 'review_date' => DateTime.now.to_s}
+    @all_reviews << {'score' => @score, 'review_date' => DateTime.now.to_s}
     # Save updated task data to JSON file.
     $tasks.save_tasklist
     # Refresh view.

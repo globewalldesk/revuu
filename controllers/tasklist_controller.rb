@@ -133,21 +133,22 @@ module TasklistController
     if tag_hash.empty?
       return "No tags found."
     end
-    tag = get_search_tag_from_user
+    tag = get_search_tag_from_user.downcase
     # If default tag exists and user hit <enter> alone, use default tag.
     if (!@default_tag.nil? && tag == '')
       tag = @default_tag
     end
-    tag_match = tag_hash.keys.find { |k| tag.downcase == k.downcase }
+    tag_matches = get_tag_matches(tag, tag_hash)
     # Display results. If not found, say so.
-    if tag_match
+    unless tag_matches.empty?
       # Assign default tag to input. This does double duty as boolean
       # indicating whether the current tasklist display is filtered or not.
-      @filter_tag = tag_match
+      @filter_tag = tag
       @default_tag = @filter_tag.dup unless @default_tag == 'history'
       @page_num = 1
       # Save sorted array of tasks filtered by this tag.
-      @tag_filtered_list = tag_hash[tag_match]
+      @tag_filtered_list = match_tasks(tag: tag, tag_hash: tag_hash,
+                                       tag_matches: tag_matches)
       return "Filtering by '#{tag}'. Press 'l' to clear filter."
     else
       return "'#{tag}' not found."
