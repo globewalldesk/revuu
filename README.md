@@ -239,7 +239,9 @@ the more limited Colorize gem (which I had briefly removed) for terminals of
 which `$COLORTERM` != 'truecolor'. Let user review deleted task before deleting.
 Made and uploaded new helper video: https://www.youtube.com/watch?v=Mgrdg1uwDeA
 
-### 3.4
+### 3.4 (December 15, 2018)
+Improved sorting and searching:
 
-Display history of individual task reviews. Allowed partial (and regex) search
-of tags. Added Bootstrap to supported tech. Small bug fixes.
+Added sorting of tasks by ID (date added) and average score. Display history of 
+reviews (in task view). Allowed partial (and regex) search of tags. Added 
+Bootstrap to supported tech. Small bug fixes.

@@ -27,6 +27,18 @@ module TasklistView
       if @filter_tag == 'history'
         puts "> History <".center(75).colorize(:black).colorize(background: :light_yellow)
         label_for_date_column = 'Last reviewed'
+      elsif @filter_tag == 'sort_by_id'
+        puts "> Sorted by ID <".center(75).colorize(:light_yellow)
+                               .colorize(background: :light_blue)
+      elsif @filter_tag == 'reverse_sort_by_id'
+        puts "> Reverse sorted by ID <".center(75).colorize(:light_yellow)
+                                       .colorize(background: :light_blue)
+      elsif @filter_tag == 'sort_by_avg_score'
+        puts "> Sorted by average score <".center(75).colorize(:black)
+                                          .colorize(background: :light_cyan)
+      elsif @filter_tag == 'reverse_sort_by_avg_score'
+        puts "> Reverse sorted by average score <".center(75).colorize(:black)
+                                                  .colorize(background: :light_cyan)
       else
         puts "> Filtered by '#{@filter_tag}' <".center(75).colorize(background: :green)
       end
@@ -44,7 +56,9 @@ module TasklistView
     # then return the search results.
     @displayed_tasks = []
     list = (@filter_tag ? @tag_filtered_list : @list)
-    unless @filter_tag == 'history'
+    unless @filter_tag == 'history' or @filter_tag == 'sort_by_id' or
+           @filter_tag == 'reverse_sort_by_id' or @filter_tag == 'sort_by_avg_score' or
+           @filter_tag == 'reverse_sort_by_avg_score'
       list.sort!{|x,y| DateTime.parse(x.next_review_date) <=>
           DateTime.parse(y.next_review_date)}
     end
@@ -137,11 +151,18 @@ module TasklistView
     puts <<~HELPTEXT
 
     Commands are:
-    [n]ew task  new [r]epo task  [1] view task #1  [l]ist all tasks
-    show ne[x]t  [d]elete task  [t]ag search  [h]istory  [a]rchive data#{asterisk}
+    [n]ew task  new [r]epo task  [1] view #1  [l]ist all tasks  show ne[x]t
+    [t]ag search  [h]istory  [a]rchive data#{asterisk}  [s]ort  [d]elete task
     set text [e]ditor  set [p]rogramming language  [de]stroy  [?] help
 
     HELPTEXT
+  end
+
+  def display_sorting_commands
+    return "You can sort by:\n" +
+    "[l] due date  [h]istory (date of most recent reviews)  [t]ag\n" + 
+    "[id] date added (earliest to latest)  [id] again to reverse\n" +
+    "average [sc]ores (low to high)  average [sc]ores again to reverse\n\n"
   end
 
   # Get search term (tag) from user. RF

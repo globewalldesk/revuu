@@ -84,7 +84,13 @@ module TaskController
   # "edit score" command. RF
   def prep_new_score
     score = get_score('s')
-    score ? @score = score : (return nil)
+    if score
+      @score = score
+      # Edit data from most recent review
+      @all_reviews[-1]['score'] = score
+    else
+      return nil
+    end
     $tasks.save_tasklist
     display_info
   end

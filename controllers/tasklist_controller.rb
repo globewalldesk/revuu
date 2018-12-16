@@ -63,6 +63,12 @@ module TasklistController
       return if $destroyed_data # Used in revuu.rb. Exits TaskList.
     when 'h'
       display_history
+    when 's'
+      display_sorting_commands
+    when 'id'
+      sort_by_id
+    when 'sc'
+      sort_by_avg_score
     when '?', 'help'
       launch_instructions_system
     when 'q'
@@ -162,6 +168,42 @@ module TasklistController
     @page_num = 1
     @tag_filtered_list = @history.map{|h| h[1]}.uniq
     return "Showing history. Press 'l' to show tasklist."
+  end
+
+  def sort_by_id
+    return "No tasks to sort." if @list.empty?
+    @page_num = 1
+    if @filter_tag and @filter_tag == 'sort_by_id'
+      @filter_tag = 'reverse_sort_by_id'
+      @tag_filtered_list = @list.sort_by{|t| t.id}.reverse
+      return "Showing tasks *reverse* sorted by ID (date created)."
+    else
+      @filter_tag = 'sort_by_id'
+      @tag_filtered_list = @list.sort_by{|t| t.id}
+      return "Showing tasks sorted by ID (date created)."
+    end
+  end
+
+  def prep_array_of_tasks_by_avg_score
+    @list.sort_by do |t|
+      scores = t.all_reviews.map {|r| r['score']}
+      (scores.reduce(:+) / scores.count.to_f)
+    end
+  end
+
+  def sort_by_avg_score
+    return "No tasks to sort." if @list.empty?
+    score_order = prep_array_of_tasks_by_avg_score
+    if @filter_tag and @filter_tag == 'sort_by_avg_score'
+      @filter_tag = 'reverse_sort_by_avg_score'
+      @tag_filtered_list = score_order.reverse
+      return "Showing tasks *reverse* sorted by average score."
+    else
+      @filter_tag = 'sort_by_avg_score'
+      @tag_filtered_list = score_order
+      return "Showing tasks sorted by average score."
+    end
+    @page_num = 1
   end
 
   # For use in tag search: a hash where keys = tags while values = tasks. RF
