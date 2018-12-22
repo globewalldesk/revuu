@@ -22,6 +22,9 @@ class TaskList
 
   # Overwrites tasks.json datafile with the latest tasklist data. RF
   def save_tasklist
+    # Sort @list before saving.
+    @list.sort!{|x,y| DateTime.parse(x.next_review_date) <=>
+                      DateTime.parse(y.next_review_date)}
     # Convert @list to JSON.
     json = JSON.pretty_generate({"tasks": @list.map{|task| task.to_hash } })
     # Overwrite datafile.
@@ -32,12 +35,16 @@ class TaskList
     load_history # RE-load history
     # If the user is currently filtering tasks, better add the new task to
     # the tag-filtered list.
-    if @filter_tag
+    if @filter_tag && ! (@filter_tag == 'history' or @filter_tag == 'sort_by_id' or
+      @filter_tag == 'reverse_sort_by_id' or @filter_tag == 'sort_by_avg_score' or
+      @filter_tag == 'reverse_sort_by_avg_score' or @filter_tag == 'notags')
       tag_hash = prepare_hash_of_tag_arrays
       tag_matches = get_tag_matches(@filter_tag, tag_hash)
       @tag_filtered_list = match_tasks(tag: @filter_tag, tag_hash: tag_hash,
         tag_matches: tag_matches)
     end
+    # NOTE FOR REFACTOR: badly need to resort after saving, in case the user
+    # has deleted the task.
   end
 
   private

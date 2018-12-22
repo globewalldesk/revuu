@@ -242,6 +242,13 @@ Made and uploaded new helper video: https://www.youtube.com/watch?v=Mgrdg1uwDeA
 ### 3.4 (December 15, 2018)
 Improved sorting and searching:
 
-Added sorting of tasks by ID (date added) and average score. Display history of 
-reviews (in task view). Allowed partial (and regex) search of tags. Added 
+Added sorting of tasks by ID (date added) and average score. Display history of
+reviews (in task view). Allowed partial (and regex) search of tags. Added
 Bootstrap to supported tech. Small bug fixes.
+
+### 3.5
+
+Automatically move user to the next question to review (after prompt) after
+recording a review; also, add an 'x' shortcut to do that directly. Added
+search/sort for tasks without tags (other than default tags); type 'notags'.
+Started debugging issue launching (Sinatra) server from app.

@@ -81,7 +81,7 @@ module TaskView
     if (File.exist?(@location) && File.stat(@location).size > 0 &&
       File.read(@location) != java_starter && File.read(@location) != @starter)
       puts "An answer exists. Want to archive it before opening? ([y]/n)"
-      ans = get_user_command('a+')
+      ans = get_user_command(' a')
       # If yes, archive the old answer and blank the answer file.
       if (ans == 'y' || ans == '')
         archive_old_answer
@@ -233,6 +233,25 @@ module TaskView
     else
       print "Starter code not saved. Try saving first, then press 'st' again.\n\n"
     end
+  end
+
+  # This asks the user if he wants to skip immediately to the next task in the
+  # list (i.e., always the first one in the list *after* saving a review, just
+  # like hitting 'x' from the tasklist).
+  def prompt_for_autonext
+    # Figure out what the present list is.
+    list = $tasks.filter_tag ? $tasks.tag_filtered_list : $tasks.list
+    # First check if the user is done with all tasks for the day.
+    now = DateTime.now
+    this_midnight = now + 1 - (now.hour/24.0) - (now.min/(24.0*60))
+    # If the first-listed (next due) task is later than this midnight, done!
+    if list[0].next_review_date > this_midnight.to_s
+      puts "Good job! You've finished your review for the day!"
+      return 'done'
+    end
+    puts "Skip to next task? (<Enter> for [y]es.)"
+    autonext_answer = get_user_command('s')
+    $auto_next = true if autonext_answer == '' or autonext_answer == 'y'
   end
 
 end

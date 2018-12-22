@@ -5,7 +5,7 @@ module TaskController
   def launch_task_interface
     display_info
     command = ''
-    until command == 'q'
+    until command == 'q' or $auto_next
       command = get_user_command('+').downcase
       process_edit_input(command)
     end
@@ -45,6 +45,8 @@ module TaskController
       display_info
     when 'l' # Change language setting for this task.
       self.change_language
+    when 'x'
+      $auto_next = true
     when 'q' # Quit task view and return to tasklist.
       return
     else
@@ -71,6 +73,11 @@ module TaskController
     $tasks.save_tasklist
     # Refresh view.
     display_info
+    # Show review history since typically it's of interest at this point.
+    review_history
+    # Ask user if he wants to go immediately to the next question; returns 'true'
+    # if the answer is yes.
+    return prompt_for_autonext
   end
 
   # Used only in the "date of next review" command. RF

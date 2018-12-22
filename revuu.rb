@@ -31,7 +31,8 @@ class App
     loop do
       # We reset globals that might have been set true by the user.
       $view_archive = false       # Cf. TasklistController dispatch table.
-      $destroyed_data = false     # Cf. TaskList#destroy_all
+      $destroyed_data = false     # Cf. TaskList#destroy_all.
+      $auto_next = false          # Cf. TaskView#prompt_for_autonext.
       load_defaults_from_settings # Loads/assigns a number of settings globals.
       TaskList.new                # Contains the main app loop.
       if $view_archive

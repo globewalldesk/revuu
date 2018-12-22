@@ -7,9 +7,13 @@ module TasklistController
   def app_loop
     command = nil
     until command == 'q'
-      command = get_user_command('=').downcase
+      # The 'auto next' system loads the next task automatically if the user
+      # so chooses.
+      command = $auto_next ? 'x' : get_user_command('=').downcase
+      $auto_next = false
       process_tasklist_input(command)
-       # Escape from TaskList when user requests archive or deletes all data.
+      next if $auto_next
+      # Escape from TaskList when user requests archive or deletes all data.
       return if $view_archive or $destroyed_data
     end
     puts ''
@@ -41,8 +45,15 @@ module TasklistController
       repotask ? "New repotask saved." : "Repotask input abandoned."
     when /\A(\d+)\Z/
       task = fetch_task_from_displayed_number($1.to_i)
-      task ? (task.class == Task ? task.launch_task_interface :
-        task.launch_repotask_interface) : "Task not found."
+      if task
+        if task.class == Task
+          task.launch_task_interface
+        else
+          task.launch_repotask_interface
+        end
+      else
+        "Task not found."
+      end
     when 'l'
       prep_to_show_all_tasks # Clears @default_tag and stops filtering.
     when 'x'
@@ -69,6 +80,8 @@ module TasklistController
       sort_by_id
     when 'sc'
       sort_by_avg_score
+    when 'notags'
+      display_tasks_without_tags
     when '?', 'help'
       launch_instructions_system
     when 'q'
@@ -139,18 +152,21 @@ module TasklistController
     if tag_hash.empty?
       return "No tags found."
     end
-    tag = get_search_tag_from_user.downcase
+    tag = get_search_tag_from_user
     # If default tag exists and user hit <enter> alone, use default tag.
     if (!@default_tag.nil? && tag == '')
       tag = @default_tag
     end
-    tag_matches = get_tag_matches(tag, tag_hash)
+    tag_matches = get_tag_matches(tag.downcase, tag_hash)
     # Display results. If not found, say so.
     unless tag_matches.empty?
       # Assign default tag to input. This does double duty as boolean
       # indicating whether the current tasklist display is filtered or not.
       @filter_tag = tag
-      @default_tag = @filter_tag.dup unless @default_tag == 'history'
+      @default_tag = @filter_tag.dup unless
+        @filter_tag == 'history' or @filter_tag == 'sort_by_id' or
+        @filter_tag == 'reverse_sort_by_id' or @filter_tag == 'sort_by_avg_score' or
+        @filter_tag == 'reverse_sort_by_avg_score' or @filter_tag == 'notags'
       @page_num = 1
       # Save sorted array of tasks filtered by this tag.
       @tag_filtered_list = match_tasks(tag: tag, tag_hash: tag_hash,
@@ -193,17 +209,31 @@ module TasklistController
 
   def sort_by_avg_score
     return "No tasks to sort." if @list.empty?
-    score_order = prep_array_of_tasks_by_avg_score
+    @page_num = 1
+    score_ordered_tasks = prep_array_of_tasks_by_avg_score
     if @filter_tag and @filter_tag == 'sort_by_avg_score'
       @filter_tag = 'reverse_sort_by_avg_score'
-      @tag_filtered_list = score_order.reverse
+      @tag_filtered_list = score_ordered_tasks.reverse
       return "Showing tasks *reverse* sorted by average score."
     else
       @filter_tag = 'sort_by_avg_score'
-      @tag_filtered_list = score_order
+      @tag_filtered_list = score_ordered_tasks
       return "Showing tasks sorted by average score."
     end
+  end
+
+  def display_tasks_without_tags
+    return "No tasks." if @list.empty?
+    @filter_tag = 'notags'
     @page_num = 1
+    @tag_filtered_list = @list.find_all do |t|
+      # Find all tasks that have no tags other than the language defaults.
+      x = t.tags
+      y = t.langhash.lang_alts + [t.langhash.name]
+      nondefault_tags = (x + y) - (x & y)
+      nondefault_tags.empty? # If there no nondefault tags, return this item.
+    end
+    return "Showing all tasks with no (non-default) tags."
   end
 
   # For use in tag search: a hash where keys = tags while values = tasks. RF

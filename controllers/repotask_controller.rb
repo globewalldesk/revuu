@@ -5,7 +5,7 @@ module RepotaskController
   def launch_repotask_interface
     display_info # Different display from class Task.
     command = ''
-    until command == 'q'
+    until command == 'q' or $auto_next
       command = get_user_command('+').downcase
       # Dispatch table returns command, which in at least one case might be
       # changed by the dispatch table.
@@ -25,7 +25,16 @@ module RepotaskController
     when 'o'
       open_repo
     when 's' # Same as Task method.
-      record_review
+      review_result = record_review
+      # See TaskView#prompt_for_autonext.
+      return command if review_result == 'done'
+      if $auto_next and branch_reset_confirmed?(true) # true = exiting
+        # Needed when leaving, to avoid git errors.
+        reset_current_branch('skip_notice')
+      else
+        puts "Branch reset not confirmed; not quitting.\n\n"
+        command = '' # Prevents quitting.
+      end
     when 'r' # Execute the repotask's run_commands.
       run_answer
     when 'help', '?' # Launch help.
@@ -54,8 +63,7 @@ module RepotaskController
       prep_new_score
     when 'f'
       display_info
-    when '.', ',', '<', '>' # Inter-task nav handled the same as 'q'.
-    when 'q' # Quit task view and return to tasklist.
+    when 'q', 'x' # Quit task view and return to tasklist.
       cache_answer_in_archive_branch
       if branch_reset_confirmed?(true) # true = exiting
         # Needed when leaving, to avoid git errors.
@@ -64,6 +72,7 @@ module RepotaskController
         puts "Branch reset not confirmed; not quitting.\n\n"
         command = '' # Prevents quitting.
       end
+      $auto_next = true if command == 'x'
     else
       puts 'Huh?'
     end
@@ -72,6 +81,11 @@ module RepotaskController
 
   def open_file(file)
     return unless checkout_before_open_or_run
+    unless file.between?(1, @files.length)
+      print "\nSorry, but (#{file}) is not the number of a file. You can add " +
+            "a file to open\nwith the [fi]les command.\n\n"
+      return
+    end
     file = @files[file-1]
     system("#{$textedcmd} data/repos/#{@repo}/#{file}")
     puts "When you're done, don't forget to press 'r' to run."
@@ -141,12 +155,13 @@ module RepotaskController
     end
   end
 
-  def reset_current_branch
+  def reset_current_branch(skip_notice = false)
     g = Git.open("data/repos/#{repo}")
     g.reset_hard
     # Remove untracked files (hard reset leaves them behind).
     system("cd data/repos/#{repo}&&git clean -qfdx")
-    puts "\nBranch (#{@branch}) reset: files restored to original state."
+    puts "\nBranch (#{@branch}) reset: files restored to original state." unless
+      skip_notice
     @reset_this_session = true
   end
 
@@ -167,15 +182,30 @@ module RepotaskController
         return nil
       end
     end
-    commands = @run_commands.split("\n").join("&&")
-    commands = "cd data/repos/#{@repo}&&" + commands
+    # OLD: commands = @run_commands.split("\n").join("&&")
+    commands = @run_commands.split("\n")
+    # OLD: commands = `cd data/repos/#{@repo}&&#{commands}`
     archive_msg = " " + "archive".colorize(background: @langhash.color) if old
     puts "\nRunning commands from ##{@id}#{archive_msg}:"
     puts ("=" * 75).colorize(@langhash.color)
     puts ''
-    system(commands)
+    run_command_list(commands)
     puts ''
     puts ("=" * 75).colorize(@langhash.color)
+  end
+
+  def run_command_list(commands)
+    pid = nil
+    commands.each do |command|
+      if command.split(': ')[0] == 'fork'
+        pid = Process.fork do
+          system("cd data/repos/#{@repo}&&#{command.split(': ')[1]}")
+        end
+        Process.wait(pid) if pid
+      else
+        system("cd data/repos/#{@repo}&&#{command}")
+      end
+    end
   end
 
   # If not already done, check out a git branch (the task's or the archive).
