@@ -25,6 +25,10 @@ module DatePrettifier
     # If yesterday or tomorrow: 'yesterday', 'tomorrow'. NOTE: "out of order".
     elsif ts.yday == now.yday - 1 || ts.yday == now.yday + 1
       (ts.yday - now.yday).positive? ? 'tomorrow' : 'yesterday'
+    elsif ts.yday == 1 and now.yday == 365
+      'tomorrow'
+    elsif ts.yday == 365 and now.yday == 1
+      'yesterday'
     # If today! NOTE: Also "out of order"
     elsif ts.yday == now.yday
       'today'

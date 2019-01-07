@@ -249,7 +249,8 @@ module TaskView
       puts "Good job! You've finished your review for the day!"
       return 'done'
     end
-    puts "Skip to next task? (<Enter> for [y]es.)"
+    num_left = list.count {|t| t.next_review_date < this_midnight.to_s}
+    puts "You have #{num_left.to_s.colorize(:malibu)} to go. Skip to next task? (<Enter> for [y]es.)"
     autonext_answer = get_user_command('s')
     $auto_next = true if autonext_answer == '' or autonext_answer == 'y'
   end

@@ -176,6 +176,7 @@ class Task
     # Expects score; return suggested timestamp of next review, according to a
     # simple spaced repetition algorithm. (User needn't accept this.)  RF
     def calculate_spaced_repetition_date(score)
+      adjust_by = 0
       # If first review, it's an easy return.
       if @all_reviews.length == 0
         adjust_by = case score
@@ -190,7 +191,6 @@ class Task
         when 5
           7
         end
-        return DateTime.now + adjust_by
       else
         # Otherwise, it is the second or later review, and so we make some calculations.
         # Set interval (time between present and most recent review):
@@ -208,8 +208,76 @@ class Task
         when 5
           (interval * 2.0) < 7 ? 7 : interval * 2.0
         end
-        return DateTime.now + adjust_by
       end
+      return_date = adjust_date_to_avoid_clumping(DateTime.now + adjust_by)
+    end
+
+    # Given a timestamp, return a timestamp that avoids clumping too many
+    # tasks on a date.
+    def adjust_date_to_avoid_clumping(ts)
+      # Don't bother, if ts is within the next two days.
+      return (ts) if ts.between?(DateTime.now, DateTime.now + 2)
+      # (1) Count number of tasks now scheduled for the date of the timestamp,
+      # as well as on the two surrounding dates.
+      # (1.a) Assign calendar dates to tasks within 72 hrs of ts (YYYYMMDD).
+      nearby_timestamps = find_tasks_nearby_in_date(ts)
+      # (1.b) Calculate the number of tasks on the three days surrounding ts.
+      # pdc = previous day count, etc.
+      pdc, dc, ndc = count_nearby_days(ts, nearby_timestamps)
+      p [pdc, dc, ndc]
+      # (2) If ts is over 120% the average, then propose to put it on the date
+      # with the lowest percentage.
+      average = [pdc, dc, ndc].reduce(:+) / 3.0
+      if dc + 1 < (average * 1.2)
+        return ts
+      else
+        if pdc > ndc
+          puts "Recommend next"
+          return ts + 1
+        else
+          puts "Recommend prev"
+          return ts - 1
+        end
+      end
+    end
+
+    # Given a timestamp (a DateTime object), return a subarray of $tasks that
+    # are scheduled within two days of this one.
+    def find_tasks_nearby_in_date(ts)
+      nearby_timestamps = $tasks.list.find_all do |t|
+        t = DateTime.parse(t.next_review_date)
+        t.between?(ts-2, ts+2)
+      end
+      # Return just the timestamps (Date objects), not the whole Task objects.
+      nearby_timestamps.map {|t| t.next_review_date}
+    end
+
+
+    def count_nearby_days(ts, timestamps)
+      # Determine a calendar date for ts, for ts-24h, and ts+24h.
+      prev_day = month_day_array(ts-1) # [month, day]
+      day = month_day_array(ts)
+      next_day = month_day_array(ts+1)
+      prev_day_count = day_count = next_day_count = 0
+      # Actually count up number of tasks falling on the three dates.
+      timestamps.each do |timestamp|
+        eval_day = month_day_array(timestamp)
+        case eval_day
+        when prev_day
+          prev_day_count += 1
+        when day
+          day_count += 1
+        when next_day
+          next_day_count += 1
+        end
+      end
+      return prev_day_count, day_count, next_day_count
+    end
+
+    # Given a timestamp, return an array of the form [month, day].
+    def month_day_array(date)
+      date = DateTime.parse(date) unless date.class == DateTime
+      [date.strftime("%-m"), date.strftime("%-d")]
     end
 
 end # of class Tasks

@@ -201,9 +201,8 @@ module RepotaskController
         pid = Process.fork do
           system("cd data/repos/#{@repo}&&#{command.split(': ')[1]}")
         end
-        Process.wait(pid) if pid
       else
-        system("cd data/repos/#{@repo}&&#{command}")
+          system("cd data/repos/#{@repo}&&#{command}")
       end
     end
   end

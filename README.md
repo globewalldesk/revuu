@@ -246,9 +246,21 @@ Added sorting of tasks by ID (date added) and average score. Display history of
 reviews (in task view). Allowed partial (and regex) search of tags. Added
 Bootstrap to supported tech. Small bug fixes.
 
-### 3.5
+### 3.5 (January 6, 2019)
+Server running support and auto-advance:
 
-Automatically move user to the next question to review (after prompt) after
-recording a review; also, add an 'x' shortcut to do that directly. Added
-search/sort for tasks without tags (other than default tags); type 'notags'.
-Started debugging issue launching (Sinatra) server from app.
+In this update, incredibly (to Revuu's author), a major bug was fixed. Now the
+user can run Sinatra (and possibly Rails) servers from within Revuu. This is
+a major step toward enabling spaced repetition review of questions about
+complex web frameworks--enabling the user to efficiently drill harder methods
+while Revuu handles the complex setup. Be sure to add
+
+    BUNDLE_GEMFILE='./GEMFILE' &&
+
+before the `ruby <server_file.rb>` command. (Still need to update help file
+with these instructions.)
+
+Also we now automatically move the user to the next question to review (after
+prompt) after recording a review; also, add an 'x' shortcut to do that directly.
+Added search/sort for tasks without tags (other than default tags); type
+'notags'. Added simple fix to end-of-year "unknown" date bug.

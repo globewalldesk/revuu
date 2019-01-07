@@ -17,6 +17,8 @@ require './models/repotask'
 
 update_file_locations unless File.directory?("data/answers/00000")
 
+puts ENV['BUNDLE_GEMFILE']
+
 ###############################################################################
 # Program wrapper object
 class App
