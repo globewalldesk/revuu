@@ -25,7 +25,7 @@ module TasklistView
     label_for_date_column = 'Due date' # By default except for history.
     if @filter_tag
       if @filter_tag == 'history'
-        puts "> History <".center(75).colorize(:black)
+        puts "> Review History <".center(75).colorize(:black)
                                      .colorize(background: :light_yellow)
         label_for_date_column = 'Last reviewed'
       elsif @filter_tag == 'sort_by_id'
@@ -157,7 +157,7 @@ module TasklistView
 
     Commands are:
     [n]ew task  new [r]epo task  [1] view #1  [l]ist all tasks  show ne[x]t
-    [t]ag search  [h]istory  [a]rchive data#{asterisk}  [s]ort  [d]elete task
+    [t]ag search  [h]istory  [a]rchive#{asterisk}  [s]ort  [c]hange dates  [d]elete task
     set text [e]ditor  set [p]rogramming language  [de]stroy  [?] help
 
     HELPTEXT
@@ -220,6 +220,21 @@ module TasklistView
     puts "\nWARNING! Are you ready to delete all tasks? LAST WARNING! Press [y]es or [n]o."
     command = get_user_command('de')
     return command == 'y' # Returns boolean.
+  end
+
+  # Prompts user to edit all tasks at once. For now, the user can only change
+  # all dates, and only by some offset number of days.
+  def prompt_to_change_all_review_dates
+    return "No tasks; can't change tasks." if @list.empty?
+    puts "\nThis command allows you to change all task dates forward or back."
+    puts "To move all review dates ahead by 5 days, type '5' without quotes."
+    puts "To move all review dates to 9 days previous, type '-9'."
+    puts "Fractional days, such as '1.5', are OK."
+    puts "\nEnter days or 'q' to quit."
+    offset = get_user_command('c')
+    return "'q' entered; not changing dates." if offset == 'q'
+    return "Number not entered; dates unchanged." unless offset =~ /^\-?\d+$/
+    change_all_review_dates(offset)
   end
 
 end

@@ -82,6 +82,8 @@ module TasklistController
       sort_by_avg_score
     when 'notags'
       display_tasks_without_tags
+    when 'c'
+      prompt_to_change_all_review_dates
     when '?', 'help'
       launch_instructions_system
     when 'q'

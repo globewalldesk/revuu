@@ -8,6 +8,10 @@ module RepotaskView
 
   def display_files
     puts "\nFILES TO EDIT FOR REPOTASK"
+    unless @files
+      puts "No files specified. Press 'fi' to add some, if you like.\n\n"
+      return
+    end
     show_array_with_numbers(@files, {colored:true})
     puts "GIT INFO  Repo: #{@repo}  Branch: #{@branch}\n\n"
   end

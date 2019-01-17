@@ -46,6 +46,8 @@ module RepotaskController
       run_answer('old')
     when 'h'
       review_history
+    when 'co'
+      open_console
     when 'l' # Same as Task method.
       self.change_language
     when 'i' # Same as Task method.
@@ -201,8 +203,17 @@ module RepotaskController
         pid = Process.fork do
           system("cd data/repos/#{@repo}&&#{command.split(': ')[1]}")
         end
+        Process.wait(pid) if pid
       else
+#        if command =~ /\Aruby/
+#          puts "Running:"
+#          puts "cd data/repos/#{@repo}&&bundle exec #{command}"
+#          system("cd data/repos/#{@repo}&&bundle exec #{command}")
+#        else
+#          puts "Running:"
+#          puts "cd data/repos/#{@repo}&&#{command}"
           system("cd data/repos/#{@repo}&&#{command}")
+#        end
       end
     end
   end
@@ -378,6 +389,10 @@ module RepotaskController
     g.commit("standard archive")
     # Finally, checkout the main repotask branch.
     g.branch(@branch).checkout
+  end
+
+  def open_console
+    system("gnome-terminal --working-directory=/home/globewalldesk/Dropbox/_Programming/Ruby/revuu/data/repos/#{@repo}")
   end
 
 end

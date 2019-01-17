@@ -5,9 +5,12 @@ class Task
   include TaskView
   include TaskController
 
+                  # Edited by Tasklist#change_all_review_dates
+  attr_accessor   :next_review_date
+
               # Attributes saved in tasks.json:
   attr_reader :id, :lang, :instructions, :tags, :score, :saved, :date_started,
-              :next_review_date, :all_reviews,
+              :all_reviews,
               # Attributes inferred from this saved data:
               :langhash, :file, :location, :old_file, :old_location, :starter,
               :starter_location, :location_dir, :old_location_dir,
@@ -222,21 +225,30 @@ class Task
       # (1.a) Assign calendar dates to tasks within 72 hrs of ts (YYYYMMDD).
       nearby_timestamps = find_tasks_nearby_in_date(ts)
       # (1.b) Calculate the number of tasks on the three days surrounding ts.
-      # pdc = previous day count, etc.
       pdc, dc, ndc = count_nearby_days(ts, nearby_timestamps)
-      p [pdc, dc, ndc]
-      # (2) If ts is over 120% the average, then propose to put it on the date
-      # with the lowest percentage.
-      average = [pdc, dc, ndc].reduce(:+) / 3.0
-      if dc + 1 < (average * 1.2)
+      day_counts = [pdc, dc, ndc]
+      p day_counts
+      # (2) If ts is over 120% the average, or the other two counts are too
+      # low, then propose to put it on the date with the lowest percentage.
+      average = day_counts.reduce(:+) / 3.0
+      if ( dc + 1 < (average * 1.2) ) and
+         ! ( pdc < (average * 0.8) ) and
+         ! ( ndc < (average * 0.8) )
         return ts
       else
-        if pdc > ndc
-          puts "Recommend next"
-          return ts + 1
-        else
+        # Seems klugy. Surely there's a more efficient way?
+        least = day_counts.min
+        index_of_least = day_counts.find_index(least)
+        case index_of_least
+        when 0
           puts "Recommend prev"
           return ts - 1
+        when 1
+          puts "Recommend staying put"
+          return ts
+        when 2
+          puts "Recommend next"
+          return ts + 1
         end
       end
     end

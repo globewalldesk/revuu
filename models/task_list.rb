@@ -163,6 +163,23 @@ class TaskList
       end
     end
 
+    # Used when user presses 'c' from the tasklist, this edits and saves all
+    # task @next_review_dates by the offset given, with positive numbers moving
+    # dates into the future, and negative numbers into the past. Supports
+    # fractional numbers.
+    def change_all_review_dates(offset)
+      offset = offset.to_f
+      return "Unchanged; zero entered." if offset == 0
+      # Actually change the dates
+      @list.each do |task|
+        date = DateTime.parse(task.next_review_date)
+        date += offset # Actually do the magic.
+        task.next_review_date = date.to_s
+      end
+      save_tasklist # Changed every task--need to save!
+      direction_msg = offset > 0 ? "later" : "earlier"
+      return "Moved all task review dates to #{offset.abs} days #{direction_msg}."
+    end
 
 
 end # of class TaskList

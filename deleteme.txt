@@ -1,0 +1,10 @@
+Make a new Rails app!
+
+Do this in a separate repo terminal.
+
+Install a new Rails instance with (1) some clever name, (2) *without* a
+copy of the Rails framework within the local directory, and (3)
+specifying PostgreSQL. Then (4) start the server and see if it's working.
+
+You should probably double-check that the command is correct before
+running it.

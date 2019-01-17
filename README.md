@@ -21,9 +21,9 @@ opening with your text editor, saving, git branch management, and running for
 you automatically, so you can focus on learning. It's a tremendous time-saver
 for drilling coding skills.
 
-When you perform a review, you try to perform a task.  Essentially, to use
-Revuu, you'd add complex, not simple, tasks. Probably the ideal Revuu task would
-require 2-10 minutes to complete.
+When you perform a review, you try to do a task.  Essentially, to use Revuu,
+you'd add complex, not simple, tasks. Probably, the ideal Revuu task would
+require 2-10 minutes to complete (but it's up to you).
 
 The basic functions of the program are adding tasks, using the handy answer
 filing and editing system (which probably works with your favorite text editor),
@@ -65,12 +65,12 @@ Larry Sanger (yo.larrysanger@gmail.com)
 
 ## Development to do list
 
-* Add proper support for opening PSQL terminal.
-* Full text search with regex capabilities.
-* Add a "sort by date added" or "sort by ID" feature.
+* Add support for opening repotask terminals (and PSQL sessions). Will include
+a feature to list and let the user choose a preferred terminal.
+* Full text search with sorting by relevance score.
 * Make various archive safety improvements/clarifications.
-* Add statistics (number of questions, averages, number overdue, number to do
-today, etc.).
+* Add statistics (number of questions, average review interval, average score,
+average score per language, number to do today, etc.).
 
 ## Programmer notes
 
@@ -249,9 +249,9 @@ Bootstrap to supported tech. Small bug fixes.
 ### 3.5 (January 6, 2019)
 Server running support and auto-advance:
 
-In this update, incredibly (to Revuu's author), a major bug was fixed. Now the
-user can run Sinatra (and possibly Rails) servers from within Revuu. This is
-a major step toward enabling spaced repetition review of questions about
+In this extensive update, incredibly (to Revuu's author), a major bug was fixed.
+Now the user can run Sinatra (and possibly Rails) servers from within Revuu.
+This is a major step toward enabling spaced repetition review of questions about
 complex web frameworks--enabling the user to efficiently drill harder methods
 while Revuu handles the complex setup. Be sure to add
 
@@ -263,4 +263,13 @@ with these instructions.)
 Also we now automatically move the user to the next question to review (after
 prompt) after recording a review; also, add an 'x' shortcut to do that directly.
 Added search/sort for tasks without tags (other than default tags); type
-'notags'. Added simple fix to end-of-year "unknown" date bug.
+'notags'. Added simple fix to end-of-year "unknown" date bug. We also added
+functionality to ensure that spaced repetition recommendations do not cluster
+together on any one day (if there's a cluster building, they fall to one side or
+the other depending on which days have the fewest).
+
+### 3.6
+
+Added "change dates" feature, which edits all task review dates by a day offset.
+Now, if you get behind, you can use this feature to catch yourself up. Started
+experimenting with a console opening feature.
