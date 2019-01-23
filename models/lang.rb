@@ -70,6 +70,9 @@ class Lang
       {name: 'CSS', ext: 'css', cmd: 'firefox', cmnt: '/*', cmnt2: '*/',
         alts: ['CSS3'], spacer: '', color: :denim},
 
+      {name: 'Rails', ext: 'rb', cmd: 'ruby', cmnt: '#', alts: ['RoR',
+        'Ruby on Rails'], spacer: "puts", color: :mandarian_orange},
+
       {name: 'Bash', ext: 'sh', cmd: '/bin/bash', cmnt: '#', alts:
         ['command line', 'shell', 'shell scripting', 'Bash scripting', 'Linux',
           'Unix'], spacer: "echo '<--spacer-->'", color: :chateau_green},

@@ -82,6 +82,10 @@ module RepotaskController
   end
 
   def open_file(file)
+    unless @files
+      print "No files to open. Add some with 'fi'.\n\n"
+      return
+    end
     return unless checkout_before_open_or_run
     unless file.between?(1, @files.length)
       print "\nSorry, but (#{file}) is not the number of a file. You can add " +
@@ -161,7 +165,7 @@ module RepotaskController
     g = Git.open("data/repos/#{repo}")
     g.reset_hard
     # Remove untracked files (hard reset leaves them behind).
-    system("cd data/repos/#{repo}&&git clean -qfdx")
+    system("cd data/repos/#{repo}&&git clean -qfdx -f")
     puts "\nBranch (#{@branch}) reset: files restored to original state." unless
       skip_notice
     @reset_this_session = true
@@ -389,10 +393,36 @@ module RepotaskController
     g.commit("standard archive")
     # Finally, checkout the main repotask branch.
     g.branch(@branch).checkout
+end
+
+  # Opens a new xterm (user must have) console located in the repotask's working
+  # directory.
+  def open_console
+    check_for_xterm
+    # This is a rather complicated command that required a fair bit of research.
+    # "env -i HOME=$HOME" resets the environment variables (to blank), while
+    # "bash -l" starts a new bash session and "-c" plus the command executes a
+    # command in that bash session. 'cd #{Dir.pwd}', etc., changes to the working
+    # directory of the repotask, "DISPLAY=:0" tells Bash which computer display
+    # to use (because you cleared all environment variables earlier), while
+    # finally "xterm -fa 'Monospace' -fs 12'" opens xterm and sets it to run in
+    # a readable font size.
+    system("env -i HOME=\"$HOME\" bash -l -c 'cd #{Dir.pwd}/data/repos/#{@repo} && DISPLAY=:0 xterm -fa 'Monospace' -fs 11'")
   end
 
-  def open_console
-    system("gnome-terminal --working-directory=/home/globewalldesk/Dropbox/_Programming/Ruby/revuu/data/repos/#{@repo}")
+  def check_for_xterm
+    unless system("which xterm > /dev/null")
+      puts "\nSorry, you need to install xterm. Try 'sudo apt-get install xterm'."
+      puts "This might or might not work on your system. You can do it yourself;"
+      puts "or do you want me to try running this for you? [y]/n"
+      answer = get_user_command('co')
+      unless answer == 'y' or answer == ''
+        return
+      end
+      unless system("sudo apt-get install xterm")
+        return
+      end
+    end
   end
 
 end

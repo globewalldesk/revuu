@@ -10,7 +10,7 @@ module Helpers
 
   # Used in clear_screen above. RF
   def header
-    puts sprintf("%-69s%s", " * R * E * V * U * U *",  "v. 3.5").
+    puts sprintf("%-69s%s", " * R * E * V * U * U *",  "v. 3.6").
       colorize(:black).colorize(background: :white)
     puts ''
   end
@@ -202,18 +202,19 @@ class String
     light_cyan:   [52, 226, 226],
     light_white:  [238, 238, 236],
     # New colors.
-    free_speech_red:[169, 16, 0],     # Ruby
-    festival:       [233, 212, 77],   # JavaScript
-    denim:          [27, 132, 193],   # CSS
-    tahiti_gold:    [233, 98, 40],    # HTML
-    chateau_green:  [69, 181, 80],    # Bash
-    malibu:         [93, 164, 221],   # SQL/PSQL
-    echo_blue:      [163, 179, 198],  # C
-    med_aquamarine: [98, 202, 175],   # C++
-    carrot_orange:  [240, 148, 33],   # Java
-    saffron:        [247, 191, 48],   # Python
-    brown:          [165, 42, 42],    # Rust
-    medium_purple:  [139, 87, 217]    # Bootstrap
+    free_speech_red:  [169, 16, 0],     # Ruby
+    festival:         [233, 212, 77],   # JavaScript
+    denim:            [27, 132, 193],   # CSS
+    tahiti_gold:      [233, 98, 40],    # HTML
+    chateau_green:    [69, 181, 80],    # Bash
+    malibu:           [93, 164, 221],   # SQL/PSQL
+    echo_blue:        [163, 179, 198],  # C
+    med_aquamarine:   [98, 202, 175],   # C++
+    carrot_orange:    [240, 148, 33],   # Java
+    saffron:          [247, 191, 48],   # Python
+    brown:            [165, 42, 42],    # Rust
+    medium_purple:    [139, 87, 217],   # Bootstrap
+    mandarian_orange: [154, 37, 42]     # Rails
   }
 
   # Mapping new color names to old names for use by Colorize gem.
@@ -229,6 +230,7 @@ class String
     carrot_orange:    :magenta,       # Java
     saffron:          :yellow,        # Python
     brown:            :red,           # Rust
-    medium_purple:    :light_magenta  # Bootstrap
+    medium_purple:    :light_magenta, # Bootstrap
+    mandarian_orange: :red            # Rails
   }
 end

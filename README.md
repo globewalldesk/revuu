@@ -250,15 +250,15 @@ Bootstrap to supported tech. Small bug fixes.
 Server running support and auto-advance:
 
 In this extensive update, incredibly (to Revuu's author), a major bug was fixed.
-Now the user can run Sinatra (and possibly Rails) servers from within Revuu.
-This is a major step toward enabling spaced repetition review of questions about
-complex web frameworks--enabling the user to efficiently drill harder methods
-while Revuu handles the complex setup. Be sure to add
+Now the user can run Sinatra servers from within Revuu. This is a major step
+toward enabling spaced repetition review of questions about complex web
+frameworks--enabling the user to efficiently drill harder methods while Revuu
+handles the complex setup. Be sure to add
 
-    BUNDLE_GEMFILE='./GEMFILE' &&
+    BUNDLE_GEMFILE='./Gemfile' &&
 
-before the `ruby <server_file.rb>` command. (Still need to update help file
-with these instructions.)
+before the `ruby <server_file.rb>` Sinattra command. (Still need to update help
+file with these instructions.)
 
 Also we now automatically move the user to the next question to review (after
 prompt) after recording a review; also, add an 'x' shortcut to do that directly.
@@ -268,8 +268,13 @@ functionality to ensure that spaced repetition recommendations do not cluster
 together on any one day (if there's a cluster building, they fall to one side or
 the other depending on which days have the fewest).
 
-### 3.6
+### 3.6 (January 22, 2019)
+Added Rails and "change dates" feature:
 
-Added "change dates" feature, which edits all task review dates by a day offset.
-Now, if you get behind, you can use this feature to catch yourself up. Started
-experimenting with a console opening feature.
+We can now say that it is possible to add Rails repotasks. All Bash commands are
+now to be typed in by the user in a special xterm console that pops up when the
+user types 'co' (although you can still use "commands to run" if you like). The
+console opens in the correct repo directory, at the correct branch, and reset
+with the correct environment. Also added "change dates" feature, which edits all
+task review dates by a day offset. Now, if you get behind, you can use this
+feature to catch yourself up.
