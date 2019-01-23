@@ -21,6 +21,8 @@ module TaskController
       write_answer
     when 'r' # Execute the file you wrote.
       run_answer
+    when 'co' # Open a console in the task's directory
+      open_console
     when 'help', '?' # Launch help.
       launch_instructions_system
       display_info # Display the task after returning from help.
@@ -142,6 +144,40 @@ module TaskController
     elsif @lang == 'Java'
       File.write(@location, java_starter)
       save_change_timestamp_to_settings
+    end
+  end
+
+  # Opens a new xterm (user must have) console located in the repotask's working
+  # directory.
+  def open_console
+    check_for_xterm
+    # This is a rather complicated command that required a fair bit of research.
+    # "env -i HOME=$HOME" resets the environment variables (to blank), while
+    # "bash -l" starts a new bash session and "-c" plus the command executes a
+    # command in that bash session. 'cd #{Dir.pwd}', etc., changes to the working
+    # directory of the repotask, "DISPLAY=:0" tells Bash which computer display
+    # to use (because you cleared all environment variables earlier), while
+    # finally "xterm -fa 'Monospace' -fs 12'" opens xterm and sets it to run in
+    # a readable font size.
+    if @repo
+      system("env -i HOME=\"$HOME\" bash -l -c 'cd #{Dir.pwd}/data/repos/#{@repo} && DISPLAY=:0 xterm -fa 'Monospace' -fs 11'")
+    else
+      system("env -i HOME=\"$HOME\" bash -l -c 'cd #{Dir.pwd}/#{@location_dir} && DISPLAY=:0 xterm -fa 'Monospace' -fs 11'")
+    end
+  end
+
+  def check_for_xterm
+    unless system("which xterm > /dev/null")
+      puts "\nSorry, you need to install xterm. Try 'sudo apt-get install xterm'."
+      puts "This might or might not work on your system. You can do it yourself;"
+      puts "or do you want me to try running this for you? [y]/n"
+      answer = get_user_command('co')
+      unless answer == 'y' or answer == ''
+        return
+      end
+      unless system("sudo apt-get install xterm")
+        return
+      end
     end
   end
 

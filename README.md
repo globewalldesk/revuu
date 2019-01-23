@@ -8,49 +8,39 @@ answers in-app, scheduling reviews automatically, etc.
 
 See https://www.youtube.com/watch?v=Mgrdg1uwDeA for the how and why of Revuu.
 
-Revuu helps you review programming tasks, both simple and complex, improving
-understanding and keeping your skills fresh. It was written with the notion that
-programmers need repetition of not declarative but procedural knowledge.
-
 This is the only tool we know of that makes it easy to drill your own hand-made,
 complex web development tasks (such as Rails tasks) repeatedly, handling all the
-set-up for you.
+set-up, scheduling, file naming, retrieving, opening with your text editor,
+opening a console at the right place, saving, git branch management, and running
+for you. You can focus on the coding challenge you want to learn.
 
-The great thing about Revuu is that it handles all file naming, retrieving,
-opening with your text editor, saving, git branch management, and running for
-you automatically, so you can focus on learning. It's a tremendous time-saver
-for drilling coding skills.
+The basic functions of the program are adding tasks, opening the needed files
+with your favorite text editor, running the script and seeing the results, and
+recording that you've done a review and that the next review should be done on a
+certain date.
 
-When you perform a review, you try to do a task.  Essentially, to use Revuu,
-you'd add complex, not simple, tasks. Probably, the ideal Revuu task would
-require 2-10 minutes to complete (but it's up to you).
+Currently, we support Ruby, Rails, JavaScript (and Node), HTML, CSS, Python,
+Java, C, C++, Rust, and Bash scripting. We support not just one-file scripting
+tasks but also complex, directory-based tasks (which Revuu calls "repotasks"),
+coordinating both edits to multiple files and also with console commands.
 
-The basic functions of the program are adding tasks, using the handy answer
-filing and editing system (which probably works with your favorite text editor),
-running the script and seeing the results, and recording that you've done a
-review and that the next review should be done on a certain date. The two basic
-views of the app are a paginated list of tasks and an individual task view.
+Add copious, well-chosen tags in order to be able to sort tasks. Sort tasks in
+different ways. Change all task dates at once. Easily import (load) and export
+(archive, back up, share) your data.
 
-Currently, we support Ruby, JavaScript (and Node), HTML, CSS, Python, Java, C,
-C++, Rust, and Bash scripting. We support not just one-file scripting tasks but
-also complex, directory-based tasks (which Revuu calls "repotasks"). We also
-support many commonly-used text editors and IDEs.
-
-Add copious, well-chosen tags in order to be able to sort tasks.
-
-You can also easily import (load) and export (archive, back up, share) your
-data, or some included sample data.
+Try it! You can experiment with some included sample data.
 
 ## Install and requirements
-Clone the repo (instructions should be clear enough from Github). Should
-probably make sure a recent version of Ruby (>2.2) is installed. Execute
-`bundle install` to install the gem requirements.
+Clone the repo (instructions should be clear enough from Github). A recent
+version of Ruby (>2.2) is installed. Execute `bundle install` to install the
+gem requirements. If you want to run a console automatically, you'll need xterm.
 
-Only works on \*nix systems (including modern Macs).
+Only tested on Ubuntu and modern Macs, but should work in any \*nix-based
+system. Won't work in Windows (sorry).
 
 ## Run and Use
 Once Ruby, the app, and the gem dependencies are installed, you should be able
-to start the app on your \*nix system just by typing `ruby revuu.rb`.
+to start the app from the directory you installed it in just by typing `ruby revuu.rb` on the command line.
 
 Revuu ships with a bunch of pre-made questions (in the "sample data" folder) and
 answers by way of demonstration. Load by pressing 'a' to go to the archive
@@ -61,12 +51,13 @@ To learn how to use the system, press '?' for help. It's pretty easy to learn,
 and we have extensive help files.
 
 ## Author
-Larry Sanger (yo.larrysanger@gmail.com)
+Larry Sanger (email is domain sanger.io, username larry)
+
+I'd love to have some detailed feedback. I've had very little so far (as of
+January 2019).
 
 ## Development to do list
 
-* Add support for opening repotask terminals (and PSQL sessions). Will include
-a feature to list and let the user choose a preferred terminal.
 * Full text search with sorting by relevance score.
 * Make various archive safety improvements/clarifications.
 * Add statistics (number of questions, average review interval, average score,
@@ -257,7 +248,7 @@ handles the complex setup. Be sure to add
 
     BUNDLE_GEMFILE='./Gemfile' &&
 
-before the `ruby <server_file.rb>` Sinattra command. (Still need to update help
+before the `ruby <server_file.rb>` Sinatra command. (Still need to update help
 file with these instructions.)
 
 Also we now automatically move the user to the next question to review (after
@@ -269,7 +260,7 @@ together on any one day (if there's a cluster building, they fall to one side or
 the other depending on which days have the fewest).
 
 ### 3.6 (January 22, 2019)
-Added Rails and "change dates" feature:
+Added Rails, open terminal, and "change dates" feature:
 
 We can now say that it is possible to add Rails repotasks. All Bash commands are
 now to be typed in by the user in a special xterm console that pops up when the
@@ -278,3 +269,7 @@ console opens in the correct repo directory, at the correct branch, and reset
 with the correct environment. Also added "change dates" feature, which edits all
 task review dates by a day offset. Now, if you get behind, you can use this
 feature to catch yourself up.
+
+### 3.7
+
+Add option to open terminal in all regular tasks (not just repotasks).
